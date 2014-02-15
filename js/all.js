@@ -61,7 +61,8 @@ function agXMLHttpReqFichiers(le_url) {
 	todaysDate=agConvertDate2(date);
 	
 	//alert(storageFilesDate+"/"+todaysDate); 
-    // Vérifier si fichier existe et n'est pas trop vieux  
+    // Vérifier si fichier existe et n'est pas trop vieux 
+	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
     if (typeof storageFilesDate === "undefined" || storageFilesDate != todaysDate) 
 	{
 
