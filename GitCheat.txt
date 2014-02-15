@@ -7,7 +7,6 @@ Collaborateurs: pour que quelqu'un puisse venir modifier des choses on doit l'aj
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
 
-Master
 
 git clone le_url
 
