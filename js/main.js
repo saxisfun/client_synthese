@@ -12,7 +12,7 @@ function hide_ecran_fichier() {
 
 
 
-// pour l'écra d'observation
+// pour l'écran d'observation
 
 function show_ecran_de_l_observation() {
 	

@@ -62,11 +62,8 @@ function startCountdown() {
 
     // check if not a number
     if (isNaN(minutes)) {
-<<<<<<< HEAD
-        alert("Entrez une valeur num\351rique (Seulement) svp!");
-=======
-        alert("Entrez une valeur zzzz num�rique svp!");
->>>>>>> abf19b006f2f5ac036439488edffe177a91dd1b5
+
+        alert("Entrez une valeur é num\351rique (Seulement) svp!");
         return;
     }
     
