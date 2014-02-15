@@ -45,7 +45,7 @@ function tick() {
 }
 
 
-
+ 
 
 function startCountdown() {
     
@@ -62,8 +62,12 @@ function startCountdown() {
 
     // check if not a number
     if (isNaN(minutes)) {
+<<<<<<< HEAD
+        alert("Entrez une valeur num\351rique xx(Seulement) svp!");
+=======
 
         alert("Entrez une valeur é num\351rique (Seulement) svp!");
+>>>>>>> master
         return;
     }
     
