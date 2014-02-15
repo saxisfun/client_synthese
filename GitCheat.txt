@@ -2,9 +2,11 @@ Commandes Git les plus utilisees en mode console
 
 avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git Shell qui s'installe avec l'installation du client git
 
+Collaborateurs: pour que quelqu'un puisse venir modifier des choses on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
+
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
-‰‰‰‰
+
 Master
 
 git clone le_url
@@ -62,3 +64,10 @@ cd D:\DataAll\DataCegep\Session_XX9_TravailleDeSyntheseFin\TP1_Partie_2_Applicat
 
 aaaaaa
 BBBBBB
+
+
+git remote -v
+
+
+remotes
+git  branch -a (voir les remote)
