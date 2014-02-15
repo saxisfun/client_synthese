@@ -29,21 +29,25 @@ git (pour voir le Help)
 
 -------Branching--------------------------
 
-git branch <name_of_your_new_branch>
+git branch Alain
 
 Push the branch on github :
 
-git push origin <name_of_your_new_branch>
+git push origin Alain
 
 Switch to your new branch :
 
-git checkout <name_of_your_new_branch>
+git checkout Alain
 
-When you want to commit something in your branch, be sure to be in your branch.
+git checkout -b Alain (crée une nouvelle et embraque dedans)
+
 
 You can see all branches created by using
 
 git branch 
+
+
+
 
 
 git push --set-upstream origin Denis
