@@ -5,8 +5,12 @@ avec la console run cmd de windows ca marche pas. Il faut prendre la fenêtre Git
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
 
+
+
 git clone le_url
+
 git status
+
 git add index.html
 ou
 git add .
@@ -14,6 +18,9 @@ ou
 git add -A
 
 git commit -m "un message"
+
+
+
 ou
 git commit (sans message ca ouvre vim. Faire :wq pour sortir )
 
@@ -22,6 +29,33 @@ git push
 git pull
 
 git (pour voir le Help)
+
+-------Branching--------------------------
+
+git branch Alain
+
+Push the branch on github :
+
+git push origin Alain
+
+Switch to your new branch :
+
+git checkout Alain
+
+git checkout -b Alain (crée une nouvelle et embraque dedans)
+
+
+You can see all branches created by using
+
+
+git push --set-upstream origin Denis
+
+git branch 
+
+-------Merging--------------------------
+
+git checkout master (aller dans master)
+git merge Alain
 
 
 cd D:\DataAll\DataCegep\Session_XX9_TravailleDeSyntheseFin\TP1_Partie_2_Application_Pour_ornitologues\projet_synthese
