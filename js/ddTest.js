@@ -62,7 +62,7 @@ function startCountdown() {
 
     // check if not a number
     if (isNaN(minutes)) {
-        alert("Entrez une valeur numérique svp!");
+        alert("Entrez une valeur numérique (Seulement) svp!");
         return;
     }
     
