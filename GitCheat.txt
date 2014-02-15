@@ -18,6 +18,9 @@ ou
 git add -A
 
 git commit -m "un message"
+
+
+
 ou
 git commit (sans message ca ouvre vim. Faire :wq pour sortir )
 
