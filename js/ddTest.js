@@ -86,6 +86,7 @@ function startCountdown() {
 
 
 
+
 // as soon as the page is loaded... cr  la vole
 window.onload =  function () {  
    // create input text box and give it an id of "minutes"
