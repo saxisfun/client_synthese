@@ -47,14 +47,15 @@ git checkout -b Alain (crée une nouvelle et embraque dedans)
 
 You can see all branches created by using
 
-git branch 
-
-
-
-
 
 git push --set-upstream origin Denis
 
+git branch 
+
+-------Merging--------------------------
+
+git checkout master (aller dans master)
+git merge Alain
 
 
 cd D:\DataAll\DataCegep\Session_XX9_TravailleDeSyntheseFin\TP1_Partie_2_Application_Pour_ornitologues\projet_synthese
