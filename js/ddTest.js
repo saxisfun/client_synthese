@@ -1,4 +1,4 @@
-// two global variables
+﻿// two global variables
 var secondsRemaining;
 var intervalHandle;
 
