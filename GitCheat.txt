@@ -5,7 +5,13 @@ avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git 
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
 ‰‰‰‰
+<<<<<<< HEAD
 Master
+=======
+‰‰‰‰
+Denis
+
+>>>>>>> Denis
 
 git clone le_url
 
