@@ -1,5 +1,8 @@
 Commandes Git les plus utilisees en mode console
 
+Collaborateurs: pour que quelqu'un puisse venir modifier des choses on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
+
+
 avec la console run cmd de windows ca marche pas. Il faut prendre la fenêtre Git Shell qui s'installe avec l'installation du client git
 
 https://www.youtube.com/watch?v=0fKg7e37bQE
@@ -62,3 +65,10 @@ cd D:\DataAll\DataCegep\Session_XX9_TravailleDeSyntheseFin\TP1_Partie_2_Applicat
 
 aaaaaa
 BBBBBB
+
+
+git remote -v
+
+
+remotes
+git  branch -a (voir les remote)
