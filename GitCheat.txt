@@ -1,9 +1,10 @@
 Commandes Git les plus utilisées en mode console
 
+
 Collaborateurs: pour que quelqu'un puisse venir modifier des choses dans notre repo on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
 
 
-avec la console run cmd de windows ca marche pas. Il faut prendre la fenêtre Git Shell qui s'installe avec l'installation du client git
+avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git Shell qui s'installe avec l'installation du client git
 
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
@@ -11,6 +12,7 @@ https://www.youtube.com/watch?v=0fKg7e37bQE
 
 
 git clone https://github.com/saxisfun/client_synthese.git
+
 
 git status
 
@@ -63,23 +65,25 @@ git checkout master (aller dans master)
 git merge Alain
 
 
+
 3 types de merge
 	merge (merge un ou des commits de ma branche dans une autre branche)
 	fast-forward ()
 	rebase 
 		-revenir en arrière au moment ou la branche s'est splitté et réappliquer les commits sur la branche cible (Master)
 		-effacer toute trace qu'il y a eu une branche
--------Conflict--------------
+		
+-------Conflicts--------------
 
 Faire les modif dans le fichier conflictuel
 git add -A (pour ré-ajouter le fichier réparé)
 git commit -m "Conflit réparé"
 
 
-cd D:\DataAll\DataCegep\Session_XX9_TravailleDeSyntheseFin\TP1_Partie_2_Application_Pour_ornitologues\projet_synthese
 
-aaaaaa
-BBBBBB
+cd D:\DataAll\DataCegep\Session_XX9_TPSyntheseFin\TP1_Partie_2_App_Oiseau\client_synthese
+
+
 
 
 git remote -v

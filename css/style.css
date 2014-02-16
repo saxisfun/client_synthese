@@ -2,13 +2,9 @@
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
 }
-
-h3 {
-	
-	color:white;
-
-	
-	
+ 
+h3 {	
+	color:white; 
 }
 
 html, body {
@@ -25,6 +21,7 @@ html, body {
 
 .hidden {
     display: none;
+ 
 }
 
 /* THE TWO ABOUT SUB-PAGES */
