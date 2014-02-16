@@ -44,7 +44,7 @@ Switch to your new branch :
 
 git checkout Alain
 
-git checkout -b Alain (crée une nouvelle et embraque dedans)
+git checkout -b Alain (crŽer une nouvelle et embraquer dedans)
 
 
 You can see all branches created by using
@@ -62,5 +62,3 @@ git merge Alain
 
 cd D:\DataAll\DataCegep\Session_XX9_TravailleDeSyntheseFin\TP1_Partie_2_Application_Pour_ornitologues\projet_synthese
 
-aaaaaa
-BBBBBB
