@@ -53,10 +53,27 @@ git push --set-upstream origin Denis (choisir l'emplacement de l'origine ??)
 
 git branch (You can see all branches created by using) 
 
+
+git branch -d Alain (effacer une branche)
+
+
 -------Merging--------------------------
 
 git checkout master (aller dans master)
 git merge Alain
+
+
+3 types de merge
+	merge (merge un ou des commits de ma branche dans une autre branche)
+	fast-forward ()
+	rebase 
+		-revenir en arrière au moment ou la branche s'est splitté et réappliquer les commits sur la branche cible (Master)
+		-effacer toute trace qu'il y a eu une branche
+-------Conflict--------------
+
+Faire les modif dans le fichier conflictuel
+git add -A (pour ré-ajouter le fichier réparé)
+git commit -m "Conflit réparé"
 
 
 cd D:\DataAll\DataCegep\Session_XX9_TravailleDeSyntheseFin\TP1_Partie_2_Application_Pour_ornitologues\projet_synthese
