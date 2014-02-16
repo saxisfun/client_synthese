@@ -3,7 +3,7 @@ var secondsRemaining;
 var intervalHandle;
 
 
-//j'ai trouvé le trouble des accents
+//j'ai trouvé le trouble des accents 
 
 function tick() {
   
