@@ -3,7 +3,7 @@ var secondsRemaining;
 var intervalHandle;
 
 
-//j'ai trouvé le trouble des accents 
+//j'ai trouvé le trouble des accents  François Noël où est-tu ?
 
 function tick() {
   
@@ -62,7 +62,7 @@ function startCountdown() {
 
     // check if not a number
     if (isNaN(minutes)) {
-        alert("Entrez une valeur numrique svp!");
+        alert("Entrez une valeur numérique svp!");
         return;
     }
     
