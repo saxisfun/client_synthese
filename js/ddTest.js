@@ -3,7 +3,7 @@ var secondsRemaining;
 var intervalHandle;
 
 
-//j'ai trouvé le trouble des accents  François Noël où est-tu ?  é=\351
+//j'ai trouvé le trouble des accents  François Noël où est-tu ?  
 
 function tick() {
   
