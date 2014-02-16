@@ -3,7 +3,7 @@ var secondsRemaining;
 var intervalHandle;
 
 
-//sldfjdlkgjdf;èlgè;dfg;èldjgè;ldfjgè;ldfjgè;ldfjgè;ldfjgl
+//j'ai trouv√© le trouble des accents
 
 function tick() {
   
@@ -23,7 +23,7 @@ function tick() {
     timeDisplay.innerHTML = message;
     
     
-     // changement de couleur pour la dernière minute !!!
+     // changement de couleur pour la derni¬ère minute !!!
     if (secondsRemaining < 60) {
         timeDisplay.setAttribute("style","font-size: 6em; color: #fc0008; background-color: #c2b8ee;");
      }
@@ -36,7 +36,7 @@ function tick() {
         
         document.getElementById("inputArea").style.display = "block";
         
-        // couleur au départ du compteur
+        // couleur au d¬épart du compteur
         timeDisplay.setAttribute("style","font-size: 5em; color: #FF00FF; background-color: #D5D6D7;");
       }
      
@@ -62,7 +62,7 @@ function startCountdown() {
 
     // check if not a number
     if (isNaN(minutes)) {
-        alert("Entrez une valeur numérique svp!");
+        alert("Entrez une valeur num¬érique svp!");
         return;
     }
     
@@ -77,7 +77,7 @@ function startCountdown() {
 
 
 
-// as soon as the page is loaded... créé à la volée
+// as soon as the page is loaded... cr¬é¬é ¬à la vol¬ée
 window.onload =  function () {  
    // create input text box and give it an id of "minutes"
     var inputMinutes = document.createElement("input");
