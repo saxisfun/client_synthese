@@ -4,14 +4,7 @@ avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git 
 
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
-‰‰‰‰
-<<<<<<< HEAD
-Master
-=======
-‰‰‰‰
-Denis
 
->>>>>>> Denis
 
 git clone le_url
 
@@ -48,7 +41,7 @@ Switch to your new branch :
 
 git checkout Alain
 
-git checkout -b Alain (crée une nouvelle et embraque dedans)
+git checkout -b Alain (crÃ©er une nouvelle et embraque dedans)
 
 
 You can see all branches created by using
