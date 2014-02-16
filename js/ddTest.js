@@ -3,7 +3,7 @@ var secondsRemaining;
 var intervalHandle;
 
 
-//j'ai trouvé le trouble des accents  François Noël où est-tu ?
+//j'ai trouvé le trouble des accents  François Noël où est-tu ?  é=\351
 
 function tick() {
   
@@ -31,12 +31,12 @@ function tick() {
     
     // stop if down to zero
     if (secondsRemaining === 0) {        
-        alert('Termin\351!');
+        alert('Terminé!');
         clearInterval(intervalHandle);
         
         document.getElementById("inputArea").style.display = "block";
         
-        // couleur au dpart du compteur
+        // couleur au départ du compteur
         timeDisplay.setAttribute("style","font-size: 5em; color: #FF00FF; background-color: #D5D6D7;");
       }
      
