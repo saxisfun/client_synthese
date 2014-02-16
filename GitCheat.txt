@@ -1,59 +1,57 @@
-Commandes Git les plus utilisees en mode console
+Commandes Git les plus utilisées en mode console
 
-Collaborateurs: pour que quelqu'un puisse venir modifier des choses on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
+Collaborateurs: pour que quelqu'un puisse venir modifier des choses dans notre repo on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
 
 
 avec la console run cmd de windows ca marche pas. Il faut prendre la fenêtre Git Shell qui s'installe avec l'installation du client git
 
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
-Test1
+------------------------------------------------------------------------------------------------------
 
 
-git clone le_url
+git clone https://github.com/saxisfun/client_synthese.git
 
 git status
 
 git add index.html
 ou
-git add .
+git add . (tous les fichiers du répertoire qu'on est dedans)
 ou
-git add -A
+git add -A (tous les fichiers du repo)
 
 git commit -m "un message"
 
-
+git commit -a -m "un message" (add et commit en meme temps)
 
 ou
 git commit (sans message ca ouvre vim. Faire :wq pour sortir )
 
-git push
+git push (publier)
 
-git pull
+git pull (faire venir les nouveaux changements)
+
 
 git (pour voir le Help)
 
 -------Branching--------------------------
 
-git branch Alain
+git branch Alain (créer une nouvelle branche)
 
-Push the branch on github :
 
-git push origin Alain
 
-Switch to your new branch :
+git push origin Alain (Push the branch on github :)
 
-git checkout Alain
+
+
+git checkout Alain	(Switch to your new branch :)
 
 git checkout -b Alain (crée une nouvelle et embraque dedans)
 
 
-You can see all branches created by using
+git push --set-upstream origin Denis (choisir l'emplacement de l'origine ??)
 
-
-git push --set-upstream origin Denis
-
-git branch 
+git branch (You can see all branches created by using) 
 
 -------Merging--------------------------
 

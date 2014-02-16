@@ -34,6 +34,7 @@ function addFichiersListViewCell(le_id, le_non_fich, le_url, la_descrip, la_date
 }
 
 
+
 function affiche_json_du_prof(le_str_output) 
 { 
 	localString = JSON.parse(le_str_output);

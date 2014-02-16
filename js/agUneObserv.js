@@ -16,7 +16,7 @@ function ClasseObservation() {
 	 
 }
 
-ClasseObservation.prototype.ajouterUneAutrePhotoDansUnObjetObservation = function(str_la_Photo_Descrip, str_la_Photo_DiskName, dataURL_la_Photo) {
+ClasseObservation.prototype.ajouterUneAutrePhotoALobservation = function(str_la_Photo_Descrip, str_la_Photo_DiskName, dataURL_la_Photo) {
 	
 	var photoObject1 = new ClassePhoto();
 	photoObject1.strPhotoDescrip = str_la_Photo_Descrip;

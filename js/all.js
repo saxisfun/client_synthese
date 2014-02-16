@@ -69,12 +69,16 @@ function agXMLHttpReqFichiers(le_url) {
 		 //alert(le_url);
 		try {
 			var resourcePath = le_url;
+			
 			var request = new XMLHttpRequest();
+			
 			request.open("GET", resourcePath, true);
 			request.onreadystatechange = function(){
 				if (request.readyState == 4) {
 					if (request.status == 200 || request.status == 0) {
+					
 						str_output = request.responseText;
+						
 						storageFiles.date1 = todaysDate;
 						storageFiles.output = str_output;
 						try {

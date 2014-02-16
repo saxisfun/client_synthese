@@ -80,6 +80,92 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 
 
 
+
+
+
+/*
+-Si deconecté 
+	1-Afficher les observations qui sont dans local storage depuis le dernier download, incluant les nouvelles observation de l'usager depuis le derniere upload.
+	2-Afficher les données du disctionnaire qui sont dans le local storage (on aura pas grand données de dictionnaire alors on peut tout mettre dans le localstorage). 
+
+	
+-si connecté 
+	1-upload des nouvelles observations de l'usager vers le serveur et download de 5 pages de 10 cellules = 50 cellules des dernièeres observations de tous le monde 
+	   classées en ordre de date décroissant par le serveur
+
+	   
+-Alors tant qu'on a pas de vraie connection avec la couche données on fonctionne avec le localstorage	   
+*/
+
+ClasseListViewObservations.prototype.xmlHttpRequestObservationsFromServeur = function(le_url, index_de, index_a) {
+
+
+	var storageLesObs = JSON.parse(localStorage.getItem("storageLesObservations")) || {},
+	la_dateDernDwn = storageLesObs.dateDernDwn,
+	date = new Date(),
+	//todaysDate = (date.getMonth() + 1).toString() + date.getDate().toString();
+	todaysDate=agConvertDate2(date);
+	
+	//alert(la_dateDernDwn+"/"+todaysDate); 
+    // Vérifier si fichier existe et n'est pas trop vieux 
+	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
+    if (typeof la_dateDernDwn === "undefined" || la_dateDernDwn != todaysDate) 
+	{
+
+		 //alert(le_url);
+		try {
+		
+			if(dataAdapterSwitch_dataFromIIS){
+				var resourcePath = "http://xxxxxxxxxxxxxxxxxxx/xxxxxx.json?idx_de='+index_de+'&idx_a='+index_a+'";
+			}else{
+				var resourcePath = "http://listObs.json?idx_de='+index_de+'&idx_a='+index_a+'";
+			}		
+			
+			
+			alert(resourcePath);
+			var request = new XMLHttpRequest();
+			
+			request.open("GET", resourcePath, true);
+			request.onreadystatechange = function(){
+				if (request.readyState == 4) {
+					if (request.status == 200 || request.status == 0) {
+					
+						str_output = request.responseText;
+						
+						storageLesObs.dateDernDwn = todaysDate;
+						storageLesObs.output = str_output;
+						try {
+							localStorage.setItem("storageLesObservations", JSON.stringify(storageLesObs));
+						}
+						catch (e) {
+								alert("Storage failed: " + e);                
+						}
+						//affiche_json_du_prof(str_output); 
+						
+					}
+				}
+			}
+			request.send();
+			
+		 } catch (e) {
+			//errorEvent(e);
+		}
+    }
+    else {
+	   str_output = storageFiles.output;
+	   //affiche_json_du_prof(str_output); 
+	   //storageFiles.output = str_output;
+    }
+
+
+}
+
+
+
+
+
+
+
 ClasseListViewObservations.prototype.addListViewObservCell = function(le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_index) {
 	
 	var newDiv1 = document.createElement("div");
@@ -167,8 +253,8 @@ ClasseListViewObservations.prototype.ajouterUnObservationALobjetListViewObservat
 	observObject1.dataURLPicture = the_pic_dataURL;
 	
 
-	//observObject1.ajouterUneAutrePhotoDansUnObjetObservation("Photo 1",strObservDiskName,the_pic_dataURL);
-	//observObject1.ajouterUneAutrePhotoDansUnObjetObservation("Photo 2",strObservDiskName,the_pic_dataURL);
+	//observObject1.ajouterUneAutrePhotoALobservation("Photo 1",strObservDiskName,the_pic_dataURL);
+	//observObject1.ajouterUneAutrePhotoALobservation("Photo 2",strObservDiskName,the_pic_dataURL);
 	
 	
 	

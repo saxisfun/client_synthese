@@ -340,7 +340,7 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 			//alert("strObservDiskName:"+observObject2.strObservDiskName);
 			//objListViewObservations.ajouterUnObservationALobjetListViewObservations(le_titre, le_resume, varGlobalNomImage, test6432);
 			
-			observObject2.ajouterUneAutrePhotoDansUnObjetObservation("Photo 1",varGlobalNomImage,test6432);
+			observObject2.ajouterUneAutrePhotoALobservation("Photo 1",varGlobalNomImage,test6432);
 			
 			
 	
