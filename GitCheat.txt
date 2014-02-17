@@ -72,8 +72,17 @@ git merge Alain
 	rebase 
 		-revenir en arrière au moment ou la branche s'est splitté et réappliquer les commits sur la branche cible (Master)
 		-effacer toute trace qu'il y a eu une branche
-		
+	
+
+-------fetching--------------------------
+git fetch origin (ramener les modif du origin/master vers votre master local)
+
+
+
+
+	
 -------Conflicts--------------
+
 
 Faire les modif dans le fichier conflictuel
 git add -A (pour ré-ajouter le fichier réparé)
