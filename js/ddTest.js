@@ -2,8 +2,7 @@
 var secondsRemaining;
 var intervalHandle;
 
-
-//j'ai trouvé le trouble des accents  François Noël où est-tu ?  
+//ok now en utf8 (é=\351)
 
 function tick() {
   
@@ -36,7 +35,7 @@ function tick() {
         
         document.getElementById("inputArea").style.display = "block";
         
-        // couleur au départ du compteur
+        // couleur au dpart du compteur
         timeDisplay.setAttribute("style","font-size: 5em; color: #FF00FF; background-color: #D5D6D7;");
       }
      
