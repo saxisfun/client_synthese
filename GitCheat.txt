@@ -1,8 +1,11 @@
 Commandes Git les plus utilisées en mode console
 
-avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git Shell qui s'installe avec l'installation du client git
 
-https://www.youtube.com/watch?v=0fKg7e37bQE
+
+Avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git Shell qui s'installe avec l'installation du client git
+
+
+Vidéo:   https://www.youtube.com/watch?v=0fKg7e37bQE
 
 
 
