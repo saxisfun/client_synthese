@@ -1,9 +1,8 @@
-﻿// two global variables
+// two global variables
 var secondsRemaining;
 var intervalHandle;
 
-
-
+//ok now en utf8 (é=\351)
 
 function tick() {
   
@@ -31,7 +30,7 @@ function tick() {
     
     // stop if down to zero
     if (secondsRemaining === 0) {        
-        alert('Termin\351!');
+        alert('Terminé!');
         clearInterval(intervalHandle);
         
         document.getElementById("inputArea").style.display = "block";
@@ -45,7 +44,7 @@ function tick() {
 }
 
 
- 
+
 
 function startCountdown() {
     
@@ -63,10 +62,14 @@ function startCountdown() {
     // check if not a number
     if (isNaN(minutes)) {
 
+
         alert("Entrez une valeur num\351rique xx(Seulement) svp!");
 
 
         alert("Entrez une valeur é num\351rique (Seulement) svp!");
+
+
+        alert("Entrez une valeur numérique svp!");
 
         return;
     }
@@ -79,7 +82,6 @@ function startCountdown() {
     document.getElementById("inputArea").style.display = "none";
 
 }
-
 
 
 

@@ -1,17 +1,22 @@
-Commandes Git les plus utilisées en mode console
 
+Commandes Git les plus utilisées en mode console
 
 Collaborateurs: pour que quelqu'un puisse venir modifier des choses dans notre repo on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
 
+Commandes Git les plus utilisÃ©es en mode console
 
-avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git Shell qui s'installe avec l'installation du client git
 
-https://www.youtube.com/watch?v=0fKg7e37bQE
 
 ------------------------------------------------------------------------------------------------------
 
 
 git clone https://github.com/saxisfun/client_synthese.git
+
+Avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git Shell qui s'installe avec l'installation du client git
+
+
+VidÃ©o:   https://www.youtube.com/watch?v=0fKg7e37bQE
+
 
 
 git status
@@ -48,7 +53,7 @@ git push origin Alain (Push the branch on github :)
 
 git checkout Alain	(Switch to your new branch :)
 
-git checkout -b Alain (crée une nouvelle et embraque dedans)
+git checkout -b Alain (crÃ©er une nouvelle et embraque dedans)
 
 
 git push --set-upstream origin Denis (choisir l'emplacement de l'origine ??)
@@ -66,6 +71,7 @@ git merge Alain
 
 
 
+
 3 types de merge
 	merge (merge un ou des commits de ma branche dans une autre branche)
 	fast-forward ()
@@ -76,9 +82,6 @@ git merge Alain
 
 -------fetching--------------------------
 git fetch origin (ramener les modif du origin/master vers votre master local)
-
-
-
 
 	
 -------Conflicts--------------
@@ -100,3 +103,4 @@ git remote -v
 
 remotes
 git  branch -a (voir les remote)
+
