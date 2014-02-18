@@ -35,7 +35,7 @@ function addFichiersListViewCell(le_id, le_non_fich, le_url, la_descrip, la_date
 
 
 
-function affiche_json_du_prof(le_str_output) 
+function remplir_le_list_view_des_fichiers(le_str_output) 
 { 
 	localString = JSON.parse(le_str_output);
 
@@ -78,7 +78,7 @@ function affichePageFichier(id_id_d_2, id_filename_d_2, id_url_d_2, id_descripti
 { 
 	//alert("affichePageFichier:"+id_id_d_2);
 	hide_all();
-	show_ecran_fichier();
+	
 	
 	document.getElementById("id_id_d").innerHTML = id_id_d_2;
 	document.getElementById("id_id_d2").innerHTML = "";
@@ -105,74 +105,6 @@ function affichePageFichier(id_id_d_2, id_filename_d_2, id_url_d_2, id_descripti
 	
 }
 
-function download_document(le_url) 
-{ 
-//img/new_logo.gif
-//http://ks365406.kimsufi.com/fpilote/tp1/new_logo.gif
-
-
-
-le_url="img/new_logo.gif";
-
-alert("download_document");
-alert(le_url);
-
-   // Getting a file through XMLHttpRequest as an arraybuffer and creating a Blob
-    var tp1DataStorage = localStorage.getItem("tp1DataStorage");
-        //rhino = document.getElementById("rhino");
-    if (tp1DataStorage) {
-        // Reuse existing Data URL from localStorage
-        alert("Existe yea");
-		//rhino.setAttribute("src", tp1DataStorage);
-    }
-    else {
-		alert("Existe pas");
-	
-        // Create XHR, BlobBuilder and FileReader objects
-        var xhr = new XMLHttpRequest(),
-            blob,
-            fileReader = new FileReader();
-		//Le FileReader sert a convertire le blob recu en data URL 
-alert("0000000");
-        xhr.open("GET", le_url, true);
-        // Set the responseType to arraybuffer. "blob" is an option too, rendering BlobBuilder unnecessary, but the support for "blob" is not widespread enough yet
-        xhr.responseType = "arraybuffer";
-alert("22222");
-        xhr.addEventListener("load", function () {
-            if (xhr.status === 200) {
-                // Create a blob from the response
-               alert("77777");
-				blob = new Blob([xhr.response], {type: "application/gif"});
- alert("88888");
-                // onload for all browsers since Google Chrome doesn't support addEventListener for FileReader
-                fileReader.onload = function (evt) {
-                    // Read out file contents as a Data URL
-                    alert("333333");
-
-				   var result = evt.target.result;
-                    // Set image src to Data URL
-                    //rhino.setAttribute("src", result);
-                    // Store Data URL in localStorage
-                    try {
-                        localStorage.setItem("tp1DataStorage", result);
-                    }
-                    catch (e) {
-                        console.log("Storage failed: " + e);
-                    }
-                };
-                // Load blob as Data URL
-                fileReader.readAsDataURL(blob);
-            }
-        }, false);
-        // Send XHR
-		
-		  alert("44444");
-        xhr.send();
-		  alert("555555");
-    }
-
-	
-}
 
 function removeAllFichiersFromListView(le_url) 
 { 	

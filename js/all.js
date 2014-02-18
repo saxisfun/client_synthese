@@ -87,7 +87,7 @@ function agXMLHttpReqFichiers(le_url) {
 						catch (e) {
 								alert("Storage failed: " + e);                
 						}
-						affiche_json_du_prof(str_output); 
+						remplir_le_list_view_des_fichiers(str_output); 
 						
 					}
 				}
@@ -100,7 +100,7 @@ function agXMLHttpReqFichiers(le_url) {
     }
     else {
 	   str_output = storageFiles.output;
-	   affiche_json_du_prof(str_output); 
+	   remplir_le_list_view_des_fichiers(str_output); 
 	   //storageFiles.output = str_output;
     }
 }

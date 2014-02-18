@@ -140,7 +140,7 @@ ClasseListViewObservations.prototype.xmlHttpRequestObservationsFromServeur = fun
 						catch (e) {
 								alert("Storage failed: " + e);                
 						}
-						//affiche_json_du_prof(str_output); 
+						//remplir_le_list_view_des_fichiers(str_output); 
 						
 					}
 				}
@@ -153,7 +153,7 @@ ClasseListViewObservations.prototype.xmlHttpRequestObservationsFromServeur = fun
     }
     else {
 	   str_output = storageFiles.output;
-	   //affiche_json_du_prof(str_output); 
+	   //remplir_le_list_view_des_fichiers(str_output); 
 	   //storageFiles.output = str_output;
     }
 
@@ -230,11 +230,11 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(le_ObservT
 }
 
 
-ClasseListViewObservations.prototype.ajouterUnObservationALobjetListViewObservations = function(strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL) {
+ClasseListViewObservations.prototype.ajouterUnObservationDansLeListViewObservArray = function(strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL) {
 
 	
 
-//alert("ajouterUnObservationALobjetListViewObservations Start");
+//alert("ajouterUnObservationDansLeListViewObservArray Start");
 
 	
 //alert(le_resume+"/"+le_nom_de_limage);
@@ -266,7 +266,7 @@ ClasseListViewObservations.prototype.ajouterUnObservationALobjetListViewObservat
 	
 	//this["myArrayObject"].push(observObject1);
 	
-//alert("ajouterUnObservationALobjetListViewObservations End");	
+//alert("ajouterUnObservationDansLeListViewObservArray End");	
 	
 	
 }

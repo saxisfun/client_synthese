@@ -1,17 +1,5 @@
 // contenu du fichier ???zzz
 
-function show_ecran_fichier()
-{
-	ecran_fichier = document.getElementById('ecran_fichier');
-	show_element(ecran_fichier);
-}
-
-function hide_ecran_fichier()
-{
-	ecran_fichier = document.getElementById('ecran_fichier');
-	hide_element(ecran_fichier);
-}
-
 
 // écran d'observation
 
@@ -183,7 +171,7 @@ function hide_all()
 	hide_dicti()	
 	hide_chrono()	
 	hideLogin();
-	hide_ecran_fichier();
+
 	
 	//hide_liste_des_coord_gps();
 	objListeDesDocCoord.removeAllDocCoordFromListView();
@@ -282,7 +270,7 @@ function onClickBoutonSaveObservation()
 			//On sauvegarde le reste des données quand même si pas de photo  
 			
 			//alert("444444:"+varGlobalNomImage);
-			objListViewObservations.ajouterUnObservationALobjetListViewObservations(le_titre, le_resume, varGlobalNomImage, test6432);
+			objListViewObservations.ajouterUnObservationDansLeListViewObservArray(le_titre, le_resume, varGlobalNomImage, test6432);
 			objListViewObservations.saveObservToLocalStorage();  
 		 }	
 			
@@ -364,7 +352,7 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 							
 				
 			//alert("strObservDiskName:"+observObject2.strObservDiskName);
-			//objListViewObservations.ajouterUnObservationALobjetListViewObservations(le_titre, le_resume, varGlobalNomImage, test6432);
+			//objListViewObservations.ajouterUnObservationDansLeListViewObservArray(le_titre, le_resume, varGlobalNomImage, test6432);
 			
 			observObject2.ajouterUneAutrePhotoALobservation("Photo 1",varGlobalNomImage,test6432);
 			
