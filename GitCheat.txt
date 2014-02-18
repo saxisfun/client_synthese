@@ -122,6 +122,20 @@ CYCLE:  changer «keck» chose, add le chagement, commit le changement
 git add .
 git commit -m "message expliquant la modif"
 git fetch
-git push -u origin branche_du_jour  (pour créer la branche sur github)
+
+===== Option A (pour créer la nouvelle branche sur github)
+
+git push -u origin branche_du_jour  
 			(-u  signifie trakable)
+
+===== Option B (pour mettre à jour la branche master de git)
+	(on se place sur notre master et s'assure qu'on est à jour)  
+git checkout master       
+git fetch
+git merge origin/master   
+	(on merge ensuite notre nouvelle branche sur notre master)
+git merge branche_du_jour  
+	(mettre la branche master de github à jour)
+git push   (pour mettre la branche master de git)
+
 =========================================
