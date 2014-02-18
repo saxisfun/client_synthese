@@ -1,9 +1,9 @@
 
-Commandes Git les plus utilisées en mode console
+Commandes Git les plus utilisÃ©es en mode console
 
 Collaborateurs: pour que quelqu'un puisse venir modifier des choses dans notre repo on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
 
-Commandes Git les plus utilisÃ©es en mode console
+Commandes Git les plus utilisÃ©s en mode console
 
 
 
@@ -23,7 +23,7 @@ git status
 
 git add index.html
 ou
-git add . (tous les fichiers du répertoire qu'on est dedans)
+git add . (tous les fichiers du rÃ©pertoire qu'on est dedans)
 ou
 git add -A (tous les fichiers du repo)
 
@@ -43,7 +43,7 @@ git (pour voir le Help)
 
 -------Branching--------------------------
 
-git branch Alain (créer une nouvelle branche)
+git branch Alain (crÃ©er une nouvelle branche)
 
 
 
@@ -76,7 +76,7 @@ git merge Alain
 	merge (merge un ou des commits de ma branche dans une autre branche)
 	fast-forward ()
 	rebase 
-		-revenir en arrière au moment ou la branche s'est splitté et réappliquer les commits sur la branche cible (Master)
+		-revenir en arriÃ¨re au moment ou la branche s'est splittÃ© et rÃ©appliquer les commits sur la branche cible (Master)
 		-effacer toute trace qu'il y a eu une branche
 	
 
@@ -88,8 +88,8 @@ git fetch origin (ramener les modif du origin/master vers votre master local)
 
 
 Faire les modif dans le fichier conflictuel
-git add -A (pour ré-ajouter le fichier réparé)
-git commit -m "Conflit réparé"
+git add -A (pour rÃ©-ajouter le fichier rÃ©parÃ©)
+git commit -m "Conflit rÃ©parÃ©"
 
 
 
@@ -104,3 +104,24 @@ git remote -v
 remotes
 git  branch -a (voir les remote)
 
+
+
+=========================================
+Exemple d'un cycle avant de travailler:
+      (s'assurer qu'on est sur notre branche master local)
+git checkout master   
+git fetch  
+      (sync branche master githib ->> branche master local)            
+git merge origin/master 
+      (crÃ©er une nouvelle branche et sauter dessus)
+git checkout -b  branche_du_jour
+
+une fois que les modifs sont faites:
+CYCLE:  changer Â«keckÂ» chose, add le chagement, commit le changement
+
+git add .
+git commit -m "message expliquant la modif"
+git fetch
+git push -u origin branche_du_jour  (pour l'envoyer sur github)
+			(-u  signifie trakable)
+=========================================
