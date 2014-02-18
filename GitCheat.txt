@@ -122,6 +122,6 @@ CYCLE:  changer «keck» chose, add le chagement, commit le changement
 git add .
 git commit -m "message expliquant la modif"
 git fetch
-git push -u origin branche_du_jour  (pour l'envoyer sur github)
+git push -u origin branche_du_jour  (pour créer la branche sur github)
 			(-u  signifie trakable)
 =========================================
