@@ -117,26 +117,6 @@ function hide_liste_des_fichiers()
 
 
 
-//listViewDocCoord
-
-function show_liste_des_coord_gps()
-{
-  [].forEach.call(document.querySelectorAll("div.listViewDocCoord"), function(el) {
-    show_element(el);
-  });
-}
-
-function hide_liste_des_coord_gps()
-{
-  // Remove the hash sign from the start of the id.    
-  // Find all div.screen elements and hide them.
-  [].forEach.call(document.querySelectorAll("div.listViewDocCoord"), function(el) {
-    hide_element(el);
-  }); 
-}
-
-
-
 
 // Écran Menu 1
 
@@ -174,7 +154,7 @@ function hide_all()
 
 	
 	//hide_liste_des_coord_gps();
-	objListeDesDocCoord.removeAllDocCoordFromListView();
+
 		
 	hide_ecran_de_l_observation();
 	document.getElementById("tool_button").style.visibility="hidden";
@@ -198,12 +178,6 @@ function hideLogin()
 	hide_element(le_my_login);
 }
 
-function onClickButtonListDocCoord()
-{
-	hide_all();
-	objListeDesDocCoord.viewArrData();
-	document.getElementById("tool_button").style.visibility="visible";
-}
 
 
 function get_lang_callback(le_str_output) 
@@ -388,8 +362,6 @@ function onClickBoutonSupprimer()
 	objListViewObservations.removeSelectedObservsFromListView();
 	objListViewObservations.saveObservToLocalStorage();
 	
-	objListeDesDocCoord.removeSelectedDocCoordFromListView();
-	objListeDesDocCoord.saveToLocalStorage();
 	
 }
 
