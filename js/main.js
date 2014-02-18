@@ -1,167 +1,193 @@
+// contenu du fichier ???zzz
 
-function show_ecran_fichier() {
-	
+function show_ecran_fichier()
+{
 	ecran_fichier = document.getElementById('ecran_fichier');
 	show_element(ecran_fichier);
 }
 
-function hide_ecran_fichier() {
+function hide_ecran_fichier()
+{
 	ecran_fichier = document.getElementById('ecran_fichier');
 	hide_element(ecran_fichier);
 }
 
 
+// écran d'observation
 
-// pour l'écran d'observation
-
-function show_ecran_de_l_observation() {
-	
+function show_ecran_de_l_observation()
+{
 	ecran_observation = document.getElementById('ecran_observation');
 	show_element(ecran_observation);
 }
 
-function hide_ecran_de_l_observation() {
+function hide_ecran_de_l_observation()
+{
 	ecran_observation = document.getElementById('ecran_observation');
 	hide_element(ecran_observation);
 }
 
 
+// liste d'observations
 
-
-function showObservationListView() {
-
+function showObservationListView()
+{
   [].forEach.call(document.querySelectorAll("div.list_View_Observ"), function(el) {
     show_element(el);
   });
-
 }
 
-function hideObservationListView() {
-  // Remove the hash sign from the start of the id.
-    
+function hideObservationListView()
+{
+  // Remove the hash sign from the start of the id.    
   // Find all div.screen elements and hide them.
   [].forEach.call(document.querySelectorAll("div.list_View_Observ"), function(el) {
     hide_element(el);
-  });
- 
+  }); 
 }
 
 
+// écran des setting
 
-
-
-function show_settings() {
-	
-	a_setting = document.getElementById('a_setting');
-	show_element(a_setting);
-}
-function hide_settings() {
-	a_setting = document.getElementById('a_setting');
-	hide_element(a_setting);
+function show_settings()
+{
+	x = document.getElementById('a_setting');
+	show_element(x);
 }
 
+function hide_settings()
+{
+	x = document.getElementById('a_setting');
+	hide_element(x);
+}
 
 
+// écran recherche dans le dictionnaire
 
-function show_dicti() {
-	
+function show_dicti()
+{
 	x = document.getElementById('ecran_recherche');
 	show_element(x);
 }
-function hide_dicti() {
+
+function hide_dicti()
+{
 	x = document.getElementById('ecran_recherche');
 	hide_element(x);
 }
 
 
+// écran chronomètre ???zzz
 
-function show_back_button() {
-	
+function show_chrono()
+{
+	x = document.getElementById('ecran_timer');
+	show_element(x);
+}
+
+function hide_chrono()
+{
+	x = document.getElementById('ecran_timer');
+	hide_element(x);
+}
+
+
+
+// bouton BACK BUTTON
+
+function show_back_button()
+{
 	back_button = document.getElementById('back_button');
 	show_element(back_button);
 }
 
-function hide_back_button() {
+function hide_back_button()
+{
 	back_button = document.getElementById('back_button');
 	hide_element(back_button);
 }
 
-function show_liste_des_fichiers() {
 
+
+// liste dex fichiers
+
+function show_liste_des_fichiers()
+{
   [].forEach.call(document.querySelectorAll("div.la_liste1"), function(el) {
     show_element(el);
   });
-
 }
 
-function hide_liste_des_fichiers() {
-  // Remove the hash sign from the start of the id.
-    
+function hide_liste_des_fichiers()
+{
+  // Remove the hash sign from the start of the id.    
   // Find all div.screen elements and hide them.
   [].forEach.call(document.querySelectorAll("div.la_liste1"), function(el) {
     hide_element(el);
-  });
- 
+  }); 
 }
+
+
+
 //listViewDocCoord
 
-function show_liste_des_coord_gps() {
-
+function show_liste_des_coord_gps()
+{
   [].forEach.call(document.querySelectorAll("div.listViewDocCoord"), function(el) {
     show_element(el);
   });
-
 }
 
-function hide_liste_des_coord_gps() {
-  // Remove the hash sign from the start of the id.
-    
+function hide_liste_des_coord_gps()
+{
+  // Remove the hash sign from the start of the id.    
   // Find all div.screen elements and hide them.
   [].forEach.call(document.querySelectorAll("div.listViewDocCoord"), function(el) {
     hide_element(el);
-  });
- 
+  }); 
 }
 
 
 
 
+// Écran Menu 1
 
-function hide_menu1() {
-
- my_menu1 = document.getElementById("le_menu1");
- hide_element(my_menu1);
+function hide_menu1()
+{
+  my_menu1 = document.getElementById("le_menu1");
+  hide_element(my_menu1);
 }
 
-function show_menu1() {
-
- my_menu1 = document.getElementById("le_menu1");
- show_element(my_menu1);
+function show_menu1()
+{
+  my_menu1 = document.getElementById("le_menu1");
+  show_element(my_menu1);
 }
 
 
-function hide_all() {
-	hide_settings();
+
+
+// CACHER LES ÉCRANS
+
+function hide_all()
+{
 	//hide_liste_observs();
-		//alert("11122222");
-	objListViewObservations.removeAllObservFromListView();
-		
+	//alert("CACHER LES ÉCRANS");
+	hide_settings();
+	objListViewObservations.removeAllObservFromListView();		
 	removeAllFichiersFromListView();
 	
 	hide_menu1();
 	//hide_liste_des_fichiers();
 	
-	hide_dicti()
-	//hide_rechreche_dictionnaire();
-	
-	
+	hide_dicti()	
+	hide_chrono()	
 	hideLogin();
 	hide_ecran_fichier();
 	
 	//hide_liste_des_coord_gps();
 	objListeDesDocCoord.removeAllDocCoordFromListView();
-	
-	
+		
 	hide_ecran_de_l_observation();
 	document.getElementById("tool_button").style.visibility="hidden";
 	document.getElementById("tool_button2").style.visibility="hidden";
@@ -169,22 +195,19 @@ function hide_all() {
 }
 
 
-		
-function showLogin(){
 
+// écran login
+		
+function showLogin()
+{
 	le_my_login = document.getElementById('my_login');
 	show_element(le_my_login);
+}		
 
-
-}
-
-		
-function hideLogin(){
-
+function hideLogin()
+{
 	le_my_login = document.getElementById('my_login');
 	hide_element(le_my_login);
-
-
 }
 
 function onClickButtonListDocCoord()

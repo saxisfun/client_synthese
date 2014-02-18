@@ -107,6 +107,7 @@ git  branch -a (voir les remote)
 
 
 =========================================
+   
 Exemple d'un cycle avant de travailler:
       (s'assurer qu'on est sur notre branche master local)
 git checkout master   

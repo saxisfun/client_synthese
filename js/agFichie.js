@@ -77,7 +77,7 @@ function affiche_json_du_prof(le_str_output)
 function affichePageFichier(id_id_d_2, id_filename_d_2, id_url_d_2, id_description_d_2, id_registered_d_2) 
 { 
 	//alert("affichePageFichier:"+id_id_d_2);
-	 hide_all();
+	hide_all();
 	show_ecran_fichier();
 	
 	document.getElementById("id_id_d").innerHTML = id_id_d_2;

@@ -31,23 +31,34 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
 
+
 <body id="id_body" style="text-align:center;" >
+	
   <div id="main" role="main">
     
-	<div id="toolbar">
-	  <button id="back_button" onclick="hide_all();show_menu1();" class="hidden">Menu</button>
-	  <button  id="tool_button" onclick="onClickBoutonSupprimer();" style="position:absolute;bottom:6px;right:170px;visibility:hidden;" class="">Supprimer</button>
-	  <button id="tool_button2" onclick="onClickBoutonAjouterObservation();" style="position:absolute;bottom:6px;right:105px;visibility:hidden;"  class="">Ajouter</button>
-	  <button  id="tool_button3" onclick="onClickBoutonDeconnecter();" style="position:absolute;bottom:6px;right:10px;visibility:hidden;" class="">Déconnecter</button>	
+  <div id="toolbar">
+	  
+	  <button id="back_button" onclick="hide_all();show_menu1();" 		class="hidden">Menu</button>
+	  
+	  <button  id="tool_button" onclick="onClickBoutonSupprimer();" 	  		style="position:absolute;bottom:6px;right:170px;visibility:hidden;"
+	  class="">Supprimer</button>
+	  
+	  <button id="tool_button2" onclick="onClickBoutonAjouterObservation();"
+	  style="position:absolute;bottom:6px;right:105px;visibility:hidden;"
+	  class="">Ajouter</button>
+	  
+	  <button  id="tool_button3" onclick="onClickBoutonDeconnecter();"
+	  style="position:absolute;bottom:6px;right:10px;visibility:hidden;"
+	  class="">Déconnecter</button>	
+	  
 	</div> 
       
       
       
 	  <!-- 
-
 	  about_meow
 	  about_app
- <div class="screen hidden"  id="a_setting">
+      <div class="screen hidden"  id="a_setting">
 	  -->
 
 	
@@ -61,13 +72,11 @@
 		<col style="width:60%;">		
 	
 		<tr>
-
 			<td class="td_table2" style="width:20%;">
-				<img style="width:60px;" src="http://www.gloucester.nsw.gov.au/Images/UserUploadedImages/155/Documents-icon.png" />
-			</td> 
+				<img style="width:60px;"src="img/owl.png" />
+			</td>
+			
 			<td class="td_table2" style="color:blach;">Application d'observation d'oiseaux</td> 
-
-	
 
 		</tr>
 	
@@ -77,6 +86,7 @@
 			<td style="text-align:left;" id="id_utilisateur_label">Utilisateur</td> 
 			<td><input type="text" style="" onChange="" id="id_utilisateur_d" VALUE="aaaa"></td> 
 		</tr>
+		
 		<tr>
 			<td style="text-align:left;" id="id_motDePasse_label">Mot de passe</td> 
 			<td><input type="PASSWORD" style="" onChange="" id="id_motDePasse_d" VALUE="bbbb"></td> 
@@ -160,9 +170,18 @@
 			     onclick="hide_all();show_dicti();show_back_button();" 
 			     class="switch_screen">Recherche dans le dictionnaire</a>
 			</li>
+
+			<li>
+			  <a href="#ecran_timer"  id="id_bouton_timer"
+			     onclick="hide_all();show_chrono();show_back_button();" 
+			     class="switch_screen">Écran de test chronomètre</a>
+			</li>
+
 			
 		</ul>
 	</div> 
+	
+	
 	
 	
 <!---------------------------------------------------------------->
@@ -333,6 +352,8 @@
     </div>      	
 	
 	
+	
+	
 <!---------------------------------------------------------------->
 <!--  Écran fichier ??  -->	
 	
@@ -427,6 +448,7 @@
     </div> 
 	
 	
+	
  
 <!---------------------------------------------------------------->
 <!--  Écran paramètres  -->		 
@@ -517,30 +539,49 @@
  
  
  
+ 
 <!---------------------------------------------------------------->
 <!--  Écran recherche dans le dictionnaire -->
  
+ <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
  
-    <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
-       
-	<table id="my_table_5" style="margin-left:auto;margin-right:auto;max-width:300px;width:100%;" >
-	    <col style="width:40%;">        
-	    <col style="width:60%;">
+	
+	
+		<table id="my_table_2" class="table2">
+		<col style="width:40%;">        
+		<col style="width:60%;">		
+	
 		
-	    <h2>Dictionnaire</h2>
-	    
-	   <div id="container">
-	      <div id="inputArea">
-		<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
-	      </div>
-      	      <h1 id="time">0:00</h1>     
-	    </div> 
+			
+		<tr>
+			<td class="td_table2" style="width:20%;">
+				<img style="width:60px;"src="img/dictionary.png" />
+			</td>
+			
+			<td class="td_table2" style="color:bleach;">Recherche dans le dictionnaire</td> 
 
-	    <ul class="buttons">
-		<li>
-		   <a href="#" id="" onclick="startCountdown();" class="switch_screen">Démarrer la recherche</a>
-		</li>	
-	    </ul>	
+		</tr>
+	
+	
+		<tr>
+			<td style="text-align:left;"id="id_rechdictionnaire_label">Specimen</td> 
+			<td><input type="text" style="" onChange="" id="id_rechdictionnaire_d" VALUE="Ara"> 			</td> 
+		</tr>
+		
+		 
+		
+		<tr> 
+			<td> </td>
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" onclick="alert('Recheche en cours ...');" 						class="switch_screen">Démarrer la recherche </a>
+					</li>	
+	    		</ul>
+	    	</td> 
+		</tr>
+		
+			
 	</table>	
 	
 		
@@ -548,8 +589,61 @@
  
  
  
+ 
+ 
+ 
+	<!---------------------------------------------------------------->
+	<!--  Écran de test Chronomètre -->
+ 
+ 
+	    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
+       
+			<table id="my_table_2" class="table2">
+			<col style="width:40%;">        
+			<col style="width:60%;">		
+	
+		    <h2>Chronomètre</h2>
+			
+			<tr>
+				<td class="td_table2" style="width:20%;">
+					<img style="width:60px;"src="img/timer.png" />
+				</td>
+			
+				<td> </td> 
+
+			</tr>
+	   
+	   
+	   
+	<!-- 	<table id="my_table_5" style="margin-left:auto;margin-right:auto;max-width:300px;width:100%;" >
+		    <col style="width:40%;">        
+		    <col style="width:60%;">  
+		
+		    <h2>Chronomètre</h2>-->
+	    
+		   <div id="container">
+			   
+		      <div id="inputArea">
+			<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
+		      </div>
+	      	      <h1 id="time">0:00</h1>     
+		    </div> 
+
+		    <ul class="buttons">
+			<li>
+			   <a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
+			</li>	
+		    </ul>	
+		</table>	
+	
+		
+	    </div> 
+ 
+ 
+ 
    
 <!-- 
+		
  &SCAN_FORMATS=UPC_A,EAN_13 
 //voir ce lien
 http://code.google.com/p/zxing/wiki/ScanningFromWebPages
@@ -559,10 +653,6 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 •{FORMAT}: the name of the barcode format scanned like UPC_A 
 •{TYPE}: the name of the type of parsed content, like PRODUCT 
 •{META}: a string representation of the scan metadata, like {POSSIBLE_COUNTRY=US/CA} 
-
-
-
-
 
 -->
  
