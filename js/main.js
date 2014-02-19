@@ -529,7 +529,7 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 
 		var titVar = le_output_json_parsed;
 		
-		alert(titVar.result[i].filename);
+		//alert(titVar.result[i].filename);
 		//objListViewObservations.addListViewObservCell(theObject.strObservTitre, theObject.strObservResume, theObject.strObservDiskName, theObject.dataURLPicture, i);
 		
 		
