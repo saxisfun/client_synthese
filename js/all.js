@@ -52,60 +52,6 @@ function agXMLHttpReqLan(le_url) {
 }
 
 
-function agXMLHttpReqFichiers(le_url) {
-     
-	var storageFiles = JSON.parse(localStorage.getItem("storageFilesFichiers3")) || {},
-	storageFilesDate = storageFiles.date1,
-	date = new Date(),
-	//todaysDate = (date.getMonth() + 1).toString() + date.getDate().toString();
-	todaysDate=agConvertDate2(date);
-	
-	//alert(storageFilesDate+"/"+todaysDate); 
-    // Vérifier si fichier existe et n'est pas trop vieux 
-	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
-    if (typeof storageFilesDate === "undefined" || storageFilesDate != todaysDate) 
-	{
-
-		 //alert(le_url);
-		try {
-			var resourcePath = le_url;
-			
-			var request = new XMLHttpRequest();
-			
-			request.open("GET", resourcePath, true);
-			request.onreadystatechange = function(){
-				if (request.readyState == 4) {
-					if (request.status == 200 || request.status == 0) {
-					
-						str_output = request.responseText;
-						
-						storageFiles.date1 = todaysDate;
-						storageFiles.output = str_output;
-						try {
-							localStorage.setItem("storageFilesFichiers3", JSON.stringify(storageFiles));
-						}
-						catch (e) {
-								alert("Storage failed: " + e);                
-						}
-						objListViewFichiers.fillFichiersListView(str_output); 
-						
-					}
-				}
-			}
-			request.send();
-			
-		 } catch (e) {
-			//errorEvent(e);
-		}
-    }
-    else {
-	   str_output = storageFiles.output;
-	   objListViewFichiers.fillFichiersListView(str_output); 
-	   //storageFiles.output = str_output;
-    }
-}
-
-
 
 
 

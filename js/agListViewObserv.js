@@ -8,6 +8,105 @@ function ClasseListViewObservations(myName) {
 
 
 
+ClasseListViewObservations.prototype.agXMLHttpReqObservations = function(le_bon_url) {
+	
+
+    
+	var storageObs = JSON.parse(localStorage.getItem("storageFilesObservations")) || {},
+	storageObservationsDate = storageObs.date1,
+	une_date = new Date(),
+	//todaysDate = (date.getMonth() + 1).toString() + date.getDate().toString();
+	todaysDate=agConvertDate2(une_date);
+	
+	//alert(storageObservationsDate+"/"+todaysDate); 
+    // Vérifier si fichier existe et n'est pas trop vieux 
+	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
+    if (typeof storageObservationsDate === "undefined" || storageObservationsDate != todaysDate) 
+	{
+
+		 //alert(le_bon_url);
+		try {
+			var resourcePath = le_bon_url;
+			
+			var request = new XMLHttpRequest();
+			
+			request.open("GET", resourcePath, true);
+			request.onreadystatechange = function(){
+				if (request.readyState == 4) {
+					if (request.status == 200 || request.status == 0) {
+					
+						str_output = request.responseText;
+						
+						storageObs.date1 = todaysDate;
+						storageObs.output = str_output;
+						try {
+							localStorage.setItem("storageFilesObservations", JSON.stringify(storageObs));
+						}
+						catch (e) {
+								alert("Storage failed: " + e);                
+						}
+						//this.fillObservsListView(str_output);
+
+
+						//str_output
+						
+			
+						
+						//objListViewObservations.ajouterUnObservationDansLeListViewObservArray(le_titre, le_resume, varGlobalNomImage, test6432);
+						//objListViewObservations.saveObservToLocalStorage();  
+						
+			
+						
+					}
+				}
+			}
+			request.send();
+			
+		 } catch (e) {
+			//errorEvent(e);
+		}
+    }
+    else {
+	   str_output = storageObs.output;
+	   //this.fillObservsListView(str_output); 
+	   //storageObs.output = str_output;
+    }
+	
+	
+				
+	//alert(str_output.id+"/"+str_output.filename);
+	
+	//test444 = JSON.stringify(str_output);
+	
+	localString = JSON.parse(storageObs.output);
+	alert(localString.result[0].filename);
+	
+	//alert(test444.result.length);
+	//alert(test444.result[0].filename);
+	
+	
+	
+	//alert(str_output.id+"/"+str_output.filename);
+	
+	/*
+	alert(localString.result[i].id);
+	alert(localString.result[i].filename);
+	alert(localString.result[i].url);
+	alert(localString.result[i].description);
+	alert(localString.result[i].registered);	
+	*/		
+						
+						
+	return storageObs.output;
+	
+	
+}
+
+
+
+
+
+
 ClasseListViewObservations.prototype.saveObservToLocalStorage = function() {
 	
 	//alert(this.myListViewObservArray.length);
@@ -374,7 +473,8 @@ ClasseListViewObservations.prototype.fillObservsListView = function() {
 		
 		//ici ici ici
 		
-		
+		//this.addFichiersListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
+
 		
 		this.addListViewObservCell(theObject.strObservTitre, theObject.strObservResume, theObject.strObservDiskName, theObject.dataURLPicture, i);
 		

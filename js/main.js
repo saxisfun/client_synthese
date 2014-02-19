@@ -514,6 +514,33 @@ function onClickButtonMenuListViewObserv()
 
 }			
 
+		  
+function onClickButtonMenu_ReadJsonInArrayListViewObserv()
+{
+	
+	
+	hide_all();
+	
+	
+	objListViewObservations.agXMLHttpReqObservations('http://ks365406.kimsufi.com/fpilote/tp1/files.json');
+		
+		
+	
+	
+	objListViewObservations.fillObservsListView();
+
+	document.getElementById("tool_button").style.visibility="visible";
+	document.getElementById("tool_button2").style.visibility="visible";
+
+	
+	
+	show_back_button();
+
+}		
+
+
+
+
 function insererUnePhotoDansLeUL(indexObserv, indexPhoto) 
 { 
 	//jjjjjjjjjjjjjjjjjjj

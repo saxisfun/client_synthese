@@ -152,10 +152,14 @@
 			  onclick="onClickButtonMenuListViewObserv();" 
 			  class="switch_screen">Visionner les observations</a>
 			</li>
-			
+			<li>
+			  <a href="#liste_observation1" id="id_bouton_liste_des_observations" 
+			  onclick="onClickButtonMenu_ReadJsonInArrayListViewObserv();" 
+			  class="switch_screen">Read json d'observ to locastorage</a>
+			</li>			
 			<li>
 			  <a href="#liste_fichiers1" id="id_bouton_liste_fichiers1" 
-			  onclick="hide_all();agXMLHttpReqFichiers('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_fichiers();show_back_button();" 
+			  onclick="hide_all();objListViewFichiers.agXMLHttpReqFichiers('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_fichiers();show_back_button();" 
 			  class="switch_screen">Documents</a>
 			</li>
 			
