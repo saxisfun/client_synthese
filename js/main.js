@@ -562,7 +562,7 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 	hide_all();
 	
 	
-	objListViewObservations.agXMLHttpReqObservations('http://ks365406.kimsufi.com/fpilote/tp1/files.json');
+	objListViewObservations.agXMLHttpRequestObservations();
 		
 		
 	
