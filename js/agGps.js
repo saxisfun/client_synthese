@@ -86,9 +86,9 @@ MonGPS.prototype.onSuccessPosOnly = function(position) {
 	
 	//alert(sessionStorage.getItem("gps_id_filename_d")+"/"+str_LaPos+"/"+sessionStorage.getItem("gps_id_registered_d"));
 	
-	//objListeDesDocCoord.appendGpsPosition(sessionStorage.getItem("gps_id_filename_d"), str_LaPos, sessionStorage.getItem("gps_id_registered_d"));
+	objListeDesDocCoord.appendGpsPosition(sessionStorage.getItem("gps_id_filename_d"), str_LaPos, sessionStorage.getItem("gps_id_registered_d"));
 	
-	//objListeDesDocCoord.saveToLocalStorage();
+	objListeDesDocCoord.saveToLocalStorage();
 	
 	//alert("Position GPS trouvée!\nRedirection vers le fichier.");
 	
