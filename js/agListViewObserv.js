@@ -100,10 +100,7 @@ ClasseListViewObservations.prototype.agXMLHttpRequestObservations = function() {
 	//alert(str_output.id+"/"+str_output.filename);
 	
 	//test444 = JSON.stringify(str_output);
-	
-	localString = JSON.parse(storageObs.output);
-	alert(localString.result[0].filename);
-	
+
 	//alert(test444.result.length);
 	//alert(test444.result[0].filename);
 	
@@ -274,11 +271,11 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(le_ObservT
 }
 
 
-ClasseListViewObservations.prototype.ajouterUnObservationALobjetListViewObservations = function(strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL) {
+ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function(strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL) {
 
 	
 
-//alert("ajouterUnObservationALobjetListViewObservations Start");
+
 
 	
 //alert(le_resume+"/"+le_nom_de_limage);
@@ -310,7 +307,7 @@ ClasseListViewObservations.prototype.ajouterUnObservationALobjetListViewObservat
 	
 	//this["myArrayObject"].push(observObject1);
 	
-//alert("ajouterUnObservationALobjetListViewObservations End");	
+//alert("ajouterUnObservationDans_myListViewObservArray End");	
 	
 	
 }

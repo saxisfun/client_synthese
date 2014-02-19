@@ -282,7 +282,7 @@ function onClickBoutonSaveObservation()
 			//On sauvegarde le reste des données quand même si pas de photo  
 			
 			//alert("444444:"+varGlobalNomImage);
-			objListViewObservations.ajouterUnObservationALobjetListViewObservations(le_titre, le_resume, varGlobalNomImage, test6432);
+			objListViewObservations.ajouterUnObservationDans_myListViewObservArray(le_titre, le_resume, varGlobalNomImage, test6432);
 			objListViewObservations.saveObservToLocalStorage();  
 		 }	
 			
@@ -557,22 +557,56 @@ function onClickButtonMenuListViewObserv()
 		  
 function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 {
-	
-	
 	hide_all();
 	
+	var le_output_json = objListViewObservations.agXMLHttpRequestObservations();
 	
-	objListViewObservations.agXMLHttpRequestObservations();
+	le_output_json_parsed = JSON.parse(le_output_json);
+		
+	for(var i=0; i < le_output_json_parsed.result.length;i++){
+
+		var titVar = le_output_json_parsed;
+		
+		alert(titVar.result[i].filename);
+		//objListViewObservations.addListViewObservCell(theObject.strObservTitre, theObject.strObservResume, theObject.strObservDiskName, theObject.dataURLPicture, i);
 		
 		
+		//ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function(strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
+		
+		
+		
+		objListViewObservations.ajouterUnObservationDans_myListViewObservArray(titVar.result[i].filename, titVar.result[i].description, titVar.result[i].url, "");
+		
+		/*
+		alert(localString.result[i].id);
+		alert(localString.result[i].filename);
+		alert(localString.result[i].url);
+		alert(localString.result[i].description);
+		alert(localString.result[i].registered);	
+		*/		
+		
+		
+		//objListViewFichiers.addFichiersListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
+		/*
+		 for(var key in obj){
+				 var attrName = key;
+				 var attrValue = obj[key];
+				if(attrName=="id"){alert(attrName+"/"+attrValue);}
+				if(attrName=="filename"){alert(attrName+"/"+attrValue);}
+				//alert(attrName+"/"+attrValue);
+				
+				
+			}
+		*/	
+	}
+			
+
 	
 	
 	objListViewObservations.fillObservsListView();
 
 	document.getElementById("tool_button").style.visibility="visible";
 	document.getElementById("tool_button2").style.visibility="visible";
-
-	
 	
 	show_back_button();
 

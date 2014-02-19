@@ -675,6 +675,10 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/agFichie.js"></script>
 	<script type="text/javascript" src="js/agGps.js"></script>
 	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
+	<script type="text/javascript" src="js/agListViewFichie.js"></script>	
+	
+	
+	
 	<script type="text/javascript" src="js/agTakePic.js"></script>		
 	<script type="text/javascript" src="js/agAccel.js"></script>	
 	<script type="text/javascript" src="js/agUpload.js"></script>	
@@ -712,6 +716,13 @@ showLogin();
 objListeDesDocCoord = new AgListeDesDocCoord("blabla");
 //Lire le local storage et remplir mon objet
 objListeDesDocCoord.getDocCoordFromLocalStorage();
+
+
+
+
+
+objListViewFichiers = new ClasseListViewFichier("blabla");
+
 
 objListViewObservations = new ClasseListViewObservations("blabla");
 
@@ -756,11 +767,9 @@ if ("geolocation" in navigator) {
 }
 
 
-var le_siteMode = getUrlVars()["siteMode"].substr(0,2);
-
 
 var la_reponse="";
-le_siteMode=le_siteMode.substr(0,2);
+
 
 
 /*
@@ -774,27 +783,7 @@ an=Android
 
 */
 
-if (le_siteMode=="ma") {  
-	la_reponse="Mode: Macitosh";
-}
-if (le_siteMode=="wi") {  
-	la_reponse="Mode: Windows";
-}
-if (le_siteMode=="li") {  
-	la_reponse="Mode: Linux";
-}
-if (le_siteMode=="ia") {  
-	la_reponse="Mode: iPad";
-}
-if (le_siteMode=="ip") {  
-	la_reponse="Mode: iPod";
-}
-if (le_siteMode=="io") {  
-	la_reponse="Mode: iPhone";
-}
-if (le_siteMode=="an") {  
-	la_reponse="Mode: Android";
-}
+
 
 document.getElementById("id_redirectionMessage").innerHTML=la_reponse;
 
@@ -813,11 +802,6 @@ var second = getUrlVars()["barcodeReturnedCode1"];
 //alert(first);
 //alert(second);
 
-
-//objListViewObservations.ajouterUnObservationALobjetListViewObservations("DFRRGGTTT", "ASXXXSSS");
-
-//objListViewObservations.ajouterUnObservationALobjetListViewObservations("DFRRGGTTT", "ASXXXSSS");
-//objListViewObservations.ajouterUnObservationALobjetListViewObservations("DFRRGGTTT", "ASXXXSSS");
 
 
 
