@@ -140,7 +140,7 @@ ClasseListViewObservations.prototype.xmlHttpRequestObservationsFromServeur = fun
 						catch (e) {
 								alert("Storage failed: " + e);                
 						}
-						//remplir_le_list_view_des_fichiers(str_output); 
+						//objListViewFichiers.fillFichiersListView(str_output); 
 						
 					}
 				}
@@ -153,7 +153,7 @@ ClasseListViewObservations.prototype.xmlHttpRequestObservationsFromServeur = fun
     }
     else {
 	   str_output = storageFiles.output;
-	   //remplir_le_list_view_des_fichiers(str_output); 
+	   //objListViewFichiers.fillFichiersListView(str_output); 
 	   //storageFiles.output = str_output;
     }
 

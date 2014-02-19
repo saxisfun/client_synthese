@@ -143,7 +143,7 @@ function hide_all()
 	//alert("CACHER LES ÉCRANS");
 	hide_settings();
 	objListViewObservations.removeAllObservFromListView();		
-	removeAllFichiersFromListView();
+	objListViewFichiers.removeAllFichiersFromListView();
 	
 	hide_menu1();
 	//hide_liste_des_fichiers();

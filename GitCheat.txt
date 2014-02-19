@@ -5,7 +5,7 @@ Collaborateurs: pour que quelqu'un puisse venir modifier des choses dans notre r
 
 Commandes Git les plus utilisés en mode console
 
-
+cd D:\DataAll\DataCegep\Session_XX9_TPSyntheseFin\TP1_Partie_2_App_Oiseau\client_synthese
 
 ------------------------------------------------------------------------------------------------------
 
