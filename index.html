@@ -34,12 +34,8 @@
 
 <body id="id_body" style="text-align:center;" >
 	
-	
-	
-	
   <div id="main" role="main">
     
-	  	 
   <div id="toolbar">
 	  
 	  <button id="back_button" onclick="hide_all();show_menu1();" 		class="hidden">Menu</button>
@@ -67,9 +63,7 @@
 
 	
 	  
-<!---------------------------------------------------------------->
-<!--  Écran LOGIN  -->		 
-	 
+<!--  Écran du login  -->
 	 
 	<div id="my_login" style="text-align:center;" class="screen">
 	
@@ -140,10 +134,8 @@
 	</div> 	  
 
 
-
-
 <!---------------------------------------------------------------->
-<!--  Écran MENU  -->		 
+<!--  Écran du menu  -->
 
 
 	
@@ -193,7 +185,7 @@
 	
 	
 <!---------------------------------------------------------------->
-<!--  Écran AJOUTER UNE OBSERVATION -->	
+<!--  Écran d'obsevations  -->	
 	
    <div id="ecran_observation" class="screen hidden">
         <h3 style="color:white;">Écran - Observations</h3>
@@ -342,12 +334,14 @@
 				<button onclick="saveImage();"  style="right:10px;width:100px;" class="">Upload</button>
 			</td> 			
 		</tr>			
-							
+			
+				
 		<tr>
 			<td style="text-align:left;">
                 <p id="error"></p>				
 			</td> 
 		</tr>			
+
 			
 		<tr>
 			<td style="text-align:left;">
@@ -361,9 +355,86 @@
 	
 	
 <!---------------------------------------------------------------->
-
+<!--  Écran fichier ??  -->	
 	
-<!-- 	
+	<div id="ecran_fichier" class="screen hidden" >
+		<ul class="buttons">
+			<li>			
+				<!-- 
+				onclick="download_document(document.getElementById('id_url_d').innerHTML);"
+				-->			
+				<a href="#" id="id_bouton_telech_fichier" target="_blank"  onclick="event.preventDefault();onClickBoutonTelechargerLeFichier();" 
+				class="switch_screen">Cliquez pour télécharger le fichier</a>
+			</li>
+			
+			<li>
+			  <a href="#" id="" onclick="leGps1.startWatchGps();" class="switch_screen">Start watch</a>
+			</li>	
+			<li>
+			  <a href="#" id="" onclick="leGps1.stopWatchGps();" class="switch_screen">Stop watch</a>
+			</li>	
+
+		</ul>		
+	
+		<table id="table_ecran_fichier" class="table3">	
+ 		<tr>
+			<td class="tdhead"><p id="id_id_s">Id:</p></td> 
+			<td class="tdhead">Coordonnée GPS du téléchargement</td> 
+			
+		</tr>	 
+		<tr>
+			<td class="tddata"><p id="id_id_d"></p></td> 
+			<td class="tddata"><p id="id_id_d2"></p></td> 
+			
+		</tr>			
+		<tr>
+			<td COLSPAN="2" class="tdhead"><p id="id_registered_s">Date:</p></td> 
+		</tr>	
+		<tr>
+			<td COLSPAN="2" class="tddata"><p id="id_registered_d"></p></td> 
+		</tr>		
+	
+		<tr>
+			<td COLSPAN="2" class="tdhead"><p id="id_filename_s" >Nom du fichier:</p></td>  
+		</tr>		
+		<tr>	
+			<td COLSPAN="2" class="tddata"><p id="id_filename_d"></p></td> 
+		</tr>
+		<tr>
+			<td COLSPAN="2" class="tdhead"><p id="id_url_s">Url:</p></td> 
+		</tr>
+		<tr>
+			<td COLSPAN="2" class="tddata"><p id="id_url_d" style="line-height:12px;"></p></td> 
+		</tr>
+		
+		<tr>
+			<td COLSPAN="2" class="tdhead"><p id="id_description_s">Description:</p></td> 
+		</tr>				
+		<tr>
+			<td COLSPAN="2" class="tddata"><p id="id_description_d" style="line-height:12px;" ></p></td> 
+		</tr>	
+	
+		<tr>
+			<td COLSPAN="2" class="tdhead"><p id="">geolocation:</p></td> 
+		</tr>				
+		<tr>
+			<td COLSPAN="2" class="tddata"><p id="id_geolocation" style="line-height:12px;" ></p></td> 
+		</tr>		
+	
+	
+	
+	
+		</table>	
+		
+		
+			
+	
+		
+		
+		
+	</div> 	
+	
+	
     
     <div class="screen hidden" onclick="alert('55555');" id="liste_fichiers1">
         <h2>Liste des documents</h2>
@@ -376,11 +447,11 @@
         <p>bla bla bla.</p>
     </div> 
 	
- -->		
+	
 	
  
 <!---------------------------------------------------------------->
-<!--  Écran PARAMÈTRES  -->		 
+<!--  Écran paramètres  -->		 
       
         <div id="a_setting" class="screen hidden" style="text-align:center;" >
         <h2>Paramètres</h2>
@@ -408,7 +479,11 @@
 		<tr>
 			<td style="text-align:left;">Téléchargements:</td> 
 		</tr>
-
+		<tr>
+			<td style="text-align:right;">
+				<button onclick="onClickButtonListDocCoord();"  style="right:10px;width:170px;" class="">Coordonnées GPS</button>
+			</td> 
+		</tr>
 
 		<tr>
 			<td style="text-align:left;">Données:</td> 
@@ -466,7 +541,7 @@
  
  
 <!---------------------------------------------------------------->
-<!--  Écran RECHERCHER DICTIONNAIRE  -->		 
+<!--  Écran recherche dans le dictionnaire -->
  
  <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
  
@@ -479,18 +554,18 @@
 		
 			
 		<tr>
-			<td>
+			<td class="td_table2" style="width:20%;">
 				<img style="width:60px;"src="img/dictionary.png" />
 			</td>
 			
-			<td> <h4>Rechercher dans le</h4><h3>DICTIONNAIRE</h3></h4></td> 
+			<td class="td_table2" style="color:bleach;">Recherche dans le dictionnaire</td> 
 
 		</tr>
 	
 	
 		<tr>
-			<td style="text-align:left;"id="id_rechdictionnaire_label"><h3>SPÉCIMEN:</h3></td> 
-			<td><input type="text" style="" onChange="" id="id_rechdictionnaire_d" VALUE="Toukan"></td> 
+			<td style="text-align:left;"id="id_rechdictionnaire_label">Specimen</td> 
+			<td><input type="text" style="" onChange="" id="id_rechdictionnaire_d" VALUE="Ara"> 			</td> 
 		</tr>
 		
 		 
@@ -500,7 +575,7 @@
 			<td> 
 	    		<ul class="buttons">
 					<li>
-		   	 			<a href="#" id=""                                      onclick="hide_all();show_chrono();show_back_button();"  						class="switch_screen">Démarrer la recherche </a>
+		   	 			<a href="#" id="" onclick="alert('Recheche en cours ...');" 						class="switch_screen">Démarrer la recherche </a>
 					</li>	
 	    		</ul>
 	    	</td> 
@@ -513,10 +588,13 @@
     </div> 
  
  
-  
+ 
+ 
+ 
  
 	<!---------------------------------------------------------------->
-	<!--  Écran RECHERCHER CHRONOMÈTRE  -->		 
+	<!--  Écran de test Chronomètre -->
+ 
  
 	    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
        
@@ -535,6 +613,13 @@
 
 			</tr>
 	   
+	   
+	   
+	<!-- 	<table id="my_table_5" style="margin-left:auto;margin-right:auto;max-width:300px;width:100%;" >
+		    <col style="width:40%;">        
+		    <col style="width:60%;">  
+		
+		    <h2>Chronomètre</h2>-->
 	    
 		   <div id="container">
 			   
@@ -582,8 +667,8 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/helper.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>  
 	<script type="text/javascript" src="js/all.js"></script>
-
-	<script type="text/javascript" src="js/agListViewFichie.js"></script>
+	<script type="text/javascript" src="js/agDocCoord.js"></script>
+	<script type="text/javascript" src="js/agFichie.js"></script>
 	<script type="text/javascript" src="js/agGps.js"></script>
 	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
 	<script type="text/javascript" src="js/agTakePic.js"></script>		
@@ -619,21 +704,15 @@ agXMLHttpReqLan('json/'+ userLang.toLowerCase().substr(0,2) + '.json');
 //Afficher l'écran de login
 showLogin();
 
-
-
-
-<<<<<<< HEAD
-objListViewFichiers = new ClasseListViewFichier("blabla");
-=======
->>>>>>> mardi
-
+//Créer un instance de mon objet "liste des coordonnées gps des telechargements"
+objListeDesDocCoord = new AgListeDesDocCoord("blabla");
+//Lire le local storage et remplir mon objet
+objListeDesDocCoord.getDocCoordFromLocalStorage();
 
 objListViewObservations = new ClasseListViewObservations("blabla");
 
 //Lire le local storage et remplir mon objet
 objListViewObservations.getObservFromLocalStorage();
-
-
 
 
 
@@ -731,10 +810,10 @@ var second = getUrlVars()["barcodeReturnedCode1"];
 //alert(second);
 
 
-//objListViewObservations.ajouterUnObservationDansLeListViewObservArray("DFRRGGTTT", "ASXXXSSS");
+//objListViewObservations.ajouterUnObservationALobjetListViewObservations("DFRRGGTTT", "ASXXXSSS");
 
-//objListViewObservations.ajouterUnObservationDansLeListViewObservArray("DFRRGGTTT", "ASXXXSSS");
-//objListViewObservations.ajouterUnObservationDansLeListViewObservArray("DFRRGGTTT", "ASXXXSSS");
+//objListViewObservations.ajouterUnObservationALobjetListViewObservations("DFRRGGTTT", "ASXXXSSS");
+//objListViewObservations.ajouterUnObservationALobjetListViewObservations("DFRRGGTTT", "ASXXXSSS");
 
 
 
