@@ -11,7 +11,7 @@ function addFichiersListViewCell(le_id, le_non_fich, le_url, la_descrip, la_date
 	newDiv1.id="id_div_liste_fichiers1";	
 	
 	//newDiv1.addEventListener('click', test55, false)
-	newDiv1.addEventListener('click',function(){affichePageFichier(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
+	newDiv1.addEventListener('click',function(){affichePageXXXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
 	
 	var newH2 = document.createElement("h2");
 	var newH2Content = document.createTextNode(le_non_fich);
@@ -74,36 +74,6 @@ function affiche_json_du_prof(le_str_output)
 		
 }
 
-function affichePageFichier(id_id_d_2, id_filename_d_2, id_url_d_2, id_description_d_2, id_registered_d_2) 
-{ 
-	//alert("affichePageFichier:"+id_id_d_2);
-	hide_all();
-	show_ecran_fichier();
-	
-	document.getElementById("id_id_d").innerHTML = id_id_d_2;
-	document.getElementById("id_id_d2").innerHTML = "";
-	document.getElementById("id_filename_d").innerHTML = id_filename_d_2;
-	document.getElementById("id_url_d").innerHTML = id_url_d_2;
-	
-
-	document.getElementById("id_description_d").innerHTML = id_description_d_2;
-	document.getElementById("id_registered_d").innerHTML = id_registered_d_2;
-	
-	varGlobal2=id_url_d_2;
-	
-	
-	
-	
-	
-	le_element = document.getElementById("id_bouton_telech_fichier");
-	le_element.setAttribute("href", id_url_d_2);
-	
-	//location.href=sessionStorage.getItem("url_du_fichier_a_ouvrir_apres_position_trouve");
-	//location.href=id_url_d_2;
-	
-	
-	
-}
 
 function download_document(le_url) 
 { 

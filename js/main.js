@@ -1,16 +1,5 @@
 // contenu du fichier ???zzz
 
-function show_ecran_fichier()
-{
-	ecran_fichier = document.getElementById('ecran_fichier');
-	show_element(ecran_fichier);
-}
-
-function hide_ecran_fichier()
-{
-	ecran_fichier = document.getElementById('ecran_fichier');
-	hide_element(ecran_fichier);
-}
 
 
 // écran d'observation
@@ -129,24 +118,6 @@ function hide_liste_des_fichiers()
 
 
 
-//listViewDocCoord
-
-function show_liste_des_coord_gps()
-{
-  [].forEach.call(document.querySelectorAll("div.listViewDocCoord"), function(el) {
-    show_element(el);
-  });
-}
-
-function hide_liste_des_coord_gps()
-{
-  // Remove the hash sign from the start of the id.    
-  // Find all div.screen elements and hide them.
-  [].forEach.call(document.querySelectorAll("div.listViewDocCoord"), function(el) {
-    hide_element(el);
-  }); 
-}
-
 
 
 
@@ -183,10 +154,9 @@ function hide_all()
 	hide_dicti()	
 	hide_chrono()	
 	hideLogin();
-	hide_ecran_fichier();
 	
-	//hide_liste_des_coord_gps();
-	objListeDesDocCoord.removeAllDocCoordFromListView();
+	
+
 		
 	hide_ecran_de_l_observation();
 	document.getElementById("tool_button").style.visibility="hidden";
@@ -208,13 +178,6 @@ function hideLogin()
 {
 	le_my_login = document.getElementById('my_login');
 	hide_element(le_my_login);
-}
-
-function onClickButtonListDocCoord()
-{
-	hide_all();
-	objListeDesDocCoord.viewArrData();
-	document.getElementById("tool_button").style.visibility="visible";
 }
 
 
@@ -400,8 +363,7 @@ function onClickBoutonSupprimer()
 	objListViewObservations.removeSelectedObservsFromListView();
 	objListViewObservations.saveObservToLocalStorage();
 	
-	objListeDesDocCoord.removeSelectedDocCoordFromListView();
-	objListeDesDocCoord.saveToLocalStorage();
+	
 	
 }
 

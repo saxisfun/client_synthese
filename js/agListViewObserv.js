@@ -169,7 +169,6 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 		//alert("Non");
 		//Si fichier n'existe pas sur ordi ou il est trop vieux alors on le download et on le mets dans le canvas pour pouvoir le sauvegarder sur le disque
 		//this.myListViewObservArray = [];
-		//objListeDesDocCoord = new AgListeDesDocCoord("blabla");
 	
 	
 	

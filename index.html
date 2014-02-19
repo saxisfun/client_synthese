@@ -358,85 +358,6 @@
 	
 	
 	
-<!---------------------------------------------------------------->
-<!--  Écran fichier ??  -->	
-	
-	<div id="ecran_fichier" class="screen hidden" >
-		<ul class="buttons">
-			<li>			
-				<!-- 
-				onclick="download_document(document.getElementById('id_url_d').innerHTML);"
-				-->			
-				<a href="#" id="id_bouton_telech_fichier" target="_blank"  onclick="event.preventDefault();onClickBoutonTelechargerLeFichier();" 
-				class="switch_screen">Cliquez pour télécharger le fichier</a>
-			</li>
-			
-			<li>
-			  <a href="#" id="" onclick="leGps1.startWatchGps();" class="switch_screen">Start watch</a>
-			</li>	
-			<li>
-			  <a href="#" id="" onclick="leGps1.stopWatchGps();" class="switch_screen">Stop watch</a>
-			</li>	
-
-		</ul>		
-	
-		<table id="table_ecran_fichier" class="table3">	
- 		<tr>
-			<td class="tdhead"><p id="id_id_s">Id:</p></td> 
-			<td class="tdhead">Coordonnée GPS du téléchargement</td> 
-			
-		</tr>	 
-		<tr>
-			<td class="tddata"><p id="id_id_d"></p></td> 
-			<td class="tddata"><p id="id_id_d2"></p></td> 
-			
-		</tr>			
-		<tr>
-			<td COLSPAN="2" class="tdhead"><p id="id_registered_s">Date:</p></td> 
-		</tr>	
-		<tr>
-			<td COLSPAN="2" class="tddata"><p id="id_registered_d"></p></td> 
-		</tr>		
-	
-		<tr>
-			<td COLSPAN="2" class="tdhead"><p id="id_filename_s" >Nom du fichier:</p></td>  
-		</tr>		
-		<tr>	
-			<td COLSPAN="2" class="tddata"><p id="id_filename_d"></p></td> 
-		</tr>
-		<tr>
-			<td COLSPAN="2" class="tdhead"><p id="id_url_s">Url:</p></td> 
-		</tr>
-		<tr>
-			<td COLSPAN="2" class="tddata"><p id="id_url_d" style="line-height:12px;"></p></td> 
-		</tr>
-		
-		<tr>
-			<td COLSPAN="2" class="tdhead"><p id="id_description_s">Description:</p></td> 
-		</tr>				
-		<tr>
-			<td COLSPAN="2" class="tddata"><p id="id_description_d" style="line-height:12px;" ></p></td> 
-		</tr>	
-	
-		<tr>
-			<td COLSPAN="2" class="tdhead"><p id="">geolocation:</p></td> 
-		</tr>				
-		<tr>
-			<td COLSPAN="2" class="tddata"><p id="id_geolocation" style="line-height:12px;" ></p></td> 
-		</tr>		
-	
-	
-	
-	
-		</table>	
-		
-		
-			
-	
-		
-		
-		
-	</div> 	
 	
 	
     
@@ -483,11 +404,7 @@
 		<tr>
 			<td style="text-align:left;">Téléchargements:</td> 
 		</tr>
-		<tr>
-			<td style="text-align:right;">
-				<button onclick="onClickButtonListDocCoord();"  style="right:10px;width:170px;" class="">Coordonnées GPS</button>
-			</td> 
-		</tr>
+
 
 		<tr>
 			<td style="text-align:left;">Données:</td> 
@@ -671,7 +588,7 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/helper.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>  
 	<script type="text/javascript" src="js/all.js"></script>
-	<script type="text/javascript" src="js/agDocCoord.js"></script>
+
 	<script type="text/javascript" src="js/agFichie.js"></script>
 	<script type="text/javascript" src="js/agGps.js"></script>
 	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
@@ -712,10 +629,6 @@ agXMLHttpReqLan('json/'+ userLang.toLowerCase().substr(0,2) + '.json');
 //Afficher l'écran de login
 showLogin();
 
-//Créer un instance de mon objet "liste des coordonnées gps des telechargements"
-objListeDesDocCoord = new AgListeDesDocCoord("blabla");
-//Lire le local storage et remplir mon objet
-objListeDesDocCoord.getDocCoordFromLocalStorage();
 
 
 
