@@ -1,3 +1,8 @@
+/**
+ *
+ * TEMPORAIRE POUR LE CHRONOMÈTRE
+ *
+ */
 // two global variables
 var secondsRemaining;
 var intervalHandle;
@@ -92,3 +97,17 @@ window.onload =  function () {
     inputMinutes.value = "2";
     
 };
+
+
+
+
+
+function onClickButtonMenuResultatRecherche()
+{
+	
+
+	alert("kjlkjkljkl");
+	
+	
+
+}

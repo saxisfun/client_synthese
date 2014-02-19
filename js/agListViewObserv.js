@@ -38,6 +38,7 @@ ClasseListViewObservations.prototype.saveObservToLocalStorage = function() {
 }
 
 
+
 ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 	
 	//alert("getObservFromLocalStorage");
@@ -96,6 +97,8 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 	   
 -Alors tant qu'on a pas de vraie connection avec la couche données on fonctionne avec le localstorage	   
 */
+
+
 
 ClasseListViewObservations.prototype.xmlHttpRequestObservationsFromServeur = function(le_url, index_de, index_a) {
 
@@ -383,6 +386,9 @@ ClasseListViewObservations.prototype.fillObservsListView = function() {
 	//alert("fillObservsListView end");
 	//alert(myVar);
 }
+
+
+
 /*
 
 function deleterow(node) 

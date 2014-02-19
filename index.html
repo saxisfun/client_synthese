@@ -34,8 +34,12 @@
 
 <body id="id_body" style="text-align:center;" >
 	
+	
+	
+	
   <div id="main" role="main">
     
+	  	 
   <div id="toolbar">
 	  
 	  <button id="back_button" onclick="hide_all();show_menu1();" 		class="hidden">Menu</button>
@@ -63,7 +67,9 @@
 
 	
 	  
-<!--  Écran du login  -->
+<!---------------------------------------------------------------->
+<!--  Écran LOGIN  -->		 
+	 
 	 
 	<div id="my_login" style="text-align:center;" class="screen">
 	
@@ -134,8 +140,10 @@
 	</div> 	  
 
 
+
+
 <!---------------------------------------------------------------->
-<!--  Écran du menu  -->
+<!--  Écran MENU  -->		 
 
 
 	
@@ -185,7 +193,7 @@
 	
 	
 <!---------------------------------------------------------------->
-<!--  Écran d'obsevations  -->	
+<!--  Écran AJOUTER UNE OBSERVATION -->	
 	
    <div id="ecran_observation" class="screen hidden">
         <h3 style="color:white;">Écran - Observations</h3>
@@ -334,14 +342,12 @@
 				<button onclick="saveImage();"  style="right:10px;width:100px;" class="">Upload</button>
 			</td> 			
 		</tr>			
-			
-				
+							
 		<tr>
 			<td style="text-align:left;">
                 <p id="error"></p>				
 			</td> 
 		</tr>			
-
 			
 		<tr>
 			<td style="text-align:left;">
@@ -357,7 +363,7 @@
 <!---------------------------------------------------------------->
 
 	
-	
+<!-- 	
     
     <div class="screen hidden" onclick="alert('55555');" id="liste_fichiers1">
         <h2>Liste des documents</h2>
@@ -370,11 +376,11 @@
         <p>bla bla bla.</p>
     </div> 
 	
-	
+ -->		
 	
  
 <!---------------------------------------------------------------->
-<!--  Écran paramètres  -->		 
+<!--  Écran PARAMÈTRES  -->		 
       
         <div id="a_setting" class="screen hidden" style="text-align:center;" >
         <h2>Paramètres</h2>
@@ -460,7 +466,7 @@
  
  
 <!---------------------------------------------------------------->
-<!--  Écran recherche dans le dictionnaire -->
+<!--  Écran RECHERCHER DICTIONNAIRE  -->		 
  
  <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
  
@@ -473,18 +479,18 @@
 		
 			
 		<tr>
-			<td class="td_table2" style="width:20%;">
+			<td>
 				<img style="width:60px;"src="img/dictionary.png" />
 			</td>
 			
-			<td class="td_table2" style="color:bleach;">Recherche dans le dictionnaire</td> 
+			<td> <h4>Rechercher dans le</h4><h3>DICTIONNAIRE</h3></h4></td> 
 
 		</tr>
 	
 	
 		<tr>
-			<td style="text-align:left;"id="id_rechdictionnaire_label">Specimen</td> 
-			<td><input type="text" style="" onChange="" id="id_rechdictionnaire_d" VALUE="Ara"> 			</td> 
+			<td style="text-align:left;"id="id_rechdictionnaire_label"><h3>SPÉCIMEN:</h3></td> 
+			<td><input type="text" style="" onChange="" id="id_rechdictionnaire_d" VALUE="Toukan"></td> 
 		</tr>
 		
 		 
@@ -494,7 +500,7 @@
 			<td> 
 	    		<ul class="buttons">
 					<li>
-		   	 			<a href="#" id="" onclick="alert('Recheche en cours ...');" 						class="switch_screen">Démarrer la recherche </a>
+		   	 			<a href="#" id=""              onclick="hide_all();show_chrono();show_back_button();"  						class="switch_screen">Démarrer la recherche </a>
 					</li>	
 	    		</ul>
 	    	</td> 
@@ -507,13 +513,10 @@
     </div> 
  
  
- 
- 
- 
+  
  
 	<!---------------------------------------------------------------->
-	<!--  Écran de test Chronomètre -->
- 
+	<!--  Écran RECHERCHER CHRONOMÈTRE  -->		 
  
 	    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
        
@@ -532,13 +535,6 @@
 
 			</tr>
 	   
-	   
-	   
-	<!-- 	<table id="my_table_5" style="margin-left:auto;margin-right:auto;max-width:300px;width:100%;" >
-		    <col style="width:40%;">        
-		    <col style="width:60%;">  
-		
-		    <h2>Chronomètre</h2>-->
 	    
 		   <div id="container">
 			   
@@ -625,10 +621,15 @@ showLogin();
 
 
 
+
+
+
 objListViewObservations = new ClasseListViewObservations("blabla");
 
 //Lire le local storage et remplir mon objet
 objListViewObservations.getObservFromLocalStorage();
+
+
 
 
 
