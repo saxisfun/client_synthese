@@ -1,13 +1,5 @@
 
 
-
 http://membre.oricom.ca/agiguere/lapp_001/index.html
 
-Samedi soir ... très tard
-
-je suis rendu hot en git, et j'ai flushé mon client.
-j'en ai profité pour régler les accents, tout n'était pas en utf-8
-j'en ai aussi profité pour flusher komodo
-
-j'espère être bon pour travailler sur le tp dimanche maudit
-
+Opérationnel
