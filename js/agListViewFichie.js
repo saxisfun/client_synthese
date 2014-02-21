@@ -117,14 +117,14 @@ ClasseListViewFichier.prototype.fillFichiersListView = function(le_str_output) {
 	var obj = localString.result[i];
 		
 		
-		/*
+	    /*
 		alert(localString.result[i].id);
 		alert(localString.result[i].filename);
 		alert(localString.result[i].url);
 		alert(localString.result[i].description);
 		alert(localString.result[i].registered);	
-		*/		
-		
+			
+		*/
 		
 		objListViewFichiers.addFichiersListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
 		/*

@@ -123,8 +123,12 @@ function startRecherche() {
     alert('Recherche sur: ' + x);
 	 
  	hide_all();
+	 
+	// 'json/'+ userLang.toLowerCase().substr(0,2) + '.json'
+	
+	objListViewDictionnaires.xxx('json/dictionnaire.json');
 	 	
-	objListViewDictionnaires.fillDictListView();
+	//objListViewDictionnaires.fillDictListView();
 	
  	show_back_button();	
 	
