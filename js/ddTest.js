@@ -2,7 +2,12 @@
 var secondsRemaining;
 var intervalHandle;
 
-//ok now en utf8 (é=\351)
+
+/*
+Chronomètre
+Délais d'une seconde
+*/
+
 
 function tick() {
   
@@ -45,6 +50,10 @@ function tick() {
 
 
 
+/*
+Chronomètre
+Sur le bouton démarrer chronomètre
+*/
 
 function startCountdown() {
     
@@ -68,16 +77,22 @@ function startCountdown() {
     // how many seconds?
     secondsRemaining =  minutes * 60;
     // every second, call the "tick" function
-    intervalHandle = setInterval(tick, 100);
+    intervalHandle = setInterval(tick, 50);
     // hide the form
     document.getElementById("inputArea").style.display = "none";
 
 }
 
+/*
+Chronomètre
+Sur le bouton démarrer chronomètre
 
+*/
 
-// as soon as the page is loaded... cr  la vole
+// as soon as the page is loaded... créé à la volée
 window.onload =  function () {  
+	alert('window.onload');
+	
    // create input text box and give it an id of "minutes"
     var inputMinutes = document.createElement("input");
     
@@ -92,3 +107,33 @@ window.onload =  function () {
     inputMinutes.value = "2";
     
 };
+
+
+
+
+
+/*
+Initier demande de lister le dictionnaire
+*/
+
+
+function startRecherche() {
+   
+    var x = document.getElementById("id_recherher_dict").value;
+    alert('Recherche sur: ' + x);
+	 
+ 	hide_all();
+	 	
+	objListViewDictionnaires.fillDictListView();
+	
+ 	show_back_button();	
+	
+ }
+
+
+
+
+
+
+
+

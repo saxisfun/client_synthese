@@ -459,106 +459,91 @@
  
  
  
- 
- 
-<!---------------------------------------------------------------->
-<!--  Écran recherche dans le dictionnaire -->
- 
- <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
- 
-	
-	
-		<table id="my_table_2" class="table2">
-		<col style="width:40%;">        
-		<col style="width:60%;">		
-	
-		
-			
-		<tr>
-			<td class="td_table2" style="width:20%;">
-				<img style="width:60px;"src="img/dictionary.png" />
-			</td>
-			
-			<td class="td_table2" style="color:bleach;">Recherche dans le dictionnaire</td> 
 
-		</tr>
-	
-	
-		<tr>
-			<td style="text-align:left;"id="id_rechdictionnaire_label">Specimen</td> 
-			<td><input type="text" style="" onChange="" id="id_rechdictionnaire_d" VALUE="Ara"> 			</td> 
-		</tr>
-		
-		 
-		
-		<tr> 
-			<td> </td>
-			<td> 
-	    		<ul class="buttons">
-					<li>
-		   	 			<a href="#" id="" onclick="alert('Recheche en cours ...');" 						class="switch_screen">Démarrer la recherche </a>
-					</li>	
-	    		</ul>
-	    	</td> 
-		</tr>
-		
-			
-	</table>	
-	
-		
-    </div> 
- 
- 
- 
- 
- 
- 
 	<!---------------------------------------------------------------->
-	<!--  Écran de test Chronomètre -->
+	<!--  Écran recherche dans le dictionnaire -->
  
+	 <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
  
-	    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
-       
-			<table id="my_table_2" class="table2">
+	
+			<table>
 			<col style="width:40%;">        
 			<col style="width:60%;">		
 	
-		    <h2>Chronomètre</h2>
-			
 			<tr>
-				<td class="td_table2" style="width:20%;">
-					<img style="width:60px;"src="img/timer.png" />
-				</td>
-			
-				<td> </td> 
-
+				<td><img style="width:60px;"src="img/dictionary.png"/></td>		
+				<td> <h3> Rechercher dans le dictionnaire </h3></td>
 			</tr>
-	   
-	   
-	   
-	<!-- 	<table id="my_table_5" style="margin-left:auto;margin-right:auto;max-width:300px;width:100%;" >
-		    <col style="width:40%;">        
-		    <col style="width:60%;">  
+	
+	
+			<tr>
+				<td><h4>Specimen:</h4></td>
+				<td><input type="text" id="id_recherher_dict" VALUE="Toukan"></td> 
+			</tr>
 		
-		    <h2>Chronomètre</h2>-->
-	    
-		   <div id="container">
-			   
-		      <div id="inputArea">
-			<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
-		      </div>
-	      	      <h1 id="time">0:00</h1>     
-		    </div> 
-
-		    <ul class="buttons">
-			<li>
-			   <a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
-			</li>	
-		    </ul>	
+			
+			<tr> 
+				<td> </td>
+				<td> 
+		    		<ul class="buttons">
+						<li>
+			   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
+						</li>	
+		    		</ul>
+		    	</td> 
+			</tr>
+		
+			
 		</table>	
 	
 		
 	    </div> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+		<!---------------------------------------------------------------->
+		<!--  Écran de test Chronomètre -->
+ 
+ 
+ 
+		    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
+			<table>
+				<col style="width:40%;">        
+				<col style="width:60%;">		
+	
+				<tr>
+					<td><img style="width:60px;"src="img/timer.png"/></td>		
+					<td> <h3> Chronomètre </h3></td>
+				</tr>
+		
+				<tr>
+		 		  	<div id="container">	
+						<td>		   
+		 		   		<div id="inputArea">
+		 					<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
+		 		      	</div>
+						</td>
+					
+						<td>
+		 	      	    <h1 id="time">0:00</h1>  
+						</td>   
+		 		    </div> 
+				</tr>
+
+				<tr>  
+			    	<ul class="buttons">
+						<li>
+				   		 	<a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
+						</li>	
+			    	</ul>
+				</tr>
+				
+			</table>	
+		    </div> 
  
  
  
@@ -602,7 +587,9 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/agOnOffLine.js"></script>		
 	<script type="text/javascript" src="js/agPhoto.js"></script>	
 	<script type="text/javascript" src="js/agUneObserv.js"></script>
+	
 	<script type="text/javascript" src="js/ddTest.js"></script>
+	<script type="text/javascript" src="js/ddListViewDict.js"></script>
 	
 	
 	
@@ -629,15 +616,12 @@ agXMLHttpReqLan('json/'+ userLang.toLowerCase().substr(0,2) + '.json');
 //Afficher l'écran de login
 showLogin();
 
+objListViewFichiers = new ClasseListViewFichier("Fichier 1");
+objListViewObservations = new ClasseListViewObservations("Observation 1");
 
-
-
-
-
-objListViewFichiers = new ClasseListViewFichier("blabla");
-
-
-objListViewObservations = new ClasseListViewObservations("blabla");
+alert('crisse.1');
+objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
+alert('crisse.2');
 
 //Lire le local storage et remplir mon objet
 objListViewObservations.getObservFromLocalStorage();
