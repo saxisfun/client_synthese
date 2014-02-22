@@ -34,25 +34,34 @@
 
 <body id="id_body" style="text-align:center;" >
 	
-  <div id="main" role="main">
-    
-  <div id="toolbar">
-	  
-	  <button id="back_button" onclick="hide_all();show_menu1();" 		class="hidden">Menu</button>
-	  
-	  <button  id="tool_button" onclick="onClickBoutonSupprimer();" 	  		style="position:absolute;bottom:6px;right:170px;visibility:hidden;"
-	  class="">Supprimer</button>
-	  
-	  <button id="tool_button2" onclick="onClickBoutonAjouterObservation();"
-	  style="position:absolute;bottom:6px;right:105px;visibility:hidden;"
-	  class="">Ajouter</button>
-	  
-	  <button  id="tool_button3" onclick="onClickBoutonDeconnecter();"
-	  style="position:absolute;bottom:6px;right:10px;visibility:hidden;"
-	  class="">Déconnecter</button>	
-	  
+	<div id="main" role="main">
+
+	<div id="toolbar">
+		  
+		<button id="back_button" onclick="hide_all();show_menu1();" 		class="hidden">Menu</button>
+
+		<button id="tool_button_ajouter" onclick="onClickBoutonAjouterObservation();"
+		style="position:absolute;bottom:6px;right:316px;visibility:hidden;width:115px;"
+		class="">Ajouter un observation</button>	  
+
+		<button id="tool_button_rechercher" onclick="onClickBoutonAjouterObservation();"
+		style="position:absolute;bottom:6px;right:196px;visibility:hidden;width:115px;"
+		class="">Rechercher un oiseau dan le dictionnaire</button>
+
+		<button  id="tool_button_deconnecter" onclick="onClickBoutonDeconnecter();"
+		style="position:absolute;bottom:6px;right:96px;visibility:hidden;"
+		class="">Déconnecter</button>	
+
+		<button  id="tool_button_seconnecter" onclick="onClickBoutonDeconnecter();"
+		style="position:absolute;bottom:6px;right:96px;visibility:hidden;"
+		class="">Se connecter</button>			
+		
+		
+		<button  id="tool_button_supprimer" onclick="onClickBoutonSupprimer();" 	  		
+		style="position:absolute;bottom:6px;right:10px;visibility:hidden;"
+		class="">Supprimer</button>	  
 	</div> 
-      
+		  
       
       
 	  <!-- 
@@ -600,7 +609,7 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 //dataAdapder
 var dataAdapterSwitch_dataFromIIS = false;
 
-
+var varGlobal_UserConnected = false;
 
 //Lire le bon fichier json selon le language du browser
 var userLang = (navigator.language) ? navigator.language : navigator.userLanguage; 
@@ -627,7 +636,7 @@ objListViewObservations.getObservFromLocalStorage();
 
 onClickButtonMenu_ReadJsonInArrayListViewObserv();
 
-// show_element(document.getElementById("tool_button2"));
+// show_element(document.getElementById("tool_button_ajouter"));
 
 leGps1 = new MonGPS("Gps 1");
 

@@ -138,7 +138,7 @@ html, body {
   z-index: 10;
   position: relative;
   padding: 10px;
-  height: 44px;
+  height: 85px;
   
 }
 	
@@ -291,10 +291,11 @@ input {
 #back_button {
   position: absolute;
   overflow: hidden;
-  width: auto;
-  height: 30px;
+  /*width: auto;*/
+  width: 100px;
+  height: 90px;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   line-height: 30px;
   text-decoration: none;
@@ -333,21 +334,21 @@ input {
 }
 
 
-#tool_button, #tool_button2, #tool_button3 {
+#tool_button_supprimer, #tool_button_ajouter, #tool_button_deconnecter, #tool_button_rechercher, #tool_button_seconnecter {
   position: absolute;
   overflow: hidden;
   width: auto;
-  height: 30px;
+  height: 90px;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   line-height: 30px;
   text-decoration: none;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   background: none;
   bottom: 6px;
   right: 10px;
-  margin: 0;
+  margin: 0px;
   padding: 0 10px;
   color: #e2e3e3;
   text-shadow: black 0 -1px 0;

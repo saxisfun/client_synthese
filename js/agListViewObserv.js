@@ -10,15 +10,18 @@ function ClasseListViewObservations(myName) {
 
 
 /*
--Si deconecté 
+-Si deconecté (pas important ce mode on le fera a la fin s'il reste du temps)
 	1-Afficher les observations qui sont dans local storage depuis le dernier download, incluant les nouvelles observation de l'usager depuis le derniere upload.
-	2-Afficher les données du disctionnaire qui sont dans le local storage (on aura pas grand données de dictionnaire alors on peut tout mettre dans le localstorage). 
+	2-Afficher les données du disctionnaire qui sont dans le local storage (on aura pas grand données de dictionnaire alors on peut tout mettre dans le localstorage).
+	 
 
 	
 -si connecté 
 	1-upload des nouvelles observations de l'usager vers le serveur et download de 5 pages de 10 cellules = 50 cellules des dernièeres observations de tous le monde 
 	   classées en ordre de date décroissant par le serveur
-
+	2-Pour le dictionnaire: Flush des données du localstorage au  complet et reloader tout le dictionnaire au cas ou il y aurait eu des changement.
+		C'est pas trop hot mais ca va faire la job pour le cours
+	
 	   
 -Alors tant qu'on a pas de vraie connection avec la couche données on fonctionne avec le localstorage	   
 */

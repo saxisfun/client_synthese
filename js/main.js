@@ -159,8 +159,15 @@ function hide_all()
 
 		
 	hide_ecran_de_l_observation();
-	document.getElementById("tool_button").style.visibility="hidden";
-	document.getElementById("tool_button2").style.visibility="hidden";
+	document.getElementById("tool_button_supprimer").style.visibility="hidden";
+	document.getElementById("tool_button_ajouter").style.visibility="hidden";
+	document.getElementById("tool_button_rechercher").style.visibility="hidden";
+	document.getElementById("tool_button_seconnecter").style.visibility="hidden";
+	
+
+	
+	
+	
 
 }
 
@@ -382,9 +389,20 @@ function onClickBoutonDeconnecter()
 
 	hide_all();
 	showLogin();
-	document.getElementById('tool_button3').style.visibility='hidden';
+	document.getElementById('tool_button_deconnecter').style.visibility='hidden';
+	document.getElementById('tool_button_seconnecter').style.visibility='visible';
+	
+	
+	
 	
 	hide_element(back_button);
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
@@ -453,6 +471,11 @@ function onClickBoutonAjouterObservation()
 	
 }
 
+
+//a discuter avec la couche donnee
+//Dans chacune des requetes il y aura le login et le mot de passe sauf pour les non loggés
+
+
 	
 function onClickButtonLogin()
 {
@@ -468,16 +491,22 @@ function onClickButtonLogin()
 		hideLogin();
 		//show_menu1();
 		onClickButtonMenuListViewObserv();
+		varGlobal_UserConnected=true;
+		
+		document.getElementById("tool_button_deconnecter").style.visibility="visible";
+		document.getElementById("tool_button_seconnecter").style.visibility="hidden";
 		
 		
-		document.getElementById("tool_button3").style.visibility="visible";
+		
 	}else
 	{
 		//hideLogin();
 		//show_menu1();
-		//document.getElementById("tool_button3").style.visibility="visible";
+		//document.getElementById("tool_button_deconnecter").style.visibility="visible";
 		
-	alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
+		alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
+	
+	
 	}
 
 
@@ -512,9 +541,12 @@ function onClickButtonMenuListViewObserv()
 	
 	objListViewObservations.fillObservsListView();
 
-	document.getElementById("tool_button").style.visibility="visible";
-	document.getElementById("tool_button2").style.visibility="visible";
+	document.getElementById("tool_button_supprimer").style.visibility="visible";
+	document.getElementById("tool_button_ajouter").style.visibility="visible";
 
+	document.getElementById("tool_button_rechercher").style.visibility="visible";
+	document.getElementById("tool_button_seconnecter").style.visibility="visible";
+	
 	
 	
 	show_back_button();
@@ -572,8 +604,13 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 	
 	objListViewObservations.fillObservsListView();
 
-	document.getElementById("tool_button").style.visibility="visible";
-	document.getElementById("tool_button2").style.visibility="visible";
+	document.getElementById("tool_button_supprimer").style.visibility="visible";
+	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	document.getElementById("tool_button_rechercher").style.visibility="visible";
+	document.getElementById("tool_button_seconnecter").style.visibility="visible";
+	
+	
+	
 	
 	show_back_button();
 
