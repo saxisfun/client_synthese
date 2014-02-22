@@ -106,12 +106,19 @@ ClasseListViewFichier.prototype.fillFichiersListView = function(le_str_output) {
 	
 
 	localString = JSON.parse(le_str_output);
-
-	//alert(localString.result.length);
-
-	//alert(localString['id']);
-	//alert(localString['jsonrpc']);
-	//var JSONstring=[{"key1":"value1","key2":"value2"},{"key3":"value3"}];
+	
+	/*
+    alert(le_str_output);
+	alert('le_str_output.length ' + le_str_output.length);
+    alert('localString.result.length ' + localString.result.length);
+	alert('id ' + localString['id']);
+	alert('jsonrpc ' + localString['jsonrpc']);
+	alert('total ' + localString['total']);
+	alert('result ' + localString['result']);
+	*/
+	
+	
+    //var JSONstring=[{"key1":"value1","key2":"value2"},{"key3":"value3"}];
 
 	for(var i=0;i<localString.result.length;i++){
 	var obj = localString.result[i];

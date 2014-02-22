@@ -605,6 +605,8 @@ var dataAdapterSwitch_dataFromIIS = false;
 //Lire le bon fichier json selon le language du browser
 var userLang = (navigator.language) ? navigator.language : navigator.userLanguage; 
 
+//alert('userLang: '+userLang.toLowerCase().substr(0,2));
+
 //Désactiver la traduction en englais (forcer le francais)
 //userLang = "fr"; 
 
@@ -618,10 +620,7 @@ showLogin();
 
 objListViewFichiers = new ClasseListViewFichier("Fichier 1");
 objListViewObservations = new ClasseListViewObservations("Observation 1");
-
-alert('crisse.1');
 objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
-alert('crisse.2');
 
 //Lire le local storage et remplir mon objet
 objListViewObservations.getObservFromLocalStorage();

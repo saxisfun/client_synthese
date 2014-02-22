@@ -9,16 +9,23 @@ function ClasseListViewDictionnaire(myName) {
 
 
 
-ClasseListViewDictionnaire.prototype.xxx = function(le_fichier) {
-	alert("xxx: "+le_fichier);
+
+
+ClasseListViewDictionnaire.prototype.xxx = function(le_url) {
+	alert("ClasseListViewDictionnaire.prototype.xxx le_url: "+le_url);
 	
-	localString = JSON.parse(le_fichier);
-    alert(localString.result.length);
+	var x = ddXMLHttpDictionnaire(le_url);
+
+	
+/*		
+	localString = JSON.parse(x);
+    alert("ClasseListViewDictionnaire...localString.result.length: " +localString.result.length);
 	
 	for(var i=0;i<localString.result.length;i++) {
 	var obj = localString.result[i];
     }
-
+*/
+	
 }
 
 
@@ -55,3 +62,64 @@ alert(this.myListViewDictArray.length);
 
 
 
+
+ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
+     
+	alert('ddXMLHttpDictionnaire le_url: '+le_url);
+ 	try {
+     
+ 		 var resourcePath = le_url;
+         var request = new XMLHttpRequest();
+		
+         request.open("GET", resourcePath, true);
+		 
+         request.onreadystatechange = function() {
+             if (request.readyState == 4) {
+                 if (request.status == 200 || request.status == 0) {
+ 					str_output = request.responseText;
+					get_Dictionnaire_callback(str_output);              
+                 }
+             }
+         }
+		 
+         request.send();
+      } catch (e) {
+         //errorEvent(e);
+     }
+ }
+
+
+
+
+
+
+
+
+ function get_Dictionnaire_callback(le_str_output) 
+ { 
+	 alert(le_str_output);
+	 alert('le_str_output.length ' + le_str_output.length);
+	 
+	 localString = JSON.parse(le_str_output);
+	
+	 alert('localString.result.length ' + localString.result.length);
+	 alert('id ' + localString['id']);
+	 alert('jsonrpc ' + localString['jsonrpc']);
+	 alert('total ' + localString['total']);
+	 alert('result ' + localString['result']);	
+	
+	
+	 for(var i=0;i<localString.result.length;i++){
+		 var obj = localString.result[i];
+		 
+	 }
+		
+ 	    /*
+		alert(localString.result[i].id +' '+localString.result[i].espece);
+ 		alert(localString.result[i].id);
+ 		alert(localString.result[i].espece);
+ 		alert(localString.result[i].description);
+ 		alert(localString.result[i].IDPhoto);
+  		*/
+	
+ }
