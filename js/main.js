@@ -382,29 +382,26 @@ function onClickBoutonSupprimer()
 
 function onClickBoutonDeconnecter() 
 { 
-	
-
-	
-
-
 	hide_all();
-	showLogin();
+	//showLogin();
+	//showObservationListView();
+	
+	onClickButtonMenuListViewObserv();
+	
+	
 	document.getElementById('tool_button_deconnecter').style.visibility='hidden';
 	document.getElementById('tool_button_seconnecter').style.visibility='visible';
+	hide_element(back_button);	
+}
+
+function onClickBoutonSeConnecter() 
+{ 
+	hide_all();
+	showLogin();
 	
-	
-	
-	
-	hide_element(back_button);
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	document.getElementById('tool_button_deconnecter').style.visibility='hidden';
+	document.getElementById('tool_button_seconnecter').style.visibility='hidden';
+	hide_element(back_button);	
 }
 
 
