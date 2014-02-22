@@ -85,17 +85,32 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	
  	//newDiv1.addEventListener('click', test55, false)
  	//newDiv1.addEventListener('click',function(){affichePageXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
+
+
+ 	var newImg1 = document.createElement("img");
+ 	newImg1.setAttribute("src", "birds/"+le_IDPhoto+".jpg");
+ 	newImg1.setAttribute("alt", "Une Photo");
+ 	newImg1.setAttribute("align", "left");
+ 	newImg1.setAttribute("width", 100);
+ 	newImg1.setAttribute("height", 100);
+ 	newImg1.setAttribute("id", "img1");
+	
+ 	
+	
 	
  	var newH2 = document.createElement("h2");
  	var newH2Content = document.createTextNode(l_espece);
+  	newH2.setAttribute("align", "right");
  	newH2.appendChild(newH2Content);
 	
  	var newP = document.createElement("p");
- 	var newPContent = document.createTextNode(la_descrip);
+	var newPContent = document.createTextNode(la_descrip);
  	newP.appendChild(newPContent);	
 
- 	newDiv1.appendChild(newH2);	
- 	newDiv1.appendChild(newP);	
+
+	newDiv1.appendChild(newImg1);
+	newDiv1.appendChild(newH2);	
+	newDiv1.appendChild(newP);	
 	
 	
 				

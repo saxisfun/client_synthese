@@ -16,7 +16,7 @@ function MonAccel(strNom) {
 		window.addEventListener('devicemotion', this.capture_acceleration, false);
 		
 	} else {
-		alert('Cet appareil ne supporte pas l\'accéléromêtre (devicemotion)');
+		//alert('Cet appareil ne supporte pas l\'accéléromêtre (devicemotion)');
 	}
  
 

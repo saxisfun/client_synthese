@@ -2,10 +2,13 @@
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
 }
- 
+
+/*
 h3 {	
 	color:white; 
 }
+*/
+
 
 html, body {
   margin: 0;
@@ -683,3 +686,33 @@ animation:myfirst2 0.5s 1;
  }
  
  
+ 
+ 
+ 
+ #img1{
+ 	position:absolute;
+ 	width:80px;
+ 	height:80px;
+ 	background-color:#FFF;
+ 	padding:10px;
+	
+ 	font-size:24px;
+	
+ 	-moz-box-shadow:8px 8px 10px #999;
+ 	-webkit-box-shadow:8px 8px 10px #999;
+ 	-o-box-shadow:8px 8px 10px #999;
+ 	box-shadow:8px 8px 10px #999;
+ 	}
+	
+ #img1{
+ 	-moz-transform:rotate(18deg);
+ 	-webkit-transform:rotate(18deg);
+ 	-o-transform:rotate(18deg);
+ 	transform:rotate(18deg);
+ 	
+ 	left:25px;
+	
+ 	}
+
+
+

@@ -91,7 +91,7 @@ Sur le bouton démarrer chronomètre
 
 // as soon as the page is loaded... créé à la volée
 window.onload =  function () {  
-	alert('window.onload');
+	//alert('window.onload');
 	
    // create input text box and give it an id of "minutes"
     var inputMinutes = document.createElement("input");
@@ -120,7 +120,7 @@ Initier demande de lister le dictionnaire
 function startRecherche() {
    
     var x = document.getElementById("id_recherher_dict").value;
-    alert('Recherche sur: ' + x);
+    //alert('Recherche sur: ' + x);
 	 
  	hide_all();
 	 
