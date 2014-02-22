@@ -185,7 +185,7 @@ function hideLogin()
 function get_lang_callback(le_str_output) 
 { 
 	
-	alert('get_lang_callback:  '+le_str_output);
+//	alert('get_lang_callback:  '+le_str_output);
 	
 	localString = JSON.parse(le_str_output);
 	
@@ -198,7 +198,7 @@ function get_lang_callback(le_str_output)
 	document.getElementById("id_bouton_ajout_observation").innerHTML = localString['str_bouton_ajout_observation'];
 	
 	
-	alert('JSON.parse(...):  '+localString['str_label_motDePasse']);
+//	alert('JSON.parse(...):  '+localString['str_label_motDePasse']);
 	
 	
 }

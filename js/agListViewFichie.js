@@ -3,7 +3,7 @@
 
 
 function ClasseListViewFichier(myName) {
-	alert(myName);
+	//alert(myName);
 	this.myListViewFichierName = "777";
 	this.myListViewFichierArray = [];
 }

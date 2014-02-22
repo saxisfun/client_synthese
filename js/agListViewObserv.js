@@ -3,7 +3,7 @@
 
 
 function ClasseListViewObservations(myName) {
-	alert(myName);
+	//alert(myName);
 	this.myListViewObservName = "777";
 	this.myListViewObservArray = [];
 }

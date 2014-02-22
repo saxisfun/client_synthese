@@ -2,70 +2,16 @@
 
 
 function ClasseListViewDictionnaire(myName) {
-	alert(myName);
-	this.myListViewDictName = myName;
-	this.myListViewDictArray = [];
+//	alert(myName);
+//	this.myListViewDictName = myName;
+//	this.myListViewDictArray = [];
 }
-
-
-
-
-
-ClasseListViewDictionnaire.prototype.xxx = function(le_url) {
-	alert("ClasseListViewDictionnaire.prototype.xxx le_url: "+le_url);
-	
-	var x = ddXMLHttpDictionnaire(le_url);
-
-	
-/*		
-	localString = JSON.parse(x);
-    alert("ClasseListViewDictionnaire...localString.result.length: " +localString.result.length);
-	
-	for(var i=0;i<localString.result.length;i++) {
-	var obj = localString.result[i];
-    }
-*/
-	
-}
-
-
-
-
-ClasseListViewDictionnaire.prototype.fillDictListView = function(){
-
-alert("classe pour Dictionnaire");
-alert(this.myListViewDictArray.length);
-
-
-
-
-//alert("fillObservsListView");
-
-//for (var i=0; i < this.myListViewDictArray.length; i++){
-//	var theObject = this.myListViewDictArray[i];
-	
-	
-	//ici ici ici
-	
-	//this.addFichiersListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
-
-	
-//	this.addListViewObservCell(theObject.strObservTitre, theObject.strObservResume, theObject.strObservDiskName, theObject.dataURLPicture, i);
-	
-	//le_id, le_non_fich, le_url, la_descrip, la_date_eng
-
-
-	
-}	
-
-
-
 
 
 
 ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
      
-	alert('ddXMLHttpDictionnaire le_url: '+le_url);
+//	alert('ddXMLHttpDictionnaire le_url: '+le_url);
  	try {
      
  		 var resourcePath = le_url;
@@ -77,7 +23,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
              if (request.readyState == 4) {
                  if (request.status == 200 || request.status == 0) {
  					str_output = request.responseText;
-					get_Dictionnaire_callback(str_output);              
+					file2obj(str_output);              
                  }
              }
          }
@@ -92,25 +38,24 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 
 
 
-
-
-
- function get_Dictionnaire_callback(le_str_output) 
+ function file2obj(le_str_output) 
  { 
-	 alert(le_str_output);
-	 alert('le_str_output.length ' + le_str_output.length);
+//	 alert(le_str_output);
+//	 alert('le_str_output.length ' + le_str_output.length);
 	 
 	 localString = JSON.parse(le_str_output);
 	
-	 alert('localString.result.length ' + localString.result.length);
-	 alert('id ' + localString['id']);
-	 alert('jsonrpc ' + localString['jsonrpc']);
-	 alert('total ' + localString['total']);
-	 alert('result ' + localString['result']);	
+//	 alert('localString.result.length ' + localString.result.length);
+//	 alert('id ' + localString['id']);
+//	 alert('jsonrpc ' + localString['jsonrpc']);
+//	 alert('total ' + localString['total']);
+//	 alert('result ' + localString['result']);	
 	
 	
 	 for(var i=0;i<localString.result.length;i++){
 		 var obj = localString.result[i];
+		
+		obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,localString.result[i].IDPhoto)
 		 
 	 }
 		
@@ -123,3 +68,44 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
   		*/
 	
  }
+ 
+ 
+ 
+ 
+ 
+
+ function obj2cell(le_id, l_espece,  la_descrip, le_IDPhoto) {
+	
+		
+ 	var newDiv1 = document.createElement("div");
+ 	newDiv1.setAttribute("class", "la_liste1");
+ 	newDiv1.setAttribute("align", "left");
+	
+ 	newDiv1.id="id_div_liste_fichiers1";	
+	
+ 	//newDiv1.addEventListener('click', test55, false)
+ 	//newDiv1.addEventListener('click',function(){affichePageXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
+	
+ 	var newH2 = document.createElement("h2");
+ 	var newH2Content = document.createTextNode(l_espece);
+ 	newH2.appendChild(newH2Content);
+	
+ 	var newP = document.createElement("p");
+ 	var newPContent = document.createTextNode(la_descrip);
+ 	newP.appendChild(newPContent);	
+
+ 	newDiv1.appendChild(newH2);	
+ 	newDiv1.appendChild(newP);	
+	
+	
+				
+ 	my_mainDiv = document.getElementById("main");  
+ 	my_mainDiv.appendChild(newDiv1);
+	
+	
+		
+ }
+
+ 
+ 
+
