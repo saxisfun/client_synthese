@@ -685,34 +685,68 @@ animation:myfirst2 0.5s 1;
  100% {background: red; left:0px; top:0px;}
  }
  
+  
  
+/* Pour le dictionnaire */
  
+.bird_espece:hover{
+	color:#FF6666;
+}
+.bird_espece{
+	margin-top:1.8cm;
+	margin-left:2.8cm;
+	align:left;
+	font-family:Verdana,Geneva,sans-serif;
+	font-weight:900x;
+	font-size:25px;
+} 
+/* 	font-family:Arial,Helvetica,sans-serif;*/
+.bird_descript{
+	margin-top:1cm;
+	text-indent:50px;
+	color:#478FB2;
+}
  
- 
- #img1{
+.bird_img{
  	position:absolute;
  	width:80px;
  	height:80px;
  	background-color:#FFF;
  	padding:10px;
 	
- 	font-size:24px;
+ 	font-size:12px;
+	
+ 	alt:Photo;
+ 	align:left;
+ 	width:100;
+ 	height:100;
+	
 	
  	-moz-box-shadow:8px 8px 10px #999;
  	-webkit-box-shadow:8px 8px 10px #999;
  	-o-box-shadow:8px 8px 10px #999;
  	box-shadow:8px 8px 10px #999;
  	}
+
+
 	
- #img1{
+.bird_img{
  	-moz-transform:rotate(18deg);
  	-webkit-transform:rotate(18deg);
  	-o-transform:rotate(18deg);
  	transform:rotate(18deg);
  	
- 	left:25px;
+ 	left:30px;
 	
  	}
 
 
 
+.speaker_img{
+	alt:Son;
+	float:right;
+	marging-top:30px;
+	marging-right:30px;
+ 	width:20px;
+ 	height:20px;
+	}
