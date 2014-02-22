@@ -55,7 +55,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	 for(var i=0;i<localString.result.length;i++){
 		 var obj = localString.result[i];
 		
-		obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,localString.result[i].IDPhoto)
+		obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,localString.result[i].IDPhoto,localString.result[i].IDSon)
 		 
 	 }
 		
@@ -74,7 +74,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  
  
 
- function obj2cell(le_id, l_espece,  la_descrip, le_IDPhoto) {
+ function obj2cell(le_id, l_espece,  la_descrip, le_IDPhoto , le_IDSon) {
 			
  	var newDiv1 = document.createElement("div");
  	newDiv1.setAttribute("class", "la_liste1");
@@ -82,7 +82,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  	newDiv1.id="id_div_liste_fichiers1";	
 
 	var audio = document.createElement('audio');
-	audio.src = 'sons/son001.mp3';
+	audio.src = "sons/"+le_IDSon+".mp3";
 	audio.controls = true;
 	audio.autoplay = false;
 	audio.setAttribute("class", "bird_audio");
