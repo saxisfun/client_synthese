@@ -696,11 +696,11 @@ animation:myfirst2 0.5s 1;
 	margin-top:1.8cm;
 	margin-left:2.8cm;
 	align:left;
-	font-family:Verdana,Geneva,sans-serif;
+	font-family:"Arial,Helvetica,sans-serif";
 	font-weight:900x;
 	font-size:25px;
 } 
-/* 	font-family:Arial,Helvetica,sans-serif;*/
+/* 	"Verdana,Geneva,sans-serif"  "Arial,Helvetica,sans-serif"  */
 .bird_descript{
 	margin-top:1cm;
 	text-indent:50px;
@@ -741,7 +741,6 @@ animation:myfirst2 0.5s 1;
  	}
 
 
-
 .speaker_img{
 	alt:Son;
 	float:right;
@@ -749,4 +748,12 @@ animation:myfirst2 0.5s 1;
 	marging-right:30px;
  	width:20px;
  	height:20px;
+	}
+
+.bird_audio{
+	float:right;
+	marging-top:30px;
+	marging-right:30px;
+	
+	
 	}
