@@ -14,7 +14,11 @@ function ClasseObservation() {
 	this.strObservResume = "";
 	this.strObservDiskName = "";
 	this.strObservDataURLPicture = "";	
-	this.strObservArrayLesObjetsPhotos = [];	
+	this.arrObservArrayLesObjetsPhotos = [];	
+	
+	this.strObservLaPositionGPS_lat = ""; 
+	this.strObservLaPositionGPS_long = ""; 
+	
 	this.strObservFlagInsertUpdate = ""; 
 	
 	
@@ -30,6 +34,6 @@ ClasseObservation.prototype.ajouterUneAutrePhotoALobservation = function(str_la_
 	photoObject1.strPhotoDiskName = str_la_Photo_DiskName;
 	photoObject1.dataURLPhoto = dataURL_la_Photo;	
 	
-	this.strObservArrayLesObjetsPhotos.push(photoObject1);	
+	this.arrObservArrayLesObjetsPhotos.push(photoObject1);	
 	
 }

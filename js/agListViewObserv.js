@@ -276,10 +276,10 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(le_ObservN
 }
 
 
-ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function(strObservNoAutoGenereParlaDB, strObservNoDeLusager, strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL, strObservFlagInsertUpdate) {
+ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function(objUnObservation1) {
 
 
-	
+	/*
 	var observObject1 = new ClasseObservation();
 	
 	
@@ -292,7 +292,7 @@ ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservAr
 	observObject1.strObservDiskName = strObservDiskName;
 	observObject1.strObservDataURLPicture = the_pic_dataURL;
 	observObject1.strObservFlagInsertUpdate = strObservFlagInsertUpdate;
-
+*/
 	//observObject1.ajouterUneAutrePhotoALobservation("Photo 1",strObservDiskName,the_pic_dataURL);
 	//observObject1.ajouterUneAutrePhotoALobservation("Photo 2",strObservDiskName,the_pic_dataURL);
 	
@@ -300,13 +300,13 @@ ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservAr
 	
 	
 	
-	this.myListViewObservArray.push(observObject1);	
-	
+	//this.myListViewObservArray.push(observObject1);	
+	this.myListViewObservArray.push(objUnObservation1);	
 	
 	
 	//this["myArrayObject"].push(observObject1);
 	
-//alert("ajouterUnObservationDans_myListViewObservArray End");	
+	
 	
 	
 }
