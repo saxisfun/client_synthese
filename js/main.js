@@ -217,8 +217,9 @@ function onClickBoutonSaveObservation()
 	var le_titre = document.getElementById('id_ObservTitre_data').value;
 	var le_resume = document.getElementById('id_ObservResume_data').value;
 	
-	
-	
+
+	var le_NoAutoGenereParlaDB = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
+	var le_NoDeLusager = document.getElementById('id_ObservNoDeLusager_data').value;	
 	
 	
 	
@@ -257,7 +258,10 @@ function onClickBoutonSaveObservation()
 			//On sauvegarde le reste des données quand même si pas de photo  
 			
 			//alert("444444:"+varGlobalNomImage);
-			objListViewObservations.ajouterUnObservationDans_myListViewObservArray(le_titre, le_resume, varGlobalNomImage, test6432);
+	
+			
+			
+			objListViewObservations.ajouterUnObservationDans_myListViewObservArray(le_NoAutoGenereParlaDB,le_NoDeLusager, le_titre, le_resume, varGlobalNomImage, test6432);
 			objListViewObservations.saveObservToLocalStorage();  
 		 }	
 			
@@ -268,11 +272,26 @@ function onClickBoutonSaveObservation()
 		
 		//Si index existe ca veut dire qu'on modifie
 
+		
+		
+		
+		
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservNoAutoGenereParlaDB=le_NoAutoGenereParlaDB;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservNoDeLusager=le_NoDeLusager;
+		
+		
+		
+		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservTitre=le_titre;
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservResume=le_resume;
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservDiskName=varGlobalNomImage;
-		objListViewObservations.myListViewObservArray[id_cell_index].dataURLPicture=JSON.stringify(laCamera1.agImgToCanvasToDataURL());		
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservDataURLPicture=JSON.stringify(laCamera1.agImgToCanvasToDataURL());	
+
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservFlagInsertUpdate="";
+
+
+		
 		objListViewObservations.saveObservToLocalStorage();
 	}
 	
@@ -322,19 +341,30 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 			var observObject2 = new ClasseObservation();
 	
 	
+	
+			observObject2.strObservNoAutoGenereParlaDB = objListViewObservations.myListViewObservArray[le_index_oui].strObservNoAutoGenereParlaDB;
+
+			observObject2.strObservNoDeLusager = objListViewObservations.myListViewObservArray[le_index_oui].strObservNoDeLusager;
+
+
+
 			observObject2.strObservTitre = objListViewObservations.myListViewObservArray[le_index_oui].strObservTitre;
-			
+
 			observObject2.strObservResume = objListViewObservations.myListViewObservArray[le_index_oui].strObservResume;
-			
+
 			observObject2.strObservDiskName = objListViewObservations.myListViewObservArray[le_index_oui].strObservDiskName;
+
+			observObject2.strObservDataURLPicture = objListViewObservations.myListViewObservArray[le_index_oui].strObservDataURLPicture;
+
+			observObject2.strObservArrayLesObjetsPhotos = objListViewObservations.myListViewObservArray[le_index_oui].strObservArrayLesObjetsPhotos;
 			
-			observObject2.dataURLPicture = objListViewObservations.myListViewObservArray[le_index_oui].dataURLPicture;
+			observObject2.strObservFlagInsertUpdate = objListViewObservations.myListViewObservArray[le_index_oui].strObservFlagInsertUpdate;
 			
-			observObject2.arrLesObjetsPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrLesObjetsPhotos;
+			
 			
 		
 			
-			//var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrLesObjetsPhotos[indexPhoto].dataURLPhoto;
+			//var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].strObservArrayLesObjetsPhotos[indexPhoto].dataURLPhoto;
 			//this.myListViewObservArray.push(observObject1);		
 							
 				
@@ -463,7 +493,7 @@ function onClickBoutonAjouterObservation()
 	
 	var valNum1 = objListViewObservations.getObservArrayLength();
 	
-	afficheEcranObservations("", "", "", valNum1);
+	afficheEcranObservations("", "","", "", "","", valNum1);
 
 	
 }
@@ -564,16 +594,22 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 		var titVar = le_output_json_parsed;
 		
 		//alert(titVar.result[i].filename);
-		//objListViewObservations.addListViewObservCell(theObject.strObservTitre, theObject.strObservResume, theObject.strObservDiskName, theObject.dataURLPicture, i);
-		
-		
-		//ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function(strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
+	
+		//ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function("",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
 		
 		
 		
-		objListViewObservations.ajouterUnObservationDans_myListViewObservArray(titVar.result[i].filename, titVar.result[i].description, titVar.result[i].url, "");
+		objListViewObservations.ajouterUnObservationDans_myListViewObservArray("","", titVar.result[i].filename, titVar.result[i].description, titVar.result[i].url, "", "");
 		
-		/*
+	
+
+
+
+
+
+
+
+	/*
 		alert(localString.result[i].id);
 		alert(localString.result[i].filename);
 		alert(localString.result[i].url);
@@ -631,7 +667,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	
 	//jjjjjjjjjjjjjjjjjj
 	
-	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrLesObjetsPhotos[indexPhoto].dataURLPhoto;
+	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].strObservArrayLesObjetsPhotos[indexPhoto].dataURLPhoto;
 	
 	
 	if(dataPhoto2!=null && dataPhoto2!=""){
@@ -649,10 +685,11 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 
 
 
-function afficheEcranObservations(id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic, la_index) 
+function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic,id_FlagInsertUpdate, la_index) 
 { 
 	
 	removeAllPhotosFromUL();
+	  
 	
 	
 	//document.getElementById('idTRInputDeLaPhoto').style.display='block';
@@ -663,20 +700,48 @@ function afficheEcranObservations(id_ObservTitre, id_ObservDescrip, id_ObservDis
 	//alert("la_index:"+la_index);
 	//alert(id_ObservDescrip+"/"+id_ObservDiskName);
 	
+		
+
+	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = id_NoAutoGenereParlaDB;
+	document.getElementById('id_ObservNoDeLusager_data').value = id_ObservNoDeLusager;
+			
+
 	
 	document.getElementById("id_ObservTitre_data").value = id_ObservTitre;
 	document.getElementById("id_ObservResume_data").value = id_ObservDescrip;
 	document.getElementById("id_ObservDiskName_data").value = id_ObservDiskName;
 	document.getElementById("id_cell_index").innerHTML = la_index;	
-	//document.getElementById("show-picture").value = id_ObservDiskName;
-	 objNode1 = document.getElementById("show-picture");
+
+	// objNode1 = document.getElementById("show-picture");
 	//alert("afficheEcranObservations Start "+la_index);
 	
 	
-	var dataPhoto1=objListViewObservations.myListViewObservArray[la_index].dataURLPicture;
+	var dataPhoto1=objListViewObservations.myListViewObservArray[la_index].strObservDataURLPicture;
+	
+	
+	//alert("22222222222222222");
+	
+	showPicture1 = document.querySelector("#show-picture");
+	showPicture1.src = "";
+		
+	
+	
 	
 	if(dataPhoto1!=null && dataPhoto1!=""){
+		
+		//context.clearRect(0, 0, canvas.width, canvas.height);
+		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+		
+		
+		
+		
+		
 		document.getElementById('show-picture').setAttribute('src', JSON.parse(dataPhoto1));
+		
+		 //alert("33333333333333333");
+		
+		
 	}
 	
 	
@@ -707,12 +772,12 @@ function remplirEtAfficheLeULDesPhotos(la_index)
 	//alert(objLeULDesPhotos.length+"/"+this.myListViewObservArray.length);
 	
 	//
-	array_les_photos = objListViewObservations.myListViewObservArray[la_index].arrLesObjetsPhotos;
+	array_les_photos = objListViewObservations.myListViewObservArray[la_index].strObservArrayLesObjetsPhotos;
 	
 	
 	
 	for (var i=0; i < array_les_photos.length; i++){
-		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].arrLesObjetsPhotos[i].dataURLPhoto;
+		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].strObservArrayLesObjetsPhotos[i].dataURLPhoto;
 		//alert("remplirEtAfficheLeULDesPhotos:"+la_index);
 		insererUnePhotoDansLeUL(la_index,i); 	
 	}	
