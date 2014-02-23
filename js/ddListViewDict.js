@@ -96,6 +96,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  	var newImg1 = document.createElement("img");
 	newImg1.src="birds/"+le_IDPhoto+".jpg";
 	newImg1.setAttribute("class", "bird_img");
+	newImg1.addEventListener('click',autresphotos,false);
     newDiv1.appendChild(newImg1);
 	
 	var newP2 = document.createElement("p");
@@ -112,9 +113,13 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 							
  	my_mainDiv = document.getElementById("main");  
  	my_mainDiv.appendChild(newDiv1);
+		
 	
  }
 
  
+ function autresphotos(){
+ 	alert("D'autres photos suivront...");
+ }
  
 

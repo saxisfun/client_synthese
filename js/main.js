@@ -82,6 +82,23 @@ function hide_chrono()
 
 
 
+
+// écran géolocalisation
+
+function show_geolocalisation()
+{
+	x = document.getElementById('ecran_geolocalisation');
+	show_element(x);
+}
+
+function hide_geolocalisation()
+{
+	x = document.getElementById('ecran_geolocalisation');
+	hide_element(x);
+}
+
+
+
 // bouton BACK BUTTON
 
 function show_back_button()
@@ -152,7 +169,8 @@ function hide_all()
 	//hide_liste_des_fichiers();
 	
 	hide_dicti()	
-	hide_chrono()	
+	hide_chrono()
+	hide_geolocalisation()	
 	hideLogin();
 	
 	
