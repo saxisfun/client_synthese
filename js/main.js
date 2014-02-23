@@ -736,6 +736,10 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic,id_FlagInsertUpdate, la_index) 
 { 
 	
+	
+	
+		//alert(id_ObservTitre);
+	
 	removeAllPhotosFromUL();
 	  
 	

@@ -212,7 +212,20 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 
 
 
-ClasseListViewObservations.prototype.addListViewObservCell = function(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate ,le_index) {
+ClasseListViewObservations.prototype.addListViewObservCell = function(objLObservation1 ,le_index) {
+	
+	
+	
+	var le_ObservNoAutoGenereParlaDB= objLObservation1.strObservNoAutoGenereParlaDB; 
+	var le_ObservNoDeLusager = objLObservation1.strObservNoDeLusager; 
+	var le_ObservTitre = objLObservation1.strObservTitre; 
+	var le_ObservDescrip = objLObservation1.strObservResume; 
+	var le_ObservDiskName = objLObservation1.strObservDiskName; 
+	var le_datURLPicture = objLObservation1.strObservDataURLPicture; 
+	var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
+	
+		
+	//alert(le_ObservTitre);
 	
 	var newDiv1 = document.createElement("div");
 	newDiv1.setAttribute("class", "list_View_Observ");
@@ -249,6 +262,10 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(le_ObservN
 
 	var newDivTouch = document.createElement("div");
 	newDivTouch.setAttribute("class", "divTouch");
+	
+	
+	
+	
 	newDivTouch.addEventListener('click',function(){afficheEcranObservations(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate, le_index)},false);
 
 	//var newP2 = document.createElement("p");
@@ -277,38 +294,8 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(le_ObservN
 
 
 ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function(objUnObservation1) {
-
-
-	/*
-	var observObject1 = new ClasseObservation();
-	
-	
-	
-	
-	observObject1.strObservNoAutoGenereParlaDB = strObservNoAutoGenereParlaDB;
-	observObject1.strObservNoDeLusager = strObservNoDeLusager;
-	observObject1.strObservTitre = strObservTitre;
-	observObject1.strObservResume = strObservResume;
-	observObject1.strObservDiskName = strObservDiskName;
-	observObject1.strObservDataURLPicture = the_pic_dataURL;
-	observObject1.strObservFlagInsertUpdate = strObservFlagInsertUpdate;
-*/
-	//observObject1.ajouterUneAutrePhotoALobservation("Photo 1",strObservDiskName,the_pic_dataURL);
-	//observObject1.ajouterUneAutrePhotoALobservation("Photo 2",strObservDiskName,the_pic_dataURL);
-	
-	
-	
-	
-	
-	//this.myListViewObservArray.push(observObject1);	
 	this.myListViewObservArray.push(objUnObservation1);	
-	
-	
-	//this["myArrayObject"].push(observObject1);
-	
-	
-	
-	
+
 }
 
 /*
@@ -409,15 +396,19 @@ ClasseListViewObservations.prototype.fillObservsListView = function() {
 	//alert(this.myListViewObservArray.length);
 	
 	for (var i=0; i < this.myListViewObservArray.length; i++){
-		var theObject = this.myListViewObservArray[i];
+		//var theObject = this.myListViewObservArray[i];
 		
 		
 		//ici ici ici
 		
 		//this.addFichiersListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
 
+	
 		
-		this.addListViewObservCell(theObject.strObservNoAutoGenereParlaDB, theObject.strObservNoDeLusager, theObject.strObservTitre, theObject.strObservResume, theObject.strObservDiskName, theObject.strObservDataURLPicture, theObject.strObservFlagInsertUpdate, i);
+		
+		
+		
+		this.addListViewObservCell(this.myListViewObservArray[i],  i);
 		
 		//le_id, le_non_fich, le_url, la_descrip, la_date_eng
 	}
