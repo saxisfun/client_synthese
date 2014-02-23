@@ -240,6 +240,17 @@ function onClickBoutonSaveObservation()
 	var le_NoDeLusager = document.getElementById('id_ObservNoDeLusager_data').value;	
 	
 	
+	var le_PositionGPS_lat = document.getElementById('id_ObservLaPositionGPS_lat_data').value;
+	var le_PositionGPS_long = document.getElementById('id_ObservLaPositionGPS_long_data').value;
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	var le_nom_de_limage = "";
@@ -286,8 +297,8 @@ function onClickBoutonSaveObservation()
 			observObject3.strObservResume = le_resume;
 			observObject3.strObservDiskName = varGlobalNomImage;
 			observObject3.strObservDataURLPicture = test6432;
-			observObject3.strObservLaPositionGPS_lat = "";
-			observObject3.strObservLaPositionGPS_long = "";
+			observObject3.strObservLaPositionGPS_lat = le_PositionGPS_lat;
+			observObject3.strObservLaPositionGPS_long = le_PositionGPS_long;
 			observObject3.strObservFlagInsertUpdate = "";
 			
 			objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject3);
@@ -319,10 +330,10 @@ function onClickBoutonSaveObservation()
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservDataURLPicture=JSON.stringify(laCamera1.agImgToCanvasToDataURL());	
 
 		
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_lat="";
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_long="";
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_lat=le_PositionGPS_lat;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_long=le_PositionGPS_long;
 			
-			
+	
 
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservFlagInsertUpdate="";
 
@@ -534,7 +545,7 @@ function onClickBoutonAjouterObservation()
 	
 	var valNum1 = objListViewObservations.getObservArrayLength();
 	
-	afficheEcranObservations("", "","", "", "","", valNum1);
+	afficheEcranObservations("", "","", "", "","","","", valNum1);
 
 	
 }
@@ -738,7 +749,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 
 
 
-function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic,id_FlagInsertUpdate, la_index) 
+function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic,id_FlagInsertUpdate, id_PositionGPS_lat, id_PositionGPS_long, la_index) 
 { 
 	
 	
@@ -763,6 +774,14 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	document.getElementById('id_ObservNoDeLusager_data').value = id_ObservNoDeLusager;
 			
 
+		
+	document.getElementById('id_ObservLaPositionGPS_lat_data').value=id_PositionGPS_lat;
+	document.getElementById('id_ObservLaPositionGPS_long_data').value=id_PositionGPS_long;
+	
+
+	
+	
+	
 	
 	document.getElementById("id_ObservTitre_data").value = id_ObservTitre;
 	document.getElementById("id_ObservResume_data").value = id_ObservDescrip;
@@ -770,7 +789,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	document.getElementById("id_cell_index").innerHTML = la_index;	
 
 	// objNode1 = document.getElementById("show-picture");
-	//alert("afficheEcranObservations Start "+la_index);
+	
 	
 	
 	var dataPhoto1=objListViewObservations.myListViewObservArray[la_index].strObservDataURLPicture;

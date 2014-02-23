@@ -242,7 +242,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	var newH2 = document.createElement("h4");
 	//var newH2Content = document.createTextNode("Description: "+le_ObservDescrip);
 	var newH2Content = document.createTextNode("Titre: "+le_ObservTitre);
-	//newH2.addEventListener('click',function(){afficheEcranObservations(le_ObservDescrip, le_ObservDiskName, le_datURLPicture)},false);
+	
 	
 	newH2.appendChild(newH2Content);
 	
@@ -272,7 +272,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	
-	newDivTouch.addEventListener('click',function(){afficheEcranObservations(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate, le_index)},false);
+	newDivTouch.addEventListener('click',function(){afficheEcranObservations(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate, le_PositionGPS_lat, le_PositionGPS_long, le_index)},false);
 
 	//var newP2 = document.createElement("p");
 	//var newPContent2 = document.createTextNode("Coordonée GPS: "+la_coord);
