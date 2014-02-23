@@ -224,6 +224,12 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	var le_datURLPicture = objLObservation1.strObservDataURLPicture; 
 	var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
 	
+	
+	var le_PositionGPS_lat = objLObservation1.strObservLaPositionGPS_lat; 
+	var le_PositionGPS_long = objLObservation1.strObservLaPositionGPS_long; 
+	
+	
+	
 		
 	//alert(le_ObservTitre);
 	

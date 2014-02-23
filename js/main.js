@@ -286,12 +286,12 @@ function onClickBoutonSaveObservation()
 			observObject3.strObservResume = le_resume;
 			observObject3.strObservDiskName = varGlobalNomImage;
 			observObject3.strObservDataURLPicture = test6432;
+			observObject3.strObservLaPositionGPS_lat = "";
+			observObject3.strObservLaPositionGPS_long = "";
 			observObject3.strObservFlagInsertUpdate = "";
 			
-			
-			
-			
 			objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject3);
+			
 			objListViewObservations.saveObservToLocalStorage();  
 		 }	
 			
@@ -317,6 +317,12 @@ function onClickBoutonSaveObservation()
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservDiskName=varGlobalNomImage;
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservDataURLPicture=JSON.stringify(laCamera1.agImgToCanvasToDataURL());	
+
+		
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_lat="";
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_long="";
+			
+			
 
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservFlagInsertUpdate="";
 
@@ -387,6 +393,11 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 			observObject2.strObservDataURLPicture = objListViewObservations.myListViewObservArray[le_index_oui].strObservDataURLPicture;
 
 			observObject2.arrObservArrayLesObjetsPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservArrayLesObjetsPhotos;
+			
+
+			observObject2.strObservLaPositionGPS_lat = objListViewObservations.myListViewObservArray[le_index_oui].strObservLaPositionGPS_lat;
+			observObject2.strObservLaPositionGPS_long = objListViewObservations.myListViewObservArray[le_index_oui].strObservLaPositionGPS_long;
+			
 			
 			observObject2.strObservFlagInsertUpdate = objListViewObservations.myListViewObservArray[le_index_oui].strObservFlagInsertUpdate;
 			
@@ -637,16 +648,10 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 		observObject2.strObservResume = titVar.result[i].description;
 		observObject2.strObservDiskName = titVar.result[i].url;
 		observObject2.strObservDataURLPicture = "";
+		observObject2.strObservLaPositionGPS_lat = "";
+		observObject2.strObservLaPositionGPS_long = "";		
 		observObject2.strObservFlagInsertUpdate = "";
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
 		
 	
