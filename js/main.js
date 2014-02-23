@@ -291,7 +291,7 @@ function onClickBoutonSaveObservation()
 			
 			
 			
-			objListViewObservations.ajouterUnObservationDans_myListViewObservArray(observObject3);
+			objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject3);
 			objListViewObservations.saveObservToLocalStorage();  
 		 }	
 			
@@ -625,7 +625,7 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 		
 		//alert(titVar.result[i].filename);
 	
-		//ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
+		//ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
 		
 		
 		
@@ -647,7 +647,7 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 		
 		
 		
-		objListViewObservations.ajouterUnObservationDans_myListViewObservArray(observObject2);
+		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
 		
 	
 

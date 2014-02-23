@@ -293,7 +293,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 }
 
 
-ClasseListViewObservations.prototype.ajouterUnObservationDans_myListViewObservArray = function(objUnObservation1) {
+ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function(objUnObservation1) {
 	this.myListViewObservArray.push(objUnObservation1);	
 
 }
