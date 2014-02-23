@@ -182,15 +182,20 @@
 			  <a href="#ecran_recherche"  id="id_bouton_recherche"
 			     onclick="hide_all();show_dicti();show_back_button();" 
 			     class="switch_screen">Recherche dans le dictionnaire</a>
-			</li>
-
+			</li>  
+			
 			<li>
 			  <a href="#ecran_timer"  id="id_bouton_timer"
 			     onclick="hide_all();show_chrono();show_back_button();" 
 			     class="switch_screen">Écran de test chronomètre</a>
 			</li>
 
-			
+			<li>
+			  <a href="#ecran_geolocalisation"  id="id_bouton_setting"
+			     onclick="hide_all();show_geolocalisation();show_back_button();"
+			     class="switch_screen">Géolocalisation WiFi</a>
+			</li>
+			<!--  show_geolocalisation show_dicti -->	
 		</ul>
 	</div> 
 	
@@ -472,87 +477,152 @@
 	<!---------------------------------------------------------------->
 	<!--  Écran recherche dans le dictionnaire -->
  
-	 <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
- 
-	
-			<table>
-			<col style="width:40%;">        
-			<col style="width:60%;">		
-	
-			<tr>
-				<td><img style="width:60px;"src="img/dictionary.png"/></td>		
-				<td> <h3> Rechercher dans le dictionnaire </h3></td>
-			</tr>
-	
-	
-			<tr>
-				<td><h4>Specimen:</h4></td>
-				<td><input type="text" id="id_recherher_dict" VALUE="Toukan"></td> 
-			</tr>
-		
-			
-			<tr> 
-				<td> </td>
-				<td> 
-		    		<ul class="buttons">
-						<li>
-			   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
-						</li>	
-		    		</ul>
-		    	</td> 
-			</tr>
-		
-			
-		</table>	
-	
-		
-	    </div> 
  
  
- 
- 
- 
- 
- 
-		<!---------------------------------------------------------------->
-		<!--  Écran de test Chronomètre -->
- 
- 
- 
-		    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
-			<table>
-				<col style="width:40%;">        
-				<col style="width:60%;">		
-	
-				<tr>
-					<td><img style="width:60px;"src="img/timer.png"/></td>		
-					<td> <h3> Chronomètre </h3></td>
-				</tr>
-		
-				<tr>
-		 		  	<div id="container">	
-						<td>		   
-		 		   		<div id="inputArea">
-		 					<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
-		 		      	</div>
-						</td>
-					
-						<td>
-		 	      	    <h1 id="time">0:00</h1>  
-						</td>   
-		 		    </div> 
-				</tr>
 
-				<tr>  
-			    	<ul class="buttons">
-						<li>
-				   		 	<a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
-						</li>	
-			    	</ul>
-				</tr>
+ <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
+
+
+		<table>
+		<col style="width:40%;">        
+		<col style="width:60%;">		
+
+		<tr>
+			<td><img style="width:60px;"src="img/dictionary.png"/></td>		
+			<td> <h3> Rechercher dans le dictionnaire </h3></td>
+		</tr>
+
+
+		<tr>
+			<td><h4>Specimen:</h4></td>
+			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
+		</tr>
+	
+		<!---VALUE="Toukan"-->
+		
+		<tr> 
+			<td> </td>
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
+					</li>	
+	    		</ul>
+	    	</td> 
+		</tr>
+	
+		
+	</table>	
+
+	
+    </div> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+			<!---------------------------------------------------------------->
+			<!--  Écran de test Chronomètre -->
+ 
+ 
+ 
+			    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
+				<table>
+					<col style="width:40%;">        
+					<col style="width:60%;">		
+	
+					<tr>
+						<td><img style="width:60px;"src="img/timer.png"/></td>		
+						<td> <h3> Chronomètre </h3></td>
+					</tr>
+		
+					<tr>
+			 		  	<div id="container">	
+							<td>		   
+			 		   		<div id="inputArea">
+			 					<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
+			 		      	</div>
+							</td>
+					
+							<td>
+			 	      	    <h1 id="time">0:00</h1>  
+							</td>   
+			 		    </div> 
+					</tr>
+
+					<tr>  
+				    	<ul class="buttons">
+							<li>
+					   		 	<a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
+							</li>	
+				    	</ul>
+					</tr>
 				
-			</table>	
-		    </div> 
+				</table>	
+			    </div> 
+ 
+
+
+ 
+
+
+
+
+ 
+				<!---------------------------------------------------------------->
+				<!--  Écran de test géolocalisation -->
+ 
+ 
+
+	
+				    <div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
+<table>
+						<tr> 
+							<td> 
+					    		<ul class="buttons">
+									<li>
+						   	 			<a href="#" id="" onclick="localiser();" 						class="switch_screen">Géolocaliser par wifi</a>
+									</li>	
+					    		</ul>
+					    	</td> 
+						</tr>
+		
+			
+				</table>	
+
+		        <div>
+		  			<!-- <button onclick="localiser();">localise()</button>  -->
+					<div id="contentMap"></div>
+		        </div>
+ 
+
+<p>géolocalisation wifi...</p>
+		
+				    </div> 
+ 
+
+
+
+
+
+
+
+	<!-- 
+
+    		<ul class="buttons">
+				<li>
+	   	 			<a href="#" id="" onclick="localise();" 						class="switch_screen">GPS</a>
+				</li>	
+    		</ul>
+		
+    -->
+ 
  
  
  
@@ -599,6 +669,7 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	
 	<script type="text/javascript" src="js/ddTest.js"></script>
 	<script type="text/javascript" src="js/ddListViewDict.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
 	
 	
 	
@@ -848,9 +919,6 @@ function b64_to_utf8( str ) {
 	
     }
  
- 
- 
-  
  
  
  
