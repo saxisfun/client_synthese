@@ -257,14 +257,23 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	 //var radioHtml = "<input type='checkbox' checked='checked' name='ASXSW' value='I am Checkbox 1' ></input>";
 
-	
+	/*
 	var newRadio = document.createElement("input");
 	newRadio.setAttribute("type", "checkbox");
 	//newRadio.setAttribute('checked', '');
 	newRadio.setAttribute("class", "checkbox1");
+*/
 
-
-
+	var newRadio = document.createElement("input");
+	newRadio.setAttribute("type", "button");
+	//newRadio.setAttribute('checked', '');
+	newRadio.setAttribute("class", "delete_button");
+	newRadio.setAttribute("value", "Effacer");
+	newRadio.setAttribute("id", "bouton_effacer_ligne");
+	newRadio.addEventListener('click',function(){effacer_ligne_div(le_index)},false);
+	
+	
+	
 
 	var newDivTouch = document.createElement("div");
 	newDivTouch.setAttribute("class", "divTouch");
@@ -291,7 +300,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	//newDiv1.appendChild(newP2);	
 	
 				
-	my_mainDiv = document.getElementById("main");  
+	my_mainDiv = document.getElementById("div_main");  
 	my_mainDiv.appendChild(newDiv1);
 	
 
@@ -445,7 +454,7 @@ function deleterow(node)
 
 ClasseListViewObservations.prototype.removeAllObservFromListView = function() {	
 	
-	var element = document.getElementById("main");
+	var element = document.getElementById("div_main");
 
 	//alert("removeAllObservFromListView: "+element.childNodes.length);
 	for (var i=0; i < element.childNodes.length; i++){
@@ -481,6 +490,18 @@ ClasseListViewObservations.prototype.removeSelectedObservsFromListView = functio
 	}
 }
 
+
+ClasseListViewObservations.prototype.deleteObservsFromListViewButton = function(l_indx) {
+	
+	
+	
+	var les_lignes = document.getElementsByClassName('list_View_Observ');	
+	var theObject = les_lignes[l_indx];	
+	this.myListViewObservArray.splice(l_indx,1);
+	theObject.parentNode.removeChild(theObject);
+	
+		
+}
 
 
 

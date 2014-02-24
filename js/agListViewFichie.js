@@ -94,7 +94,7 @@ ClasseListViewFichier.prototype.addFichiersListViewCell = function(le_id, le_non
 	
 	
 				
-	my_mainDiv = document.getElementById("main");  
+	my_mainDiv = document.getElementById("div_main");  
 	my_mainDiv.appendChild(newDiv1);
 	
 	
@@ -157,7 +157,7 @@ ClasseListViewFichier.prototype.fillFichiersListView = function(le_str_output) {
 ClasseListViewFichier.prototype.removeAllFichiersFromListView = function(le_url) {
 
 
-	var element = document.getElementById("main");
+	var element = document.getElementById("div_main");
 	//alert("removeAllFichiersFromListView");
 	//alert("removeAllFichiersFromListView: "+element.childNodes.length);
 	for (var i=0; i < element.childNodes.length; i++){

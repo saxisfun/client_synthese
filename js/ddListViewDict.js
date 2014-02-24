@@ -111,7 +111,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  	newP1.appendChild(newP1Content);	
 	newDiv1.appendChild(newP1);	
 							
- 	my_mainDiv = document.getElementById("main");  
+ 	my_mainDiv = document.getElementById("div_main");  
  	my_mainDiv.appendChild(newDiv1);
 		
 	

@@ -26,7 +26,7 @@ function addFichiersListViewCell(le_id, le_non_fich, le_url, la_descrip, la_date
 	
 	
 				
-	my_mainDiv = document.getElementById("main");  
+	my_mainDiv = document.getElementById("div_main");  
 	my_mainDiv.appendChild(newDiv1);
 	
 	
@@ -146,7 +146,7 @@ alert("22222");
 
 function removeAllFichiersFromListView(le_url) 
 { 	
-	var element = document.getElementById("main");
+	var element = document.getElementById("div_main");
 	//alert("removeAllFichiersFromListView");
 	//alert("removeAllFichiersFromListView: "+element.childNodes.length);
 	for (var i=0; i < element.childNodes.length; i++){

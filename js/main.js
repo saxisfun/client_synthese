@@ -177,7 +177,7 @@ function hide_all()
 
 		
 	hide_ecran_de_l_observation();
-	document.getElementById("tool_button_supprimer").style.visibility="hidden";
+
 	document.getElementById("tool_button_ajouter").style.visibility="hidden";
 	document.getElementById("tool_button_rechercher").style.visibility="hidden";
 	document.getElementById("tool_button_seconnecter").style.visibility="hidden";
@@ -190,19 +190,38 @@ function hide_all()
 }
 
 
-
+		
+function effacer_ligne_div(le_idx)
+{
+	
+	
+	VConfirm=''
+	VConfirm=VConfirm+'Êtes-vous certain de vouloir effacer cette observation?\n\n'
+	if (confirm(VConfirm))
+	{	
+		objListViewObservations.deleteObservsFromListViewButton(le_idx);
+		
+		objListViewObservations.saveObservToLocalStorage();
+		
+	}else
+	{
+	
+	}
+	
+	
+}		
 // écran login
 		
 function showLogin()
 {
-	le_my_login = document.getElementById('my_login');
-	show_element(le_my_login);
+	le_ecran_login = document.getElementById('ecran_login');
+	show_element(le_ecran_login);
 }		
 
 function hideLogin()
 {
-	le_my_login = document.getElementById('my_login');
-	hide_element(le_my_login);
+	le_ecran_login = document.getElementById('ecran_login');
+	hide_element(le_ecran_login);
 }
 
 
@@ -539,7 +558,7 @@ function onClickBoutonAjouterObservation()
 { 
 
 
-	document.getElementById("show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");
+	/*document.getElementById("show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");*/
 
 	hide_all();
 	
@@ -620,7 +639,7 @@ function onClickButtonMenuListViewObserv()
 	
 	objListViewObservations.fillObservsListView();
 
-	document.getElementById("tool_button_supprimer").style.visibility="visible";
+
 	document.getElementById("tool_button_ajouter").style.visibility="visible";
 
 	document.getElementById("tool_button_rechercher").style.visibility="visible";
@@ -701,7 +720,7 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 	
 	objListViewObservations.fillObservsListView();
 
-	document.getElementById("tool_button_supprimer").style.visibility="visible";
+
 	document.getElementById("tool_button_ajouter").style.visibility="visible";
 	document.getElementById("tool_button_rechercher").style.visibility="visible";
 	document.getElementById("tool_button_seconnecter").style.visibility="visible";
@@ -724,24 +743,43 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	var objUL = document.getElementById("id_ul_les_photos");
 		
 	var objLI = document.createElement('li');
-	var objIMG = document.createElement('img');
-	objIMG.setAttribute('width', '180pt');
+	var objDiv = document.createElement('div');
+	objDiv.setAttribute('class', 'div_cellule_autres_photos');
+	
+	var objIMG1 = document.createElement('img');
+	objIMG1.setAttribute('width', '100%');
+	
+	objIMG1.setAttribute("class", "img_autres_photos");
 	
 	
 	
-	//jjjjjjjjjjjjjjjjjj
+	var newRadio1 = document.createElement("input");
+	newRadio1.setAttribute("type", "checkbox");
+	//newRadio1.setAttribute('checked', '');
+	newRadio1.setAttribute("class", "checkbox_autres_photos");
+
+
+		
+
+	
+	
+	
+	
 	
 	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservArrayLesObjetsPhotos[indexPhoto].dataURLPhoto;
 	
 	
 	if(dataPhoto2!=null && dataPhoto2!=""){
 		
-		objIMG.setAttribute('src', JSON.parse(dataPhoto2));
+		objIMG1.setAttribute('src', JSON.parse(dataPhoto2));
 	}
+	//insérer image dans le div
+	objDiv.appendChild(objIMG1);	
+objDiv.appendChild(newRadio1);	
+	//insérer div dans une ligne
+	objLI.appendChild(objDiv);
 	
-
-	//insérer image dans une ligne
-	objLI.appendChild(objIMG);
+	
 	//insérer ligne dans le UL 
 	objUL.appendChild(objLI);
 
