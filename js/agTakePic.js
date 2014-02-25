@@ -75,7 +75,7 @@ MaCamera.prototype.activateAudio = function() {
 
 MaCamera.prototype.activateCamera = function() {
    var takePicture = document.querySelector("#take-picture"),
-        showPicture = document.querySelector("#show-picture");
+        showPicture = document.querySelector("#img-tag-show-picture");
 
     if (takePicture && showPicture) {
         // Set events
@@ -108,6 +108,7 @@ MaCamera.prototype.activateCamera = function() {
                     // Revoke ObjectURL
                     URL.revokeObjectURL(imgURL);
 					
+					
 					//alert("323232323");
 					
 					//showPicture.onload=function(){onClickAjouterUneAutrePhoto();};
@@ -135,14 +136,14 @@ MaCamera.prototype.activateCamera = function() {
 				
 				varGlobalNomImage = document.getElementById('take-picture').files[0].name;
 				document.getElementById('id_ObservDiskName_data').value = varGlobalNomImage;
-				
+				onClickAjouterUneAutrePhoto();
 				
 				
             }
-	//alert("2222222");
+			//alert("2222222");
 				
 		
-		destroyTagInputFilePourLaPhotoPrincipale();
+			destroyTagInputFilePourLaPhotoPrincipale();
 			
 		
         };
@@ -156,7 +157,8 @@ MaCamera.prototype.agImgToCanvasToDataURL = function() {
  
 	
 	//alert("agImgToCanvasToDataURL1");
-	imgTag1 = document.getElementById("show-picture");
+	imgTag1 = document.getElementById("img-tag-show-picture");
+	
 	var imgCanvas = document.createElement("canvas");
 	imgCanvas.id = "canvas1";
 	imgContext = imgCanvas.getContext("2d");

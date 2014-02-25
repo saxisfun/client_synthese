@@ -395,8 +395,8 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 			 //      throw "An error";
 			 // }
 		
-			  var test5434 = laCamera1.agImgToCanvasToDataURL();
-			  test6432 = JSON.stringify(test5434);
+			  var dataUrl_img = laCamera1.agImgToCanvasToDataURL();
+			  var dataUrl_img_strignified = JSON.stringify(dataUrl_img);
 			  return true;
 		 } catch (e) {
 			  alert (e);
@@ -406,43 +406,39 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 			
 			var observObject2 = new ClasseObservation();
 	
-	
-	
+
+/*
 			observObject2.strObservNoAutoGenereParlaDB = objListViewObservations.myListViewObservArray[le_index_oui].strObservNoAutoGenereParlaDB;
-
 			observObject2.strObservNoDeLusager = objListViewObservations.myListViewObservArray[le_index_oui].strObservNoDeLusager;
-
-
-
 			observObject2.strObservTitre = objListViewObservations.myListViewObservArray[le_index_oui].strObservTitre;
-
 			observObject2.strObservResume = objListViewObservations.myListViewObservArray[le_index_oui].strObservResume;
-
+		
+	
 			observObject2.strObservDiskName = objListViewObservations.myListViewObservArray[le_index_oui].strObservDiskName;
 
 			observObject2.strObservDataURLPicture = objListViewObservations.myListViewObservArray[le_index_oui].strObservDataURLPicture;
-
-			observObject2.arrObservArrayLesObjetsPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservArrayLesObjetsPhotos;
-			
-
+	*/			
+			observObject2.arrObservArrayLesObjetsAutresPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservArrayLesObjetsAutresPhotos;
+/*
 			observObject2.strObservLaPositionGPS_lat = objListViewObservations.myListViewObservArray[le_index_oui].strObservLaPositionGPS_lat;
-			observObject2.strObservLaPositionGPS_long = objListViewObservations.myListViewObservArray[le_index_oui].strObservLaPositionGPS_long;
-			
-			
+			observObject2.strObservLaPositionGPS_long = objListViewObservations.myListViewObservArray[le_index_oui].strObservLaPositionGPS_long;						
 			observObject2.strObservFlagInsertUpdate = objListViewObservations.myListViewObservArray[le_index_oui].strObservFlagInsertUpdate;
-			
-			
-			
+	*/
 		
 			
-			//var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservArrayLesObjetsPhotos[indexPhoto].dataURLPhoto;
+			//var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservArrayLesObjetsAutresPhotos[indexPhoto].dataURLPhoto;
 			//this.myListViewObservArray.push(observObject1);		
 							
 				
 			//alert("strObservDiskName:"+observObject2.strObservDiskName);
 			//objListViewObservations.ajouterUnObservationALobjetListViewObservations(le_titre, le_resume, varGlobalNomImage, test6432);
-			
-			observObject2.ajouterUneAutrePhotoALobservation("Photo 1",varGlobalNomImage,test6432);
+	
+		
+		
+		
+		
+		
+			observObject2.ajouterUneAutrePhotoALobservation("Photo 1",varGlobalNomImage,dataUrl_img_strignified);
 			
 			
 	
@@ -558,7 +554,7 @@ function onClickBoutonAjouterObservation()
 { 
 
 
-	/*document.getElementById("show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");*/
+	/*document.getElementById("img-tag-show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");*/
 
 	hide_all();
 	
@@ -766,7 +762,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	
 	
 	
-	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservArrayLesObjetsPhotos[indexPhoto].dataURLPhoto;
+	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservArrayLesObjetsAutresPhotos[indexPhoto].dataURLPhoto;
 	
 	
 	if(dataPhoto2!=null && dataPhoto2!=""){
@@ -826,7 +822,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	document.getElementById("id_ObservDiskName_data").value = id_ObservDiskName;
 	document.getElementById("id_cell_index").innerHTML = la_index;	
 
-	// objNode1 = document.getElementById("show-picture");
+	// objNode1 = document.getElementById("img-tag-show-picture");
 	
 	
 	
@@ -835,7 +831,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	
 	//alert("22222222222222222");
 	
-	showPicture1 = document.querySelector("#show-picture");
+	showPicture1 = document.querySelector("#img-tag-show-picture");
 	showPicture1.src = "";
 		
 	
@@ -851,7 +847,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 		
 		
 		
-		document.getElementById('show-picture').setAttribute('src', JSON.parse(dataPhoto1));
+		document.getElementById('img-tag-show-picture').setAttribute('src', JSON.parse(dataPhoto1));
 		
 		 //alert("33333333333333333");
 		
@@ -868,7 +864,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	
 	/*
 	if(varGlobal1!=null && varGlobal1!=""){
-		timer8  = window.setInterval( "window.clearInterval(timer8),document.getElementById('show-picture').setAttribute('src', JSON.parse(varGlobal1))", 500 );
+		timer8  = window.setInterval( "window.clearInterval(timer8),document.getElementById('img-tag-show-picture').setAttribute('src', JSON.parse(varGlobal1))", 500 );
 	}
 	*/
 	
@@ -886,12 +882,12 @@ function remplirEtAfficheLeULDesPhotos(la_index)
 	//alert(objLeULDesPhotos.length+"/"+this.myListViewObservArray.length);
 	
 	//
-	array_les_photos = objListViewObservations.myListViewObservArray[la_index].arrObservArrayLesObjetsPhotos;
+	array_les_photos = objListViewObservations.myListViewObservArray[la_index].arrObservArrayLesObjetsAutresPhotos;
 	
 	
 	
 	for (var i=0; i < array_les_photos.length; i++){
-		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].arrObservArrayLesObjetsPhotos[i].dataURLPhoto;
+		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].arrObservArrayLesObjetsAutresPhotos[i].dataURLPhoto;
 		//alert("remplirEtAfficheLeULDesPhotos:"+la_index);
 		insererUnePhotoDansLeUL(la_index,i); 	
 	}	
