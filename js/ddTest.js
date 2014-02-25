@@ -147,7 +147,7 @@ function startRecherche() {
 
 	
 	function localiser(){
-			alert('localise');
+			alert('localise...');
 			if(navigator.geolocation){
 				navigator.geolocation.getCurrentPosition(AffichePosition, gestionErreurs, {timeout:40000});
 			}
@@ -158,7 +158,20 @@ function startRecherche() {
 		
 			var latitude=position.coords.latitude;
 			var longitude=position.coords.longitude;
-			alert('latitude: ' + latitude + '\nlongitude: ' + longitude);		
+			
+		
+			var coordonnees = 'Latitude: ' + position.coords.latitude  +
+							  '\nLongitude: ' + position.coords.longitude +
+							  '\nAltitude: ' + position.coords.altitude  +
+							  '\nAccuracy: ' + position.coords.accuracy +
+							  '\nAltitude Accuracy: ' + position.coords.altitudeAccuracy +
+							  '\nHeading: '  + position.coords.heading +
+							  '\nSpeed: ' + position.coords.speed +
+							  '\nTimestamp: '+ new Date(position.timestamp);
+							  
+			alert(coordonnees); 
+			
+				
 			//document.getElementById("geolocation").innerHTML='Latitude : '+latitude+ '<br>' + 'Longitude : '+longitude;
 		
 	   		var options = { zoom: 13, center: new google.maps.LatLng(latitude, longitude), mapTypeId: google.maps.MapTypeId.ROADMAP };

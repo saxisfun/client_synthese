@@ -2,13 +2,3 @@
 
 http://membre.oricom.ca/agiguere/lapp_001/index.html
 
-Samedi le 22,
-
-J'ai avancé dans le dictionnaire.
-Ajouté photos, présentation CSS, et son. 
-Je passe par un fichier Json qui me donne les références sur les photos (jpeg) et son (mp3).
-Y faudra voir comment le request se fera sur le service ???
-
-On continue :-)
-
-
