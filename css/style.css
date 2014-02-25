@@ -43,8 +43,8 @@ html, body {
 
 .div_cellule_autres_photos {
 /*position:absolute; */
-border-style:solid;
-border-color:red;
+/*border-style:solid;*/
+/*border-color:red;*/
 /*width:150pt;*/
 }
 
@@ -52,8 +52,8 @@ border-color:red;
 input.checkbox_autres_photos  {
 
 /*float:right;*/
- border: 2px solid blue;
-background-color: green;
+ /*border: 2px solid blue;*/
+/*background-color: green;*/
 position:absolute;
 right:25px;
 top:10px;
@@ -77,7 +77,7 @@ position:inherit;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   padding: 1em;
-  min-width:260px;
+  min-width:200px;
 }
 
 #id_div_liste_fichiers1 h2, #liste_observation1 h2, #ecran_observation h2 {
@@ -242,7 +242,7 @@ tr {
 
 td {
 	/*border:1px solid red;*/
-	color:black;
+	/*color:black;*/
 	
 	/*line-height:2px;*/
 }
@@ -250,7 +250,7 @@ td {
 
 td.td_table2 {
 	
-	color:black;
+	/*color:black;*/
 
 }
 
@@ -258,7 +258,7 @@ td.td_table2 {
 td.tdhead {
 	/*border:1px solid red;*/
 	/*background-color:green;*/
-	color:black;
+	/*color:black;*/
 	text-align:left;
 	
 	padding: 0;
@@ -451,6 +451,29 @@ top:10px;
 }
 
 
+input.delete_button_photos  {
+position:relative;
+
+top:-43px;
+float:left;
+left:3px;
+/*-webkit-appearance: none; 
+-moz-appearance: none; 
+-o-appearance: none;*/
+
+  width: 55px;
+  height: 35px;
+
+/*
+-webkit-transform: scale(2,2);
+-moz-transform: scale(2,2);
+-o-transform: scale(2,2);
+*/
+ /*border: 2px solid blue;*/
+/*background-color: green;*/
+
+ 
+}
 
 input.checkbox1  {
 position:absolute;
@@ -468,17 +491,19 @@ top:10px;
 -moz-transform: scale(2,2);
 -o-transform: scale(2,2);
 */
+ 
+ /*
  border: 2px solid blue;
 background-color: green;
-
+*/
  
 }
 
 .img_autres_photos  {
 
 /*float:left;*/
- border: 2px solid blue;
-background-color: yellow;
+ /*border: 2px solid blue;
+background-color: yellow;*/
 
  
 }

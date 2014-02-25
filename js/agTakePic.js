@@ -140,7 +140,7 @@ MaCamera.prototype.activateCamera = function() {
 				
 				varGlobalNomImage = document.getElementById('take-picture').files[0].name;
 				document.getElementById('id_ObservDiskName_data').value = varGlobalNomImage;
-				
+			
 				timer5  = window.setInterval( "window.clearInterval(timer5),onClickAjouterUneAutrePhoto()", 500 );
 				
 				//onClickAjouterUneAutrePhoto();
@@ -165,8 +165,8 @@ MaCamera.prototype.activateCamera = function() {
 MaCamera.prototype.agImgToCanvasToDataURL = function() {
  
 	
-	//alert("agImgToCanvasToDataURL1");
-	imgTag1 = document.getElementById("img-tag-show-picture");
+	 imgTag1 = document.querySelector("#img-tag-show-picture");
+	//imgTag1 = document.getElementById("img-tag-show-picture");
 	
 	var imgCanvas = document.createElement("canvas");
 	imgCanvas.id = "canvas1";
@@ -175,35 +175,24 @@ MaCamera.prototype.agImgToCanvasToDataURL = function() {
 	// Make sure canvas is as big as the picture
 	imgCanvas.width = imgTag1.width;
 	imgCanvas.height = imgTag1.height;
-alert("11111");
-	alert("w:"+imgTag1.width+",h:"+imgTag1.height);
-	//imgCanvas.width = "250px";
-	//imgCanvas.height = 250px;	
+
 	
-	alert("22222222");
+	alert("w:"+imgTag1.width+",h:"+imgTag1.height);
+
 	
 	// Draw image into canvas element
 	/*
 	1024 x 745
 	320  x
-	
-	
+		
 	*/
 	
 	widthTarget=320;
 	heightTarget=(widthTarget * imgTag1.height) / imgTag1.width;	
 	
-	
-	
-	
 	imgCanvas.width = widthTarget;
 	imgCanvas.height = heightTarget;
-	
-	
-	
-	
-	
-	
+
 	
 	alert("w:"+widthTarget+",h:"+heightTarget);
 	
@@ -212,10 +201,8 @@ alert("11111");
 	//heightTarget=(imgTag1.height*260)/imgTag1.width;
 	
 	imgContext.drawImage(imgTag1, 0, 0, parseInt(widthTarget), parseInt(heightTarget));
-	//imgTag1.width			260
-	//imgTag1.height			x
 	
-	alert(imgTag1.width);
+	//alert(imgTag1.width);
 	
 	//mozImageSmoothingEnabled in Firefox and webkitImageSmoothingEnabled in Chrome 
 	
@@ -234,7 +221,7 @@ alert("11111");
 	//return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 	
 	//return "445555555";
-	//alert("agImgToCanvasToDataURL2");
+
 
 }	
 

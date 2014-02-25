@@ -189,6 +189,35 @@ function hide_all()
 
 }
 
+		
+function effacer_ligne_div_photo(le_idx)
+{
+	
+	
+	VConfirm=''
+	VConfirm=VConfirm+'Êtes-vous certain de vouloir effacer cette observation?\n\n'
+	if (confirm(VConfirm))
+	{	
+		objListViewObservations.deleteObservsFromListViewButton(le_idx);
+		
+		objListViewObservations.saveObservToLocalStorage();
+		
+	
+		/*
+			var observObject2 = new ClasseObservation();		
+			observObject2.arrObservArrayLesObjetsAutresPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservArrayLesObjetsAutresPhotos;	
+			observObject2.ajouterUneAutrePhotoALobservation("Photo 1",varGlobalNomImage,dataUrl_img_strignified);
+		*/
+
+		
+		
+	}else
+	{
+	
+	}
+	
+	
+}		
 
 		
 function effacer_ligne_div(le_idx)
@@ -371,7 +400,6 @@ function onClickBoutonSaveObservation()
 function onClickAjouterUneAutrePhoto() 
 { 
 	var id_cell_index = document.getElementById('id_cell_index').innerHTML;
-	
 	prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(id_cell_index);
 	
 	//vider le ul
@@ -385,11 +413,13 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 
 	var test6432 = "";
 	
-	if (objListViewObservations.checkSiIndexExiste(le_index_oui)!="1") {	
-		//si Index n'existe pas ca veut que ca bug
-	}else{
-		//Index existe alors on retrouve l'objet "Observation" et on insert une nouvelle photos (provenant du canvas) dans l'observation
 	
+
+	//if (objListViewObservations.checkSiIndexExiste(le_index_oui)!="1") {	
+		//si Index n'existe pas ca veut que ca bug
+	//}else{
+		//Index existe alors on retrouve l'objet "Observation" et on insert une nouvelle photos (provenant du canvas) dans l'observation
+		
 		try {
 			 //if (true) {
 			 //      throw "An error";
@@ -449,7 +479,7 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 
 		}
 		
-	}	
+	//}	
 		
 	
 	
@@ -559,8 +589,12 @@ function onClickBoutonAjouterObservation()
 	hide_all();
 	
 	var valNum1 = objListViewObservations.getObservArrayLength();
+	var valNum2 = objListViewObservations.myListViewObservArray.length;
+
+
 	
-	afficheEcranObservations("", "","", "", "","","","", valNum1);
+	
+	afficheEcranObservations("", "","", "", "","","","","", valNum2);
 
 	
 }
@@ -749,13 +783,19 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	
 	
 	
-	var newRadio1 = document.createElement("input");
-	newRadio1.setAttribute("type", "checkbox");
+	//var newRadio1 = document.createElement("input");
+	//newRadio1.setAttribute("type", "checkbox");
 	//newRadio1.setAttribute('checked', '');
-	newRadio1.setAttribute("class", "checkbox_autres_photos");
+	//newRadio1.setAttribute("class", "checkbox_autres_photos");
 
 
-		
+		var newRadio1 = document.createElement("input");
+	newRadio1.setAttribute("type", "button");
+	//newRadio1.setAttribute('checked', '');
+	newRadio1.setAttribute("class", "delete_button_photos");
+	newRadio1.setAttribute("value", "Effacer");
+	newRadio1.setAttribute("id", "bouton_effacer_ligne");
+	newRadio1.addEventListener('click',function(){effacer_ligne_div_photo(le_index)},false);	
 
 	
 	
@@ -770,8 +810,11 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 		objIMG1.setAttribute('src', JSON.parse(dataPhoto2));
 	}
 	//insérer image dans le div
-	objDiv.appendChild(objIMG1);	
+	
+
+	objDiv.appendChild(objIMG1);
 objDiv.appendChild(newRadio1);	
+
 	//insérer div dans une ligne
 	objLI.appendChild(objDiv);
 	
@@ -788,7 +831,6 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	
 	
 	
-		//alert(id_ObservTitre);
 	
 	removeAllPhotosFromUL();
 	  

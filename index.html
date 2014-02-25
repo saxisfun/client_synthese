@@ -41,11 +41,11 @@
 		<button id="back_button" onclick="hide_all();show_menu1();" class="hidden">Menu</button>
 
 		<button id="tool_button_ajouter" onclick="onClickBoutonAjouterObservation();"
-		style="position:absolute;bottom:6px;right:222px;visibility:hidden;width:88px;"
+		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
 		class="">Ajouter un observation</button>	  
 
 		<button id="tool_button_rechercher" onclick="hide_all();show_dicti();show_back_button();"
-		style="position:absolute;bottom:6px;right:113px;visibility:hidden;width:102px;"
+		style="position:absolute;bottom:6px;right:113px;visibility:hidden;width:104px;"
 		class="">Rechercher un oiseau dan le dictionnaire</button>
 
 		<button  id="tool_button_deconnecter" onclick="onClickBoutonDeconnecter();"
@@ -91,12 +91,12 @@
 	
 		<tr>
 			<td style="text-align:left;" id="id_utilisateur_label">Utilisateur</td> 
-			<td><input type="text" style="" onChange="" id="id_utilisateur_d" VALUE="aaaa"></td> 
+			<td><input type="text" style="width:120px;" onChange="" id="id_utilisateur_d" VALUE="aaaa"></td> 
 		</tr>
 		
 		<tr>
 			<td style="text-align:left;" id="id_motDePasse_label">Mot de passe</td> 
-			<td><input type="PASSWORD" style="" onChange="" id="id_motDePasse_d" VALUE="bbbb"></td> 
+			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_motDePasse_d" VALUE="bbbb"></td> 
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align:center;">
@@ -150,7 +150,7 @@
 		<ul class="buttons">
 			<li>
 			  <a href="#liste_observations1" id="id_bouton_ajout_observation" 
-			  onclick="hide_all();show_back_button();" 
+			  onclick="hide_all();show_back_button();onClickBoutonAjouterObservation();" 
 			  class="switch_screen">Ajouter une observation</a>
 			</li>		
 		
@@ -160,17 +160,8 @@
 			  class="switch_screen">Visionner les observations</a>
 			</li>
 		
-			<li>
-			  <a href="#liste_fichiers1" id="id_bouton_liste_fichiers1" 
-			  onclick="hide_all();objListViewFichiers.agXMLHttpReqFichiers('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_fichiers();show_back_button();" 
-			  class="switch_screen">Documents</a>
-			</li>
-			
-			<li>
-			  <a href="#a_setting"  id="id_bouton_setting"
-			     onclick="hide_all();show_settings();show_back_button();"
-			     class="switch_screen">Paramètres</a>
-			</li>
+
+
 			
 			<li>
 			  <a href="#ecran_recherche"  id="id_bouton_recherche"
@@ -185,11 +176,27 @@
 			</li>
 
 			<li>
-			  <a href="#ecran_geolocalisation"  id="id_bouton_setting"
+			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
 			     onclick="hide_all();show_geolocalisation();show_back_button();"
 			     class="switch_screen">Géolocalisation WiFi</a>
 			</li>
+			
+			
 			<!--  show_geolocalisation show_dicti -->	
+			
+		
+			
+			<li>
+			  <a href="#liste_fichiers1" id="id_bouton_liste_fichiers1" 
+			  onclick="hide_all();objListViewFichiers.agXMLHttpReqFichiers('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_fichiers();show_back_button();" 
+			  class="switch_screen">Documents</a>
+			</li>
+						
+			<li>
+			  <a href="#a_setting"  id="id_bouton_setting"
+			     onclick="hide_all();show_settings();show_back_button();"
+			     class="switch_screen">Paramètres</a>
+			</li>				
 		</ul>
 	</div> 
 	
@@ -205,7 +212,7 @@
 		<col style="width:100%;">        
 		<tr>
 			<td>		
-				 <h3 style="color:black;">Écran - Observations</h3>		
+				 <h3 style="color:black;">Écran d'observation</h3>		
 			</td> 
 		</tr>	
 		<tr>
@@ -278,7 +285,7 @@
 	
 		<tr>
 			<td>		
-				<button  id="" onclick="onClickBoutonAjouterPhoto();" style="width:220px;" class="">Sélectionner une photo principale</button>			
+				<button  id="" onclick="onClickBoutonSaveObservation();onClickBoutonAjouterPhoto();" style="width:220px;" class="">Ajouter une photos</button>			
 			</td> 
 		</tr>			
 		
@@ -288,7 +295,7 @@
 		</tr>
 	
 
-		<tr STYLE="display:none;">
+		<tr style="display:block;">
 			<td style="text-align:left;">
                 <h3>Preview:</h3>
                 <p>
@@ -299,16 +306,16 @@
 		</tr>	
 		
 		
-		<tr>
+		<tr style="display:none;">
 			<td>		
-				<button  id="" onclick="onClickAjouterUneAutrePhoto();" style="width:220px;" class="">Ajouter d'autres photos</button>			
+				<button  id="" onclick="onClickAjouterUneAutrePhoto();" style="width:220px;" class="">Ajouter une autre photos</button>			
 			</td> 
 		</tr>				
 		
 		
 		<tr>
 			<td>		
-				<ul id="id_ul_les_photos" style="border-style:solid;"></ul>
+				<ul id="id_ul_les_photos" style=""></ul>
 			</td> 
 		</tr>	
 	
@@ -325,8 +332,8 @@
 
 			
 		<tr>
-			<td style="text-align:left;">aaaaa
-                <p style="display:block;" id="id_cell_index"></p>				
+			<td style="text-align:center;">
+                <div>Index: <em id="id_cell_index"></em></div>				
 			</td> 
 		</tr>					
 		</table>	
