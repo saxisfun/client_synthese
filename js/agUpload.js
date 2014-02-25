@@ -1,6 +1,6 @@
 ﻿
 
-//show-picture
+//img_tag_principal
 //Image_DA000CTB_2002_0_XX_20120808141815.jpg
 //http://www.autocal.ca/portfolio/MobUplo.asp?logCon=AAAAA&logServ1BBBBBB
 
