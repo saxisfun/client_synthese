@@ -79,6 +79,10 @@ MaCamera.prototype.activateCamera = function() {
 
     if (takePicture && showPicture) {
         // Set events
+		
+		
+		
+		
         takePicture.onchange = function (event) {
            
 //document.getElementById('idTRInputDeLaPhoto').style.display='block';
@@ -109,7 +113,7 @@ MaCamera.prototype.activateCamera = function() {
                     URL.revokeObjectURL(imgURL);
 					
 					
-					//alert("323232323");
+					//alert("file on change");
 					
 					//showPicture.onload=function(){onClickAjouterUneAutrePhoto();};
 					
@@ -136,9 +140,12 @@ MaCamera.prototype.activateCamera = function() {
 				
 				varGlobalNomImage = document.getElementById('take-picture').files[0].name;
 				document.getElementById('id_ObservDiskName_data').value = varGlobalNomImage;
-				onClickAjouterUneAutrePhoto();
 				
+				timer5  = window.setInterval( "window.clearInterval(timer5),onClickAjouterUneAutrePhoto()", 500 );
 				
+				//onClickAjouterUneAutrePhoto();
+				
+				//timer5  = window.setInterval( "window.clearInterval(timer5),document.getElementById('img-tag-show-picture').setAttribute('src', JSON.parse(varGlobal1))", 500 );
             }
 			//alert("2222222");
 				
@@ -147,6 +154,8 @@ MaCamera.prototype.activateCamera = function() {
 			
 		
         };
+		//showPicture.onload = function (event) {alert("onload1")};
+		
     }
 	
 }	
@@ -166,19 +175,47 @@ MaCamera.prototype.agImgToCanvasToDataURL = function() {
 	// Make sure canvas is as big as the picture
 	imgCanvas.width = imgTag1.width;
 	imgCanvas.height = imgTag1.height;
-
+alert("11111");
+	alert("w:"+imgTag1.width+",h:"+imgTag1.height);
+	//imgCanvas.width = "250px";
+	//imgCanvas.height = 250px;	
+	
+	alert("22222222");
+	
 	// Draw image into canvas element
+	/*
+	1024 x 745
+	320  x
 	
 	
+	*/
 	
 	widthTarget=320;
-	heightTarget=(imgTag1.height*260)/imgTag1.width;
+	heightTarget=(widthTarget * imgTag1.height) / imgTag1.width;	
+	
+	
+	
+	
+	imgCanvas.width = widthTarget;
+	imgCanvas.height = heightTarget;
+	
+	
+	
+	
+	
+	
+	
+	alert("w:"+widthTarget+",h:"+heightTarget);
+	
+	
+	//widthTarget=320;
+	//heightTarget=(imgTag1.height*260)/imgTag1.width;
 	
 	imgContext.drawImage(imgTag1, 0, 0, parseInt(widthTarget), parseInt(heightTarget));
 	//imgTag1.width			260
 	//imgTag1.height			x
 	
-	
+	alert(imgTag1.width);
 	
 	//mozImageSmoothingEnabled in Firefox and webkitImageSmoothingEnabled in Chrome 
 	

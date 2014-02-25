@@ -294,7 +294,7 @@ function onClickBoutonSaveObservation()
 			 //if (true) {
 			 //      throw "An error";
 			 // }
-		  
+	
 			  var test5434 = laCamera1.agImgToCanvasToDataURL();
 			  test6432 = JSON.stringify(test5434);
 			  return true;
@@ -306,7 +306,7 @@ function onClickBoutonSaveObservation()
 			//On sauvegarde le reste des données quand même si pas de photo  
 			
 			//alert("444444:"+varGlobalNomImage);
-	
+
 			
 			var observObject3 = new ClasseObservation();
 
@@ -333,7 +333,7 @@ function onClickBoutonSaveObservation()
 		//Si index existe ca veut dire qu'on modifie
 
 		
-		
+	
 		
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservNoAutoGenereParlaDB=le_NoAutoGenereParlaDB;
@@ -394,7 +394,7 @@ function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(l
 			 //if (true) {
 			 //      throw "An error";
 			 // }
-		
+			
 			  var dataUrl_img = laCamera1.agImgToCanvasToDataURL();
 			  var dataUrl_img_strignified = JSON.stringify(dataUrl_img);
 			  return true;
