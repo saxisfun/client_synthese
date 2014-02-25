@@ -96,6 +96,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  	var newImg1 = document.createElement("img");
 	newImg1.src="birds/"+le_IDPhoto+".jpg";
 	newImg1.setAttribute("class", "bird_img");
+	newImg1.setAttribute("id", randomcssid());
 	newImg1.addEventListener('click',autresphotos,false);
     newDiv1.appendChild(newImg1);
 	
@@ -106,7 +107,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	newDiv1.appendChild(newP2);	
 	
  	var newP1 = document.createElement("p");
-	var newP1Content = document.createTextNode(la_descrip);
+	var newP1Content = document.createTextNode(tronquetxt(la_descrip));
  	newP1.setAttribute("class", "bird_descript");
  	newP1.appendChild(newP1Content);	
 	newDiv1.appendChild(newP1);	
@@ -117,6 +118,23 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	
  }
 
+
+ function tronquetxt(texte){
+	var sous_chaine = texte.substr(0,250)+" ...";
+	return sous_chaine
+ }
+
+
+ function getRandomArbitrary(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+ }
+
+
+ function randomcssid(){
+	return "bird_img"+getRandomArbitrary(1,4);
+ }
+
+ 
  
  function autresphotos(){
  	alert("D'autres photos suivront...");

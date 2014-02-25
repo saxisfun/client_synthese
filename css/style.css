@@ -763,6 +763,8 @@ animation:myfirst2 0.5s 1;
  100% {background: red; left:0px; top:0px;}
  }
  
+
+
   
 -------------------------------------------------------------
 /*---------------- Pour le dictionnaire -------------------*/
@@ -773,12 +775,13 @@ animation:myfirst2 0.5s 1;
 
 .bird_espece{
 	margin-top:1.8cm;
-	margin-left:2.8cm;
+	margin-left:3.2cm;
 	align:left;
-	font-family:"Arial,Helvetica,sans-serif";
+	font-family:"Verdana,Geneva,sans-serif";
 	font-weight:900x;
 	font-size:25px;
 } 
+
 
 /* 	"Verdana,Geneva,sans-serif"  "Arial,Helvetica,sans-serif"  */
 .bird_descript{
@@ -807,7 +810,7 @@ animation:myfirst2 0.5s 1;
  }
 
 	
-.bird_img{
+#bird_img1{
  	-moz-transform:rotate(18deg);
  	-webkit-transform:rotate(18deg);
  	-o-transform:rotate(18deg);
@@ -815,7 +818,31 @@ animation:myfirst2 0.5s 1;
  	left:30px;	
  }
 
+#bird_img2{
+  	-moz-transform:rotate(-15deg);
+  	-webkit-transform:rotate(-15deg);
+  	-o-transform:rotate(-15deg);
+  	transform:rotate(-15deg); 	
+  	left:30px;	
+ }
 
+#bird_img3{
+    -moz-transform:rotate(22deg);
+    -webkit-transform:rotate(22deg);
+    -o-transform:rotate(22deg);
+    transform:rotate(22deg); 	
+    left:30px;	
+  }
+	
+ #bird_img4{
+     -moz-transform:rotate(-7deg);
+     -webkit-transform:rotate(-7deg);
+     -o-transform:rotate(-7deg);
+     transform:rotate(-7deg); 	
+     left:30px;	
+  }
+
+	
 .speaker_img{
 	alt:Son;
 	float:right;
@@ -831,16 +858,18 @@ animation:myfirst2 0.5s 1;
 	marging-right:30px;
 }
 
+
+
+
 -------------------------------------------------------------
+/*---------------- Pour la catographie --------------------*/
 
 #conteneur{
 	width:960px;
 	margin:0 auto;
 }
 
-
 #contentMap{
 	width:520px;
-	height:520px;
-	
+	height:520px;	
 }
