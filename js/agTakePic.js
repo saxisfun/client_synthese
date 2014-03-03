@@ -177,7 +177,7 @@ MaCamera.prototype.agImgToCanvasToDataURL = function() {
 	imgCanvas.height = imgTag1.height;
 
 	
-	alert("w:"+imgTag1.width+",h:"+imgTag1.height);
+	//alert("w:"+imgTag1.width+",h:"+imgTag1.height);
 
 	
 	// Draw image into canvas element
@@ -194,13 +194,20 @@ MaCamera.prototype.agImgToCanvasToDataURL = function() {
 	imgCanvas.height = heightTarget;
 
 	
-	alert("w:"+widthTarget+",h:"+heightTarget);
+	//alert("w:"+widthTarget+",h:"+heightTarget);
 	
 	
 	//widthTarget=320;
 	//heightTarget=(imgTag1.height*260)/imgTag1.width;
 	
 	imgContext.drawImage(imgTag1, 0, 0, parseInt(widthTarget), parseInt(heightTarget));
+	
+	//http://membre.oricom.ca/agiguere/lapp_001/ios_img/test/megapix-image.test.html
+	
+	//drawImageIOSFix
+	//Fixes a bug which squash image vertically while drawing into canvas for some images.
+	
+	
 	
 	//alert(imgTag1.width);
 	

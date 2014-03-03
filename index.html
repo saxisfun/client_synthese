@@ -2,7 +2,10 @@
   <!--<html lang="en" manifest="app.manifest">  -->
 <html manifest="cache-manifest.mf">   
 <head>
-    <meta charset="utf-8">
+  
+	
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	
     <title>Application d'observation d'oiseaux</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -80,7 +83,10 @@
 	
 		<tr>
 			<td class="td_table2" style="width:20%;">
-				<img style="width:60px;"src="img/owl.png" />
+				<img style="width:60px;" exif="true"  src="img/owl.png" />
+			<img style="" exif="true" id="test_img2" src="img/photo2.jpg" />
+	
+			
 			</td>
 			
 			<td class="td_table2" style="color:black;">Application d'observation d'oiseaux</td> 
@@ -216,12 +222,12 @@
 <!--  Écran d'obsevations  -->	
 	
    <div id="ecran_observation" class="screen hidden">
-       
+     
 		<table class="table2">
 		<col style="width:100%;">        
 		<tr>
 			<td>		
-				 <h3 style="color:black;">Écran d'observation</h3>		
+				 <h3 style="color:black;">Écran d'observation  </h3>		
 			</td> 
 		</tr>	
 		<tr>
@@ -276,7 +282,7 @@
 			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_long_label" >Position GPS - long</p></td> 
 		</tr>
 		<tr>
-			<td class="tddata"><input  type="text" style="" id="id_ObservLaPositionGPS_long_data" VALUE=""></td> 
+			<td class="tddata"><input  type="text" style="" id="id_ObservLaPositionGPS_long_data" VALUE="">	</td> 
 		</tr>		
 				
 		
@@ -289,8 +295,8 @@
 		<tr>
 			<td class="tddata"><input  type="text" style="" id="id_ObservDiskName_data" VALUE="" READONLY></td> 
 		</tr>	
-		
-		
+
+	
 	
 		<tr>
 			<td>		
@@ -299,31 +305,48 @@
 		</tr>			
 		
 		
+
 		<tr id="idTRInputDeLaPhoto" style="display:block;">
 			<td id="idTDInputDeLaPhoto" class="tddata"></td> 
 		</tr>
-	
 
-		<tr style="display:block;">
+
+		<tr style="display:none;">
 			<td style="text-align:left;">
                 <h3>Preview:</h3>
                 <p>
                     Ce tag img est caché et sert de buffer pour loader l'image et le convertire en dataURL et ensuite j'affiche l'image dans une ligne du UL
-					<img src="about:blank" style="border-style:solid;border-width:4px;border-color:red;width:100%;"  alt="" id="img-tag-show-picture">
-                </p>		
+					<img src="about:blank" style="border-style:solid;border-width:4px;border-color:red;width:100%;" exif="true" alt="" id="img-tag-show-picture"/>
+					
+					
+						
+					
+					
+					
+                </p>	
+
+
+
+				
 			</td> 
 		</tr>	
 		
 		
 		<tr style="display:none;">
-			<td>		
+			<td>	
+
+
+			
 				<button  id="" onclick="onClickAjouterUneAutrePhoto();" style="width:220px;" class="">Ajouter une autre photos</button>			
 			</td> 
 		</tr>				
 		
 		
 		<tr>
-			<td>		
+			<td>	
+
+
+			
 				<ul id="id_ul_les_photos" style=""></ul>
 			</td> 
 		</tr>	
@@ -346,6 +369,10 @@
 			</td> 
 		</tr>					
 		</table>	
+		
+		
+	
+		
     </div>      	
 	
 	
@@ -677,6 +704,11 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
    
   </div> 
   
+  
+  
+   
+  
+  
  	<script type="text/javascript" src="js/Mz.js"></script> 
 	<script type="text/javascript" src="js/helper.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>  
@@ -702,6 +734,7 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/ddListViewDict.js"></script>
 	<script type="text/javascript" src="js/ddListViewDict2.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
+	
 	
 	
 	
@@ -801,6 +834,31 @@ document.getElementById("id_redirectionMessage").innerHTML=la_reponse;
 //pour recevoir les données du barcode scanner
 var first = getUrlVars()["code"];
 var second = getUrlVars()["barcodeReturnedCode1"];
+
+/*
+document.getElementById("img-tag-show-picture").onclick = function() {
+	alert("img-tag-show-picture:"+EXIF.pretty(this));	
+	alert("I was taken by a " + EXIF.getTag(this, "Orientation") + " " + EXIF.getTag(this, "Model"));
+}
+
+*/
+
+
+
+	
+				
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
