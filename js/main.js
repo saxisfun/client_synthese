@@ -189,36 +189,7 @@ function hide_all()
 
 }
 
-		
-function effacer_ligne_div_photo(le_idx)
-{
 	
-	
-	VConfirm=''
-	VConfirm=VConfirm+'Êtes-vous certain de vouloir effacer cette observation?\n\n'
-	if (confirm(VConfirm))
-	{	
-		objListViewObservations.deleteObservsFromListViewButton(le_idx);
-		
-		objListViewObservations.saveObservToLocalStorage();
-		
-	
-		/*
-			var observObject2 = new ClasseObservation();		
-			observObject2.arrObservArrayLesObjetsAutresPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservArrayLesObjetsAutresPhotos;	
-			observObject2.ajouterUneAutrePhotoALobservation("Photo 1",varGlobalNomImage,dataUrl_img_strignified);
-		*/
-
-		
-		
-	}else
-	{
-	
-	}
-	
-	
-}		
-
 		
 function effacer_ligne_div(le_idx)
 {
@@ -400,7 +371,7 @@ function onClickBoutonSaveObservation()
 function onClickAjouterUneAutrePhoto() 
 { 
 	var id_cell_index = document.getElementById('id_cell_index').innerHTML;
-	prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(id_cell_index);
+	prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(id_cell_index);
 	
 	//vider le ul
 	removeAllPhotosFromUL();
@@ -408,7 +379,7 @@ function onClickAjouterUneAutrePhoto()
 	remplirEtAfficheLeULDesPhotos(id_cell_index);
 }
 
-function prendreLImageDuCanvasEtLAjouterDansLesAutresPhotosDunObjetObservation(le_index_oui) 
+function prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(le_index_oui) 
 { 
 
 	var test6432 = "";
@@ -762,7 +733,14 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 
 }		
 
-
+function getIndex(node){
+  var childs = node.parentNode.childNodes;
+  for (i = 0; i < childs.length; i++){
+   //alert("i:"+i+", childs.length:"+childs.length);
+   if (node == childs[i]) break;
+  }
+  return i;
+}
 
 
 function insererUnePhotoDansLeUL(indexObserv, indexPhoto) 
@@ -773,6 +751,8 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	var objUL = document.getElementById("id_ul_les_photos");
 		
 	var objLI = document.createElement('li');
+	objLI.setAttribute('class', 'li_de_ul_des_photos');
+		
 	var objDiv = document.createElement('div');
 	objDiv.setAttribute('class', 'div_cellule_autres_photos');
 	
@@ -795,7 +775,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	newRadio1.setAttribute("class", "delete_button_photos");
 	newRadio1.setAttribute("value", "Effacer");
 	newRadio1.setAttribute("id", "bouton_effacer_ligne");
-	newRadio1.addEventListener('click',function(){effacer_ligne_div_photo(le_index)},false);	
+	newRadio1.addEventListener('click',function(){effacerUnePhotoDuULListViewPhotos(indexObserv, getIndex(objLI))},false);	
 
 	
 	
