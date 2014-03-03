@@ -66,6 +66,22 @@ function hide_dicti()
 }
 
 
+
+// écran recherche dans le dictionnaire
+
+function show_dicti2()
+{
+	x = document.getElementById('ecran_recherche2');
+	show_element(x);
+}
+
+function hide_dicti2()
+{
+	x = document.getElementById('ecran_recherche2');
+	hide_element(x);
+}
+
+
 // écran chronomètre ???zzz
 
 function show_chrono()
@@ -169,6 +185,7 @@ function hide_all()
 	//hide_liste_des_fichiers();
 	
 	hide_dicti()	
+	hide_dicti2()	
 	hide_chrono()
 	hide_geolocalisation()	
 	hideLogin();

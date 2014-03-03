@@ -23,6 +23,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
              if (request.readyState == 4) {
                  if (request.status == 200 || request.status == 0) {
  					str_output = request.responseText;
+					//alert('str_output\n\n' + str_output);
 					file2obj(str_output);              
                  }
              }
@@ -40,16 +41,18 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 
  function file2obj(le_str_output) 
  { 
-//	 alert(le_str_output);
-//	 alert('le_str_output.length ' + le_str_output.length);
+ 	// alert(le_str_output);
+ 	// alert('le_str_output.length ' + le_str_output.length);
 	 
 	 localString = JSON.parse(le_str_output);
 	
-//	 alert('localString.result.length ' + localString.result.length);
-//	 alert('id ' + localString['id']);
-//	 alert('jsonrpc ' + localString['jsonrpc']);
-//	 alert('total ' + localString['total']);
-//	 alert('result ' + localString['result']);	
+ 	// alert('localString.result.length ' + localString.result.length);
+ 	// alert('id ' + localString['id']);
+ 	// alert('jsonrpc ' + localString['jsonrpc']);
+ 	// alert('total ' + localString['total']);
+ 	// alert('result ' + localString['result']);	
+ 	
+	//   alert("JSON.stringify(localString['result'])\n" + JSON.stringify(localString['result']));
 	
 	
 	 for(var i=0;i<localString.result.length;i++){
