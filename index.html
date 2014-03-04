@@ -230,6 +230,15 @@
 			     class="switch_screen">Recherche dans le dictionnaire</a>
 			</li>  
 			
+
+			<li>
+			  <a href="#ecran_recherche2"  id="id_bouton_recherche2"
+			     onclick="hide_all();show_dicti2();show_back_button();" 
+			     class="switch_screen">Recherche dans le dictionnaire V2.0</a>
+			</li>  
+
+			
+			
 			<li>
 			  <a href="#ecran_timer"  id="id_bouton_timer"
 			     onclick="hide_all();show_chrono();show_back_button();" 
@@ -572,46 +581,100 @@
  
  
  
+ 
+ 
+ 
 	<!---------------------------------------------------------------->
-	<!--  Écran de test Chronomètre -->
+	<!--  Écran recherche dans le dictionnaire V2 -->
+ 
+ 
+ 
+
+ <div id="ecran_recherche2" class="screen hidden" style="text-align:center;" >
 
 
-	<div id="ecran_timer" class="screen hidden" style="text-align:center;" >
-	<table>
+		<table>
 		<col style="width:40%;">        
 		<col style="width:60%;">		
 
 		<tr>
-			<td><img style="width:60px;"src="img/timer.png"/></td>		
-			<td> <h3> Chronomètre </h3></td>
+			<td><img style="width:60px;"src="img/dictionary.png"/></td>		
+			<td> <h3> Rechercher dans le dictionnaire V2</h3></td>
 		</tr>
+
 
 		<tr>
-			<div id="container">	
-				<td>		   
-				<div id="inputArea">
-					<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
-				</div>
-				</td>
+			<td><h4>Specimen:</h4></td>
+			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
+		</tr>
+	
+		<!---VALUE="Toukan"-->
 		
-				<td>
-				<h1 id="time">0:00</h1>  
-				</td>   
-			</div> 
+		<tr> 
+			<td> </td>
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" onclick="startRecherche2();" 						class="switch_screen">Démarrer la recherche </a>
+					</li>	
+	    		</ul>
+	    	</td> 
 		</tr>
-
-		<tr>  
-			<ul class="buttons">
-				<li>
-					<a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
-				</li>	
-			</ul>
-		</tr>
-
+	
+		
+	
+		
 	</table>	
-	</div> 
- 
 
+	
+    </div> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+			<!---------------------------------------------------------------->
+			<!--  Écran de test Chronomètre -->
+ 
+ 
+ 
+			    <div id="ecran_timer" class="screen hidden" style="text-align:center;" >
+				<table>
+					<col style="width:40%;">        
+					<col style="width:60%;">		
+	
+					<tr>
+						<td><img style="width:60px;"src="img/timer.png"/></td>		
+						<td> <h3> Chronomètre </h3></td>
+					</tr>
+		
+					<tr>
+			 		  	<div id="container">	
+							<td>		   
+			 		   		<div id="inputArea">
+			 					<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
+			 		      	</div>
+							</td>
+					
+							<td>
+			 	      	    <h1 id="time">0:00</h1>  
+							</td>   
+			 		    </div> 
+					</tr>
+
+					<tr>  
+				    	<ul class="buttons">
+							<li>
+					   		 	<a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
+							</li>	
+				    	</ul>
+					</tr>
+				
+				</table>	
+			    </div> 
+ 
 
  
 	<!---------------------------------------------------------------->
@@ -712,8 +775,11 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/agPhoto.js"></script>	
 	<script type="text/javascript" src="js/agUneObserv.js"></script>
 	
+	
 	<script type="text/javascript" src="js/ddTest.js"></script>
+	<script type="text/javascript" src="js/ddLgnDict.js"></script>
 	<script type="text/javascript" src="js/ddListViewDict.js"></script>
+	<script type="text/javascript" src="js/ddListViewDict2.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
 	<script type="text/javascript" src="js/agULListViewPhotos.js"></script>	
 	
@@ -747,6 +813,9 @@ showLogin();
 objListViewFichiers = new ClasseListViewFichier("Fichier 1");
 objListViewObservations = new ClasseListViewObservations("Observation 1");
 objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
+
+objLstViewDictionnaires = new ClasseLstViewDictionnaire("Dictionnaire 2");
+
 
 //Lire le local storage et remplir mon objet
 objListViewObservations.getObservFromLocalStorage();
