@@ -112,35 +112,6 @@ window.onload =  function () {
 
 
 
-
-
-/*
-Initier demande de lister le dictionnaire  V2 !!!
-*/
-
-
-function startRecherche2() {
-   
-    var x = document.getElementById("id_recherher_dict").value;
-	 
- 	hide_all();
-	 
-	objLstViewDictionnaires.XMLHttpReqDict('json/dictionnaire2.json');
-	 	
-	
- 	show_back_button();	
-	
- }
-
-
-
-
-
-
-
-
-
-
 /*
 Initier demande de lister le dictionnaire
 */
