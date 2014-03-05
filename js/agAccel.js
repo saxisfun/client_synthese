@@ -48,7 +48,7 @@ MonAccel.prototype.capture_acceleration2 = function(event) {
 
 	if (typeof window.DeviceMotionEvent != 'undefined') {
 		// Shake sensitivity (a lower number is more)
-		var sensitivity = 20;
+		var sensitivity = 30;
 
 		// Position variables
 		var x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0;
@@ -66,7 +66,7 @@ MonAccel.prototype.capture_acceleration2 = function(event) {
 			var change = Math.abs(x1-x2+y1-y2+z1-z2);
 
 			if (change > sensitivity) {
-				//alert('Shake!');
+				alert('Shake!');
 				hide_all();
 				show_menu1();
 				

@@ -7,19 +7,23 @@ function ClasseObservation() {
 
 	 //alert(strNom);
 	 
-
+	this.strObservFlagInsertUpdate = ""; 
+	this.strObservTimestamp = ""; 
+	
+	//new Date().getTime();
+	
 	this.strObservNoAutoGenereParlaDB = ""; 
-	this.strObservNoDeLusager = ""; 
+	this.strObservNomDeLusager = ""; 
 	this.strObservTitre = ""; 
 	this.strObservResume = "";
-	this.strObservDiskName = "";
-	this.strObservDataURLPicture = "";	
-	this.arrObservArrayLesObjetsAutresPhotos = [];	
+	//this.strObservDiskName = "";
+	//this.strObservDataURLPicture = "";	
+	this.arrObservLesPhotos = [];	
 	
 	this.strObservLaPositionGPS_lat = ""; 
 	this.strObservLaPositionGPS_long = ""; 
 	
-	this.strObservFlagInsertUpdate = ""; 
+	
 	
 	
 	
@@ -34,6 +38,6 @@ ClasseObservation.prototype.ajouterUneAutrePhotoALobservation = function(str_la_
 	photoObject1.strPhotoDiskName = str_la_Photo_DiskName;
 	photoObject1.dataURLPhoto = dataURL_la_Photo;	
 	
-	this.arrObservArrayLesObjetsAutresPhotos.push(photoObject1);	
+	this.arrObservLesPhotos.push(photoObject1);	
 	
 }

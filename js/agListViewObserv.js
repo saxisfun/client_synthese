@@ -191,6 +191,7 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 
 		if (localStorage.lsListViewObservArray && localStorage.lsListViewObservArray != "undefined" && localStorage.lsListViewObservArray != "null") {
 			this.myListViewObservArray = JSON.parse(localStorage.lsListViewObservArray); 
+			
 		}else{
 			this.myListViewObservArray = [];
 		}
@@ -199,6 +200,10 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 		
 		
 	}
+	
+	
+	return this.myListViewObservArray;
+	
 
 }
 
@@ -216,13 +221,19 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	
+	var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
+	
+	var le_ObservTimestamp = objLObservation1.strObservTimestamp;
+	
 	var le_ObservNoAutoGenereParlaDB= objLObservation1.strObservNoAutoGenereParlaDB; 
 	var le_ObservNoDeLusager = objLObservation1.strObservNoDeLusager; 
 	var le_ObservTitre = objLObservation1.strObservTitre; 
 	var le_ObservDescrip = objLObservation1.strObservResume; 
-	var le_ObservDiskName = objLObservation1.strObservDiskName; 
-	var le_datURLPicture = objLObservation1.strObservDataURLPicture; 
-	var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
+	//var le_ObservDiskName = objLObservation1.strObservDiskName; 
+	var le_ObservDiskName = ""; 
+	//var le_datURLPicture = objLObservation1.strObservDataURLPicture;
+	var le_datURLPicture ="";
+	
 	
 	
 	var le_PositionGPS_lat = objLObservation1.strObservLaPositionGPS_lat; 
@@ -279,7 +290,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	newDivTouch.setAttribute("class", "divTouch");
 	
 	
-	
+	id_ObservFlagInsertUpdate_data
 	
 	newDivTouch.addEventListener('click',function(){afficheEcranObservations(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate, le_PositionGPS_lat, le_PositionGPS_long, le_index)},false);
 

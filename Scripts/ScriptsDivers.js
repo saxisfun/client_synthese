@@ -107,16 +107,19 @@ function sendObservation() {
     
 
 	var observObject2 = new ClasseObservation();
-
+	
+	observObject2.strObservFlagInsertUpdate = "U";
+	observObject2.strObservTimestamp = "";
+	
 	observObject2.strObservNoAutoGenereParlaDB = "";
-	observObject2.strObservNoDeLusager = "";
+	observObject2.strObservNomDeLusager = "";
 	observObject2.strObservTitre = "Observation 1";
 	observObject2.strObservResume = "Un beau pit pit dans le bois";
-	observObject2.strObservDiskName = "rien ici";
-	observObject2.strObservDataURLPicture = "";
+	//observObject2.strObservDiskName = "rien ici";
+	//observObject2.strObservDataURLPicture = "";
 	observObject2.strObservLaPositionGPS_lat = "90.768";
 	observObject2.strObservLaPositionGPS_long = "34.867";		
-	observObject2.strObservFlagInsertUpdate = "I";
+	
 	
 
 	$.ajax({

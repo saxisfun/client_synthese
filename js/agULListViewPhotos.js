@@ -23,7 +23,7 @@ function effacerUnePhotoDuULListViewPhotos(index_Observ, index_Photo)
 		var theObject = les_lignes[index_Photo];	
 		//alert("index_Photo:"+index_Photo);			
 		theObject.parentNode.removeChild(theObject);		
-		objListViewObservations.myListViewObservArray[index_Observ].arrObservArrayLesObjetsAutresPhotos.splice(index_Photo,1);
+		objListViewObservations.myListViewObservArray[index_Observ].arrObservLesPhotos.splice(index_Photo,1);
 		
 		/*
 		//vider le ul

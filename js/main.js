@@ -309,16 +309,42 @@ function onClickBoutonSaveObservation()
 
 			
 			var observObject3 = new ClasseObservation();
+			
+			
+			observObject3.strObservFlagInsertUpdate = "I";
+			
+			
+			/*
+			Losrsque l'application démarre, elle fonctionne avec le localstorage uniquement.
+			C'est seulement losqu'on pèse sur "synchro" que 
+				1-l'application client upload vers le serveur les nouvelles observations et des observations modifiées.
+					Si l'observation contien un NoAutoGenParLaDB ca veut dire qu'elle n'est pas nouvelle et doit être modifiée. 
+						Étant donné que le nombre de photos peut changer l'ors d'une modification je suggère qu'on 
+						efface l'observation au complet sur la DB et qu'on la ré-insert à nouveau. Puisque les photos sont dans l'observation.					
+					
+					Si l'observation ne contien pas un NoAutoGenParLaDB ca veut dire qu'elle est nouvelle et doit être insérée.
+				
+				2-Download les 50 dernières observations en ordre de dates décroissantes incluant celles qu'on vient juste de créer.
+			
 
+			*/
+			
+			
+			
+			
+			
+			observObject3.strObservTimestamp = new Date().getTime();
+			
+			
 			observObject3.strObservNoAutoGenereParlaDB = le_NoAutoGenereParlaDB;
-			observObject3.strObservNoDeLusager = le_NoDeLusager;
+			observObject3.strObservNomDeLusager = le_NoDeLusager;
 			observObject3.strObservTitre = le_titre;
 			observObject3.strObservResume = le_resume;
-			observObject3.strObservDiskName = varGlobalNomImage;
-			observObject3.strObservDataURLPicture = test6432;
+			//observObject3.strObservDiskName = varGlobalNomImage;
+			//observObject3.strObservDataURLPicture = test6432;
 			observObject3.strObservLaPositionGPS_lat = le_PositionGPS_lat;
 			observObject3.strObservLaPositionGPS_long = le_PositionGPS_long;
-			observObject3.strObservFlagInsertUpdate = "";
+			
 			
 			objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject3);
 			
@@ -335,9 +361,12 @@ function onClickBoutonSaveObservation()
 		
 	
 		
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservFlagInsertUpdate="U";
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservTimestamp="";
+			
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservNoAutoGenereParlaDB=le_NoAutoGenereParlaDB;
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservNoDeLusager=le_NoDeLusager;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservNomDeLusager=le_NoDeLusager;
 		
 		
 		
@@ -345,8 +374,8 @@ function onClickBoutonSaveObservation()
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservTitre=le_titre;
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservResume=le_resume;
 		
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservDiskName=varGlobalNomImage;
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservDataURLPicture=JSON.stringify(laCamera1.agImgToCanvasToDataURL());	
+		//objListViewObservations.myListViewObservArray[id_cell_index].strObservDiskName=varGlobalNomImage;
+		//objListViewObservations.myListViewObservArray[id_cell_index].strObservDataURLPicture=JSON.stringify(laCamera1.agImgToCanvasToDataURL());	
 
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_lat=le_PositionGPS_lat;
@@ -354,7 +383,7 @@ function onClickBoutonSaveObservation()
 			
 	
 
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservFlagInsertUpdate="";
+		
 
 
 		
@@ -408,34 +437,9 @@ function prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(le_index_oui
 			var observObject2 = new ClasseObservation();
 	
 
-/*
-			observObject2.strObservNoAutoGenereParlaDB = objListViewObservations.myListViewObservArray[le_index_oui].strObservNoAutoGenereParlaDB;
-			observObject2.strObservNoDeLusager = objListViewObservations.myListViewObservArray[le_index_oui].strObservNoDeLusager;
-			observObject2.strObservTitre = objListViewObservations.myListViewObservArray[le_index_oui].strObservTitre;
-			observObject2.strObservResume = objListViewObservations.myListViewObservArray[le_index_oui].strObservResume;
 		
-	
-			observObject2.strObservDiskName = objListViewObservations.myListViewObservArray[le_index_oui].strObservDiskName;
+			observObject2.arrObservLesPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservLesPhotos;
 
-			observObject2.strObservDataURLPicture = objListViewObservations.myListViewObservArray[le_index_oui].strObservDataURLPicture;
-	*/			
-			observObject2.arrObservArrayLesObjetsAutresPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservArrayLesObjetsAutresPhotos;
-/*
-			observObject2.strObservLaPositionGPS_lat = objListViewObservations.myListViewObservArray[le_index_oui].strObservLaPositionGPS_lat;
-			observObject2.strObservLaPositionGPS_long = objListViewObservations.myListViewObservArray[le_index_oui].strObservLaPositionGPS_long;						
-			observObject2.strObservFlagInsertUpdate = objListViewObservations.myListViewObservArray[le_index_oui].strObservFlagInsertUpdate;
-	*/
-		
-			
-			//var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservArrayLesObjetsAutresPhotos[indexPhoto].dataURLPhoto;
-			//this.myListViewObservArray.push(observObject1);		
-							
-				
-			//alert("strObservDiskName:"+observObject2.strObservDiskName);
-			//objListViewObservations.ajouterUnObservationALobjetListViewObservations(le_titre, le_resume, varGlobalNomImage, test6432);
-	
-		
-		
 		
 		
 		
@@ -672,16 +676,18 @@ function onClickButtonMenu_ReadJsonInArrayListViewObserv()
 		
 		
 		var observObject2 = new ClasseObservation();
-
+		
+		observObject2.strObservFlagInsertUpdate = "";
+		observObject2.strObservTimestamp = "";
 		observObject2.strObservNoAutoGenereParlaDB = "";
-		observObject2.strObservNoDeLusager = "";
+		observObject2.strObservNomDeLusager = "";
 		observObject2.strObservTitre = titVar.result[i].filename;
 		observObject2.strObservResume = titVar.result[i].description;
-		observObject2.strObservDiskName = titVar.result[i].url;
-		observObject2.strObservDataURLPicture = "";
+		//observObject2.strObservDiskName = titVar.result[i].url;
+		//observObject2.strObservDataURLPicture = "";
 		observObject2.strObservLaPositionGPS_lat = "";
 		observObject2.strObservLaPositionGPS_long = "";		
-		observObject2.strObservFlagInsertUpdate = "";
+	
 	
 		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
 		
@@ -782,7 +788,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	
 	
 	
-	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservArrayLesObjetsAutresPhotos[indexPhoto].dataURLPhoto;
+	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservLesPhotos[indexPhoto].dataURLPhoto;
 	
 	
 	if(dataPhoto2!=null && dataPhoto2!=""){
@@ -806,7 +812,7 @@ objDiv.appendChild(newRadio1);
 
 
 
-function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic,id_FlagInsertUpdate, id_PositionGPS_lat, id_PositionGPS_long, la_index) 
+function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic, id_FlagInsertUpdate,  id_PositionGPS_lat, id_PositionGPS_long, la_index) 
 { 
 	
 	
@@ -825,7 +831,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	//alert(id_ObservDescrip+"/"+id_ObservDiskName);
 	
 		
-
+	document.getElementById('id_ObservFlagInsertUpdate_data').value = id_FlagInsertUpdate;
 	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = id_NoAutoGenereParlaDB;
 	document.getElementById('id_ObservNoDeLusager_data').value = id_ObservNoDeLusager;
 			
@@ -848,7 +854,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	
 	
 	
-	var dataPhoto1=objListViewObservations.myListViewObservArray[la_index].strObservDataURLPicture;
+	//var dataPhoto1=objListViewObservations.myListViewObservArray[la_index].strObservDataURLPicture;
 	
 	
 	//alert("22222222222222222");
@@ -858,24 +864,12 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 		
 	
 	
-	
+	/*
 	if(dataPhoto1!=null && dataPhoto1!=""){
-		
-		//context.clearRect(0, 0, canvas.width, canvas.height);
-		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-		
-		
-		
-		
-		
-		document.getElementById('img-tag-show-picture').setAttribute('src', JSON.parse(dataPhoto1));
-		
-		 //alert("33333333333333333");
-		
-		
+		document.getElementById('img-tag-show-picture').setAttribute('src', JSON.parse(dataPhoto1));	
+		 //alert("33333333333333333");		
 	}
-	
+	*/
 	
 	remplirEtAfficheLeULDesPhotos(la_index);
 	
@@ -904,12 +898,12 @@ function remplirEtAfficheLeULDesPhotos(la_index)
 	//alert(objLeULDesPhotos.length+"/"+this.myListViewObservArray.length);
 	
 	//
-	array_les_photos = objListViewObservations.myListViewObservArray[la_index].arrObservArrayLesObjetsAutresPhotos;
+	array_les_photos = objListViewObservations.myListViewObservArray[la_index].arrObservLesPhotos;
 	
 	
 	
 	for (var i=0; i < array_les_photos.length; i++){
-		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].arrObservArrayLesObjetsAutresPhotos[i].dataURLPhoto;
+		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].arrObservLesPhotos[i].dataURLPhoto;
 		//alert("remplirEtAfficheLeULDesPhotos:"+la_index);
 		insererUnePhotoDansLeUL(la_index,i); 	
 	}	

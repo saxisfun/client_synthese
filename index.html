@@ -104,7 +104,7 @@
 		<tr>
 			<td class="td_table2" style="width:20%;">
 				<img style="width:60px;" exif="true"  src="img/owl.png" />
-			<img style="" exif="true" id="test_img2" src="img/photo2.jpg" />
+		
 	
 			
 			</td>
@@ -135,7 +135,7 @@
 		<tr>
 			<td colspan="2" style="text-align:center;">
 			<br>
-			<button onclick="localStorage.clear();localStorage.removeItem('lsCartesName');localStorage.removeItem('lsCartesArray');"  style="right:125px;" class="">Clear</button>
+			<button onclick="localStorage.clear();localStorage.removeItem('lsCartesName');localStorage.removeItem('lsCartesArray');"  style="right:125px;" class="">Clear localStorage</button>
 			</td> 
 		</tr>		
 		
@@ -150,20 +150,14 @@
 			</td> 
 		</tr>			
 		<tr>
-			<td colspan="2" id="id_online_offline" style="text-align:center;"><br><br>
-				<font >
-				
+			<td colspan="2" style="text-align:center;"><br><br>
+					
+				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc">
+				http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc</a>				
+				<br>
+				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html">
+				http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html</a>				
 
-
-			
-				
-<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc">http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc</a>				
-<br>
-<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html">http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html</a>				
-				
-				
-				
-				</font>
 			</td> 
 		</tr>				
 		
@@ -193,9 +187,7 @@
 					SendUsager
 					</button>
 				</div>			
-				<div>
-					<textarea rows="20"  style="width:100%;" id="id_textarea_01">json reçu du wcf</textarea> 
-				</div>			
+
 			
 			</td> 
 			
@@ -264,12 +256,19 @@
 			  onclick="hide_all();objListViewFichiers.agXMLHttpReqFichiers('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_fichiers();show_back_button();" 
 			  class="switch_screen">Documents</a>
 			</li>
-						
+			<li>
+			  <a href="" id="id_bouton_synchro" 
+			  onclick="hide_all();show_back_button();" 
+			  class="switch_screen">Synchroniser</a>
+			</li>							
 			<li>
 			  <a href="#a_setting"  id="id_bouton_setting"
 			     onclick="hide_all();show_settings();show_back_button();"
 			     class="switch_screen">Paramètres</a>
-			</li>				
+			</li>
+
+
+			
 		</ul>
 	</div> 
 	
@@ -701,7 +700,9 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
   </div> 
   
   
-  
+<div>
+	<textarea rows="20"  style="width:100%;" id="id_textarea_01">json reçu du wcf</textarea> 
+</div>			 
    
   
   
@@ -761,7 +762,17 @@ objListViewObservations = new ClasseListViewObservations("Observation 1");
 objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
 
 //Lire le local storage et remplir mon objet
-objListViewObservations.getObservFromLocalStorage();
+var arr_data = objListViewObservations.getObservFromLocalStorage();
+
+	
+var myListViewObservArray_strignified = JSON.stringify(arr_data, null, "\t"); 
+//var myListViewObservArray_strignified = JSON.stringify(arr_data); 
+
+
+			  
+document.getElementById("id_textarea_01").value = myListViewObservArray_strignified;  
+
+
 
 onClickButtonMenu_ReadJsonInArrayListViewObserv();
 
