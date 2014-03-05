@@ -21,16 +21,19 @@ function ztr (le_IDPhoto) {
     //src = le_IDPhoto ;
     img.crossOrigin = 'Anonymous';
 
-img.onload = function () {
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0);
-}
+	//img.onload = function () {
+		canvas.width = img.width;
+		canvas.height = img.height;
+		
+		ctx.drawImage(img, 0, 0);
+	//}
 
-var tp = canvas.toDataURL("image/png");
-return (le_IDPhoto  + '\ncanvas.width:' + canvas.width 
-                    + ', canvas.height:' + canvas.height 
-				    + "\n" + tp);
+
+
+	var tp = canvas.toDataURL("image/png");
+	return (le_IDPhoto  + '\ncanvas.width:' + canvas.width 
+						+ ', canvas.height:' + canvas.height 
+						+ "\n" + tp);
 
 }
 
@@ -63,14 +66,14 @@ function readData(oData) {
 	localString = JSON.parse(oData);
 	var tempData = [];
 
-	var tpx = "xxxxxxxxxxxxxxxxxxxxxxxxxxx";
+	//var tpx = "xxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
 	//alert('readData: localString.tbOiseaux.length ' + localString.tbOiseaux.length);
 	for (var i = 0; i < localString.tbOiseaux.length; i++) {
 		var obj = localString.tbOiseaux[i];
 
 
-	     tpx = ztr(localString.tbOiseaux[i].IDPhoto);
+	    var tpx = ztr(localString.tbOiseaux[i].IDPhoto);
 	     //console.log(localString.tbOiseaux[i].IDPhoto);
 
 
