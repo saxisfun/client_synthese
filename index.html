@@ -701,7 +701,7 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
   
   
 <div>
-	<textarea rows="20"  style="width:100%;" id="id_textarea_01">json reçu du wcf</textarea> 
+	<textarea rows="20"  style="width:100%;" id="id_textarea_01"></textarea> 
 </div>			 
    
   
@@ -735,7 +735,7 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	
 <script type="text/javascript" >
 
-
+document.getElementById("id_textarea_01").value = "";
 //dataAdapder
 var dataAdapterSwitch_dataFromIIS = false;
 
@@ -756,11 +756,6 @@ objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
 //afficher_les_observations(1,20);
 objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
 afficher_les_observations_new(1,20);
-
-//afficher je json d'obs dans le textarea
-var myListViewObservArray_strignified = JSON.stringify(objListViewObservations.myListViewObservArray, null, "\t"); 
-//var myListViewObservArray_strignified = JSON.stringify(arr_data); 		  
-document.getElementById("id_textarea_01").value = myListViewObservArray_strignified;  
 
 
 
@@ -868,6 +863,21 @@ function errorCallback()
 }
 */
 
+
+function afficherJsonDansTextarea()
+{
+	
+	document.getElementById("id_textarea_01").value = "";
+	//afficher je json d'obs dans le textarea
+	var myListViewObservArray_strignified = JSON.stringify(objListViewObservations.myListViewObservArray, null, "\t"); 
+	//var myListViewObservArray_strignified = JSON.stringify(arr_data); 		  
+	document.getElementById("id_textarea_01").value = myListViewObservArray_strignified;  
+
+
+}
+
+
+
 function creer_json_des_nouvelles_observations(){
 	//créer variable json des nouveux observations à envoyer et ceux modifiées
     //var myArrayDObservationDansLocalStorage = JSON.parse(localStorage.getItem("lsListViewObservArray"));
@@ -901,11 +911,13 @@ function creer_json_des_nouvelles_observations(){
 			}
 		} 
 		
-		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader, null, "\t"); 
-			
-		
-		
-		alert(e3e3e3rr443r);
+		//var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader); 
+		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader, null, "\t");	
+		document.getElementById("id_textarea_01").value = "";
+
+		document.getElementById("id_textarea_01").value = e3e3e3rr443r;  
+
+		//alert(e3e3e3rr443r);
 	}
 
 	
@@ -1014,6 +1026,8 @@ function afficher_les_observations(observation_de, observation_a)
 
 }		
 
+
+
 function onClickButtonSynchro()
 {
 
@@ -1023,8 +1037,14 @@ function onClickButtonSynchro()
 	envoyer_json_des_nouvelles_observations_au_serveur();
 
 	objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
-	
-	
+		
+	//callback_de_downloader_les_observations_dans_localstorage
+
+
+}
+
+function callback_de_downloader_les_observations_dans_localstorage()
+{
 	objListViewObservations.clearMyListViewObservArray();
 	
 	
@@ -1036,10 +1056,7 @@ function onClickButtonSynchro()
 
 	
 	afficher_les_observations_new(1,20);
-	
-}
-
-
+}	
 
 
 

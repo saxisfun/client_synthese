@@ -645,6 +645,13 @@ function onClickButtonMenuListViewObserv()
 	objListViewObservations.fillObservsListView();
 
 
+	afficherJsonDansTextarea();
+	
+	
+	
+	
+	
+	
 	document.getElementById("tool_button_ajouter").style.visibility="visible";
 
 	document.getElementById("tool_button_rechercher").style.visibility="visible";

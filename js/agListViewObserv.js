@@ -80,6 +80,9 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 							
 							localStorage.setItem("lsListViewObservLastDate", todaysDate);
 							
+							
+							callback_de_downloader_les_observations_dans_localstorage();
+							
 						}
 						catch (e) {
 								alert("Storage failed: " + e);                
@@ -397,7 +400,7 @@ ClasseListViewObservations.prototype.viewData = function() {
 ClasseListViewObservations.prototype.fillObservsListView = function() {
 	
 	//alert("fillObservsListView");
-	//alert(this.myListViewObservArray.length);
+	
 	
 	for (var i=0; i < this.myListViewObservArray.length; i++){
 		//var theObject = this.myListViewObservArray[i];
