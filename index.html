@@ -257,8 +257,8 @@
 			  class="switch_screen">Documents</a>
 			</li>
 			<li>
-			  <a href="" id="id_bouton_synchro" 
-			  onclick="hide_all();show_back_button();" 
+			  <a href="#liste_observation1" id="id_bouton_synchro" 
+			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
 			  class="switch_screen">Synchroniser</a>
 			</li>							
 			<li>
@@ -744,15 +744,7 @@ var varGlobal_UserConnected = false;
 //Lire le bon fichier json selon le language du browser
 var userLang = (navigator.language) ? navigator.language : navigator.userLanguage; 
 
-//alert('userLang: '+userLang.toLowerCase().substr(0,2));
-
-//Désactiver la traduction en englais (forcer le francais)
-//userLang = "fr"; 
-
 agXMLHttpReqLan('json/'+ userLang.toLowerCase().substr(0,2) + '.json');
-
-//str_login
-
 
 //Afficher l'écran de login
 showLogin();
@@ -761,44 +753,30 @@ objListViewFichiers = new ClasseListViewFichier("Fichier 1");
 objListViewObservations = new ClasseListViewObservations("Observation 1");
 objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
 
-//Lire le local storage et remplir mon objet
-var arr_data = objListViewObservations.getObservFromLocalStorage();
+//afficher_les_observations(1,20);
+objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
+afficher_les_observations_new(1,20);
 
-	
-var myListViewObservArray_strignified = JSON.stringify(arr_data, null, "\t"); 
-//var myListViewObservArray_strignified = JSON.stringify(arr_data); 
-
-
-			  
+//afficher je json d'obs dans le textarea
+var myListViewObservArray_strignified = JSON.stringify(objListViewObservations.myListViewObservArray, null, "\t"); 
+//var myListViewObservArray_strignified = JSON.stringify(arr_data); 		  
 document.getElementById("id_textarea_01").value = myListViewObservArray_strignified;  
 
 
 
-onClickButtonMenu_ReadJsonInArrayListViewObserv();
 
-// show_element(document.getElementById("tool_button_ajouter"));
+
 
 leGps1 = new MonGPS("Gps 1");
-
-
 leAccel1 = new MonAccel("Accel 1");
-
 leAccel1.capture_acceleration2();
-
 
 var varGlobal1;
 var varGlobal2;
 var varGlobalNomImage;
 
 laCamera1 = new MaCamera('Cam 1');
-
-
 laCamera1.activateAudio();
-
-
-//laCamera1.activateCamera();
-
-
 
 
 document.getElementById('id_navUserAgent').innerHTML=navigator.userAgent;
@@ -810,31 +788,16 @@ if ("geolocation" in navigator) {
 	alert("I'm sorry, but geolocation services are not supported by your browser.");
 
 }
-
-
-
 var la_reponse="";
-
-
-
-/*
-ma=mac
-wi=windows
-li=linux
-ia=iPad
-ip=iPod
-io=iPhone
-an=Android
-
-*/
-
-
 
 document.getElementById("id_redirectionMessage").innerHTML=la_reponse;
 
 //pour recevoir les données du barcode scanner
 var first = getUrlVars()["code"];
 var second = getUrlVars()["barcodeReturnedCode1"];
+
+
+
 
 /*
 document.getElementById("img-tag-show-picture").onclick = function() {
@@ -904,6 +867,192 @@ function errorCallback()
 	alert("errorCallback");
 }
 */
+
+function creer_json_des_nouvelles_observations(){
+	//créer variable json des nouveux observations à envoyer et ceux modifiées
+    //var myArrayDObservationDansLocalStorage = JSON.parse(localStorage.getItem("lsListViewObservArray"));
+	var myArrayDObservationDansLocalStorage = objListViewObservations.myListViewObservArray;
+	
+	var myArrayDObservationAUploader = [];
+
+
+
+
+
+	if ((typeof myArrayDObservationDansLocalStorage == "undefined" ) || (myArrayDObservationDansLocalStorage == null) || (myArrayDObservationDansLocalStorage == "undefined")){
+		//alert("myArrayDObservationDansLocalStorage = undefined");	
+		
+		
+	}else{	
+		//alert("myArrayDObservationDansLocalStorage.length: "+myArrayDObservationDansLocalStorage.length);
+		
+		for (var i=0; i < myArrayDObservationDansLocalStorage.length; i++){
+			var observ_Object = myArrayDObservationDansLocalStorage[i];
+			//observ_Object.strObservFlagInsertUpdate = "";
+			//alert("strObservFlagInsertUpdate:"+observ_Object.strObservFlagInsertUpdate);
+			
+			
+			if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
+			
+				myArrayDObservationAUploader.push(observ_Object);	
+				
+				//alert("Ok un nouveau");
+				
+			}
+		} 
+		
+		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader, null, "\t"); 
+			
+		
+		
+		alert(e3e3e3rr443r);
+	}
+
+	
+
+	
+	return myArrayDObservationAUploader;
+}
+
+function envoyer_json_des_nouvelles_observations_au_serveur()
+{
+	
+	
+}
+
+
+function afficher_les_observations_new(observation_de, observation_a)
+{
+	hide_all();
+	/*
+	var le_output_json = objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+	
+	le_output_json_parsed = JSON.parse(le_output_json);
+		
+	for(var i=0; i < le_output_json_parsed.result.length;i++){
+
+		var titVar = le_output_json_parsed;
+		
+		//alert(titVar.result[i].filename);
+	
+		//ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
+		var observObject2 = new ClasseObservation();
+		
+		observObject2.strObservFlagInsertUpdate = "";
+		observObject2.strObservTimestamp = "";
+		observObject2.strObservNoAutoGenereParlaDB = "";
+		observObject2.strObservNomDeLusager = "";
+		observObject2.strObservTitre = titVar.result[i].filename;
+		observObject2.strObservResume = titVar.result[i].description;
+		//observObject2.strObservDiskName = titVar.result[i].url;
+		//observObject2.strObservDataURLPicture = "";
+		observObject2.strObservLaPositionGPS_lat = "";
+		observObject2.strObservLaPositionGPS_long = "";		
+	
+		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
+	}
+	*/		
+	
+	objListViewObservations.fillObservsListView();
+
+
+	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	document.getElementById("tool_button_rechercher").style.visibility="visible";
+	document.getElementById("tool_button_seconnecter").style.visibility="visible";
+	
+	
+	
+	
+	show_back_button();
+
+}	
+
+		  
+function afficher_les_observations(observation_de, observation_a)
+{
+	hide_all();
+	
+	var le_output_json = objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+	
+	le_output_json_parsed = JSON.parse(le_output_json);
+		
+	for(var i=0; i < le_output_json_parsed.result.length;i++){
+
+		var titVar = le_output_json_parsed;
+		
+		//alert(titVar.result[i].filename);
+	
+		//ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
+		var observObject2 = new ClasseObservation();
+		
+		observObject2.strObservFlagInsertUpdate = "";
+		observObject2.strObservTimestamp = "";
+		observObject2.strObservNoAutoGenereParlaDB = "";
+		observObject2.strObservNomDeLusager = "";
+		observObject2.strObservTitre = titVar.result[i].filename;
+		observObject2.strObservResume = titVar.result[i].description;
+		//observObject2.strObservDiskName = titVar.result[i].url;
+		//observObject2.strObservDataURLPicture = "";
+		observObject2.strObservLaPositionGPS_lat = "";
+		observObject2.strObservLaPositionGPS_long = "";		
+	
+		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
+	}
+			
+	
+	objListViewObservations.fillObservsListView();
+
+
+	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	document.getElementById("tool_button_rechercher").style.visibility="visible";
+	document.getElementById("tool_button_seconnecter").style.visibility="visible";
+	
+	
+	
+	
+	show_back_button();
+
+}		
+
+function onClickButtonSynchro()
+{
+
+
+	creer_json_des_nouvelles_observations();
+
+	envoyer_json_des_nouvelles_observations_au_serveur();
+
+	objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+	
+	
+	objListViewObservations.clearMyListViewObservArray();
+	
+	
+	objListViewObservations.removeAllObservFromListView();
+	
+	objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
+
+	
+
+	
+	afficher_les_observations_new(1,20);
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function utf8_to_b64( str ) {
     return window.btoa(unescape(encodeURIComponent( str )));

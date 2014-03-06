@@ -28,12 +28,10 @@ function ClasseListViewObservations(myName) {
 
 
 
-ClasseListViewObservations.prototype.agXMLHttpRequestObservations = function() {
-	
+ClasseListViewObservations.prototype.downloader_les_observations_dans_localstorage = function(observation_de, observation_a) {
 
-    
-	var storageObs = JSON.parse(localStorage.getItem("storageFilesObservations")) || {},
-	storageObservationsDate = storageObs.date1,
+	//var storageObs = JSON.parse(localStorage.getItem("lsListViewObservArray")) || {},
+	var storageDate = localStorage.getItem("lsListViewObservLastDate"),
 	une_date = new Date(),
 	//todaysDate = (date.getMonth() + 1).toString() + date.getDate().toString();
 	todaysDate=agConvertDate2(une_date);
@@ -41,7 +39,7 @@ ClasseListViewObservations.prototype.agXMLHttpRequestObservations = function() {
 	//alert(storageObservationsDate+"/"+todaysDate); 
     // Vérifier si fichier existe et n'est pas trop vieux 
 	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
-    if (typeof storageObservationsDate === "undefined" || storageObservationsDate != todaysDate) 
+    if (typeof storageObservationsDate === "undefined" || storageDate != todaysDate) 
 	{
 
 		 //alert(le_bon_url);
@@ -54,8 +52,11 @@ ClasseListViewObservations.prototype.agXMLHttpRequestObservations = function() {
 				resourcePath = 'http://ks365406.kimsufi.com/fpilote/tp1/files.json';
 			}else{
 				//resourcePath = "http://listObs.json?idx_de='+index_de+'&idx_a='+index_a+'";
-				resourcePath = 'http://ks365406.kimsufi.com/fpilote/tp1/files.json';
+				resourcePath = 'json/listObs2.json';
 			}		
+			
+			
+			
 			
 			var request = new XMLHttpRequest();
 			
@@ -64,28 +65,26 @@ ClasseListViewObservations.prototype.agXMLHttpRequestObservations = function() {
 				if (request.readyState == 4) {
 					if (request.status == 200 || request.status == 0) {
 					
-						str_output = request.responseText;
+						var str_output = request.responseText;
 						
-						storageObs.date1 = todaysDate;
-						storageObs.output = str_output;
+						//storageDate.date1 = todaysDate;
+
+						//storageObs = str_output;
 						try {
-							localStorage.setItem("storageFilesObservations", JSON.stringify(storageObs));
+							//localStorage.setItem("lsListViewObservArray", JSON.stringify(storageObs));
+							localStorage.setItem("lsListViewObservArray", str_output);
+					
+						
+							
+							
+							
+							localStorage.setItem("lsListViewObservLastDate", todaysDate);
+							
 						}
 						catch (e) {
 								alert("Storage failed: " + e);                
 						}
-						//this.fillObservsListView(str_output);
 
-
-						//str_output
-						
-			
-						
-						//objListViewObservations.ajouterUnObservationDansLeListViewObservArray(le_titre, le_resume, varGlobalNomImage, test6432);
-						//objListViewObservations.saveObservToLocalStorage();  
-						
-			
-						
 					}
 				}
 			}
@@ -96,34 +95,12 @@ ClasseListViewObservations.prototype.agXMLHttpRequestObservations = function() {
 		}
     }
     else {
-	   str_output = storageObs.output;
+	   //str_output = storageObs.output;
 	   //this.fillObservsListView(str_output); 
 	   //storageObs.output = str_output;
     }
-	
-	
-				
-	//alert(str_output.id+"/"+str_output.filename);
-	
-	//test444 = JSON.stringify(str_output);
-
-	//alert(test444.result.length);
-	//alert(test444.result[0].filename);
-	
-	
-	
-	//alert(str_output.id+"/"+str_output.filename);
-	
-	/*
-	alert(localString.result[i].id);
-	alert(localString.result[i].filename);
-	alert(localString.result[i].url);
-	alert(localString.result[i].description);
-	alert(localString.result[i].registered);	
-	*/		
-						
-						
-	return storageObs.output;
+					
+	//return storageObs.output;
 	
 	
 }
@@ -163,11 +140,11 @@ ClasseListViewObservations.prototype.saveObservToLocalStorage = function() {
 }
 
 
-ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
+ClasseListViewObservations.prototype.fillMyListViewObservArrayFromLocalStorage = function() {
 	
-	//alert("getObservFromLocalStorage");
+	//alert("fillMyListViewObservArrayFromLocalStorage");
 	//alert(this.myListViewObservArray.length);
-		
+		//storageFilesObservations
 	var objMyName = localStorage.getItem("lsListViewObservName");
 	var objMyArr = localStorage.getItem("lsListViewObservArray");
 	// Vérifier si fichier existe et n'est pas trop vieux  
@@ -176,9 +153,6 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 		//Si fichier n'existe pas sur ordi ou il est trop vieux alors on le download et on le mets dans le canvas pour pouvoir le sauvegarder sur le disque
 		//this.myListViewObservArray = [];
 	
-	
-	
-
 	}else{
 		//alert("Oui");
 		//alert(this.myListViewObservName);
@@ -190,7 +164,11 @@ ClasseListViewObservations.prototype.getObservFromLocalStorage = function() {
 		}
 
 		if (localStorage.lsListViewObservArray && localStorage.lsListViewObservArray != "undefined" && localStorage.lsListViewObservArray != "null") {
+			
+			
 			this.myListViewObservArray = JSON.parse(localStorage.lsListViewObservArray); 
+			
+			
 			
 		}else{
 			this.myListViewObservArray = [];
@@ -484,6 +462,9 @@ ClasseListViewObservations.prototype.removeAllObservFromListView = function() {
 
 
 
+ClasseListViewObservations.prototype.clearMyListViewObservArray = function() {
+	this.myListViewObservArray.splice(0, this.myListViewObservArray.length);
+}
 
 ClasseListViewObservations.prototype.removeSelectedObservsFromListView = function() {
 	var les_lignes = document.getElementsByClassName('list_View_Observ');
@@ -502,7 +483,7 @@ ClasseListViewObservations.prototype.removeSelectedObservsFromListView = functio
 }
 
 
-ClasseListViewObservations.prototype.deleteObservsFromListViewButton = function(l_indx) {
+ClasseListViewObservations.prototype.deleteUneObservationFromListViewButton = function(l_indx) {
 	
 	
 	

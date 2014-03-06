@@ -1,0 +1,36 @@
+[
+	{
+		
+		"strObservFlagInsertUpdate": "", 
+		"strObservTimestamp": "111111111",
+		"strObservNoAutoGenereParlaDB": "23122112",
+		"strObservNomDeLusager": "saxisfun", 
+		"strObservTitre": "Moineau", 
+		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
+		"arrObservLesPhotos": [],	
+		"strObservLaPositionGPS_lat": "XXXX",
+		"strObservLaPositionGPS_long": "XXXX"	
+	},
+	{
+		"strObservFlagInsertUpdate": "", 
+		"strObservTimestamp": "111111111",
+		"strObservNoAutoGenereParlaDB": "32443223",
+		"strObservNomDeLusager": "saxisfun", 
+		"strObservTitre": "Merle à Quebec", 
+		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
+		"arrObservLesPhotos": [],	
+		"strObservLaPositionGPS_lat": "XXXX",
+		"strObservLaPositionGPS_long": "XXXX"	
+	},
+	{
+		"strObservFlagInsertUpdate": "", 
+		"strObservTimestamp": "111111111",
+		"strObservNoAutoGenereParlaDB": "34545677",
+		"strObservNomDeLusager": "guygend", 
+		"strObservTitre": "Oiseau bleu a Quebec", 
+		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
+		"arrObservLesPhotos": [],	
+		"strObservLaPositionGPS_lat": "XXXX",
+		"strObservLaPositionGPS_long": "XXXX"	
+	}
+]
