@@ -1,0 +1,77 @@
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "total": 5,
+    "tbOiseaux": [
+        {
+            "id": 1,
+            "espece": "Aigle royal",
+             "description": "L'Aigle royal (Aquila chrysaetos) est une espèce de grands rapaces de la famille des Accipitridae. C'est un oiseau brun foncé, avec un plumage plus brun-doré sur la tête et le cou. L'aigle royal utilise son agilité, sa vitesse et ses serres extrêmement puissantes pour attraper ses proies : des lapins, des marmottes, des écureuils, et de grands mammifères comme les renards, les chats sauvages et domestiques, de jeunes chèvres de montagne, de jeunes bouquetins, et de jeunes cervidés. Il consomme aussi des charognes, si les proies sont rares, ainsi que des reptiles. Des oiseaux, dont des espèces de grande taille comme des cygnes ou des grues, des corbeaux et des Goélands marins ont tous été reportés comme proies potentielles.",
+            "IDPhoto": "aigle_royal",
+			"IDSon": "aigle_royal"
+        },
+        {
+            "id": 2,
+            "espece": "Aigrette bleue",
+            "description": "L’Aigrette bleue (Egretta caerulea) est une espèce d'échassier qui vit dans les zones humides d'Amérique centrale, des États-Unis, des Caraïbes, du Pérou, de l'Uruguay, de Bolivie et du Brésil. Elle est parfois placée dans le genre monospécifique Florida.",
+            "IDPhoto": "aigrette_bleue",
+			"IDSon": "aigrette_bleue"
+        },
+        {
+            "id": 3,
+            "espece": "Aigrette garzette",
+            "description": "Elle est entièrement blanche et est parfois appelée héron blanc, elle est de taille moyenne (longueur de 55 à 65 cm ; envergure de 90 à 105 cm). Son bec noir légèrement gris bleuté à la base et ses pattes noires aux doigts jaunes la rendent facilement identifiable. En période nuptiale, elle porte sur la nuque deux longues plumes fines (20 cm), les aigrettes.",
+            "IDPhoto": "aigrette_garzette",
+			"IDSon": "aigrette_garzette"
+        },
+        {
+            "id": 4,
+            "espece": "Selfie bleu",
+            "description": "La réalité est que la femme voilée est d’abord une femme qui se vêt selon ses convictions : selon ce en quoi elle croit, selon ce vers quoi elle tend, et selon ce qu’elle a envie d’être. Voilà là, sa substance : la définition-même de la liberté en fait.",
+            "IDPhoto": "Selfie_bleu",
+			"IDSon": "Selfie_bleu"
+        },
+        {
+            "id": 5,
+            "espece": "Harfang des neiges",
+            "description": "Qui dignissim suscipit dolor zzril veniam, esse tation ut consequat te, iusto et nulla vulputate. In, iriure in lobortis nibh erat, consectetuer tation suscipit lorem nisl, iusto vel esse. Vulputate sit, autem et et dolore velit, amet iriure nostrud.",
+            "IDPhoto": "harfang_des_neiges",
+			"IDSon": "harfang_des_neiges"
+        },
+        {
+            "id": 6,
+            "espece": "Hirondelle rustique",
+            "description": "Euismod nisl exerci illum adipiscing wisi, eros veniam qui nisl tincidunt, eum iusto dolor accumsan. Dignissim, dolor ex autem dolor feugait, nulla qui esse ut velit, ut nonummy ipsum. Dignissim diam, accumsan consequat eros ad velit, amet diam veniam tincidunt.",
+            "IDPhoto": "hirondelle_rustique",
+			"IDSon": "hirondelle_rustique"
+        },
+        {
+            "id": 7,
+            "espece": "Merle d'amerique",
+            "description": "Qui dignissim suscipit dolor zzril veniam, esse tation ut consequat te, iusto et nulla vulputate. In, iriure in lobortis nibh erat, consectetuer tation suscipit lorem nisl, iusto vel esse. Vulputate sit, autem et et dolore velit, amet iriure nostrud.",
+            "IDPhoto": "merle_amerique",
+			"IDSon": "merle_amerique"
+        },
+        {
+            "id": 8,
+            "espece": "Moineau",
+            "description": "Euismod nisl exerci illum adipiscing wisi, eros veniam qui nisl tincidunt, eum iusto dolor accumsan. Dignissim, dolor ex autem dolor feugait, nulla qui esse ut velit, ut nonummy ipsum. Dignissim diam, accumsan consequat eros ad velit, amet diam veniam tincidunt.",
+            "IDPhoto": "moineau",
+			"IDSon": "moineau"
+        },
+        {
+            "id": 9,
+            "espece": "Sizerin flammé",
+            "description": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam, ut ipsum ut consequat. Vero, et ut facilisis dolor sed, illum ipsum esse dolore feugait, nonummy adipiscing euismod. Facilisi qui, esse odio praesent te te, ex duis.",
+            "IDPhoto": "sizerin_flammé",
+			"IDSon": "sizerin_flammé"
+        },
+        {
+            "id": 10,
+            "espece": "Arlequin plongeur",
+            "description": "L'Arlequin plongeur est un petit canard (de 38 à 45 cm1) très sombre au bec court. En plumage nuptial, le mâle présente un plumage gris bleu sombre, paraissant noir de loin avec les flancs marron et des taches et raies blanches sur la tête, le cou et la poitrine. En plumage internuptial, il ressemble à la femelle mais s'en distingue par le dessus du corps ardoisé sombre et l'absence de blanc à la poitrine. La femelle est brun foncé uniforme avec la poitrine blanchâtre, deux taches blanches indistinctes devant les yeux et une plus nette derrière.",
+            "IDPhoto": "arlequin_plongeur",
+			"IDSon": "arlequin_plongeur"
+        }
+    ]
+}

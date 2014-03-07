@@ -1,0 +1,1114 @@
+﻿<!doctype html>
+  <!--<html lang="en" manifest="app.manifest">  -->
+<html manifest="cache-manifest.mf">   
+<head>
+  
+	
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	
+    <title>Application d'observation d'oiseaux</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    <!-- icons   -->
+    <link rel="apple-touch-icon" sizes="72x72" href="img/72x72_frog.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/114x114_smile.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/144x144_bird.png" />
+
+    <!-- startup image for web apps - iPad - portrait (768x1024) -->
+    <link rel="apple-touch-startup-image" href="img/768x1004_blabla.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+
+    <!-- startup image for web apps - iPad - landscape (1024x748) -->
+    <link rel="apple-touch-startup-image" href="img/2048x1496_32.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" />  
+
+    <!-- iPhone/iPod Touch Portrait – 320 x 480 (standard resolution) -->
+	<link rel="apple-touch-startup-image" href="img/320x480_24.png" media="screen and (min-device-width: 325px) and (max-device-width: 500px) and (orientation:portrait)" />
+
+    <!-- Add to home screen bubble -->
+    <link rel="stylesheet" href="cubiq/style/add2home.css">
+   
+	<!-- Fichiers jquery utiliser pour faire des call ajax pour accéder aux données du wcf-->
+	
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	
+	<!-- Exemple fourni par les dba et aller surfer sur index2.html-->
+	<script type="application/javascript" src="Scripts/ScriptsDivers.js"></script>
+
+
+
+
+	<script type="application/javascript" src="cubiq/src/add2home.js"></script>
+				
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+</head>
+
+
+<body id="id_body" style="text-align:center;" >
+	
+	<div id="div_main" role="main">
+
+	<div id="toolbar">
+		  
+		<button id="back_button" onclick="hide_all();show_menu1();" class="hidden">Menu</button>
+
+		<button id="tool_button_ajouter" onclick="onClickBoutonAjouterObservation();"
+		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
+		class="">Ajouter un observation</button>	  
+
+		<button id="tool_button_rechercher" onclick="hide_all();show_dicti();show_back_button();"
+		style="position:absolute;bottom:6px;right:113px;visibility:hidden;width:104px;"
+		class="">Rechercher un oiseau dan le dictionnaire</button>
+
+		<button  id="tool_button_deconnecter" onclick="onClickBoutonDeconnecter();"
+		style="position:absolute;bottom:6px;right:12px;visibility:hidden;width:94px;"
+		class="">Se déconnecter</button>	
+
+		<button  id="tool_button_seconnecter" onclick="onClickBoutonSeConnecter();"
+		style="position:absolute;bottom:6px;right:12px;visibility:hidden;width:94px;"
+		class="">Se connecter</button>			
+		
+		
+	
+	</div> 
+		  
+      
+      
+	  <!-- 
+	  about_meow
+	  about_app
+      <div class="screen hidden"  id="a_setting">
+	  -->
+
+	
+	  
+<!--  Écran du login  -->
+	 
+	<div id="ecran_login" style="" class="screen">
+	
+		<table class="table2">
+		<col style="width:40%;">        
+		<col style="width:60%;">		
+	
+		<tr>
+			<td class="td_table2" style="width:20%;">
+				<img style="width:60px;" exif="true"  src="img/owl.png" />
+		
+	
+			
+			</td>
+			
+			<td class="td_table2" style="color:black;">Application d'observation d'oiseaux</td> 
+
+		</tr>
+	
+	
+	
+		<tr>
+			<td style="text-align:left;" id="id_utilisateur_label">Utilisateur</td> 
+			<td><input type="text" style="width:120px;" onChange="" id="id_utilisateur_d" VALUE="aaaa"></td> 
+		</tr>
+		
+		<tr>
+			<td style="text-align:left;" id="id_motDePasse_label">Mot de passe</td> 
+			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_motDePasse_d" VALUE="bbbb"></td> 
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			<br>
+			<button onclick="onClickButtonLogin();"  style="right:125px;" class="">Login</button>
+			</td> 
+		</tr>
+		
+		
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			<br>
+			<button onclick="localStorage.clear();localStorage.removeItem('lsCartesName');localStorage.removeItem('lsCartesArray');"  style="right:125px;" class="">Clear localStorage</button>
+			</td> 
+		</tr>		
+		
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			<br>
+			<button class="buttonWatch" id="id_actualiser" onclick="location.reload(true);">Refresh</button>
+			</td> 
+		</tr>		
+		<tr>
+			<td colspan="2" id="id_online_offline" style="text-align:center;">
+			</td> 
+		</tr>			
+		<tr>
+			<td colspan="2" style="text-align:center;"><br><br>
+					
+				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc">
+				http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc</a>				
+				<br>
+				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html">
+				http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html</a>				
+
+			</td> 
+		</tr>				
+		
+		
+		
+		<tr>
+			<td colspan="2" style="text-align:center;" id="id_redirectionMessage"></td> 
+			
+		</tr>
+
+
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			
+				<div>
+					<button onclick="GetUsager();">
+					GetUsager
+					</button>
+				</div>
+				
+				<div>
+					<button 
+					onclick="	
+					SendUsager('saxisfun@gmail.com','Alain Giguere','saxisfun','????');
+					//SendUsager('admin@diq.ca','Administrateur','admin','892f1ceab17e0df07e0ec8de8cb5a30621d97797555e61b80c65eb68061623982a33e66440f28b7dbd6cfe6c007621e4fdd4ae9641516c68b18a299b599a1dec');						
+					">
+					SendUsager
+					</button>
+				</div>			
+
+			
+			</td> 
+			
+		</tr>		
+
+
+
+		
+		
+		</table>	
+ 
+ 
+ 
+ 
+ 
+	</div> 	  
+
+
+<!---------------------------------------------------------------->
+<!--  Écran du menu  -->
+
+
+	
+	<div id="le_menu1" class="screen hidden">
+		<ul class="buttons">
+			<li>
+			  <a href="#liste_observations1" id="id_bouton_ajout_observation" 
+			  onclick="hide_all();show_back_button();onClickBoutonAjouterObservation();" 
+			  class="switch_screen">Ajouter une observation</a>
+			</li>		
+		
+			<li>
+			  <a href="#liste_observation1" id="id_bouton_liste_des_observations" 
+			  onclick="onClickButtonMenuListViewObserv();" 
+			  class="switch_screen">Visionner les observations</a>
+			</li>
+		
+
+
+			
+			<li>
+			  <a href="#ecran_recherche"  id="id_bouton_recherche"
+			     onclick="hide_all();show_dicti();show_back_button();" 
+			     class="switch_screen">Recherche dans le dictionnaire</a>
+			</li>  
+			
+			<li>
+			  <a href="#ecran_timer"  id="id_bouton_timer"
+			     onclick="hide_all();show_chrono();show_back_button();" 
+			     class="switch_screen">Écran de test chronomètre</a>
+			</li>
+
+			<li>
+			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
+			     onclick="hide_all();show_geolocalisation();show_back_button();"
+			     class="switch_screen">Géolocalisation WiFi</a>
+			</li>
+			
+			
+			<!--  show_geolocalisation show_dicti -->	
+			
+		
+			
+			<li>
+			  <a href="#liste_fichiers1" id="id_bouton_liste_fichiers1" 
+			  onclick="hide_all();objListViewFichiers.agXMLHttpReqFichiers('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_fichiers();show_back_button();" 
+			  class="switch_screen">Documents</a>
+			</li>
+			<li>
+			  <a href="#liste_observation1" id="id_bouton_synchro" 
+			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
+			  class="switch_screen">Synchroniser</a>
+			</li>							
+			<li>
+			  <a href="#a_setting"  id="id_bouton_setting"
+			     onclick="hide_all();show_settings();show_back_button();"
+			     class="switch_screen">Paramètres</a>
+			</li>
+
+
+			
+		</ul>
+	</div> 
+	
+	
+	
+	
+<!---------------------------------------------------------------->
+<!--  Écran d'obsevations  -->	
+	
+   <div id="ecran_observation" class="screen hidden">
+     
+		<table class="table2">
+		<col style="width:100%;">        
+		<tr>
+			<td>		
+				 <h3 style="color:black;">Écran d'observation  </h3>		
+			</td> 
+		</tr>	
+		<tr>
+			<td>		
+				<button  id="" onclick="onClickBoutonSaveObservation();" style="width:180px;" class="">Cliquez ici pour sauvegarder</button>			
+			</td> 
+		</tr>
+		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservFlagInsertUpdate_label" >FlagInsertUpdate:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservFlagInsertUpdate_data" VALUE=""></td> 
+		</tr>
+				
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoAutoGenereParlaDB_label" >NoAutoGénéréParlaDB:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservNoAutoGenereParlaDB_data" VALUE=""></td> 
+		</tr>		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoDeLusager_label" >Identifiant de l'usager:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservNoDeLusager_data" VALUE=""></td> 
+		</tr>			
+		
+		
+		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservTitre_label" >Titre:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservTitre_data" VALUE=""></td> 
+		</tr>
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservResume_label" >Résumé:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><textarea rows="5"  type="text" style="width:100%;" id="id_ObservResume_data" VALUE=""></textarea> </td> 
+		</tr>
+
+		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_lat_label" >Position GPS - Lat</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservLaPositionGPS_lat_data" VALUE=""></td> 
+		</tr>		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_long_label" >Position GPS - long</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservLaPositionGPS_long_data" VALUE="">	</td> 
+		</tr>		
+				
+		
+		
+		
+	
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservDiskName_label" >Nom de l'image:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservDiskName_data" VALUE="" READONLY></td> 
+		</tr>	
+
+	
+	
+		<tr>
+			<td>		
+				<button  id="" onclick="onClickBoutonSaveObservation();onClickBoutonAjouterPhoto();" style="width:220px;" class="">Ajouter une photos</button>			
+			</td> 
+		</tr>			
+		
+		
+
+		<tr id="idTRInputDeLaPhoto" style="display:block;">
+			<td id="idTDInputDeLaPhoto" class="tddata"></td> 
+		</tr>
+
+
+		<tr style="display:none;">
+			<td style="text-align:left;">
+                <h3>Preview:</h3>
+                <p>
+                    Ce tag img est caché et sert de buffer pour loader l'image et le convertire en dataURL et ensuite j'affiche l'image dans une ligne du UL
+					<img src="about:blank" style="border-style:solid;border-width:4px;border-color:red;width:100%;" exif="true" alt="" id="img-tag-show-picture"/>
+					
+					
+						
+					
+					
+					
+                </p>	
+
+
+
+				
+			</td> 
+		</tr>	
+		
+		
+		<tr style="display:none;">
+			<td>	
+
+
+			
+				<button  id="" onclick="onClickAjouterUneAutrePhoto();" style="width:220px;" class="">Ajouter une autre photos</button>			
+			</td> 
+		</tr>				
+		
+		
+		<tr>
+			<td>	
+
+
+			
+				<ul id="id_ul_les_photos" style=""></ul>
+			</td> 
+		</tr>	
+	
+
+		
+	
+	
+				
+		<tr>
+			<td style="text-align:left;">
+                <p id="error"></p>				
+			</td> 
+		</tr>			
+
+			
+		<tr>
+			<td style="text-align:center;">
+                <div>Index: <em id="id_cell_index"></em></div>				
+			</td> 
+		</tr>					
+		</table>	
+		
+		
+	
+		
+    </div>      	
+	
+	
+	
+	
+	
+	
+    
+    <div class="screen hidden" onclick="alert('55555');" id="liste_fichiers1">
+        <h2>Liste des documents</h2>
+        <p>Photos of cats reading and photos of cats learning how to read.</p>
+    </div>
+
+	
+    <div class="screen hidden" id="liste_observation1">
+        <h2>Liste des observations</h2>
+        <p>bla bla bla.</p>
+    </div> 
+	
+	
+	
+ 
+<!---------------------------------------------------------------->
+<!--  Écran paramètres  -->		 
+      
+        <div id="a_setting" class="screen hidden" style="text-align:center;" >
+        <h2>Paramètres</h2>
+		<table class="table2" >
+		<col style="width:40%;">        
+		<col style="width:60%;">
+		<tr>
+			<td style="text-align:left;" id="xxxxxxx">Langue:</td> 
+
+		</tr>		
+		<tr>
+			<td style="text-align:right;">
+			
+				<SELECT class="SELECTBLUE" 
+				onMouseWheel="return false;"
+				onchange="" style="width:120px;" name="AccessKm">
+				<OPTION selected VALUE="fr">Français</OPTION>
+				<OPTION VALUE="en">Englais</OPTION>
+				<OPTION VALUE="es">Espagnole</OPTION>		
+							
+				</SELECT>	
+			
+			</td> 
+		</tr>				
+		<tr>
+			<td style="text-align:left;">Téléchargements:</td> 
+		</tr>
+
+
+		<tr>
+			<td style="text-align:left;">Données:</td> 
+		</tr>
+		<tr>
+			<td style="text-align:right;">
+				<button onclick="localStorage.clear();"  style="right:10px;width:170px;" class="">Effacer le Local Storage</button>
+			</td> 
+		</tr>		
+		<tr>
+			<td style="text-align:left;">Accélération:</td> 
+		</tr>	
+		<tr>
+			<td id="id_accel_data" style="text-align:right;">
+				
+			</td> 
+		</tr>		
+		<tr>
+			<td style="text-align:left;">Scanner:</td> 
+		</tr>			
+		<tr>
+			<td style="text-align:right;">
+				<a href="http://zxing.appspot.com/scan?ret=http://www.intranet-creation.com/cegep/tp1/index.html?code={CODE}">Scan</a>
+			</td> 
+		</tr>			
+		<tr>
+			<td style="text-align:left;vertical-align:top;">Navigateur:</td> 
+				
+		</tr>	
+		<tr>
+			
+			<td  id="id_navUserAgent" style="text-align:left;"></td> 	
+		</tr>	
+		
+		
+
+		<tr>
+			<td style="text-align:left;">Test lien:</td> 
+		</tr>	
+		<tr>
+			<td style="text-align:right;">
+				<a href="http://www.google.ca/" onclick = "alert('yesssss');" id="id_test_lien">Test lien</a>
+			</td> 
+		</tr>	
+
+		
+		
+		</table>	
+	
+		
+    </div> 
+ 
+ 
+ 
+
+	<!---------------------------------------------------------------->
+	<!--  Écran recherche dans le dictionnaire -->
+ 
+ 
+ 
+
+ <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
+
+
+		<table>
+		<col style="width:40%;">        
+		<col style="width:60%;">		
+
+		<tr>
+			<td><img style="width:60px;"src="img/dictionary.png"/></td>		
+			<td> <h3> Rechercher dans le dictionnaire </h3></td>
+		</tr>
+
+
+		<tr>
+			<td><h4>Specimen:</h4></td>
+			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
+		</tr>
+	
+		<!---VALUE="Toukan"-->
+		
+		<tr> 
+			<td> </td>
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
+					</li>	
+	    		</ul>
+	    	</td> 
+		</tr>
+	
+		
+	</table>	
+
+	
+    </div> 
+ 
+ 
+ 
+ 
+	<!---------------------------------------------------------------->
+	<!--  Écran de test Chronomètre -->
+
+
+	<div id="ecran_timer" class="screen hidden" style="text-align:center;" >
+	<table>
+		<col style="width:40%;">        
+		<col style="width:60%;">		
+
+		<tr>
+			<td><img style="width:60px;"src="img/timer.png"/></td>		
+			<td> <h3> Chronomètre </h3></td>
+		</tr>
+
+		<tr>
+			<div id="container">	
+				<td>		   
+				<div id="inputArea">
+					<h5 style="text-align:left;">Donner une valeur en seconde:</h5>
+				</div>
+				</td>
+		
+				<td>
+				<h1 id="time">0:00</h1>  
+				</td>   
+			</div> 
+		</tr>
+
+		<tr>  
+			<ul class="buttons">
+				<li>
+					<a href="#" id="" onclick="startCountdown();"  					class="switch_screen">Démarrer le chronomètre</a>
+				</li>	
+			</ul>
+		</tr>
+
+	</table>	
+	</div> 
+ 
+
+
+ 
+	<!---------------------------------------------------------------->
+	<!--  Écran de test géolocalisation -->
+ 
+ 
+
+	
+	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
+	<table>
+		<tr> 
+			<td> 
+				<ul class="buttons">
+					<li>
+						<a href="#" id="" onclick="localiser();" 						class="switch_screen">Géolocaliser par wifi</a>
+					</li>	
+				</ul>
+			</td> 
+		</tr>
+
+
+	</table>	
+
+	<div>
+	<!-- <button onclick="localiser();">localise()</button>  -->
+	<div id="contentMap"></div>
+	</div>
+
+
+	<p>géolocalisation wifi...</p>
+
+	</div> 
+
+
+
+
+
+
+
+
+
+	<!-- 
+
+    		<ul class="buttons">
+				<li>
+	   	 			<a href="#" id="" onclick="localise();" 						class="switch_screen">GPS</a>
+				</li>	
+    		</ul>
+		
+    -->
+ 
+ 
+ 
+ 
+   
+<!-- 
+		
+ &SCAN_FORMATS=UPC_A,EAN_13 
+//voir ce lien
+http://code.google.com/p/zxing/wiki/ScanningFromWebPages
+
+•{CODE}: the formatted content of the barcode, or the raw content (unparsed) if raw=true 
+•{RAWCODE}: the raw content (unparsed) 
+•{FORMAT}: the name of the barcode format scanned like UPC_A 
+•{TYPE}: the name of the type of parsed content, like PRODUCT 
+•{META}: a string representation of the scan metadata, like {POSSIBLE_COUNTRY=US/CA} 
+
+-->
+ 
+
+
+
+
+   
+  </div> 
+  
+  
+<div>
+	<textarea rows="20"  style="width:100%;" id="id_textarea_01"></textarea> 
+</div>			 
+   
+  
+  
+ 	<script type="text/javascript" src="js/Mz.js"></script> 
+	<script type="text/javascript" src="js/helper.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>  
+	<script type="text/javascript" src="js/all.js"></script>
+
+	<script type="text/javascript" src="js/agFichie.js"></script>
+	<script type="text/javascript" src="js/agGps.js"></script>
+	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
+	<script type="text/javascript" src="js/agListViewFichie.js"></script>	
+	
+	
+	
+	<script type="text/javascript" src="js/agTakePic.js"></script>		
+	<script type="text/javascript" src="js/agAccel.js"></script>	
+	<script type="text/javascript" src="js/agUpload.js"></script>	
+	<script type="text/javascript" src="js/agOnOffLine.js"></script>		
+	<script type="text/javascript" src="js/agPhoto.js"></script>	
+	<script type="text/javascript" src="js/agUneObserv.js"></script>
+	
+	<script type="text/javascript" src="js/ddTest.js"></script>
+	<script type="text/javascript" src="js/ddListViewDict.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
+	<script type="text/javascript" src="js/agULListViewPhotos.js"></script>	
+	
+	
+	
+	
+<script type="text/javascript" >
+
+document.getElementById("id_textarea_01").value = "";
+//dataAdapder
+var dataAdapterSwitch_dataFromIIS = false;
+
+var varGlobal_UserConnected = false;
+
+//Lire le bon fichier json selon le language du browser
+var userLang = (navigator.language) ? navigator.language : navigator.userLanguage; 
+
+agXMLHttpReqLan('json/'+ userLang.toLowerCase().substr(0,2) + '.json');
+
+//Afficher l'écran de login
+showLogin();
+
+objListViewFichiers = new ClasseListViewFichier("Fichier 1");
+objListViewObservations = new ClasseListViewObservations("Observation 1");
+objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
+
+//afficher_les_observations(1,20);
+objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
+afficher_les_observations_new(1,20);
+
+
+
+
+
+
+leGps1 = new MonGPS("Gps 1");
+leAccel1 = new MonAccel("Accel 1");
+leAccel1.capture_acceleration2();
+
+var varGlobal1;
+var varGlobal2;
+var varGlobalNomImage;
+
+laCamera1 = new MaCamera('Cam 1');
+laCamera1.activateAudio();
+
+
+document.getElementById('id_navUserAgent').innerHTML=navigator.userAgent;
+
+if ("geolocation" in navigator) {  
+	/* geolocation is available */
+} else 
+{  
+	alert("I'm sorry, but geolocation services are not supported by your browser.");
+
+}
+var la_reponse="";
+
+document.getElementById("id_redirectionMessage").innerHTML=la_reponse;
+
+//pour recevoir les données du barcode scanner
+var first = getUrlVars()["code"];
+var second = getUrlVars()["barcodeReturnedCode1"];
+
+
+
+
+/*
+document.getElementById("img-tag-show-picture").onclick = function() {
+	alert("img-tag-show-picture:"+EXIF.pretty(this));	
+	alert("I was taken by a " + EXIF.getTag(this, "Orientation") + " " + EXIF.getTag(this, "Model"));
+}
+
+*/
+
+
+
+	
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//alert(first);
+//alert(second);
+
+
+
+
+/*
+
+var geolocation = navigator.geolocation;
+
+
+if (geolocation) {
+    // We have a real geolocation service.
+	try {
+			function handleSuccess(position) {
+				alert("handleSuccess");
+				//successCallback(position.coords);
+			}
+			geolocation.watchPosition(handleSuccess, errorCallback, {enableHighAccuracy: false, maximumAge: 5000 });
+		} 
+		catch (err) {
+			errorCallback();
+			alert("errorCallback");
+		}
+} else {
+	errorCallback();
+	alert("errorCallback");
+}
+
+
+function errorCallback()
+{
+	alert("errorCallback");
+}
+*/
+
+
+function afficherJsonDansTextarea()
+{
+	
+	document.getElementById("id_textarea_01").value = "";
+	//afficher je json d'obs dans le textarea
+	var myListViewObservArray_strignified = JSON.stringify(objListViewObservations.myListViewObservArray, null, "\t"); 
+	//var myListViewObservArray_strignified = JSON.stringify(arr_data); 		  
+	document.getElementById("id_textarea_01").value = myListViewObservArray_strignified;  
+
+
+}
+
+
+
+function creer_json_des_nouvelles_observations(){
+	//créer variable json des nouveux observations à envoyer et ceux modifiées
+    //var myArrayDObservationDansLocalStorage = JSON.parse(localStorage.getItem("lsListViewObservArray"));
+	var myArrayDObservationDansLocalStorage = objListViewObservations.myListViewObservArray;
+	
+	var myArrayDObservationAUploader = [];
+
+
+
+
+
+	if ((typeof myArrayDObservationDansLocalStorage == "undefined" ) || (myArrayDObservationDansLocalStorage == null) || (myArrayDObservationDansLocalStorage == "undefined")){
+		//alert("myArrayDObservationDansLocalStorage = undefined");	
+		
+		
+	}else{	
+		//alert("myArrayDObservationDansLocalStorage.length: "+myArrayDObservationDansLocalStorage.length);
+		
+		for (var i=0; i < myArrayDObservationDansLocalStorage.length; i++){
+			var observ_Object = myArrayDObservationDansLocalStorage[i];
+			//observ_Object.strObservFlagInsertUpdate = "";
+			//alert("strObservFlagInsertUpdate:"+observ_Object.strObservFlagInsertUpdate);
+			
+			
+			if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
+			
+				myArrayDObservationAUploader.push(observ_Object);	
+				
+				//alert("Ok un nouveau");
+				
+			}
+		} 
+		
+		//var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader); 
+		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader, null, "\t");	
+		document.getElementById("id_textarea_01").value = "";
+
+		document.getElementById("id_textarea_01").value = e3e3e3rr443r;  
+
+		//alert(e3e3e3rr443r);
+	}
+
+	
+
+	
+	return myArrayDObservationAUploader;
+}
+
+function envoyer_json_des_nouvelles_observations_au_serveur()
+{
+	
+	
+}
+
+
+function afficher_les_observations_new(observation_de, observation_a)
+{
+	hide_all();
+	/*
+	var le_output_json = objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+	
+	le_output_json_parsed = JSON.parse(le_output_json);
+		
+	for(var i=0; i < le_output_json_parsed.result.length;i++){
+
+		var titVar = le_output_json_parsed;
+		
+		//alert(titVar.result[i].filename);
+	
+		//ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
+		var observObject2 = new ClasseObservation();
+		
+		observObject2.strObservFlagInsertUpdate = "";
+		observObject2.strObservTimestamp = "";
+		observObject2.strObservNoAutoGenereParlaDB = "";
+		observObject2.strObservNomDeLusager = "";
+		observObject2.strObservTitre = titVar.result[i].filename;
+		observObject2.strObservResume = titVar.result[i].description;
+		//observObject2.strObservDiskName = titVar.result[i].url;
+		//observObject2.strObservDataURLPicture = "";
+		observObject2.strObservLaPositionGPS_lat = "";
+		observObject2.strObservLaPositionGPS_long = "";		
+	
+		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
+	}
+	*/		
+	
+	objListViewObservations.fillObservsListView();
+
+
+	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	document.getElementById("tool_button_rechercher").style.visibility="visible";
+	document.getElementById("tool_button_seconnecter").style.visibility="visible";
+	
+	
+	
+	
+	show_back_button();
+
+}	
+
+		  
+function afficher_les_observations(observation_de, observation_a)
+{
+	hide_all();
+	
+	var le_output_json = objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+	
+	le_output_json_parsed = JSON.parse(le_output_json);
+		
+	for(var i=0; i < le_output_json_parsed.result.length;i++){
+
+		var titVar = le_output_json_parsed;
+		
+		//alert(titVar.result[i].filename);
+	
+		//ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
+		var observObject2 = new ClasseObservation();
+		
+		observObject2.strObservFlagInsertUpdate = "";
+		observObject2.strObservTimestamp = "";
+		observObject2.strObservNoAutoGenereParlaDB = "";
+		observObject2.strObservNomDeLusager = "";
+		observObject2.strObservTitre = titVar.result[i].filename;
+		observObject2.strObservResume = titVar.result[i].description;
+		//observObject2.strObservDiskName = titVar.result[i].url;
+		//observObject2.strObservDataURLPicture = "";
+		observObject2.strObservLaPositionGPS_lat = "";
+		observObject2.strObservLaPositionGPS_long = "";		
+	
+		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
+	}
+			
+	
+	objListViewObservations.fillObservsListView();
+
+
+	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	document.getElementById("tool_button_rechercher").style.visibility="visible";
+	document.getElementById("tool_button_seconnecter").style.visibility="visible";
+	
+	
+	
+	
+	show_back_button();
+
+}		
+
+
+
+function onClickButtonSynchro()
+{
+
+
+	creer_json_des_nouvelles_observations();
+
+	envoyer_json_des_nouvelles_observations_au_serveur();
+
+	objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+		
+	//callback_de_downloader_les_observations_dans_localstorage
+
+
+}
+
+function callback_de_downloader_les_observations_dans_localstorage()
+{
+	objListViewObservations.clearMyListViewObservArray();
+	
+	
+	objListViewObservations.removeAllObservFromListView();
+	
+	objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
+
+	
+
+	
+	afficher_les_observations_new(1,20);
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function utf8_to_b64( str ) {
+    return window.btoa(unescape(encodeURIComponent( str )));
+}
+
+function b64_to_utf8( str ) {
+    return decodeURIComponent(escape(window.atob( str )));
+}
+
+// Usage:
+//utf8_to_b64('✓ à la mode'); // "4pyTIMOgIGxhIG1vZGU="
+//b64_to_utf8('4pyTIMOgIGxhIG1vZGU='); // "✓ à la mode"
+
+
+
+</script>
+
+
+<script type="text/javascript">
+ 
+
+ 
+ 
+ 
+ 
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</body>
+</html>
