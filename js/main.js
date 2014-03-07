@@ -66,21 +66,6 @@ function hide_dicti()
 }
 
 
-// écran chronomètre ???zzz
-
-function show_chrono()
-{
-	x = document.getElementById('ecran_timer');
-	show_element(x);
-}
-
-function hide_chrono()
-{
-	x = document.getElementById('ecran_timer');
-	hide_element(x);
-}
-
-
 
 
 // écran géolocalisation
@@ -169,7 +154,8 @@ function hide_all()
 	//hide_liste_des_fichiers();
 	
 	hide_dicti()	
-	hide_chrono()
+	
+	
 	hide_geolocalisation()	
 	hideLogin();
 	
