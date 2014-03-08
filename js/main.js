@@ -53,7 +53,7 @@ function hide_settings()
 
 
 
-// écran recherche dans le dictionnaire
+// écran ecran_dun_commentaire
 
 function show_ecran_commentaire()
 {
@@ -84,7 +84,7 @@ function hide_dicti()
 }
 
 
-ecran_dun_commentaire
+
 
 
 // écran chronomètre ???zzz
@@ -100,7 +100,6 @@ function hide_chrono()
 	x = document.getElementById('ecran_timer');
 	hide_element(x);
 }
-
 
 
 
@@ -189,10 +188,12 @@ function hide_all()
 	hide_menu1();
 	//hide_liste_des_comm();
 	
+
 	hide_dicti();
 	hide_ecran_commentaire();
 	hide_chrono();
 	hide_geolocalisation();	
+
 	hideLogin();
 	
 	
