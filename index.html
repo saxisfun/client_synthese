@@ -63,9 +63,22 @@
 		  
 		<button id="back_button" onclick="hide_all();show_menu1();" class="hidden">Menu</button>
 
-		<button id="tool_button_ajouter" onclick="onClickBoutonAjouterObservation();"
+		<button id="tool_button_ajouter" 
+		onclick="
+
+		
+			if (varGlobal_UserConnected == '1'){
+				hide_all();
+				show_dicti();
+				show_back_button();
+			}else{
+				alert('Vous devez être connecter pour pouvoir ajouter des observations!');
+			}
+		
+		
+		"
 		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
-		class="">Ajouter un observation</button>	  
+		class="">Ajouter une observation</button>	  
 
 		<button id="tool_button_rechercher" onclick="hide_all();show_dicti();show_back_button();"
 		style="position:absolute;bottom:6px;right:113px;visibility:hidden;width:104px;"
@@ -213,11 +226,7 @@
 	
 	<div id="le_menu1" class="screen hidden">
 		<ul class="buttons">
-			<li>
-			  <a href="#liste_observations1" id="id_bouton_ajout_observation" 
-			  onclick="hide_all();show_back_button();onClickBoutonAjouterObservation();" 
-			  class="switch_screen">Ajouter une observation</a>
-			</li>		
+
 		
 			<li>
 			  <a href="#liste_observation1" id="id_bouton_liste_des_observations" 
@@ -232,8 +241,10 @@
 			  <a href="#ecran_recherche"  id="id_bouton_recherche"
 			     onclick="hide_all();show_dicti();show_back_button();" 
 			     class="switch_screen">Recherche dans le dictionnaire</a>
-			</li>  
-			
+			</li> 
+
+
+						
 			<li>
 			  <a href="#ecran_timer"  id="id_bouton_timer"
 			     onclick="hide_all();show_chrono();show_back_button();" 
@@ -252,9 +263,9 @@
 		
 			
 			<li>
-			  <a href="#liste_fichiers1" id="id_bouton_liste_fichiers1" 
-			  onclick="hide_all();objListViewFichiers.agXMLHttpReqFichiers('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_fichiers();show_back_button();" 
-			  class="switch_screen">Documents</a>
+			  <a href="#liste_commentaires" id="id_bouton_liste_commentaires" 
+			  onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_comm();show_back_button();" 
+			  class="switch_screen">Liste des commentaires</a>
 			</li>
 			<li>
 			  <a href="#liste_observation1" id="id_bouton_synchro" 
@@ -305,7 +316,15 @@
 		</tr>
 		<tr>
 			<td class="tddata"><input  type="text" style="" id="id_ObservNoAutoGenereParlaDB_data" VALUE=""></td> 
+		</tr>
+
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_Observ_id_oiseau_label" >Identifiant de l'oiseau:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_Observ_id_oiseau_data" VALUE=""></td> 
 		</tr>		
+		
 		<tr>
 			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoDeLusager_label" >Identifiant de l'usager:</p></td> 
 		</tr>
@@ -353,13 +372,36 @@
 			<td class="tddata"><input  type="text" style="" id="id_ObservDiskName_data" VALUE="" READONLY></td> 
 		</tr>	
 
+		<tr> 
+			
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" onclick="
+						
+						if (varGlobal_UserConnected == '1'){
+							hide_all();
+							show_ecran_commentaire();
+							show_back_button();
+						}else{
+							alert('Vous devez être connecter pour pouvoir ajouter des commentaires!');
+						}						
+						
+
+						
+						
+						" class="switch_screen">Ajouter un commentaire </a>
+					</li>
+					<li>
+		   	 			<a href="#" id="" onclick="onClickBoutonSaveObservation();onClickBoutonAjouterPhoto();" class="switch_screen">Ajouter une photos</a>
+					</li>
+
+					
+	    		</ul>
+	    	</td> 
+		</tr>		
 	
-	
-		<tr>
-			<td>		
-				<button  id="" onclick="onClickBoutonSaveObservation();onClickBoutonAjouterPhoto();" style="width:220px;" class="">Ajouter une photos</button>			
-			</td> 
-		</tr>			
+		
 		
 		
 
@@ -401,18 +443,10 @@
 		
 		<tr>
 			<td>	
-
-
-			
 				<ul id="id_ul_les_photos" style=""></ul>
 			</td> 
 		</tr>	
-	
-
-		
-	
-	
-				
+			
 		<tr>
 			<td style="text-align:left;">
                 <p id="error"></p>				
@@ -427,18 +461,11 @@
 		</tr>					
 		</table>	
 		
-		
-	
-		
     </div>      	
 	
-	
-	
-	
-	
-	
+
     
-    <div class="screen hidden" onclick="alert('55555');" id="liste_fichiers1">
+    <div class="screen hidden" onclick="alert('55555');" id="liste_commentaires">
         <h2>Liste des documents</h2>
         <p>Photos of cats reading and photos of cats learning how to read.</p>
     </div>
@@ -448,103 +475,68 @@
         <h2>Liste des observations</h2>
         <p>bla bla bla.</p>
     </div> 
-	
-	
-	
- 
-<!---------------------------------------------------------------->
-<!--  Écran paramètres  -->		 
-      
-        <div id="a_setting" class="screen hidden" style="text-align:center;" >
-        <h2>Paramètres</h2>
-		<table class="table2" >
-		<col style="width:40%;">        
-		<col style="width:60%;">
-		<tr>
-			<td style="text-align:left;" id="xxxxxxx">Langue:</td> 
 
+	
+	<!---------------------------------------------------------------->
+	<!--  Écran recherche de commentaire -->
+
+	<div id="ecran_dun_commentaire" class="screen hidden" style="text-align:center;" >
+
+
+		<table  class="table2">
+		<col style="width:100%;">        
+
+		<tr>
+			<td style="text-align:left;"> <h3>Ajouter un commentaire</h3></td>
 		</tr>		
 		<tr>
-			<td style="text-align:right;">
-			
-				<SELECT class="SELECTBLUE" 
-				onMouseWheel="return false;"
-				onchange="" style="width:120px;" name="AccessKm">
-				<OPTION selected VALUE="fr">Français</OPTION>
-				<OPTION VALUE="en">Englais</OPTION>
-				<OPTION VALUE="es">Espagnole</OPTION>		
-							
-				</SELECT>	
-			
-			</td> 
-		</tr>				
-		<tr>
-			<td style="text-align:left;">Téléchargements:</td> 
-		</tr>
-
-
-		<tr>
-			<td style="text-align:left;">Données:</td> 
+			<td class="tdhead" style="text-align:left;"><p id="id_comm_timestamp_label">Timestamp:</p></td>	
 		</tr>
 		<tr>
-			<td style="text-align:right;">
-				<button onclick="localStorage.clear();"  style="right:10px;width:170px;" class="">Effacer le Local Storage</button>
-			</td> 
+			<td class="tddata"><input type="text" id="id_comm_timestamp_data" ></td> 
 		</tr>		
 		<tr>
-			<td style="text-align:left;">Accélération:</td> 
-		</tr>	
+			<td class="tdhead" style="text-align:left;"><p id="id_comm_observ_id_label">Observation:</p></td>	
+		</tr>
 		<tr>
-			<td id="id_accel_data" style="text-align:right;">
-				
-			</td> 
+			<td class="tddata"><input type="text" id="id_comm_observ_id_datal"  ></td> 
+		</tr>		
+	
+		<tr>
+			<td style="text-align:left;"><p id="id_comme_usager_label">Usager:</p></td>	
+		</tr>
+		<tr>
+			<td><input type="text" id="id_comme_usager_data"  ></td> 
+		</tr>
+
+		<tr>
+			<td style="text-align:left;"><p id="id_comme_resume_label">Commentaire:</p></td>
 		</tr>		
 		<tr>
-			<td style="text-align:left;">Scanner:</td> 
-		</tr>			
-		<tr>
-			<td style="text-align:right;">
-				<a href="http://zxing.appspot.com/scan?ret=http://www.intranet-creation.com/cegep/tp1/index.html?code={CODE}">Scan</a>
+			<td>
+				<textarea rows="20"  style="width:100%;" id="id_comme_resume_data" placeholder="Écrivez votre commentaire" ></textarea> 		
 			</td> 
 		</tr>			
-		<tr>
-			<td style="text-align:left;vertical-align:top;">Navigateur:</td> 
-				
-		</tr>	
-		<tr>
+	
+		
+		<tr> 
 			
-			<td  id="id_navUserAgent" style="text-align:left;"></td> 	
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
+					</li>	
+	    		</ul>
+	    	</td> 
 		</tr>	
-		
-		
-
-		<tr>
-			<td style="text-align:left;">Test lien:</td> 
-		</tr>	
-		<tr>
-			<td style="text-align:right;">
-				<a href="http://www.google.ca/" onclick = "alert('yesssss');" id="id_test_lien">Test lien</a>
-			</td> 
-		</tr>	
-
-		
-		
 		</table>	
-	
-		
     </div> 
- 
- 
  
 
 	<!---------------------------------------------------------------->
 	<!--  Écran recherche dans le dictionnaire -->
  
- 
- 
-
- <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
-
+	 <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
 
 		<table>
 		<col style="width:40%;">        
@@ -576,17 +568,10 @@
 	
 		
 	</table>	
-
-	
-    </div> 
- 
- 
- 
+   </div> 
  
 	<!---------------------------------------------------------------->
 	<!--  Écran de test Chronomètre -->
-
-
 	<div id="ecran_timer" class="screen hidden" style="text-align:center;" >
 	<table>
 		<col style="width:40%;">        
@@ -621,17 +606,11 @@
 
 	</table>	
 	</div> 
- 
-
 
  
 	<!---------------------------------------------------------------->
 	<!--  Écran de test géolocalisation -->
- 
- 
-
-	
-	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
+ 	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
 	<table>
 		<tr> 
 			<td> 
@@ -658,7 +637,87 @@
 
 
 
+	<!---------------------------------------------------------------->
+	<!--  Écran paramètres  -->		 
 
+	<div id="a_setting" class="screen hidden" style="text-align:center;" >
+	<h2>Paramètres</h2>
+	<table class="table2" >
+	<col style="width:40%;">        
+	<col style="width:60%;">
+	<tr>
+		<td style="text-align:left;" id="xxxxxxx">Langue:</td> 
+
+	</tr>		
+	<tr>
+		<td style="text-align:right;">
+		
+			<SELECT class="SELECTBLUE" 
+			onMouseWheel="return false;"
+			onchange="" style="width:120px;" name="AccessKm">
+			<OPTION selected VALUE="fr">Français</OPTION>
+			<OPTION VALUE="en">Englais</OPTION>
+			<OPTION VALUE="es">Espagnole</OPTION>		
+						
+			</SELECT>	
+		
+		</td> 
+	</tr>				
+	<tr>
+		<td style="text-align:left;">Téléchargements:</td> 
+	</tr>
+
+
+	<tr>
+		<td style="text-align:left;">Données:</td> 
+	</tr>
+	<tr>
+		<td style="text-align:right;">
+			<button onclick="localStorage.clear();"  style="right:10px;width:170px;" class="">Effacer le Local Storage</button>
+		</td> 
+	</tr>		
+	<tr>
+		<td style="text-align:left;">Accélération:</td> 
+	</tr>	
+	<tr>
+		<td id="id_accel_data" style="text-align:right;">
+			
+		</td> 
+	</tr>		
+	<tr>
+		<td style="text-align:left;">Scanner:</td> 
+	</tr>			
+	<tr>
+		<td style="text-align:right;">
+			<a href="http://zxing.appspot.com/scan?ret=http://www.intranet-creation.com/cegep/tp1/index.html?code={CODE}">Scan</a>
+		</td> 
+	</tr>			
+	<tr>
+		<td style="text-align:left;vertical-align:top;">Navigateur:</td> 
+			
+	</tr>	
+	<tr>
+		
+		<td  id="id_navUserAgent" style="text-align:left;"></td> 	
+	</tr>	
+
+
+
+	<tr>
+		<td style="text-align:left;">Test lien:</td> 
+	</tr>	
+	<tr>
+		<td style="text-align:right;">
+			<a href="http://www.google.ca/" onclick = "alert('yesssss');" id="id_test_lien">Test lien</a>
+		</td> 
+	</tr>	
+
+
+
+	</table>	
+
+
+	</div> 
 
 
 
@@ -711,10 +770,9 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/main.js"></script>  
 	<script type="text/javascript" src="js/all.js"></script>
 
-	<script type="text/javascript" src="js/agFichie.js"></script>
 	<script type="text/javascript" src="js/agGps.js"></script>
 	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
-	<script type="text/javascript" src="js/agListViewFichie.js"></script>	
+	<script type="text/javascript" src="js/agListViewComm.js"></script>	
 	
 	
 	
@@ -734,12 +792,14 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	
 	
 <script type="text/javascript" >
-
+document.getElementById("id_comme_resume_data").value = "";
 document.getElementById("id_textarea_01").value = "";
+
+
 //dataAdapder
 var dataAdapterSwitch_dataFromIIS = false;
 
-var varGlobal_UserConnected = false;
+var varGlobal_UserConnected = "0";
 
 //Lire le bon fichier json selon le language du browser
 var userLang = (navigator.language) ? navigator.language : navigator.userLanguage; 
@@ -749,7 +809,7 @@ agXMLHttpReqLan('json/'+ userLang.toLowerCase().substr(0,2) + '.json');
 //Afficher l'écran de login
 showLogin();
 
-objListViewFichiers = new ClasseListViewFichier("Fichier 1");
+objListViewComm = new ClasseListViewComm("ListViewComm 1");
 objListViewObservations = new ClasseListViewObservations("Observation 1");
 objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
 
@@ -953,6 +1013,7 @@ function afficher_les_observations_new(observation_de, observation_a)
 		observObject2.strObservFlagInsertUpdate = "";
 		observObject2.strObservTimestamp = "";
 		observObject2.strObservNoAutoGenereParlaDB = "";
+		observObject2.strObservIdDeLoiseau = "";		
 		observObject2.strObservNomDeLusager = "";
 		observObject2.strObservTitre = titVar.result[i].filename;
 		observObject2.strObservResume = titVar.result[i].description;
@@ -1000,7 +1061,8 @@ function afficher_les_observations(observation_de, observation_a)
 		observObject2.strObservFlagInsertUpdate = "";
 		observObject2.strObservTimestamp = "";
 		observObject2.strObservNoAutoGenereParlaDB = "";
-		observObject2.strObservNomDeLusager = "";
+		observObject2.strObservIdDeLoiseau = "";
+		observObject2.strObservNomDeLusager = "";		
 		observObject2.strObservTitre = titVar.result[i].filename;
 		observObject2.strObservResume = titVar.result[i].description;
 		//observObject2.strObservDiskName = titVar.result[i].url;

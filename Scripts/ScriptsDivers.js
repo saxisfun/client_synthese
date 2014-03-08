@@ -112,7 +112,11 @@ function sendObservation() {
 	observObject2.strObservTimestamp = "";
 	
 	observObject2.strObservNoAutoGenereParlaDB = "";
+	observObject2.strObservIdDeLoiseau = "";
 	observObject2.strObservNomDeLusager = "";
+
+	
+	
 	observObject2.strObservTitre = "Observation 1";
 	observObject2.strObservResume = "Un beau pit pit dans le bois";
 	//observObject2.strObservDiskName = "rien ici";

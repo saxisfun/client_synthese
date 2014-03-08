@@ -2,15 +2,15 @@
 
 
 
-function ClasseListViewFichier(myName) {
+function ClasseListViewComm(myName) {
 	//alert(myName);
-	this.myListViewFichierName = "777";
-	this.myListViewFichierArray = [];
+	this.myListViewCommName = "777";
+	this.myListViewCommArray = [];
 }
 
 
 
-ClasseListViewFichier.prototype.agXMLHttpReqFichiers = function(le_url) {
+ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 	
 
      
@@ -47,7 +47,7 @@ ClasseListViewFichier.prototype.agXMLHttpReqFichiers = function(le_url) {
 						catch (e) {
 								alert("Storage failed: " + e);                
 						}
-						objListViewFichiers.fillFichiersListView(str_output); 
+						objListViewComm.fillCommListView(str_output); 
 						
 					}
 				}
@@ -60,7 +60,7 @@ ClasseListViewFichier.prototype.agXMLHttpReqFichiers = function(le_url) {
     }
     else {
 	   str_output = storageFiles.output;
-	   objListViewFichiers.fillFichiersListView(str_output); 
+	   objListViewComm.fillCommListView(str_output); 
 	   //storageFiles.output = str_output;
     }
 }
@@ -69,14 +69,14 @@ ClasseListViewFichier.prototype.agXMLHttpReqFichiers = function(le_url) {
 
 
 
-ClasseListViewFichier.prototype.addFichiersListViewCell = function(le_id, le_non_fich, le_url, la_descrip, la_date_eng) {
+ClasseListViewComm.prototype.addCommListViewCell = function(le_id, le_non_fich, le_url, la_descrip, la_date_eng) {
 	
 		
 	var newDiv1 = document.createElement("div");
 	newDiv1.setAttribute("class", "la_liste1");
 	newDiv1.setAttribute("align", "left");
 	
-	newDiv1.id="id_div_liste_fichiers1";	
+	newDiv1.id="id_div_liste_commentaires";	
 	
 	//newDiv1.addEventListener('click', test55, false)
 	newDiv1.addEventListener('click',function(){affichePageXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
@@ -102,7 +102,7 @@ ClasseListViewFichier.prototype.addFichiersListViewCell = function(le_id, le_non
 }
 
 
-ClasseListViewFichier.prototype.fillFichiersListView = function(le_str_output) {
+ClasseListViewComm.prototype.fillCommListView = function(le_str_output) {
 	
 
 	localString = JSON.parse(le_str_output);
@@ -133,7 +133,7 @@ ClasseListViewFichier.prototype.fillFichiersListView = function(le_str_output) {
 			
 		*/
 		
-		objListViewFichiers.addFichiersListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
+		objListViewComm.addCommListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
 		/*
 		 for(var key in obj){
 				 var attrName = key;
@@ -154,12 +154,12 @@ ClasseListViewFichier.prototype.fillFichiersListView = function(le_str_output) {
 
 
 
-ClasseListViewFichier.prototype.removeAllFichiersFromListView = function(le_url) {
+ClasseListViewComm.prototype.removeAllCommFromListView = function(le_url) {
 
 
 	var element = document.getElementById("div_main");
-	//alert("removeAllFichiersFromListView");
-	//alert("removeAllFichiersFromListView: "+element.childNodes.length);
+	//alert("removeAllCommFromListView");
+	//alert("removeAllCommFromListView: "+element.childNodes.length);
 	for (var i=0; i < element.childNodes.length; i++){
 		var theObject = element.childNodes[i];		
 		

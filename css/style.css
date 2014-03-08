@@ -68,7 +68,7 @@ position:inherit;
 /* THE TWO ABOUT SUB-PAGES */
 
 
-#id_div_liste_fichiers1, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_timer, #a_setting, #ecran_login {
+#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_timer, #a_setting, #ecran_login {
   background-color: #D5D6D7;
   margin: 15px 10px 17px 10px;
   -webkit-box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0;
@@ -80,15 +80,15 @@ position:inherit;
   min-width:200px;
 }
 
-#id_div_liste_fichiers1 h2, #liste_observation1 h2, #ecran_observation h2 {
+#id_div_liste_commentaires h2, #liste_observation1 h2, #ecran_observation h2 {
     margin-top: 0;
 }
 
-#id_div_liste_fichiers1 a, #liste_observation1 a, #ecran_observation a {
+#id_div_liste_commentaires a, #liste_observation1 a, #ecran_observation a {
     color: #3B59BB;
 }
 
-#id_div_liste_fichiers1 blockquote, #liste_observation1 blockquote , #ecran_observation blockquote{
+#id_div_liste_commentaires blockquote, #liste_observation1 blockquote , #ecran_observation blockquote{
     margin-left: 0;
     margin-top: 2em;
     font-style: italic;
@@ -426,26 +426,50 @@ background-color: red;
 
 
 
+input.ajout_observ_button  {
+	position:relative;
+	right:1px;
+	top:-74px;
+	float:right;
+
+	/*-webkit-appearance: none; 
+	-moz-appearance: none; 
+	-o-appearance: none;*/
+
+	  width: 211px;
+	  height: 35px;
+
+	/*
+	-webkit-transform: scale(2,2);
+	-moz-transform: scale(2,2);
+	-o-transform: scale(2,2);
+	*/
+	 /*border: 2px solid blue;*/
+	/*background-color: green;*/
+
+ 
+}
+
 input.delete_button  {
-position:absolute;
-right:10px;
-top:10px;
+	position:absolute;
+	right:10px;
+	top:10px;
 
 
-/*-webkit-appearance: none; 
--moz-appearance: none; 
--o-appearance: none;*/
+	/*-webkit-appearance: none; 
+	-moz-appearance: none; 
+	-o-appearance: none;*/
 
-  width: 55px;
-  height: 35px;
+	  width: 55px;
+	  height: 35px;
 
-/*
--webkit-transform: scale(2,2);
--moz-transform: scale(2,2);
--o-transform: scale(2,2);
-*/
- /*border: 2px solid blue;*/
-/*background-color: green;*/
+	/*
+	-webkit-transform: scale(2,2);
+	-moz-transform: scale(2,2);
+	-o-transform: scale(2,2);
+	*/
+	 /*border: 2px solid blue;*/
+	/*background-color: green;*/
 
  
 }

@@ -2,9 +2,10 @@
 	{
 		
 		"strObservFlagInsertUpdate": "", 
-		"strObservTimestamp": "111111111",
+		"strObservTimestamp": 1394148405287,
 		"strObservNoAutoGenereParlaDB": "23122112",
-		"strObservNomDeLusager": "saxisfun", 
+		"strObservIdDeLoiseau": "122332",		
+		"strObservNomDeLusager": "saxisfun",
 		"strObservTitre": "Moineau", 
 		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
 		"arrObservLesPhotos": [
@@ -25,9 +26,10 @@
 	},
 	{
 		"strObservFlagInsertUpdate": "", 
-		"strObservTimestamp": "111111111",
+		"strObservTimestamp": 1394148459110,
 		"strObservNoAutoGenereParlaDB": "32443223",
-		"strObservNomDeLusager": "saxisfun", 
+		"strObservIdDeLoiseau": "10000",		
+		"strObservNomDeLusager": "saxisfun", 	
 		"strObservTitre": "Merle à Quebec", 
 		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
 		"arrObservLesPhotos": [],	
@@ -36,9 +38,10 @@
 	},
 	{
 		"strObservFlagInsertUpdate": "", 
-		"strObservTimestamp": "111111111",
+		"strObservTimestamp": 1394148405287,
 		"strObservNoAutoGenereParlaDB": "34545677",
-		"strObservNomDeLusager": "guygend", 
+		"strObservIdDeLoiseau": "122332",
+		"strObservNomDeLusager": "guygend",
 		"strObservTitre": "Oiseau bleu a Quebec", 
 		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
 		"arrObservLesPhotos": [

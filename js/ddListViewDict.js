@@ -79,7 +79,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  	var newDiv1 = document.createElement("div");
  	newDiv1.setAttribute("class", "la_liste1");
  	newDiv1.setAttribute("align", "left");
- 	newDiv1.id="id_div_liste_fichiers1";	
+ 	newDiv1.id="id_div_liste_commentaires";	
 
 	var audio = document.createElement('audio');
 	audio.src = "sons/"+le_IDSon+".mp3";
@@ -106,11 +106,24 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
     newP2.appendChild(newP2Content);
 	newDiv1.appendChild(newP2);	
 	
+	var newRadio4 = document.createElement("input");
+	newRadio4.setAttribute("type", "button");
+	//newRadio4.setAttribute('checked', '');
+	newRadio4.setAttribute("class", "ajout_observ_button");
+	newRadio4.setAttribute("value", "Ajouter une observation");
+	newRadio4.setAttribute("id", "bouton_effacer_ligne");
+	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id);},false);
+	newDiv1.appendChild(newRadio4);		
+	
  	var newP1 = document.createElement("p");
 	var newP1Content = document.createTextNode(tronquetxt(la_descrip));
  	newP1.setAttribute("class", "bird_descript");
  	newP1.appendChild(newP1Content);	
 	newDiv1.appendChild(newP1);	
+	
+
+	
+	
 							
  	my_mainDiv = document.getElementById("div_main");  
  	my_mainDiv.appendChild(newDiv1);

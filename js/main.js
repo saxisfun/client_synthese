@@ -51,6 +51,24 @@ function hide_settings()
 }
 
 
+
+
+// écran recherche dans le dictionnaire
+
+function show_ecran_commentaire()
+{
+	x = document.getElementById('ecran_dun_commentaire');
+	show_element(x);
+}
+
+function hide_ecran_commentaire()
+{
+	x = document.getElementById('ecran_dun_commentaire');
+	hide_element(x);
+}
+
+
+
 // écran recherche dans le dictionnaire
 
 function show_dicti()
@@ -64,6 +82,9 @@ function hide_dicti()
 	x = document.getElementById('ecran_recherche');
 	hide_element(x);
 }
+
+
+ecran_dun_commentaire
 
 
 // écran chronomètre ???zzz
@@ -115,16 +136,16 @@ function hide_back_button()
 
 
 
-// liste dex fichiers
+// liste dex Comm
 
-function show_liste_des_fichiers()
+function show_liste_des_comm()
 {
   [].forEach.call(document.querySelectorAll("div.la_liste1"), function(el) {
     show_element(el);
   });
 }
 
-function hide_liste_des_fichiers()
+function hide_liste_des_comm()
 {
   // Remove the hash sign from the start of the id.    
   // Find all div.screen elements and hide them.
@@ -163,14 +184,15 @@ function hide_all()
 	//alert("CACHER LES ÉCRANS");
 	hide_settings();
 	objListViewObservations.removeAllObservFromListView();		
-	removeAllFichiersFromListView();
+	objListViewComm.removeAllCommFromListView();
 	
 	hide_menu1();
-	//hide_liste_des_fichiers();
+	//hide_liste_des_comm();
 	
-	hide_dicti()	
-	hide_chrono()
-	hide_geolocalisation()	
+	hide_dicti();
+	hide_ecran_commentaire();
+	hide_chrono();
+	hide_geolocalisation();	
 	hideLogin();
 	
 	
@@ -233,7 +255,7 @@ function get_lang_callback(le_str_output)
 	
 	localString = JSON.parse(le_str_output);
 	
-	document.getElementById("id_bouton_liste_fichiers1").innerHTML = localString['str_bouton_liste_des_fichiers'];
+	document.getElementById("id_bouton_liste_commentaires").innerHTML = localString['str_bouton_liste_des_comm'];
 	document.getElementById("id_bouton_liste_des_observations").innerHTML = localString['str_bouton_liste_des_observs'];
 	document.getElementById("id_bouton_setting").innerHTML = localString['str_bouton_parametres'];
 	document.getElementById("id_utilisateur_label").innerHTML = localString['str_label_utilisateur'];
@@ -257,6 +279,10 @@ function onClickBoutonSaveObservation()
 
 	var le_NoAutoGenereParlaDB = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
 	var le_NoDeLusager = document.getElementById('id_ObservNoDeLusager_data').value;	
+	
+	var le_id_de_loiseau = document.getElementById('id_Observ_id_oiseau_data').value;	
+
+	
 	
 	
 	var le_PositionGPS_lat = document.getElementById('id_ObservLaPositionGPS_lat_data').value;
@@ -316,17 +342,21 @@ function onClickBoutonSaveObservation()
 			
 			/*
 			Losrsque l'application démarre, elle fonctionne avec le localstorage uniquement.
-			C'est seulement losqu'on pèse sur "synchro" que 
-				1-l'application client upload vers le serveur les nouvelles observations et des observations modifiées.
-					Si l'observation contien un NoAutoGenParLaDB ca veut dire qu'elle n'est pas nouvelle et doit être modifiée. 
+			C'est seulement losqu'on pèse sur "synchro" que ces deux opérations se produisent
+			
+				1-l'application client upload vers le serveur des nouvelles observations et des observations modifiées.
+					A-Si l'observation contien un NoAutoGenParLaDB ca veut dire qu'elle n'est pas nouvelle et doit être modifiée. 
 						Étant donné que le nombre de photos peut changer l'ors d'une modification je suggère qu'on 
-						efface l'observation au complet sur la DB et qu'on la ré-insert à nouveau. Puisque les photos sont dans l'observation.					
+						efface l'observation au complet sur la DB et qu'on la ré-insert à nouveau. Puisque les photos sont dans l'observation et probablement les commentaires aussi.					
 					
-					Si l'observation ne contien pas un NoAutoGenParLaDB ca veut dire qu'elle est nouvelle et doit être insérée.
+					B-Si l'observation ne contien pas un NoAutoGenParLaDB ca veut dire qu'elle est nouvelle et doit être insérée.
 				
-				2-Download les 50 dernières observations en ordre de dates décroissantes incluant celles qu'on vient juste de créer.
+				2-Download les 20 dernières observations en ordre de dates décroissantes incluant celles qu'on vient juste de créer.
 			
 
+			
+			remarque: le NoAutoGenParLaDB est un numéro qui sera automatiquement généré par la base de données à 
+			la création d'une nouvelle observation et qui nous sera retourné.
 			*/
 			
 			
@@ -337,7 +367,11 @@ function onClickBoutonSaveObservation()
 			
 			
 			observObject3.strObservNoAutoGenereParlaDB = le_NoAutoGenereParlaDB;
+			observObject3.strObservIdDeLoiseau = le_id_de_loiseau;
 			observObject3.strObservNomDeLusager = le_NoDeLusager;
+		
+			
+			
 			observObject3.strObservTitre = le_titre;
 			observObject3.strObservResume = le_resume;
 			//observObject3.strObservDiskName = varGlobalNomImage;
@@ -366,9 +400,10 @@ function onClickBoutonSaveObservation()
 			
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservNoAutoGenereParlaDB=le_NoAutoGenereParlaDB;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObservIdDeLoiseau=le_id_de_loiseau;		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservNomDeLusager=le_NoDeLusager;
 		
-		
+
 		
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservTitre=le_titre;
@@ -493,7 +528,10 @@ function onClickBoutonDeconnecter()
 	
 	document.getElementById('tool_button_deconnecter').style.visibility='hidden';
 	document.getElementById('tool_button_seconnecter').style.visibility='visible';
-	hide_element(back_button);	
+	//hide_element(back_button);	
+	
+	varGlobal_UserConnected = "0";
+	
 }
 
 function onClickBoutonSeConnecter() 
@@ -555,21 +593,31 @@ function destroyTagInputFilePourLaPhotoPrincipale()
 }
 
 
-function onClickBoutonAjouterObservation() 
+function onClickBoutonAjouterObservation(le_id_de_loiseau) 
 { 
 
 
-	/*document.getElementById("img-tag-show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");*/
+	if (varGlobal_UserConnected == "1"){
+		/*document.getElementById("img-tag-show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");*/
 
-	hide_all();
-	
-	var valNum1 = objListViewObservations.getObservArrayLength();
-	var valNum2 = objListViewObservations.myListViewObservArray.length;
+		hide_all();
+		
+		var valNum1 = objListViewObservations.getObservArrayLength();
+		var valNum2 = objListViewObservations.myListViewObservArray.length;
 
 
+		
+		
+		afficheEcranObservations("", "", le_id_de_loiseau, "", "", "","","","","", valNum2);
+
+
+	}else{
+		alert("Vous devez être connecter pour pouvoir ajouter des observations!");
 	
-	
-	afficheEcranObservations("", "","", "", "","","","","", valNum2);
+	}
+
+
+
 
 	
 }
@@ -594,7 +642,7 @@ function onClickButtonLogin()
 		hideLogin();
 		//show_menu1();
 		onClickButtonMenuListViewObserv();
-		varGlobal_UserConnected=true;
+		varGlobal_UserConnected = "1";
 		
 		document.getElementById("tool_button_deconnecter").style.visibility="visible";
 		document.getElementById("tool_button_seconnecter").style.visibility="hidden";
@@ -737,9 +785,8 @@ objDiv.appendChild(newRadio1);
 
 
 
-function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic, id_FlagInsertUpdate,  id_PositionGPS_lat, id_PositionGPS_long, la_index) 
+function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, le_idDeLoiseau, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic, id_FlagInsertUpdate,  id_PositionGPS_lat, id_PositionGPS_long, la_index) 
 { 
-	
 	
 	
 	
@@ -759,7 +806,7 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	document.getElementById('id_ObservFlagInsertUpdate_data').value = id_FlagInsertUpdate;
 	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = id_NoAutoGenereParlaDB;
 	document.getElementById('id_ObservNoDeLusager_data').value = id_ObservNoDeLusager;
-			
+	document.getElementById('id_Observ_id_oiseau_data').value = le_idDeLoiseau;		
 
 		
 	document.getElementById('id_ObservLaPositionGPS_lat_data').value=id_PositionGPS_lat;

@@ -13,7 +13,9 @@ function ClasseObservation() {
 	//new Date().getTime();
 	
 	this.strObservNoAutoGenereParlaDB = ""; 
+	this.strObservIdDeLoiseau = ""; 
 	this.strObservNomDeLusager = ""; 
+
 	this.strObservTitre = ""; 
 	this.strObservResume = "";
 	//this.strObservDiskName = "";

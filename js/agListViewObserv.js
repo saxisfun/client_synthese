@@ -10,9 +10,9 @@ function ClasseListViewObservations(myName) {
 
 
 /*
--Si deconecté (pas important ce mode on le fera a la fin s'il reste du temps)
+-Si deconecté 
 	1-Afficher les observations qui sont dans local storage depuis le dernier download, incluant les nouvelles observation de l'usager depuis le derniere upload.
-	2-Afficher les données du disctionnaire qui sont dans le local storage (on aura pas grand données de dictionnaire alors on peut tout mettre dans le localstorage).
+	2-Afficher les données du dictionnaire qui sont dans le local storage (on aura pas grand données de dictionnaire alors on peut tout mettre dans le localstorage).
 	 
 
 	
@@ -37,7 +37,7 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 	todaysDate=agConvertDate2(une_date);
 	
 	//alert(storageObservationsDate+"/"+todaysDate); 
-    // Vérifier si fichier existe et n'est pas trop vieux 
+    // Vérifier si Comm existe et n'est pas trop vieux 
 	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
     if (typeof storageObservationsDate === "undefined" || storageDate != todaysDate) 
 	{
@@ -150,10 +150,10 @@ ClasseListViewObservations.prototype.fillMyListViewObservArrayFromLocalStorage =
 		//storageFilesObservations
 	var objMyName = localStorage.getItem("lsListViewObservName");
 	var objMyArr = localStorage.getItem("lsListViewObservArray");
-	// Vérifier si fichier existe et n'est pas trop vieux  
+	// Vérifier si Comm existe et n'est pas trop vieux  
 	if ((typeof objMyName === "undefined" ) || (typeof objMyArr === "undefined" )){
 		//alert("Non");
-		//Si fichier n'existe pas sur ordi ou il est trop vieux alors on le download et on le mets dans le canvas pour pouvoir le sauvegarder sur le disque
+		//Si Comm n'existe pas sur ordi ou il est trop vieux alors on le download et on le mets dans le canvas pour pouvoir le sauvegarder sur le disque
 		//this.myListViewObservArray = [];
 	
 	}else{
@@ -202,12 +202,26 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
 	
 	var le_ObservTimestamp = objLObservation1.strObservTimestamp;
 	
 	var le_ObservNoAutoGenereParlaDB= objLObservation1.strObservNoAutoGenereParlaDB; 
-	var le_ObservNoDeLusager = objLObservation1.strObservNoDeLusager; 
+	var le_ObservIdDeLoiseau = objLObservation1.strObservIdDeLoiseau; 	
+	
+	
+	
+	
+	var le_ObservNoDeLusager = objLObservation1.strObservNomDeLusager; 
+
+
+	
 	var le_ObservTitre = objLObservation1.strObservTitre; 
 	var le_ObservDescrip = objLObservation1.strObservResume; 
 	//var le_ObservDiskName = objLObservation1.strObservDiskName; 
@@ -271,9 +285,9 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	newDivTouch.setAttribute("class", "divTouch");
 	
 	
-	id_ObservFlagInsertUpdate_data
 	
-	newDivTouch.addEventListener('click',function(){afficheEcranObservations(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate, le_PositionGPS_lat, le_PositionGPS_long, le_index)},false);
+	
+	newDivTouch.addEventListener('click',function(){afficheEcranObservations(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservIdDeLoiseau, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate, le_PositionGPS_lat, le_PositionGPS_long, le_index)},false);
 
 	//var newP2 = document.createElement("p");
 	//var newPContent2 = document.createTextNode("Coordonée GPS: "+la_coord);
@@ -413,6 +427,7 @@ ClasseListViewObservations.prototype.fillObservsListView = function() {
 	
 		
 		
+	
 		
 		
 		this.addListViewObservCell(this.myListViewObservArray[i],  i);
