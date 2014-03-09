@@ -613,7 +613,7 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau)
 
 
 	}else{
-		alert("Vous devez être connecter pour pouvoir ajouter des observations!");
+		alert("Vous devez être connecté pour pouvoir ajouter des observations!");
 	
 	}
 
