@@ -62,11 +62,22 @@
 	<div id="toolbar">
 		  
 		<button id="back_button" onclick="hide_all();show_menu1();" class="hidden">Menu</button>
-
-		<button id="tool_button_ajouter" 
+		
+		<button id="back_to_observ" 
+		style="position:absolute;bottom:6px;left:2px;visibility:hidden;width:104px;"
 		onclick="
+		hide_all();
+		//show_menu1();
+		//document.getElementById('id_cell_index').value;
+		show_ecran_de_l_observation();
+		document.getElementById('back_button').style.visibility='visible'
+		document.getElementById('back_to_observ').style.visibility='hidden'
+		" >Retour à l'observation</button>
+
 
 		
+		<button id="tool_button_ajouter_observ" 
+		onclick="
 			if (varGlobal_UserConnected == '1'){
 				hide_all();
 				show_dicti();
@@ -74,12 +85,28 @@
 			}else{
 				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
 			}
-		
-		
 		"
 		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
 		class="">Ajouter une observation</button>	  
+		
 
+		<button id="tool_button_ajouter_comm" 
+		onclick="		
+			if (varGlobal_UserConnected == '1'){
+				hide_all();
+				show_ecran_commentaire();
+				show_back_button();
+		
+				
+			}else{
+				alert('Vous devez être connecté pour pouvoir ajouter des commentaires!');
+			}			
+		"
+		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
+		class="">Ajouter un commentaire</button>	  		
+		
+		
+		
 		<button id="tool_button_rechercher" onclick="hide_all();show_dicti();show_back_button();"
 		style="position:absolute;bottom:6px;right:113px;visibility:hidden;width:104px;"
 		class="">Rechercher un oiseau dan le dictionnaire</button>
@@ -266,7 +293,7 @@
 			
 			<li>
 			  <a href="#liste_commentaires" id="id_bouton_liste_commentaires" 
-			  onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/files.json');show_liste_des_comm();show_back_button();" 
+			  onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
 			  class="switch_screen">Liste des commentaires</a>
 			</li>
 			<li>
@@ -300,11 +327,28 @@
 				 <h3 style="color:black;">Écran d'observation  </h3>		
 			</td> 
 		</tr>	
-		<tr>
-			<td>		
-				<button  id="" onclick="onClickBoutonSaveObservation();" style="width:180px;" class="">Cliquez ici pour sauvegarder</button>			
-			</td> 
-		</tr>
+
+		
+		
+		<tr> 
+			
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" 
+						onclick="onClickBoutonSaveObservation();" class="switch_screen">Cliquez ici pour sauvegarder </a>
+					</li>					
+	    		</ul>
+	    	</td> 
+		</tr>				
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		<tr>
 			<td class="tdhead" style="text-align:left;"><p id="id_ObservFlagInsertUpdate_label" >FlagInsertUpdate:</p></td> 
@@ -378,22 +422,22 @@
 			
 			<td> 
 	    		<ul class="buttons">
+
+					
 					<li>
 		   	 			<a href="#" id="" onclick="
-						
-						if (varGlobal_UserConnected == '1'){
 							hide_all();
-							show_ecran_commentaire();
-							show_back_button();
-						}else{
-							alert('Vous devez être connecté pour pouvoir ajouter des commentaires!');
-						}						
-						
-
-						
-						
-						" class="switch_screen">Ajouter un commentaire </a>
-					</li>
+							
+							objListViewComm.agXMLHttpReqComm('json/comm.json');
+							show_liste_des_comm();
+							
+							document.getElementById('tool_button_ajouter_comm').style.visibility='visible';
+							document.getElementById('back_button').style.visibility='hidden';
+							document.getElementById('back_to_observ').style.visibility='visible';
+						" class="switch_screen">Commentaires </a>
+					</li>					
+					
+					
 					<li>
 		   	 			<a href="#" id="" onclick="onClickBoutonSaveObservation();onClickBoutonAjouterPhoto();" class="switch_screen">Ajouter une photos</a>
 					</li>
@@ -487,7 +531,22 @@
 
 		<table  class="table2">
 		<col style="width:100%;">        
+		<tr> 
+			
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" 
+						onclick="
+						SendUnCommentaire(); 
 
+						
+						" class="switch_screen">Cliquez ici pour sauvegarder </a>
+					</li>					
+	    		</ul>
+	    	</td> 
+		</tr>				
+		
 		<tr>
 			<td style="text-align:left;"> <h3>Ajouter un commentaire</h3></td>
 		</tr>		
@@ -497,18 +556,19 @@
 		<tr>
 			<td class="tddata"><input type="text" id="id_comm_timestamp_data" ></td> 
 		</tr>		
+	
 		<tr>
 			<td class="tdhead" style="text-align:left;"><p id="id_comm_observ_id_label">Observation:</p></td>	
 		</tr>
 		<tr>
-			<td class="tddata"><input type="text" id="id_comm_observ_id_datal"  ></td> 
+			<td class="tddata"><input type="text" id="id_comm_observ_id_data"  ></td> 
 		</tr>		
 	
 		<tr>
 			<td style="text-align:left;"><p id="id_comme_usager_label">Usager:</p></td>	
 		</tr>
 		<tr>
-			<td><input type="text" id="id_comme_usager_data"  ></td> 
+			<td><input type="text" id="id_comm_usager_data"  ></td> 
 		</tr>
 
 		<tr>
@@ -516,21 +576,12 @@
 		</tr>		
 		<tr>
 			<td>
-				<textarea rows="20"  style="width:100%;" id="id_comme_resume_data" placeholder="Écrivez votre commentaire" ></textarea> 		
+				<textarea rows="20"  style="width:100%;" id="id_comm_resume_data" placeholder="Écrivez votre commentaire" ></textarea> 		
 			</td> 
 		</tr>			
 	
 		
-		<tr> 
-			
-			<td> 
-	    		<ul class="buttons">
-					<li>
-		   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
-					</li>	
-	    		</ul>
-	    	</td> 
-		</tr>	
+
 		</table>	
     </div> 
  
@@ -796,7 +847,7 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	
 	
 <script type="text/javascript" >
-document.getElementById("id_comme_resume_data").value = "";
+document.getElementById("id_comm_resume_data").value = "";
 document.getElementById("id_textarea_01").value = "";
 
 
@@ -1033,7 +1084,10 @@ function afficher_les_observations_new(observation_de, observation_a)
 	objListViewObservations.fillObservsListView();
 
 
-	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	
+	document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
+	
+	document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
 	document.getElementById("tool_button_rechercher").style.visibility="visible";
 	document.getElementById("tool_button_seconnecter").style.visibility="visible";
 	
@@ -1080,8 +1134,9 @@ function afficher_les_observations(observation_de, observation_a)
 	
 	objListViewObservations.fillObservsListView();
 
-
-	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
+	
+	document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
 	document.getElementById("tool_button_rechercher").style.visibility="visible";
 	document.getElementById("tool_button_seconnecter").style.visibility="visible";
 	
