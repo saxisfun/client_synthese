@@ -68,7 +68,7 @@ position:inherit;
 /* THE TWO ABOUT SUB-PAGES */
 
 
-#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_timer, #a_setting, #ecran_login {
+#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_TEMPO, #a_setting, #ecran_login {
   background-color: #D5D6D7;
   margin: 15px 10px 17px 10px;
   -webkit-box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0;
@@ -944,4 +944,12 @@ animation:myfirst2 0.5s 1;
 #contentMap{
 	width:520px;
 	height:520px;	
+}
+
+
+#tstImage{
+	width:960px;
+	height:520px;	
+	margin:0 auto;
+    background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
 }
