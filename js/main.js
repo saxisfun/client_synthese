@@ -91,13 +91,13 @@ function hide_dicti()
 
 function show_chrono()
 {
-	x = document.getElementById('ecran_timer');
+	x = document.getElementById('ecran_TEMPO');
 	show_element(x);
 }
 
 function hide_chrono()
 {
-	x = document.getElementById('ecran_timer');
+	x = document.getElementById('ecran_TEMPO');
 	hide_element(x);
 }
 
