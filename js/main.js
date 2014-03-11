@@ -57,6 +57,10 @@ function hide_settings()
 
 function show_ecran_commentaire()
 {
+	
+	
+	
+	
 	x = document.getElementById('ecran_dun_commentaire');
 	show_element(x);
 }
@@ -117,7 +121,22 @@ function hide_geolocalisation()
 	hide_element(x);
 }
 
+function affiche_ecran_commentaire(un_timestamp, un_observ_id, un_usager_id, un_resume, lindx){
 
+
+	hide_all();
+	show_ecran_commentaire();
+	
+	document.getElementById('id_comm_timestamp_data').value = un_timestamp;
+	document.getElementById('id_comm_observ_id_data').value = un_observ_id;
+	document.getElementById('id_comm_usager_data').value = un_usager_id;
+	document.getElementById('id_comm_resume_data').value = un_resume;	
+	
+	
+	
+	show_back_button();
+
+}
 
 // bouton BACK BUTTON
 
@@ -132,7 +151,6 @@ function hide_back_button()
 	back_button = document.getElementById('back_button');
 	hide_element(back_button);
 }
-
 
 
 // liste dex Comm
@@ -201,9 +219,13 @@ function hide_all()
 		
 	hide_ecran_de_l_observation();
 
-	document.getElementById("tool_button_ajouter").style.visibility="hidden";
-	document.getElementById("tool_button_rechercher").style.visibility="hidden";
-	document.getElementById("tool_button_seconnecter").style.visibility="hidden";
+	
+	
+document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
+	
+	document.getElementById("tool_button_ajouter_observ").style.visibility="hidden";
+	//document.getElementById("tool_button_rechercher").style.visibility="hidden";
+	//document.getElementById("tool_button_seconnecter").style.visibility="hidden";
 	
 
 	
@@ -540,7 +562,7 @@ function onClickBoutonSeConnecter()
 	hide_all();
 	showLogin();
 	
-	document.getElementById('tool_button_deconnecter').style.visibility='hidden';
+	document.getElementById('tool_button_deconnecter').style.visibility='visible';
 	document.getElementById('tool_button_seconnecter').style.visibility='hidden';
 	hide_element(back_button);	
 }
@@ -607,9 +629,21 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau)
 		var valNum2 = objListViewObservations.myListViewObservArray.length;
 
 
+		var observObject7 = new ClasseObservation();
 		
+		observObject7.strObservFlagInsertUpdate = "";
+		observObject7.strObservTimestamp = "";
+		observObject7.strObservNoAutoGenereParlaDB = "";
+		observObject7.strObservIdDeLoiseau = le_id_de_loiseau;
+		observObject7.strObservNomDeLusager = "";		
+		observObject7.strObservTitre = "";
+		observObject7.strObservResume = "";
+		observObject7.strObservLaPositionGPS_lat = "";
+		observObject7.strObservLaPositionGPS_long = "";		
+	
+		//objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
 		
-		afficheEcranObservations("", "", le_id_de_loiseau, "", "", "","","","","", valNum2);
+		afficheEcranObservations(observObject7, valNum2);
 
 
 	}else{
@@ -699,9 +733,9 @@ function onClickButtonMenuListViewObserv()
 	
 	
 	
+	document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
 	
-	
-	document.getElementById("tool_button_ajouter").style.visibility="visible";
+	document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
 
 	document.getElementById("tool_button_rechercher").style.visibility="visible";
 	document.getElementById("tool_button_seconnecter").style.visibility="visible";
@@ -786,8 +820,27 @@ objDiv.appendChild(newRadio1);
 
 
 
-function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, le_idDeLoiseau, id_ObservTitre, id_ObservDescrip, id_ObservDiskName, id_data_URLPic, id_FlagInsertUpdate,  id_PositionGPS_lat, id_PositionGPS_long, la_index) 
+function afficheEcranObservations(un_observation_ici, la_index) 
 { 
+	
+	
+	
+
+
+
+	/*
+	un_observation_ici.strObservFlagInsertUpdate = "";
+	un_observation_ici.strObservTimestamp = "";
+	un_observation_ici.strObservNoAutoGenereParlaDB = "";
+	un_observation_ici.strObservIdDeLoiseau = le_id_de_loiseau;
+	un_observation_ici.strObservNomDeLusager = "";		
+	un_observation_ici.strObservTitre = "";
+	un_observation_ici.strObservResume = "";
+	un_observation_ici.strObservLaPositionGPS_lat = "";
+	un_observation_ici.strObservLaPositionGPS_long = "";			
+	*/
+	
+	
 	
 	
 	
@@ -797,30 +850,33 @@ function afficheEcranObservations(id_NoAutoGenereParlaDB, id_ObservNoDeLusager, 
 	
 	//document.getElementById('idTRInputDeLaPhoto').style.display='block';
 
-	varGlobal1=id_data_URLPic;
+	//varGlobal1=id_data_URLPic;
 	hide_all();
 	show_ecran_de_l_observation();
 	//alert("la_index:"+la_index);
 	//alert(id_ObservDescrip+"/"+id_ObservDiskName);
 	
 		
-	document.getElementById('id_ObservFlagInsertUpdate_data').value = id_FlagInsertUpdate;
-	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = id_NoAutoGenereParlaDB;
-	document.getElementById('id_ObservNoDeLusager_data').value = id_ObservNoDeLusager;
-	document.getElementById('id_Observ_id_oiseau_data').value = le_idDeLoiseau;		
+	document.getElementById('id_ObservFlagInsertUpdate_data').value = un_observation_ici.strObservFlagInsertUpdate;
+	//document.getElementById('id_ObservFlagInsertUpdate_data').value = un_observation_ici.strObservTimestamp;
+	
+	
+	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = un_observation_ici.strObservNoAutoGenereParlaDB;
+	document.getElementById('id_ObservNoDeLusager_data').value = un_observation_ici.strObservNomDeLusager;
+	document.getElementById('id_Observ_id_oiseau_data').value = un_observation_ici.strObservIdDeLoiseau;		
 
 		
-	document.getElementById('id_ObservLaPositionGPS_lat_data').value=id_PositionGPS_lat;
-	document.getElementById('id_ObservLaPositionGPS_long_data').value=id_PositionGPS_long;
+	document.getElementById('id_ObservLaPositionGPS_lat_data').value=un_observation_ici.strObservLaPositionGPS_lat;
+	document.getElementById('id_ObservLaPositionGPS_long_data').value=un_observation_ici.strObservLaPositionGPS_long;
 	
 
 	
 	
 	
 	
-	document.getElementById("id_ObservTitre_data").value = id_ObservTitre;
-	document.getElementById("id_ObservResume_data").value = id_ObservDescrip;
-	document.getElementById("id_ObservDiskName_data").value = id_ObservDiskName;
+	document.getElementById("id_ObservTitre_data").value = un_observation_ici.strObservTitre;
+	document.getElementById("id_ObservResume_data").value = un_observation_ici.strObservResume;
+	//document.getElementById("id_ObservDiskName_data").value = id_ObservDiskName;
 	document.getElementById("id_cell_index").innerHTML = la_index;	
 
 	// objNode1 = document.getElementById("img-tag-show-picture");

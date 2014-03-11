@@ -78,6 +78,8 @@ position:inherit;
   border-radius: 8px;
   padding: 1em;
   min-width:200px;
+  
+  position:relative;
 }
 
 #id_div_liste_commentaires h2, #liste_observation1 h2, #ecran_observation h2 {
@@ -362,7 +364,7 @@ input {
 
 
 
-#back_button.pressed {
+#back_button.pressed  {
   border-color: black;
   background-image: none;
   background-color: black;
@@ -374,7 +376,7 @@ input {
 }
 
 
-#tool_button_ajouter, #tool_button_deconnecter, #tool_button_rechercher, #tool_button_seconnecter {
+#tool_button_ajouter_observ, #back_to_observ, #tool_button_ajouter_comm, #tool_button_deconnecter, #tool_button_rechercher, #tool_button_seconnecter {
   position: absolute;
   overflow: hidden;
   /*width: auto;*/
@@ -562,7 +564,7 @@ background-color: green;
 
 
 div.list_View_Observ  {
-	position:relative;
+	
 }
 
 
@@ -907,7 +909,25 @@ animation:myfirst2 0.5s 1;
 	marging-right:30px;
 }
 
+.lvc_em_usager{
+	
 
+}
+
+.lvc_em_timestamp{
+	float:right;
+
+}
+
+/*lvo=ListViewObservation*/
+.lvo_em_usager_id{
+	
+
+}
+.lvo_em_timestamp{
+	float:right;
+	margin-right:68px;
+}
 
 
 -------------------------------------------------------------

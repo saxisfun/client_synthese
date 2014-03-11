@@ -200,34 +200,21 @@ ClasseListViewObservations.prototype.fillMyListViewObservArrayFromLocalStorage =
 
 ClasseListViewObservations.prototype.addListViewObservCell = function(objLObservation1 ,le_index) {
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
+	//var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
 	
 	var le_ObservTimestamp = objLObservation1.strObservTimestamp;
 	
-	var le_ObservNoAutoGenereParlaDB= objLObservation1.strObservNoAutoGenereParlaDB; 
-	var le_ObservIdDeLoiseau = objLObservation1.strObservIdDeLoiseau; 	
-	
-	
-	
+	//var le_ObservNoAutoGenereParlaDB= objLObservation1.strObservNoAutoGenereParlaDB; 
+	//var le_ObservIdDeLoiseau = objLObservation1.strObservIdDeLoiseau; 	
 	
 	var le_ObservNoDeLusager = objLObservation1.strObservNomDeLusager; 
-
-
 	
 	var le_ObservTitre = objLObservation1.strObservTitre; 
 	var le_ObservDescrip = objLObservation1.strObservResume; 
 	//var le_ObservDiskName = objLObservation1.strObservDiskName; 
-	var le_ObservDiskName = ""; 
+	//var le_ObservDiskName = ""; 
 	//var le_datURLPicture = objLObservation1.strObservDataURLPicture;
-	var le_datURLPicture ="";
+	//var le_datURLPicture ="";
 	
 	
 	
@@ -245,12 +232,33 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	newDiv1.id="liste_observation1";
 	
-	var newH2 = document.createElement("h4");
-	//var newH2Content = document.createTextNode("Description: "+le_ObservDescrip);
-	var newH2Content = document.createTextNode("Titre: "+le_ObservTitre);
 	
 	
-	newH2.appendChild(newH2Content);
+	var em_timestamp = document.createElement("em");
+	var em_timestamp_content = document.createTextNode("Date: "+le_ObservTimestamp);
+	em_timestamp.setAttribute("class", "lvo_em_timestamp");
+	em_timestamp.appendChild(em_timestamp_content);
+	
+	
+	
+	var em_obs_usager_id = document.createElement("em");
+	var em_obs_usager_id_content = document.createTextNode("Usager: "+le_ObservNoDeLusager);
+	em_obs_usager_id.setAttribute("class", "lvo_em_usager_id");	
+	em_obs_usager_id.appendChild(em_obs_usager_id_content);		
+	
+	
+	
+	
+	
+	
+	
+	var h3_ObservTitre = document.createElement("h3");
+	
+	var h3_ObservTitre_content = document.createTextNode("Titre: "+le_ObservTitre);
+	h3_ObservTitre.appendChild(h3_ObservTitre_content);
+	
+	
+	
 	
 	
 	
@@ -283,11 +291,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 
 	var newDivTouch = document.createElement("div");
 	newDivTouch.setAttribute("class", "divTouch");
-	
-	
-	
-	
-	newDivTouch.addEventListener('click',function(){afficheEcranObservations(le_ObservNoAutoGenereParlaDB, le_ObservNoDeLusager, le_ObservIdDeLoiseau, le_ObservTitre, le_ObservDescrip, le_ObservDiskName, le_datURLPicture, le_FlagInsertUpdate, le_PositionGPS_lat, le_PositionGPS_long, le_index)},false);
+	newDivTouch.addEventListener('click',function(){afficheEcranObservations(objLObservation1, le_index)},false);
 
 	//var newP2 = document.createElement("p");
 	//var newPContent2 = document.createTextNode("Coordonée GPS: "+la_coord);
@@ -295,7 +299,12 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	
-	newDiv1.appendChild(newH2);	
+	
+	newDiv1.appendChild(em_obs_usager_id);	
+	newDiv1.appendChild(em_timestamp);	
+	
+	newDiv1.appendChild(h3_ObservTitre);		
+
 	newDiv1.appendChild(newP);	
 	newDiv1.appendChild(newDivTouch);	
 	newDiv1.appendChild(newRadio);	

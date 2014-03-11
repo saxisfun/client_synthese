@@ -145,3 +145,54 @@ function sendObservation() {
 	
 }
 
+
+function SendUnCommentaire() {
+
+	//SendUsager("admin@diq.ca","Administrateur","admin","892f1ceab17e0df07e0ec8de8cb5a30621d97797555e61b80c65eb68061623982a33e66440f28b7dbd6cfe6c007621e4fdd4ae9641516c68b18a299b599a1dec")
+	alert("SendUnCommentaire test");
+	
+	var myJSONObject1 =  {};
+	
+	
+	myJSONObject1.LeResult.CommTimestamp = document.getElementById('id_comm_timestamp_data').value;
+	myJSONObject1.LeResult.CommObservId = document.getElementById('id_comm_observ_id_data').value;
+	myJSONObject1.LeResult.CommUsagerId = document.getElementById('id_comm_usager_data').value;
+	myJSONObject1.LeResult.CommResume = document.getElementById('id_comm_resume_data').value;
+
+	var my_comm_strignified = JSON.stringify(myJSONObject1, null, "\t"); 
+	alert(my_comm_strignified);
+	
+	/*
+	var myJSONObject1 =  {
+		"LeResult": {
+			"CommTimestamp": "12244433222",
+			"CommObservId": "2112212",
+			"CommUsagerId": "saxisfun",
+			"CommResume": "ewrtret wererte retrtert ertertert ertert erte ertertert erte ertert ert e"
+		}
+	};
+	*/
+
+
+	$.ajax({
+		type: "POST",
+		url: "/WCF_Synthese/servicewcf_synthese.svc/sendNewCommentaireDunUser/",
+		//data: '{"test":"test"}',
+		data: myJSONObject1,
+		contentType: "application/json",
+		dataType: "json",
+		success: function (msg) {
+			alert('success: '+msg);
+		},
+		error:function(x,e){
+			if(x.status==0){
+				alert('error 0');
+			}
+		}
+	});  
+	
+}
+
+
+
+

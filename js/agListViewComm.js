@@ -13,7 +13,7 @@ function ClasseListViewComm(myName) {
 ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 	
 
-     
+   
 	var storageFiles = JSON.parse(localStorage.getItem("storageFilesFichiers3")) || {},
 	storageFilesDate = storageFiles.date1,
 	date = new Date(),
@@ -23,9 +23,10 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 	//alert(storageFilesDate+"/"+todaysDate); 
     // Vérifier si fichier existe et n'est pas trop vieux 
 	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
-    if (typeof storageFilesDate === "undefined" || storageFilesDate != todaysDate) 
+    //if (typeof storageFilesDate === "undefined" || storageFilesDate != todaysDate)
+	if (typeof storageFilesDate === "undefined")
 	{
-
+	 
 		 //alert(le_url);
 		try {
 			var resourcePath = le_url;
@@ -47,6 +48,7 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 						catch (e) {
 								alert("Storage failed: " + e);                
 						}
+					
 						objListViewComm.fillCommListView(str_output); 
 						
 					}
@@ -69,9 +71,9 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 
 
 
-ClasseListViewComm.prototype.addCommListViewCell = function(le_id, le_non_fich, le_url, la_descrip, la_date_eng) {
+ClasseListViewComm.prototype.addCommListViewCell = function(la_timestamp, la_observ_id, la_usager_id, la_resume ,l_in_dex) {
 	
-		
+	
 	var newDiv1 = document.createElement("div");
 	newDiv1.setAttribute("class", "la_liste1");
 	newDiv1.setAttribute("align", "left");
@@ -79,17 +81,42 @@ ClasseListViewComm.prototype.addCommListViewCell = function(le_id, le_non_fich, 
 	newDiv1.id="id_div_liste_commentaires";	
 	
 	//newDiv1.addEventListener('click', test55, false)
-	newDiv1.addEventListener('click',function(){affichePageXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
+	//newDiv1.addEventListener('click',function(){affichePageXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
+		
+	var em_timestamp = document.createElement("em");
+	var em_timestamp_content = document.createTextNode("Date: "+la_timestamp);
+	em_timestamp.setAttribute("class", "lvc_em_timestamp");
+	em_timestamp.appendChild(em_timestamp_content);
 	
-	var newH2 = document.createElement("h2");
-	var newH2Content = document.createTextNode(le_non_fich);
-	newH2.appendChild(newH2Content);
+	
+	
+	var em_usager_id = document.createElement("em");
+	var em_usager_id_content = document.createTextNode("Usager: "+la_usager_id);
+	em_usager_id.setAttribute("class", "lvc_em_usager");	
+	em_usager_id.appendChild(em_usager_id_content);	
+	
 	
 	var newP = document.createElement("p");
-	var newPContent = document.createTextNode(le_url);
+	var newPContent = document.createTextNode(la_resume);
 	newP.appendChild(newPContent);	
+	
+	var newDivTouch = document.createElement("div");
+	newDivTouch.setAttribute("class", "divTouch");
+	newDivTouch.addEventListener('click',function(){affiche_ecran_commentaire(la_timestamp, la_observ_id, la_usager_id, la_resume, l_in_dex)},false);
 
-	newDiv1.appendChild(newH2);	
+	
+
+	
+	
+	
+	
+	
+	newDiv1.appendChild(newDivTouch);	
+	
+	newDiv1.appendChild(em_usager_id);
+	newDiv1.appendChild(em_timestamp);
+	
+
 	newDiv1.appendChild(newP);	
 	
 	
@@ -105,7 +132,9 @@ ClasseListViewComm.prototype.addCommListViewCell = function(le_id, le_non_fich, 
 ClasseListViewComm.prototype.fillCommListView = function(le_str_output) {
 	
 
-	localString = JSON.parse(le_str_output);
+	var localString = JSON.parse(le_str_output);
+	
+	
 	
 	/*
     alert(le_str_output);
@@ -122,8 +151,9 @@ ClasseListViewComm.prototype.fillCommListView = function(le_str_output) {
 
 	for(var i=0;i<localString.result.length;i++){
 	var obj = localString.result[i];
-		
-		
+	
+			
+	
 	    /*
 		alert(localString.result[i].id);
 		alert(localString.result[i].filename);
@@ -132,8 +162,16 @@ ClasseListViewComm.prototype.fillCommListView = function(le_str_output) {
 		alert(localString.result[i].registered);	
 			
 		*/
+		//la_timestamp, la_observ_id, la_usager_id, la_resume ,l_in_dex
 		
-		objListViewComm.addCommListViewCell(localString.result[i].id, localString.result[i].filename, localString.result[i].url, localString.result[i].description, localString.result[i].registered)
+	/*		
+	document.getElementById('id_comm_timestamp_data').value = un_timestamp;
+	document.getElementById('id_comm_observ_id_data').value = un_observ_id;
+	document.getElementById('id_comm_usager_data').value = un_usager_id;
+	document.getElementById('id_comm_resume_data').value = un_resume;	
+	*/
+
+		objListViewComm.addCommListViewCell(localString.result[i].un_timestamp, localString.result[i].un_observ_id, localString.result[i].un_usager_id, localString.result[i].un_resume, i)
 		/*
 		 for(var key in obj){
 				 var attrName = key;
