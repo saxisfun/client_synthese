@@ -127,6 +127,10 @@ function affiche_ecran_commentaire(un_timestamp, un_observ_id, un_usager_id, un_
 	hide_all();
 	show_ecran_commentaire();
 	
+	
+	
+	
+	
 	document.getElementById('id_comm_timestamp_data').value = un_timestamp;
 	document.getElementById('id_comm_observ_id_data').value = un_observ_id;
 	document.getElementById('id_comm_usager_data').value = un_usager_id;
@@ -284,7 +288,7 @@ function get_lang_callback(le_str_output)
 	document.getElementById("id_utilisateur_label").innerHTML = localString['str_label_utilisateur'];
 	document.getElementById("id_motDePasse_label").innerHTML = localString['str_label_motDePasse'];
 	document.getElementById("id_actualiser").innerHTML = localString['str_bouton_actualiser'];
-	document.getElementById("id_bouton_ajout_observation").innerHTML = localString['str_bouton_ajout_observation'];
+	
 	
 	
 //	alert('JSON.parse(...):  '+localString['str_label_motDePasse']);
@@ -310,12 +314,6 @@ function onClickBoutonSaveObservation()
 	
 	var le_PositionGPS_lat = document.getElementById('id_ObservLaPositionGPS_lat_data').value;
 	var le_PositionGPS_long = document.getElementById('id_ObservLaPositionGPS_long_data').value;
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -384,24 +382,24 @@ function onClickBoutonSaveObservation()
 			
 			
 			
+			var tempDate = new Date().getTime();
+			tempDate = parseFloat(tempDate); 
+
+			
+			observObject3.strObserv_DateObservation = tempDate;
 			
 			
-			observObject3.strObservTimestamp = new Date().getTime();
 			
 			
-			observObject3.strObservNoAutoGenereParlaDB = le_NoAutoGenereParlaDB;
-			observObject3.strObservIdDeLoiseau = le_id_de_loiseau;
-			observObject3.strObservNomDeLusager = le_NoDeLusager;
-		
+			alert("Date: "+observObject3.strObserv_DateObservation);
 			
-			
-			observObject3.strObservTitre = le_titre;
-			observObject3.strObservResume = le_resume;
-			//observObject3.strObservDiskName = varGlobalNomImage;
-			//observObject3.strObservDataURLPicture = test6432;
-			observObject3.strObservLaPositionGPS_lat = le_PositionGPS_lat;
-			observObject3.strObservLaPositionGPS_long = le_PositionGPS_long;
-			
+			observObject3.strObserv_Id = parseInt(le_NoAutoGenereParlaDB, 10);
+			observObject3.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
+			observObject3.strObserv_IDUsager = parseInt(le_NoDeLusager, 10);
+			observObject3.strObserv_Titre = le_titre;
+			observObject3.strObserv_Resume = le_resume;
+			observObject3.strObserv_Position_lat = parseFloat(le_PositionGPS_lat);
+			observObject3.strObserv_Position_long = parseFloat(le_PositionGPS_long);
 			
 			objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject3);
 			
@@ -419,25 +417,31 @@ function onClickBoutonSaveObservation()
 	
 		
 		objListViewObservations.myListViewObservArray[id_cell_index].strObservFlagInsertUpdate="U";
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservTimestamp="";
+		
+		
+		var tempDate = new Date().getTime();
+		tempDate = parseFloat(tempDate); 
+		
+		
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_DateObservation=tempDate;
 			
 		
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservNoAutoGenereParlaDB=le_NoAutoGenereParlaDB;
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservIdDeLoiseau=le_id_de_loiseau;		
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservNomDeLusager=le_NoDeLusager;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Id=parseInt(le_NoAutoGenereParlaDB, 10);
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_IDOiseau=parseInt(le_id_de_loiseau, 10);		
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_IDUsager=parseInt(le_NoDeLusager, 10);
 		
 
 		
 		
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservTitre=le_titre;
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservResume=le_resume;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Titre=le_titre;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Resume=le_resume;
 		
 		//objListViewObservations.myListViewObservArray[id_cell_index].strObservDiskName=varGlobalNomImage;
 		//objListViewObservations.myListViewObservArray[id_cell_index].strObservDataURLPicture=JSON.stringify(laCamera1.agImgToCanvasToDataURL());	
 
 		
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_lat=le_PositionGPS_lat;
-		objListViewObservations.myListViewObservArray[id_cell_index].strObservLaPositionGPS_long=le_PositionGPS_long;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Position_lat=parseFloat(le_PositionGPS_lat);
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Position_long=parseFloat(le_PositionGPS_long);
 			
 	
 
@@ -632,14 +636,14 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau)
 		var observObject7 = new ClasseObservation();
 		
 		observObject7.strObservFlagInsertUpdate = "";
-		observObject7.strObservTimestamp = "";
-		observObject7.strObservNoAutoGenereParlaDB = "";
-		observObject7.strObservIdDeLoiseau = le_id_de_loiseau;
-		observObject7.strObservNomDeLusager = "";		
-		observObject7.strObservTitre = "";
-		observObject7.strObservResume = "";
-		observObject7.strObservLaPositionGPS_lat = "";
-		observObject7.strObservLaPositionGPS_long = "";		
+		observObject7.strObserv_DateObservation = "";
+		observObject7.strObserv_Id = 0;
+		observObject7.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
+		observObject7.strObserv_IDUsager = parseInt(document.getElementById("id_utilisateur_d").value);		
+		observObject7.strObserv_Titre = "";
+		observObject7.strObserv_Resume = "";
+		observObject7.strObserv_Position_lat = 0;
+		observObject7.strObserv_Position_long = 0;		
 	
 		//objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
 		
@@ -672,7 +676,7 @@ function onClickButtonLogin()
 	
 	//alert(vUtil+"/"+vPass);
 	
-	if(vUtil=="aaaa" && vPass=="bbbb"){
+	if(vUtil=="1111" && vPass=="bbbb"){
 		//alert("onClickButtonLogin");
 		hideLogin();
 		//show_menu1();
@@ -796,7 +800,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto)
 	
 	
 	
-	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservLesPhotos[indexPhoto].dataURLPhoto;
+	var dataPhoto2=objListViewObservations.myListViewObservArray[indexObserv].arrObservLesPhotos[indexPhoto].strPhoto_Image;
 	
 	
 	if(dataPhoto2!=null && dataPhoto2!=""){
@@ -823,25 +827,7 @@ objDiv.appendChild(newRadio1);
 function afficheEcranObservations(un_observation_ici, la_index) 
 { 
 	
-	
-	
 
-
-
-	/*
-	un_observation_ici.strObservFlagInsertUpdate = "";
-	un_observation_ici.strObservTimestamp = "";
-	un_observation_ici.strObservNoAutoGenereParlaDB = "";
-	un_observation_ici.strObservIdDeLoiseau = le_id_de_loiseau;
-	un_observation_ici.strObservNomDeLusager = "";		
-	un_observation_ici.strObservTitre = "";
-	un_observation_ici.strObservResume = "";
-	un_observation_ici.strObservLaPositionGPS_lat = "";
-	un_observation_ici.strObservLaPositionGPS_long = "";			
-	*/
-	
-	
-	
 	
 	
 	removeAllPhotosFromUL();
@@ -858,25 +844,24 @@ function afficheEcranObservations(un_observation_ici, la_index)
 	
 		
 	document.getElementById('id_ObservFlagInsertUpdate_data').value = un_observation_ici.strObservFlagInsertUpdate;
-	//document.getElementById('id_ObservFlagInsertUpdate_data').value = un_observation_ici.strObservTimestamp;
 	
-	
-	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = un_observation_ici.strObservNoAutoGenereParlaDB;
-	document.getElementById('id_ObservNoDeLusager_data').value = un_observation_ici.strObservNomDeLusager;
-	document.getElementById('id_Observ_id_oiseau_data').value = un_observation_ici.strObservIdDeLoiseau;		
+	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = parseInt(un_observation_ici.strObserv_Id, 10);
+	document.getElementById('id_ObservNoDeLusager_data').value = parseInt(un_observation_ici.strObserv_IDUsager, 10);
+	document.getElementById('id_Observ_id_oiseau_data').value = parseInt(un_observation_ici.strObserv_IDOiseau, 10);		
 
 		
-	document.getElementById('id_ObservLaPositionGPS_lat_data').value=un_observation_ici.strObservLaPositionGPS_lat;
-	document.getElementById('id_ObservLaPositionGPS_long_data').value=un_observation_ici.strObservLaPositionGPS_long;
+	document.getElementById('id_ObservLaPositionGPS_lat_data').value = parseFloat(un_observation_ici.strObserv_Position_lat);
+	document.getElementById('id_ObservLaPositionGPS_long_data').value = parseFloat(un_observation_ici.strObserv_Position_long);
+	
+	
+	document.getElementById("id_ObservTitre_data").value = un_observation_ici.strObserv_Titre;
+	document.getElementById("id_ObservResume_data").value = un_observation_ici.strObserv_Resume;
 	
 
+	var tempDate = parseFloat(un_observation_ici.strObserv_DateObservation); 
 	
 	
-	
-	
-	document.getElementById("id_ObservTitre_data").value = un_observation_ici.strObservTitre;
-	document.getElementById("id_ObservResume_data").value = un_observation_ici.strObservResume;
-	//document.getElementById("id_ObservDiskName_data").value = id_ObservDiskName;
+	document.getElementById("id_ObservTimeStamp_data").value = tempDate;
 	document.getElementById("id_cell_index").innerHTML = la_index;	
 
 	// objNode1 = document.getElementById("img-tag-show-picture");
@@ -932,7 +917,7 @@ function remplirEtAfficheLeULDesPhotos(la_index)
 	
 	
 	for (var i=0; i < array_les_photos.length; i++){
-		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].arrObservLesPhotos[i].dataURLPhoto;
+		//var dataPhoto2=objListViewObservations.myListViewObservArray[la_index].arrObservLesPhotos[i].strPhoto_Image;
 		//alert("remplirEtAfficheLeULDesPhotos:"+la_index);
 		insererUnePhotoDansLeUL(la_index,i); 	
 	}	
@@ -954,6 +939,9 @@ function removeAllPhotosFromUL()  {
 
 
 
+
+
+	
 
 
 

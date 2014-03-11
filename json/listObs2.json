@@ -1,73 +1,95 @@
 [
 	{
-		
-		"strObservFlagInsertUpdate": "", 
-		"strObservTimestamp": 1394148405287,
-		"strObservNoAutoGenereParlaDB": "23122112",
-		"strObservIdDeLoiseau": "122332",		
-		"strObservNomDeLusager": "saxisfun",
-		"strObservTitre": "Moineau", 
-		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
+
+
+
+		"strObserv_Id": 111111,
+		"strObserv_DateObservation": 1394148405287,
+		"strObserv_Position_lat": 345.6775,
+		"strObserv_Position_long": 47.6776,			
+		"strObserv_IDUsager": 111111,		
+		"strObserv_IDOiseau": 121212,	
+		"strObserv_Titre": "Moineau", 
+		"strObserv_Resume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
 		"arrObservLesPhotos": [
-			{
-				"strPhotoDescrip": "Photo 1",
-				"strPhotoDiskName": "index.png",
-				"dataURLPhoto": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\""
+			{			
+				"strPhoto_Id": 48254,
+				"strPhoto_Image": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Description": "Photo 1",
+				"strPhoto_IDObservation": 111111,
+				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Commentaire": "bla bla bla"	
 			},
 			{
-				"strPhotoDescrip": "Photo 2",
-				"strPhotoDiskName": "index.png",
-				"dataURLPhoto": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\""
+				"strPhoto_Id": 98765,
+				"strPhoto_Image": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Description": "Photo 2",
+				"strPhoto_IDObservation": 111111,
+				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Commentaire": "bla bla bla"	
 			}			
-			
-		],	
-		"strObservLaPositionGPS_lat": "XXXX",
-		"strObservLaPositionGPS_long": "XXXX"	
+		],
+		"strObservFlagInsertUpdate": "" 
+
 	},
 	{
-		"strObservFlagInsertUpdate": "", 
-		"strObservTimestamp": 1394148459110,
-		"strObservNoAutoGenereParlaDB": "32443223",
-		"strObservIdDeLoiseau": "10000",		
-		"strObservNomDeLusager": "saxisfun", 	
-		"strObservTitre": "Merle à Quebec", 
-		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
+	
+		"strObserv_Id": 222222,
+		"strObserv_DateObservation": 1394148459110,
+		"strObserv_Position_lat": 87.7665,
+		"strObserv_Position_long": 45.7876,	
+		"strObserv_IDUsager": 111111, 			
+		"strObserv_IDOiseau": 222222,	
+		"strObserv_Titre": "Merle à Quebec", 
+		"strObserv_Resume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
 		"arrObservLesPhotos": [],	
-		"strObservLaPositionGPS_lat": "XXXX",
-		"strObservLaPositionGPS_long": "XXXX"	
+		"strObservFlagInsertUpdate": ""
 	},
-	{
-		"strObservFlagInsertUpdate": "", 
-		"strObservTimestamp": 1394148405287,
-		"strObservNoAutoGenereParlaDB": "34545677",
-		"strObservIdDeLoiseau": "122332",
-		"strObservNomDeLusager": "guygend",
-		"strObservTitre": "Oiseau bleu a Quebec", 
-		"strObservResume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
+	{	
+		"strObserv_Id": 333333,
+		"strObserv_DateObservation": 1394148405287,
+		"strObserv_Position_lat": 47.5444,
+		"strObserv_Position_long": 67.9887,	
+		"strObserv_IDUsager": 222222,
+		"strObserv_IDOiseau": 333333,
+		"strObserv_Titre": "Oiseau bleu a Quebec", 
+		"strObserv_Resume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
 		"arrObservLesPhotos": [
 			{
-				"strPhotoDescrip": "Photo 1",
-				"strPhotoDiskName": "index.png",
-				"dataURLPhoto": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\""
+				"strPhoto_Id": 32435,
+				"strPhoto_Image": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Description": "Photo 2",
+				"strPhoto_IDObservation": 333333,
+				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Commentaire": "bla bla bla"	
 			},
 			{
-				"strPhotoDescrip": "Photo 2",
-				"strPhotoDiskName": "index.png",
-				"dataURLPhoto": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\""
+				"strPhoto_Id": 86754,
+				"strPhoto_Image": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Description": "Photo 2",
+				"strPhoto_IDObservation": 333333,
+				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Commentaire": "bla bla bla"	
 			},
 			{
-				"strPhotoDescrip": "Photo 3",
-				"strPhotoDiskName": "index.png",
-				"dataURLPhoto": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\""
+				"strPhoto_Id": 54342,
+				"strPhoto_Image": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Description": "Photo 2",
+				"strPhoto_IDObservation": 333333,
+				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Commentaire": "bla bla bla"	
 			},
 			{
-				"strPhotoDescrip": "Photo 4",
-				"strPhotoDiskName": "index.png",
-				"dataURLPhoto": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\""
+				"strPhoto_Id": 65344,
+				"strPhoto_Image": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Description": "Photo 2",
+				"strPhoto_IDObservation": 333333,
+				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
+				"strPhoto_Commentaire": "bla bla bla"	
 			}					
 			
 		],	
-		"strObservLaPositionGPS_lat": "XXXX",
-		"strObservLaPositionGPS_long": "XXXX"	
+		"strObservFlagInsertUpdate": ""
+
 	}
 ]

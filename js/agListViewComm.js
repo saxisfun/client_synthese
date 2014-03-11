@@ -24,8 +24,8 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
     // Vérifier si fichier existe et n'est pas trop vieux 
 	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
     //if (typeof storageFilesDate === "undefined" || storageFilesDate != todaysDate)
-	if (typeof storageFilesDate === "undefined")
-	{
+	//if (typeof storageFilesDate === "undefined")
+	//{
 	 
 		 //alert(le_url);
 		try {
@@ -59,12 +59,12 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 		 } catch (e) {
 			//errorEvent(e);
 		}
-    }
-    else {
-	   str_output = storageFiles.output;
-	   objListViewComm.fillCommListView(str_output); 
+    //}
+   // else {
+	//   str_output = storageFiles.output;
+	//   objListViewComm.fillCommListView(str_output); 
 	   //storageFiles.output = str_output;
-    }
+    //}
 }
 
 
@@ -83,8 +83,10 @@ ClasseListViewComm.prototype.addCommListViewCell = function(la_timestamp, la_obs
 	//newDiv1.addEventListener('click', test55, false)
 	//newDiv1.addEventListener('click',function(){affichePageXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
 		
+	une_date = convertTimeStampToDate(la_timestamp);
+		
 	var em_timestamp = document.createElement("em");
-	var em_timestamp_content = document.createTextNode("Date: "+la_timestamp);
+	var em_timestamp_content = document.createTextNode("Date: "+une_date);
 	em_timestamp.setAttribute("class", "lvc_em_timestamp");
 	em_timestamp.appendChild(em_timestamp_content);
 	

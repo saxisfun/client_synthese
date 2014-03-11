@@ -89,3 +89,20 @@ function agConvertDate2(la_dadate)
 	
 	return la_dadate.getFullYear()+"/"+dm+"/"+dd;
 }
+
+
+
+function convertTimeStampToDate(la_bonne_date)  {	
+		
+	var la_date = new Date(la_bonne_date);
+	var la_date2 =  
+		la_date.getFullYear() + "-" +
+		(la_date.getMonth() + 1) + "-" +
+		la_date.getDate() + " " +
+		la_date.getHours() + ":" +
+		la_date.getMinutes() + ":" +
+		la_date.getSeconds();
+	return 	la_date2;
+
+}
+

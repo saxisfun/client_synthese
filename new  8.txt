@@ -1,0 +1,16 @@
+Observation
+Integer Id
+Date DateObservation
+Integer Position
+Integer IDUsager
+Integer IDOiseau
+
+
+
+PhotoObservation
+Integer Id
+Byte[] Image
+String Description
+Integer IDObservation
+Byte[] ImageMiniature
+String Commentaire

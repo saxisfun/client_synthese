@@ -4,8 +4,8 @@
 	"str_bouton_parametres":				"Paramètres",
 	"str_label_utilisateur":				"Utilisateur", 
 	"str_label_motDePasse":					"Mot de passe",		
-	"str_bouton_actualiser":				"Actualiser",	
-	"str_bouton_ajout_observation":			"Ajouter une observation"
+	"str_bouton_actualiser":				"Actualiser"	
+	
 }
 
 

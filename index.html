@@ -93,9 +93,16 @@
 		<button id="tool_button_ajouter_comm" 
 		onclick="		
 			if (varGlobal_UserConnected == '1'){
-				hide_all();
-				show_ecran_commentaire();
-				show_back_button();
+			
+		
+			observ_id = document.getElementById('id_comm_observ_id_data').value;
+			user_id = document.getElementById('id_utilisateur_d').value;
+			un_timestamp = new Date().getTime();
+		
+			
+			
+			affiche_ecran_commentaire(un_timestamp, observ_id, user_id, '', 999999);
+		
 		
 				
 			}else{
@@ -157,7 +164,7 @@
 	
 		<tr>
 			<td style="text-align:left;" id="id_utilisateur_label">Utilisateur</td> 
-			<td><input type="text" style="width:120px;" onChange="" id="id_utilisateur_d" VALUE="aaaa"></td> 
+			<td><input type="text" style="width:120px;" onChange="" id="id_utilisateur_d" VALUE="1111"></td> 
 		</tr>
 		
 		<tr>
@@ -345,17 +352,17 @@
 		
 		
 		
-		
-		
-		
-		
-		
 		<tr>
-			<td class="tdhead" style="text-align:left;"><p id="id_ObservFlagInsertUpdate_label" >FlagInsertUpdate:</p></td> 
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservDiskName_label" >Date:</p></td> 
 		</tr>
 		<tr>
-			<td class="tddata"><input  type="text" style="" id="id_ObservFlagInsertUpdate_data" VALUE=""></td> 
-		</tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservTimeStamp_data" VALUE="" READONLY></td> 
+		</tr>		
+		
+		
+		
+		
+
 				
 		<tr>
 			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoAutoGenereParlaDB_label" >NoAutoGénéréParlaDB:</p></td> 
@@ -408,15 +415,15 @@
 		</tr>		
 				
 		
-		
-		
-	
 		<tr>
-			<td class="tdhead" style="text-align:left;"><p id="id_ObservDiskName_label" >Nom de l'image:</p></td> 
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservFlagInsertUpdate_label" >FlagInsertUpdate:</p></td> 
 		</tr>
 		<tr>
-			<td class="tddata"><input  type="text" style="" id="id_ObservDiskName_data" VALUE="" READONLY></td> 
-		</tr>	
+			<td class="tddata"><input  type="text" style="" id="id_ObservFlagInsertUpdate_data" VALUE=""></td> 
+		</tr>		
+		
+	
+	
 
 		<tr> 
 			
@@ -868,7 +875,7 @@ objListViewComm = new ClasseListViewComm("ListViewComm 1");
 objListViewObservations = new ClasseListViewObservations("Observation 1");
 objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
 
-//afficher_les_observations(1,20);
+
 objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
 afficher_les_observations_new(1,20);
 
@@ -985,8 +992,16 @@ function afficherJsonDansTextarea()
 	document.getElementById("id_textarea_01").value = "";
 	//afficher je json d'obs dans le textarea
 	var myListViewObservArray_strignified = JSON.stringify(objListViewObservations.myListViewObservArray, null, "\t"); 
-	//var myListViewObservArray_strignified = JSON.stringify(arr_data); 		  
-	document.getElementById("id_textarea_01").value = myListViewObservArray_strignified;  
+	
+		  
+	//myListViewObservArray_strignified2 = myListViewObservArray_strignified.replace('strObserv_', '777');
+	var myListViewObservArray_strignified2 = myListViewObservArray_strignified.replace(/strObserv_/g, "")
+	var myListViewObservArray_strignified3 = myListViewObservArray_strignified2.replace(/strPhoto_/g, "")
+	
+	document.getElementById("id_textarea_01").value = myListViewObservArray_strignified3;  
+	
+	
+	
 
 
 }
@@ -1051,35 +1066,7 @@ function envoyer_json_des_nouvelles_observations_au_serveur()
 function afficher_les_observations_new(observation_de, observation_a)
 {
 	hide_all();
-	/*
-	var le_output_json = objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
 	
-	le_output_json_parsed = JSON.parse(le_output_json);
-		
-	for(var i=0; i < le_output_json_parsed.result.length;i++){
-
-		var titVar = le_output_json_parsed;
-		
-		//alert(titVar.result[i].filename);
-	
-		//ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
-		var observObject2 = new ClasseObservation();
-		
-		observObject2.strObservFlagInsertUpdate = "";
-		observObject2.strObservTimestamp = "";
-		observObject2.strObservNoAutoGenereParlaDB = "";
-		observObject2.strObservIdDeLoiseau = "";		
-		observObject2.strObservNomDeLusager = "";
-		observObject2.strObservTitre = titVar.result[i].filename;
-		observObject2.strObservResume = titVar.result[i].description;
-		//observObject2.strObservDiskName = titVar.result[i].url;
-		//observObject2.strObservDataURLPicture = "";
-		observObject2.strObservLaPositionGPS_lat = "";
-		observObject2.strObservLaPositionGPS_long = "";		
-	
-		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
-	}
-	*/		
 	
 	objListViewObservations.fillObservsListView();
 
@@ -1098,54 +1085,6 @@ function afficher_les_observations_new(observation_de, observation_a)
 
 }	
 
-		  
-function afficher_les_observations(observation_de, observation_a)
-{
-	hide_all();
-	
-	var le_output_json = objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
-	
-	le_output_json_parsed = JSON.parse(le_output_json);
-		
-	for(var i=0; i < le_output_json_parsed.result.length;i++){
-
-		var titVar = le_output_json_parsed;
-		
-		//alert(titVar.result[i].filename);
-	
-		//ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function("","",strObservTitre, strObservResume, strObservDiskName, the_pic_dataURL)
-		var observObject2 = new ClasseObservation();
-		
-		observObject2.strObservFlagInsertUpdate = "";
-		observObject2.strObservTimestamp = "";
-		observObject2.strObservNoAutoGenereParlaDB = "";
-		observObject2.strObservIdDeLoiseau = "";
-		observObject2.strObservNomDeLusager = "";		
-		observObject2.strObservTitre = titVar.result[i].filename;
-		observObject2.strObservResume = titVar.result[i].description;
-		//observObject2.strObservDiskName = titVar.result[i].url;
-		//observObject2.strObservDataURLPicture = "";
-		observObject2.strObservLaPositionGPS_lat = "";
-		observObject2.strObservLaPositionGPS_long = "";		
-	
-		objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject2);
-	}
-			
-	
-	objListViewObservations.fillObservsListView();
-
-	document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
-	
-	document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
-	document.getElementById("tool_button_rechercher").style.visibility="visible";
-	document.getElementById("tool_button_seconnecter").style.visibility="visible";
-	
-	
-	
-	
-	show_back_button();
-
-}		
 
 
 

@@ -111,7 +111,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	//newRadio4.setAttribute('checked', '');
 	newRadio4.setAttribute("class", "ajout_observ_button");
 	newRadio4.setAttribute("value", "Ajouter une observation");
-	newRadio4.setAttribute("id", "bouton_effacer_ligne");
+	//newRadio4.setAttribute("id", "bouton_effacer_ligne");
 	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id);},false);
 	newDiv1.appendChild(newRadio4);		
 	

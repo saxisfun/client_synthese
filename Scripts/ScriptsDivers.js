@@ -104,25 +104,22 @@ alert("SendUsager test");
 
 function sendObservation() {
 
-    
-
-	var observObject2 = new ClasseObservation();
-	
+	var observObject2 = new ClasseObservation();	
 	observObject2.strObservFlagInsertUpdate = "U";
-	observObject2.strObservTimestamp = "";
 	
-	observObject2.strObservNoAutoGenereParlaDB = "";
-	observObject2.strObservIdDeLoiseau = "";
-	observObject2.strObservNomDeLusager = "";
-
+	var tempDate = new Date().getTime();
+	tempDate = parseFloat(tempDate); 
+		
 	
 	
-	observObject2.strObservTitre = "Observation 1";
-	observObject2.strObservResume = "Un beau pit pit dans le bois";
-	//observObject2.strObservDiskName = "rien ici";
-	//observObject2.strObservDataURLPicture = "";
-	observObject2.strObservLaPositionGPS_lat = "90.768";
-	observObject2.strObservLaPositionGPS_long = "34.867";		
+	observObject2.strObserv_DateObservation = tempDate;	
+	observObject2.strObserv_Id = 0;
+	observObject2.strObserv_IDOiseau = 0;
+	observObject2.strObserv_IDUsager = 0;
+	observObject2.strObserv_Titre = "Observation 1";
+	observObject2.strObserv_Resume = "Un beau pit pit dans le bois";
+	observObject2.strObserv_Position_lat = 90.768;
+	observObject2.strObserv_Position_long = 34.867;		
 	
 	
 

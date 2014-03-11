@@ -139,7 +139,7 @@ MaCamera.prototype.activateCamera = function() {
                 }
 				
 				varGlobalNomImage = document.getElementById('take-picture').files[0].name;
-				document.getElementById('id_ObservDiskName_data').value = varGlobalNomImage;
+				//document.getElementById('id_ObservTimeStamp_data').value = varGlobalNomImage;
 			
 				timer5  = window.setInterval( "window.clearInterval(timer5),onClickAjouterUneAutrePhoto()", 500 );
 				

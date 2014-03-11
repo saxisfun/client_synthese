@@ -97,7 +97,10 @@ position:inherit;
     font-family: serif;
 }
 
-
+textarea {
+  
+    font-family: sans-serif;
+}
 /* MENU BUTTONS ON MAIN PAGE. */
 
 #div_main ul.buttons {

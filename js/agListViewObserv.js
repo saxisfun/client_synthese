@@ -202,15 +202,15 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	//var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
 	
-	var le_ObservTimestamp = objLObservation1.strObservTimestamp;
+	var le_ObservTimestamp = objLObservation1.strObserv_DateObservation;
 	
-	//var le_ObservNoAutoGenereParlaDB= objLObservation1.strObservNoAutoGenereParlaDB; 
-	//var le_ObservIdDeLoiseau = objLObservation1.strObservIdDeLoiseau; 	
+	//var le_ObservNoAutoGenereParlaDB= parseInt(objLObservation1.strObserv_Id, 10); 
+	//var le_ObservIdDeLoiseau = parseInt(objLObservation1.strObserv_IDOiseau, 10); 	
 	
-	var le_ObservNoDeLusager = objLObservation1.strObservNomDeLusager; 
+	var le_ObservNoDeLusager = parseInt(objLObservation1.strObserv_IDUsager, 10); 
 	
-	var le_ObservTitre = objLObservation1.strObservTitre; 
-	var le_ObservDescrip = objLObservation1.strObservResume; 
+	var le_ObservTitre = objLObservation1.strObserv_Titre; 
+	var le_ObservDescrip = objLObservation1.strObserv_Resume; 
 	//var le_ObservDiskName = objLObservation1.strObservDiskName; 
 	//var le_ObservDiskName = ""; 
 	//var le_datURLPicture = objLObservation1.strObservDataURLPicture;
@@ -218,8 +218,8 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	
-	var le_PositionGPS_lat = objLObservation1.strObservLaPositionGPS_lat; 
-	var le_PositionGPS_long = objLObservation1.strObservLaPositionGPS_long; 
+	var le_PositionGPS_lat = parseFloat(objLObservation1.strObserv_Position_lat); 
+	var le_PositionGPS_long = parseFloat(objLObservation1.strObserv_Position_long);
 	
 	
 	
@@ -232,12 +232,21 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	newDiv1.id="liste_observation1";
 	
+	//Math.round(new Date().getTime()/1000.0)
+	
+	une_date = convertTimeStampToDate(le_ObservTimestamp);
+
 	
 	
 	var em_timestamp = document.createElement("em");
-	var em_timestamp_content = document.createTextNode("Date: "+le_ObservTimestamp);
+	//var em_timestamp_content = document.createTextNode("Date: "+le_ObservTimestamp);
+	var em_timestamp_content = document.createTextNode("Date: "+une_date);	
 	em_timestamp.setAttribute("class", "lvo_em_timestamp");
 	em_timestamp.appendChild(em_timestamp_content);
+	
+	
+
+	
 	
 	
 	
@@ -412,7 +421,7 @@ ClasseListViewObservations.prototype.viewData = function() {
 	alert(myArrayObject.length);
 	for (var i=0; i<myArrayObject.length; i++){
 		var personObject = myArrayObject[i];
-		//alert("strObservResume: " + personObject.strObservResume, "strObservDiskName: " + personObject.strObservDiskName);
+		
 	}
 	
 	
