@@ -3,22 +3,18 @@
 
 
 // écran d'observation
-
 function show_ecran_de_l_observation()
 {
-	ecran_observation = document.getElementById('ecran_observation');
-	show_element(ecran_observation);
+	show_element(document.getElementById('ecran_observation'));
 }
 
 function hide_ecran_de_l_observation()
 {
-	ecran_observation = document.getElementById('ecran_observation');
-	hide_element(ecran_observation);
+	hide_element(document.getElementById('ecran_observation'));
 }
 
 
-// liste d'observations
-
+// écran liste des observations
 function showObservationListView()
 {
   [].forEach.call(document.querySelectorAll("div.list_View_Observ"), function(el) {
@@ -37,72 +33,50 @@ function hideObservationListView()
 
 
 // écran des setting
-
 function show_settings()
 {
-	x = document.getElementById('a_setting');
-	show_element(x);
+	show_element(document.getElementById('a_setting'));
 }
 
 function hide_settings()
 {
-	x = document.getElementById('a_setting');
-	hide_element(x);
+	hide_element(document.getElementById('a_setting'));
 }
 
 
-
-
 // écran ecran_dun_commentaire
-
 function show_ecran_commentaire()
 {
-	
-	
-	
-	
-	x = document.getElementById('ecran_dun_commentaire');
-	show_element(x);
+	show_element(document.getElementById('ecran_dun_commentaire'));
 }
 
 function hide_ecran_commentaire()
 {
-	x = document.getElementById('ecran_dun_commentaire');
-	hide_element(x);
+	hide_element(document.getElementById('ecran_dun_commentaire'));
 }
 
 
-
 // écran recherche dans le dictionnaire
-
 function show_dicti()
 {
-	x = document.getElementById('ecran_recherche');
-	show_element(x);
+	show_element(document.getElementById('ecran_recherche'));
 }
 
 function hide_dicti()
 {
-	x = document.getElementById('ecran_recherche');
-	hide_element(x);
+	hide_element(document.getElementById('ecran_recherche'));
 }
 
 
-
-
-
-// écran chronomètre ???zzz
-
-function show_chrono()
+// écran TEMPO
+function show_TEMPO()
 {
-	x = document.getElementById('ecran_TEMPO');
-	show_element(x);
+	show_element(document.getElementById('ecran_TEMPO'));
 }
 
-function hide_chrono()
+function hide_TEMPO()
 {
-	x = document.getElementById('ecran_TEMPO');
-	hide_element(x);
+	hide_element(document.getElementById('ecran_TEMPO'));
 }
 
 
@@ -111,33 +85,26 @@ function hide_chrono()
 
 function show_geolocalisation()
 {
-	x = document.getElementById('ecran_geolocalisation');
-	show_element(x);
+	show_element(document.getElementById('ecran_geolocalisation'));
 }
 
 function hide_geolocalisation()
 {
-	x = document.getElementById('ecran_geolocalisation');
-	hide_element(x);
+	hide_element(document.getElementById('ecran_geolocalisation'));
 }
+
+
 
 function affiche_ecran_commentaire(un_timestamp, un_observ_id, un_usager_id, un_resume, lindx){
 
 
 	hide_all();
 	show_ecran_commentaire();
-	
-	
-	
-	
-	
+
 	document.getElementById('id_comm_timestamp_data').value = un_timestamp;
 	document.getElementById('id_comm_observ_id_data').value = un_observ_id;
 	document.getElementById('id_comm_usager_data').value = un_usager_id;
 	document.getElementById('id_comm_resume_data').value = un_resume;	
-	
-	
-	
 	show_back_button();
 
 }
@@ -146,14 +113,12 @@ function affiche_ecran_commentaire(un_timestamp, un_observ_id, un_usager_id, un_
 
 function show_back_button()
 {
-	back_button = document.getElementById('back_button');
-	show_element(back_button);
+	show_element(document.getElementById('back_button'));
 }
 
 function hide_back_button()
 {
-	back_button = document.getElementById('back_button');
-	hide_element(back_button);
+	hide_element(document.getElementById('back_button'));
 }
 
 
@@ -184,14 +149,12 @@ function hide_liste_des_comm()
 
 function hide_menu1()
 {
-  my_menu1 = document.getElementById("le_menu1");
-  hide_element(my_menu1);
+  hide_element(document.getElementById("le_menu1"));
 }
 
 function show_menu1()
 {
-  my_menu1 = document.getElementById("le_menu1");
-  show_element(my_menu1);
+  show_element(document.getElementById("le_menu1"));
 }
 
 
@@ -213,7 +176,7 @@ function hide_all()
 
 	hide_dicti();
 	hide_ecran_commentaire();
-	hide_chrono();
+	hide_TEMPO();
 	hide_geolocalisation();	
 
 	hideLogin();
@@ -260,17 +223,14 @@ function effacer_ligne_div(le_idx)
 	
 }		
 // écran login
-		
 function showLogin()
 {
-	le_ecran_login = document.getElementById('ecran_login');
-	show_element(le_ecran_login);
+	show_element(document.getElementById('ecran_login'));
 }		
 
 function hideLogin()
 {
-	le_ecran_login = document.getElementById('ecran_login');
-	hide_element(le_ecran_login);
+	hide_element(document.getElementById('ecran_login'));
 }
 
 

@@ -1,12 +1,12 @@
 ﻿<!doctype html>
   <!--<html lang="en" manifest="app.manifest">  -->
+
 <html manifest="cache-manifest.mf">   
 <head>
-  
 	
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 	
-    <title>Application d'observation d'oiseaux</title>
+    <title>Observations d'oiseaux</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
@@ -14,27 +14,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
 	
 	
+<!--
+	<link rel="apple-touch-startup-image" href="images/splash.png" />
+	<link rel="icon" href="favicon.ico" />
+-->
 	
-	
-	
-	
-	
-	
-	
+	<link rel="icon" type="image/png" href="img/favicon_32x32" />
 	
     <!-- icons   -->
-    <link rel="apple-touch-icon" sizes="72x72" href="img/72x72_frog.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/114x114_smile.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="img/144x144_bird.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img/Harfang_57x57" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/Harfang_72x72" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/Harfang_114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/Harfang_144x144.png" />
 
     <!-- startup image for web apps - iPad - portrait (768x1024) -->
-    <link rel="apple-touch-startup-image" href="img/768x1004_blabla.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+    <link rel="apple-touch-startup-image" href="img/Harfang_768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
 
-    <!-- startup image for web apps - iPad - landscape (1024x748) -->
-    <link rel="apple-touch-startup-image" href="img/2048x1496_32.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" />  
+    <!-- startup image for web apps - iPad - landscape (1024x748)    2048x1496_32.png   -->
+    <link rel="apple-touch-startup-image" href="img/Harfang_2048x1496" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" />  
 
     <!-- iPhone/iPod Touch Portrait – 320 x 480 (standard resolution) -->
-	<link rel="apple-touch-startup-image" href="img/320x480_24.png" media="screen and (min-device-width: 325px) and (max-device-width: 500px) and (orientation:portrait)" />
+	<link rel="apple-touch-startup-image" href="img/Harfang_320x480.png" media="screen and (min-device-width: 325px) and (max-device-width: 500px) and (orientation:portrait)" />
 
     <!-- Add to home screen bubble -->
     <link rel="stylesheet" href="cubiq/style/add2home.css">
@@ -282,7 +282,7 @@
 						
 			<li>
 			  <a href="#ecran_TEMPO"  id="id_bouton_TEMPO"
-			     onclick="hide_all();show_chrono();show_back_button();" 
+			     onclick="hide_all();show_TEMPO();show_back_button();" 
 			     class="switch_screen">Écran Temporaire</a>
 			</li>
 
@@ -613,7 +613,6 @@
 			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
 		</tr>
 	
-		<!---VALUE="Toukan"-->
 		
 		<tr> 
 			<td> </td>
@@ -632,16 +631,18 @@
  
 
 	<!---------------------------------------------------------------->
-	<!--  Écran de test Chronomètre -->
+	<!--  Écran temporaire -->
 	<div id="ecran_TEMPO" class="screen hidden" style="text-align:center;" >
 	<table>
 		
 		<div id="tstImage">
-		<h3> Tempo </h3>
+		<h3>Temporaire</h3>
 		</div>
 
 	</table>	
 	</div> 
+
+
 
 
  
@@ -801,29 +802,27 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 </div>			 
    
   
-  
  	<script type="text/javascript" src="js/Mz.js"></script> 
 	<script type="text/javascript" src="js/helper.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>  
 	<script type="text/javascript" src="js/all.js"></script>
-
+	
+	
 	<script type="text/javascript" src="js/agGps.js"></script>
 	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
 	<script type="text/javascript" src="js/agListViewComm.js"></script>	
-	
-	
-	
 	<script type="text/javascript" src="js/agTakePic.js"></script>		
 	<script type="text/javascript" src="js/agAccel.js"></script>	
 	<script type="text/javascript" src="js/agUpload.js"></script>	
 	<script type="text/javascript" src="js/agOnOffLine.js"></script>		
 	<script type="text/javascript" src="js/agPhoto.js"></script>	
 	<script type="text/javascript" src="js/agUneObserv.js"></script>
+	<script type="text/javascript" src="js/agULListViewPhotos.js"></script>	
+
 	
 	<script type="text/javascript" src="js/ddTest.js"></script>
 	<script type="text/javascript" src="js/ddListViewDict.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
-	<script type="text/javascript" src="js/agULListViewPhotos.js"></script>	
 	
 	
 	
@@ -853,8 +852,6 @@ objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
 
 objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
 afficher_les_observations_new(1,20);
-
-
 
 
 

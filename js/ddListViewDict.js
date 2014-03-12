@@ -88,10 +88,13 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	audio.setAttribute("class", "bird_audio");
 	newDiv1.appendChild(audio);
 
+	
  	var newImg2 = document.createElement("img");
  	newImg2.src="img/musical_note.png";
 	newImg2.setAttribute("class", "speaker_img");
 	newDiv1.appendChild(newImg2);
+
+
 
  	var newImg1 = document.createElement("img");
 	newImg1.src="birds/"+le_IDPhoto+".jpg";
@@ -106,6 +109,11 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
     newP2.appendChild(newP2Content);
 	newDiv1.appendChild(newP2);	
 	
+	
+
+	
+	// mettre ou ne pas mettre le bouton selon le flag  flObservationRequise
+	
 	var newRadio4 = document.createElement("input");
 	newRadio4.setAttribute("type", "button");
 	//newRadio4.setAttribute('checked', '');
@@ -114,6 +122,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	//newRadio4.setAttribute("id", "bouton_effacer_ligne");
 	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id);},false);
 	newDiv1.appendChild(newRadio4);		
+	
 	
  	var newP1 = document.createElement("p");
 	var newP1Content = document.createTextNode(tronquetxt(la_descrip));
