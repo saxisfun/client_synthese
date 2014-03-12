@@ -254,6 +254,7 @@
 
 
 <!---------------------------------------------------------------->
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 <!--  Écran du menu  -->
 
 
@@ -261,32 +262,40 @@
 	<div id="le_menu1" class="screen hidden">
 		<ul class="buttons">
 
-		
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#liste_observation1" id="id_bouton_liste_des_observations" 
 			  onclick="onClickButtonMenuListViewObserv();" 
 			  class="switch_screen">Visionner les observations</a>
 			</li>
 		
-
-
 			
+
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#ecran_recherche"  id="id_bouton_recherche"
 			     onclick="hide_all();show_dicti();show_back_button();" 
 			     class="switch_screen">Recherche dans le dictionnaire</a>
-
 			</li> 
+ 
 
-
-						
+		    <!-- - - - - - - - -->
 			<li>
-			  <a href="#ecran_TEMPO"  id="id_bouton_TEMPO"
-			     onclick="hide_all();show_TEMPO();show_back_button();" 
-			     class="switch_screen">Écran Temporaire</a>
+			  <a href="#liste_commentaires" id="id_bouton_liste_commentaires" 
+			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
+			  	  class="switch_screen">Liste des commentaires</a>
 			</li>
+			
 
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#liste_observation1" id="id_bouton_synchro" 
+			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
+			  class="switch_screen">Synchroniser</a>
+			</li>
+			
 
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
 			     onclick="hide_all();show_geolocalisation();show_back_button();"
@@ -294,20 +303,16 @@
 			</li>
 			
 			
-			<!--  show_geolocalisation show_dicti -->	
-			
-		
-			
+
+		    <!-- - - - - - - - -->
 			<li>
-			  <a href="#liste_commentaires" id="id_bouton_liste_commentaires" 
-			  onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
-			  class="switch_screen">Liste des commentaires</a>
+			  <a href="#ecran_Compte_Utilisateur"  id="id_bouton_Compte_Utilisateur"
+			     onclick="hide_all();show_Compte_Utilisateur();show_back_button();" 
+			     class="switch_screen">Compte Utilisateur</a>
 			</li>
-			<li>
-			  <a href="#liste_observation1" id="id_bouton_synchro" 
-			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
-			  class="switch_screen">Synchroniser</a>
-			</li>							
+										
+
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#a_setting"  id="id_bouton_setting"
 			     onclick="hide_all();show_settings();show_back_button();"
@@ -323,6 +328,7 @@
 	
 	
 <!---------------------------------------------------------------->
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 <!--  Écran d'obsevations  -->	
 	
    <div id="ecran_observation" class="screen hidden">
@@ -529,8 +535,10 @@
         <p>bla bla bla.</p>
     </div> 
 
-	
+
+
 	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran recherche de commentaire -->
 
 	<div id="ecran_dun_commentaire" class="screen hidden" style="text-align:center;" >
@@ -593,7 +601,9 @@
     </div> 
  
 
+
 	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran recherche dans le dictionnaire -->
  
 	 <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
@@ -630,14 +640,22 @@
    </div> 
  
 
-	<!---------------------------------------------------------------->
-	<!--  Écran temporaire -->
-	<div id="ecran_TEMPO" class="screen hidden" style="text-align:center;" >
+   <!---------------------------------------------------------------->
+   <!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+   <!--  Écran compte utilisateur  -->	
+	<div id="ecran_Compte_Utilisateur" style="text-align:center;" >
 	<table>
 		
-		<div id="tstImage">
-		<h3>Temporaire</h3>
-		</div>
+	 <div id="tstImage">  
+		<h3>Compte Utilisateur</h3>
+		  <div id="ecran_Compte_Utilisateur_C1"> 
+		    <p>txt1</p>
+		    <p>txt2</p>
+		  </div> 
+		  <div id="ecran_Compte_Utilisateur_C2"> 
+		    <p>txt3</p>
+		  </div> 
+ 	</div>  
 
 	</table>	
 	</div> 
@@ -645,8 +663,8 @@
 
 
 
- 
 	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran de test géolocalisation -->
  	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
 	<table>
@@ -674,13 +692,14 @@
 	</div> 
 
 
-
 	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran paramètres  -->		 
 
 	<div id="a_setting" class="screen hidden" style="text-align:center;" >
-	<h2>Paramètres</h2>
-	<table class="table2" >
+	<h2>zzzParamètres</h2>
+ <table class="table2" >  
+
 	<col style="width:40%;">        
 	<col style="width:60%;">
 	<tr>
@@ -752,7 +771,7 @@
 
 
 
-	</table>	
+ </table>	 
 
 
 	</div> 

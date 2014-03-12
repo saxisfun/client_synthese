@@ -69,14 +69,14 @@ function hide_dicti()
 
 
 // écran TEMPO
-function show_TEMPO()
+function show_Compte_Utilisateur()
 {
-	show_element(document.getElementById('ecran_TEMPO'));
+	show_element(document.getElementById('ecran_Compte_Utilisateur'));
 }
 
-function hide_TEMPO()
+function hide_Compte_Utilisateur()
 {
-	hide_element(document.getElementById('ecran_TEMPO'));
+	hide_element(document.getElementById('ecran_Compte_Utilisateur'));
 }
 
 
@@ -176,7 +176,7 @@ function hide_all()
 
 	hide_dicti();
 	hide_ecran_commentaire();
-	hide_TEMPO();
+	hide_Compte_Utilisateur();
 	hide_geolocalisation();	
 
 	hideLogin();
