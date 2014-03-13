@@ -75,6 +75,24 @@ function hide_avis_Notification() {
 
 
 
+
+// écran des Paramètres
+
+function show_Parametres() {
+	show_element(document.getElementById('ecran_Parametres'));
+}
+
+function hide_Parametres() {
+	hide_element(document.getElementById('ecran_Parametres'));
+}
+
+
+
+
+
+
+
+
 // écran géolocalisation
 
 function show_geolocalisation() {
@@ -166,6 +184,7 @@ function hide_all() {
 	hide_ecran_commentaire();
 	hide_avis_Notification();
 	hide_geolocalisation();
+	hide_Parametres();
 
 	hideLogin();
 
@@ -737,8 +756,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto) {
 
 
 
-function afficheEcranObservations
-(un_observation_ici, la_index) {
+function afficheEcranObservations(un_observation_ici, la_index) {
 
 
 
