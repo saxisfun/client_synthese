@@ -1,4 +1,4 @@
-
+﻿
 Commandes Git les plus utilisées en mode console
 
 Collaborateurs: pour que quelqu'un puisse venir modifier des choses dans notre repo on doit l'ajouter dans la liste des colaborateurs - Manage Collaborators
@@ -9,7 +9,7 @@ Commandes Git les plus utilisés en mode console
 
 ------------------------------------------------------------------------------------------------------
 
-
+git clone https://github.com/flotteur/projet_synthese.git
 git clone https://github.com/saxisfun/client_synthese.git
 
 Avec la console run cmd de windows ca marche pas. Il faut prendre la fentre Git Shell qui s'installe avec l'installation du client git

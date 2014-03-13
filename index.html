@@ -365,7 +365,7 @@
 
 				
 		<tr>
-			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoAutoGenereParlaDB_label" >NoAutoGénéréParlaDB:</p></td> 
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoAutoGenereParlaDB_label" >Identifiant de l'observation:</p></td> 
 		</tr>
 		<tr>
 			<td class="tddata"><input  type="text" style="" id="id_ObservNoAutoGenereParlaDB_data" VALUE=""></td> 
@@ -400,20 +400,74 @@
 			<td class="tddata"><textarea rows="5"  type="text" style="width:100%;" id="id_ObservResume_data" VALUE=""></textarea> </td> 
 		</tr>
 
-		
 		<tr>
-			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_lat_label" >Position GPS - Lat</p></td> 
-		</tr>
+			<td class="tdhead" style="text-align:left;">
+			
+			
+			
+			</td> 
+		</tr>			
 		<tr>
-			<td class="tddata"><input  type="text" style="" id="id_ObservLaPositionGPS_lat_data" VALUE=""></td> 
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_long_label" >Position GPS - Latitude / Lonitude</p></td> 
 		</tr>		
 		<tr>
-			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_long_label" >Position GPS - long</p></td> 
-		</tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_lat_label" ></p>
+			
+		<table border="0" cellpadding="0">
+		<col style="width:32%;">  
+		<col style="width:32%;"> 
+		<col style="width:32%;"> 
 		<tr>
-			<td class="tddata"><input  type="text" style="" id="id_ObservLaPositionGPS_long_data" VALUE="">	</td> 
-		</tr>		
+			<td>		
+			    <ul class="buttons" >
+				<li>
+				  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
+					 onclick="hide_all();show_geolocalisation();show_back_button();"
+					 class="switch_screen">Actualiser ma position</a>
+				</li>
+
+	    		</ul>						
+				<ul class="buttons" >
+
+				<li>
+				  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
+					 onclick="hide_all();show_geolocalisation();show_back_button();"
+					 class="switch_screen">Voir sur Google Map</a>
+				</li>
+	    		</ul>							
+			</td> 
+			
+			<td>		
+				<input  type="text" style="width:80%;" id="id_ObservLaPositionGPS_lat_data" VALUE="">
 				
+			</td> 
+			
+			<td>		
+				<input  type="text" style="width:80%;" id="id_ObservLaPositionGPS_long_data" VALUE="">
+					
+					
+			</td> 			
+			
+		</tr>	
+		</table>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			
+			</td> 
+		</tr>
+		
+		
 		
 		<tr>
 			<td class="tdhead" style="text-align:left;"><p id="id_ObservFlagInsertUpdate_label" >FlagInsertUpdate:</p></td> 
@@ -973,7 +1027,9 @@ function afficherJsonDansTextarea()
 	var myListViewObservArray_strignified2 = myListViewObservArray_strignified.replace(/strObserv_/g, "")
 	var myListViewObservArray_strignified3 = myListViewObservArray_strignified2.replace(/strPhoto_/g, "")
 	
-	document.getElementById("id_textarea_01").value = myListViewObservArray_strignified3;  
+	
+	//ici oui
+	//document.getElementById("id_textarea_01").value = myListViewObservArray_strignified3;  
 	
 	
 	
@@ -1020,7 +1076,10 @@ function creer_json_des_nouvelles_observations(){
 		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader, null, "\t");	
 		document.getElementById("id_textarea_01").value = "";
 
-		document.getElementById("id_textarea_01").value = e3e3e3rr443r;  
+		
+		
+		//ici oui
+		//document.getElementById("id_textarea_01").value = e3e3e3rr443r;  
 
 		//alert(e3e3e3rr443r);
 	}

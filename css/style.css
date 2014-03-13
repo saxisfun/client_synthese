@@ -912,14 +912,67 @@ animation:myfirst2 0.5s 1;
 	marging-right:30px;
 }
 
-.lvc_em_usager{
+
+
+
+
+
+
+
+
+.lvc_img{
+ 	position:absolute;
+ 	width:80px;
+ 	height:80px;
+ 	background-color:#FFF;
+ 	padding:10px;
 	
+ 	font-size:12px;
+	
+ 	alt:Photo;
+ 	align:left;
+ 	width:100;
+ 	height:100;
+ 	-moz-box-shadow:8px 8px 10px #999;
+ 	-webkit-box-shadow:8px 8px 10px #999;
+ 	-o-box-shadow:8px 8px 10px #999;
+ 	box-shadow:8px 8px 10px #999;
+ }
+
+
+.lvo_cell_container{
+ 	position:relative;
+ 	width:auto;
+	margin-right:115px;
+	left:123px;
+ 	/*height:80px;
+ 	background-color:#FFF;
+ 	padding:10px;
+	
+ 	font-size:12px;
+	
+ 	alt:Photo;
+ 	align:left;
+ 	width:100;
+ 	height:100;
+ 	-moz-box-shadow:8px 8px 10px #999;
+ 	-webkit-box-shadow:8px 8px 10px #999;
+ 	-o-box-shadow:8px 8px 10px #999;
+ 	box-shadow:8px 8px 10px #999;*/
+	/*float:right;*/
+	
+	
+ }
+
+
+.lvc_em_usager{
+	margin:5px:
 
 }
 
 .lvc_em_timestamp{
 	float:right;
-
+	margin:5px:
 }
 
 /*lvo=ListViewObservation*/
@@ -927,6 +980,20 @@ animation:myfirst2 0.5s 1;
 	
 
 }
+.lvo_h3_titre{
+	/*float:right;*/
+position:relative;
+/*left:130px;*/
+/*top:-1px;*/
+}
+
+.lvo_p_resume{
+	/*float:right;*/
+/*position:relative;*/
+/*left:130px;*/
+/*top:20px;*/
+}
+
 .lvo_em_timestamp{
 	float:right;
 	margin-right:68px;

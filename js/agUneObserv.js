@@ -39,12 +39,17 @@ ClasseObservation.prototype.ajouterUneAutrePhotoALobservation = function(str_la_
 	
 	var photoObject1 = new ClassePhoto();
 	
+	
 	photoObject1.strPhoto_Id = parseInt(str_la_Id, 10);
 	photoObject1.strPhoto_Image = dataURL_la_Photo;	
 	photoObject1.strPhoto_Description = str_la_Photo_Descrip;
 	photoObject1.strPhoto_IDObservation = parseInt(str_la_IDObservation, 10);
 	photoObject1.strPhoto_ImageMiniature = str_la_ImageMiniature;
 	photoObject1.strPhoto_Commentaire = str_la_Photo_Commentaire;
+	
+	
+	
+	
 
 	this.arrObservLesPhotos.push(photoObject1);	
 	

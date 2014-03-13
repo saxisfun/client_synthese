@@ -125,7 +125,7 @@ function sendObservation() {
 
 	$.ajax({
 		type: "POST",
-		url: "/WCF_Synthese/servicewcf_synthese.svc/sendNewObservationsDunUser/",
+		url: "/WCF_Synthese/servicewcf_synthese.svc/Observations/",
 		data: observObject2,
 		contentType: "application/json",
 		dataType: "json",

@@ -202,6 +202,8 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	//var le_FlagInsertUpdate = objLObservation1.strObservFlagInsertUpdate;
 	
+
+	
 	var le_ObservTimestamp = objLObservation1.strObserv_DateObservation;
 	
 	//var le_ObservNoAutoGenereParlaDB= parseInt(objLObservation1.strObserv_Id, 10); 
@@ -234,10 +236,40 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	//Math.round(new Date().getTime()/1000.0)
 	
+	
+	var newDivContainer = document.createElement("div");
+	newDivContainer.setAttribute("class", "lvo_cell_container");
+	//newDivContainer.setAttribute("align", "left");
+	
+	
+	
+	
+	
+	
+	
+	if(objLObservation1.arrObservLesPhotos != undefined && objLObservation1.arrObservLesPhotos.length > 0){
+	
+		if(objLObservation1.arrObservLesPhotos[0].strPhoto_Image != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_Image != ""){
+			
+			var newImg1 = document.createElement("img");
+			//alert(objLObservation1.arrObservLesPhotos[0].strPhoto_Image);
+			newImg1.setAttribute('src', JSON.parse(objLObservation1.arrObservLesPhotos[0].strPhoto_Image));
+			//newImg1.src=objLObservation1.arrObservLesPhotos[0].strPhoto_Image;
+			
+			newImg1.setAttribute("class", "lvc_img");
+			//newImg1.setAttribute("id", randomcssid());
+			//newImg1.addEventListener('click',autresphotos,false);
+		 
+		   newDiv1.appendChild(newImg1);
+		 
+		   
+		}
+		//alert("zzzzz");
+	}
+	
+	
+	
 	une_date = convertTimeStampToDate(le_ObservTimestamp);
-
-	
-	
 	var em_timestamp = document.createElement("em");
 	//var em_timestamp_content = document.createTextNode("Date: "+le_ObservTimestamp);
 	var em_timestamp_content = document.createTextNode("Date: "+une_date);	
@@ -262,7 +294,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	var h3_ObservTitre = document.createElement("h3");
-	
+	h3_ObservTitre.setAttribute("class", "lvo_h3_titre");		
 	var h3_ObservTitre_content = document.createTextNode("Titre: "+le_ObservTitre);
 	h3_ObservTitre.appendChild(h3_ObservTitre_content);
 	
@@ -273,7 +305,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	var newP = document.createElement("p");
-	
+	newP.setAttribute("class", "lvo_p_resume");	
 	var newPContent = document.createTextNode("Description: "+le_ObservDescrip);
 	newP.appendChild(newPContent);	
 	
@@ -309,12 +341,14 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	
-	newDiv1.appendChild(em_obs_usager_id);	
-	newDiv1.appendChild(em_timestamp);	
+	newDivContainer.appendChild(em_obs_usager_id);	
+	newDivContainer.appendChild(em_timestamp);	
 	
-	newDiv1.appendChild(h3_ObservTitre);		
+	newDivContainer.appendChild(h3_ObservTitre);		
 
-	newDiv1.appendChild(newP);	
+	newDivContainer.appendChild(newP);
+	
+	newDiv1.appendChild(newDivContainer);	
 	newDiv1.appendChild(newDivTouch);	
 	newDiv1.appendChild(newRadio);	
 	

@@ -501,11 +501,12 @@ function prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(le_index_oui
 
 		
 			observObject2.arrObservLesPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservLesPhotos;
+			observObject2.strObserv_Id = objListViewObservations.myListViewObservArray[le_index_oui].strObserv_Id;
 
+			//str_la_Id, dataURL_la_Photo, str_la_Photo_Descrip, str_la_IDObservation, str_la_ImageMiniature, str_la_Photo_Commentaire
 		
 		
-		
-			observObject2.ajouterUneAutrePhotoALobservation("Photo 1",varGlobalNomImage,dataUrl_img_strignified);
+			observObject2.ajouterUneAutrePhotoALobservation(0, dataUrl_img_strignified, "La descrip", observObject2.strObserv_Id, "",  varGlobalNomImage);
 			
 			
 	
@@ -636,7 +637,14 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau)
 		var observObject7 = new ClasseObservation();
 		
 		observObject7.strObservFlagInsertUpdate = "";
-		observObject7.strObserv_DateObservation = "";
+		
+	var tempDate = new Date().getTime();
+	tempDate = parseFloat(tempDate); 
+	
+	
+		
+		
+		observObject7.strObserv_DateObservation = tempDate;
 		observObject7.strObserv_Id = 0;
 		observObject7.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
 		observObject7.strObserv_IDUsager = parseInt(document.getElementById("id_utilisateur_d").value);		
