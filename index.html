@@ -299,7 +299,7 @@
 			<li>
 			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
 			     onclick="hide_all();show_geolocalisation();show_back_button();"
-			     class="switch_screen">Géolocalisation WiFi</a>
+			     class="switch_screen">Test de géolocalisation</a>
 			</li>
 			
 			
@@ -665,14 +665,18 @@
 
 	<!---------------------------------------------------------------->
 	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
-	<!--  Écran de test géolocalisation -->
+	<!--  Écran de test géolocalisation -->  
  	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
 	<table>
 		<tr> 
 			<td> 
 				<ul class="buttons">
 					<li>
-						<a href="#" id="" onclick="localiser();" 						class="switch_screen">Géolocaliser par wifi</a>
+						<a href="#" id="" onclick="localiser('carte');" 						class="switch_screen">localiser('carte')</a>
+					</li>	
+					
+					<li>	
+						<a href="#" id="" onclick="localiser();" 						class="switch_screen">localiser()</a>
 					</li>	
 				</ul>
 			</td> 
@@ -849,6 +853,9 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 <script type="text/javascript" >
 document.getElementById("id_comm_resume_data").value = "";
 document.getElementById("id_textarea_01").value = "";
+
+
+
 
 
 //dataAdapder

@@ -118,8 +118,8 @@ function sendObservation() {
 	observObject2.strObserv_IDUsager = 0;
 	observObject2.strObserv_Titre = "Observation 1";
 	observObject2.strObserv_Resume = "Un beau pit pit dans le bois";
-	observObject2.strObserv_Position_lat = 90.768;
-	observObject2.strObserv_Position_long = 34.867;		
+	//observObject2.strObserv_Position_lat = 90.768;
+	//observObject2.strObserv_Position_long = 34.867;		
 	
 	
 
