@@ -68,7 +68,7 @@ position:inherit;
 /* THE TWO ABOUT SUB-PAGES */
 
 
-#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_Compte_Utilisateur, #a_setting, #ecran_login {
+#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_Notification, #a_setting, #ecran_login {
   background-color: #D5D6D7;
   margin: 15px 10px 17px 10px;
   -webkit-box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0;
@@ -958,22 +958,32 @@ bird_imgPlus{
     background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
 }
 
-#ecran_Compte_Utilisateur_C1{
+#ecran_Notification_C1{
     float: left;
     padding: 0 0 0 20px;	
 }
 
-#ecran_Compte_Utilisateur_C2{
+#ecran_Notification_C2{
     float: right;
 		padding: 0 20px 0 0;
 	
 }
 
-#tstImage h3 {
-	margin: 0 0 15px 0;
-	padding: 3px 5px 4px 5px;
+#btnSauverCompte{
+	background: #33CC33;
+}
+
+#ecran_Notification h3 {
 	font-size: 1.5em;
 	font-weight: normal;
 	color: white;
-	background: #282E3D;
+	background: #FF4D4D;
+    -webkit-border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
+    border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    border-top-right-radius: 8px;
 }

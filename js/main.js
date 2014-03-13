@@ -63,14 +63,14 @@ function hide_dicti() {
 }
 
 
-// écran TEMPO
+// écran pour paramétrez les avis par courriels «notification»
 
-function show_Compte_Utilisateur() {
-	show_element(document.getElementById('ecran_Compte_Utilisateur'));
+function show_avis_Notification() {
+	show_element(document.getElementById('ecran_Notification'));
 }
 
-function hide_Compte_Utilisateur() {
-	hide_element(document.getElementById('ecran_Compte_Utilisateur'));
+function hide_avis_Notification() {
+	hide_element(document.getElementById('ecran_Notification'));
 }
 
 
@@ -164,7 +164,7 @@ function hide_all() {
 
 	hide_dicti();
 	hide_ecran_commentaire();
-	hide_Compte_Utilisateur();
+	hide_avis_Notification();
 	hide_geolocalisation();
 
 	hideLogin();
