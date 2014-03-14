@@ -1,12 +1,12 @@
 ﻿<!doctype html>
   <!--<html lang="en" manifest="app.manifest">  -->
+
 <html manifest="cache-manifest.mf">   
 <head>
-  
 	
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 	
-    <title>Application d'observation d'oiseaux</title>
+    <title>Observations d'oiseaux</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
@@ -14,27 +14,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
 	
 	
+<!--
+	<link rel="apple-touch-startup-image" href="images/splash.png" />
+	<link rel="icon" href="favicon.ico" />
+-->
 	
-	
-	
-	
-	
-	
-	
+	<link rel="icon" type="image/png" href="img/favicon_32x32" />
 	
     <!-- icons   -->
-    <link rel="apple-touch-icon" sizes="72x72" href="img/72x72_frog.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/114x114_smile.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="img/144x144_bird.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img/Harfang_57x57" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/Harfang_72x72" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/Harfang_114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/Harfang_144x144.png" />
 
     <!-- startup image for web apps - iPad - portrait (768x1024) -->
-    <link rel="apple-touch-startup-image" href="img/768x1004_blabla.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+    <link rel="apple-touch-startup-image" href="img/Harfang_768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
 
-    <!-- startup image for web apps - iPad - landscape (1024x748) -->
-    <link rel="apple-touch-startup-image" href="img/2048x1496_32.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" />  
+    <!-- startup image for web apps - iPad - landscape (1024x748)    2048x1496_32.png   -->
+    <link rel="apple-touch-startup-image" href="img/Harfang_2048x1496" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" />  
 
     <!-- iPhone/iPod Touch Portrait – 320 x 480 (standard resolution) -->
-	<link rel="apple-touch-startup-image" href="img/320x480_24.png" media="screen and (min-device-width: 325px) and (max-device-width: 500px) and (orientation:portrait)" />
+	<link rel="apple-touch-startup-image" href="img/Harfang_320x480.png" media="screen and (min-device-width: 325px) and (max-device-width: 500px) and (orientation:portrait)" />
 
     <!-- Add to home screen bubble -->
     <link rel="stylesheet" href="cubiq/style/add2home.css">
@@ -254,6 +254,7 @@
 
 
 <!---------------------------------------------------------------->
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 <!--  Écran du menu  -->
 
 
@@ -261,53 +262,57 @@
 	<div id="le_menu1" class="screen hidden">
 		<ul class="buttons">
 
-		
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#liste_observation1" id="id_bouton_liste_des_observations" 
 			  onclick="onClickButtonMenuListViewObserv();" 
 			  class="switch_screen">Visionner les observations</a>
 			</li>
 		
-
-
 			
+
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#ecran_recherche"  id="id_bouton_recherche"
 			     onclick="hide_all();show_dicti();show_back_button();" 
 			     class="switch_screen">Recherche dans le dictionnaire</a>
-
 			</li> 
+ 
 
-
-						
-			<li>
-			  <a href="#ecran_TEMPO"  id="id_bouton_TEMPO"
-			     onclick="hide_all();show_chrono();show_back_button();" 
-			     class="switch_screen">Écran Temporaire</a>
-			</li>
-
-
-			<li>
-			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
-			     onclick="hide_all();show_geolocalisation();show_back_button();"
-			     class="switch_screen">Géolocalisation WiFi</a>
-			</li>
-			
-			
-			<!--  show_geolocalisation show_dicti -->	
-			
-		
-			
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#liste_commentaires" id="id_bouton_liste_commentaires" 
-			  onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
-			  class="switch_screen">Liste des commentaires</a>
+			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
+			  	  class="switch_screen">Liste des commentaires</a>
 			</li>
+			
+
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#liste_observation1" id="id_bouton_synchro" 
 			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
 			  class="switch_screen">Synchroniser</a>
-			</li>							
+			</li>
+			
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
+			     onclick="hide_all();show_geolocalisation();show_back_button();"
+			     class="switch_screen">Test de géolocalisation</a>
+			</li>
+			
+			
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#ecran_Notification"  id="id_bouton_avis_Notification"
+			     onclick="hide_all();show_avis_Notification();show_back_button();" 
+			     class="switch_screen">Restez informé !</a>
+			</li>
+										
+
+		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#a_setting"  id="id_bouton_setting"
 			     onclick="hide_all();show_settings();show_back_button();"
@@ -323,7 +328,8 @@
 	
 	
 <!---------------------------------------------------------------->
-<!--  Écran d'obsevations  -->	
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+<!--  Écran d'obsevation  -->	
 	
    <div id="ecran_observation" class="screen hidden">
      
@@ -400,13 +406,6 @@
 			<td class="tddata"><textarea rows="5"  type="text" style="width:100%;" id="id_ObservResume_data" VALUE=""></textarea> </td> 
 		</tr>
 
-		<tr>
-			<td class="tdhead" style="text-align:left;">
-			
-			
-			
-			</td> 
-		</tr>			
 		<tr>
 			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_long_label" >Position GPS - Latitude / Lonitude</p></td> 
 		</tr>		
@@ -583,8 +582,10 @@
         <p>bla bla bla.</p>
     </div> 
 
-	
+
+
 	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran recherche de commentaire -->
 
 	<div id="ecran_dun_commentaire" class="screen hidden" style="text-align:center;" >
@@ -647,7 +648,9 @@
     </div> 
  
 
+
 	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran recherche dans le dictionnaire -->
  
 	 <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
@@ -667,7 +670,6 @@
 			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
 		</tr>
 	
-		<!---VALUE="Toukan"-->
 		
 		<tr> 
 			<td> </td>
@@ -685,29 +687,118 @@
    </div> 
  
 
-	<!---------------------------------------------------------------->
-	<!--  Écran de test Chronomètre -->
-	<div id="ecran_TEMPO" class="screen hidden" style="text-align:center;" >
-	<table>
-		
-		<div id="tstImage">
-		<h3> Tempo </h3>
-		</div>
+   <!---------------------------------------------------------------->
+   <!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+   <!--  Écran compte utilisateur  -->	
+	<div id="ecran_Notification" style="text-align:center;" >
+	
+	
+	<table class="table2">
+	<col style="width:100%;">        
+	<tr>
+		<td>		
+			 <h3>Avis par courriel</h3>	
+		</td> 
+	</tr>	
 
-	</table>	
+	
+	<!-- Bouton de sauvegarde  -->
+	
+	<tr> 
+		
+		<td> 
+    		<ul class="buttons">
+				<li>
+	   	 			<a href="#" id="btnSauverCompte" 
+					onclick="alert('Désolé vous avez un VIRUS :-) !');" class="switch_screen">Cliquez ici pour sauvegarder </a>
+				</li>					
+    		</ul>
+    	</td> 
+	</tr>				
+	
+
+	<!-- Adresse de courriel  -->
+	
+	
+	<tr>
+		<td class="tdhead" style="text-align:left;"><p id="id_Email_label" >Adresse de courriel:</p></td> 
+	</tr>
+	<tr>
+		<td class="tddata"><input  type="text" style="" id="id_Email_data" VALUE=""></td> 
+	</tr>			
+	
+	
+	<!-- flag pour reçevoir des couriels  -->
+	
+	
+	<tr>
+		<td class="tdhead" style="text-align:left;"><p id="id_Notifier_label" >Recevoir des avis par courriel:</p></td> 
+	</tr>
+	
+	<tr>
+		<td style="text-align:right;">
+	
+			<SELECT class="SELECTBLUE" 
+			onMouseWheel="return false;"
+			onchange="" style="width:250px;" name="XX1">
+			<OPTION selected VALUE="XX1A">Je ne veux pas recevoir de courriel</OPTION>
+			<OPTION VALUE="XX1B">Je veux être avisé pour toutes onbservations</OPTION>
+			<OPTION VALUE="XX1C">Je veux être avisé seulement pour mes oiseaux sélectionnés</OPTION>		
+					
+			</SELECT>	
+	
+		</td> 		
+	</tr>			
+	
+	
+
+	<!-- périmètre en km  -->
+	
+	
+	<tr>
+		<td class="tdhead" style="text-align:left;"><p id="id_Notifier_label" >Je veux être informé pour les observation qui sont:</p></td> 
+	</tr>
+	
+	<tr>
+		<td style="text-align:right;">
+	
+			<SELECT class="SELECTBLUE" 
+			onMouseWheel="return false;"
+			onchange="" style="width:250px;" name="XX2">
+			<OPTION selected VALUE="XX2A">Je ne veux pas recevoir de courriel</OPTION>
+			<OPTION VALUE="XX2B">Dans un périmètre de 5km de ma position</OPTION>
+			<OPTION VALUE="XX2C">Peu importe la distance</OPTION>		
+					
+			</SELECT>	
+	
+		</td> 		
+	</tr>			
+		
+	
+					
+	</table>
+		
 	</div> 
 
 
- 
+
+
+
+
 	<!---------------------------------------------------------------->
-	<!--  Écran de test géolocalisation -->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+	<!--  Écran de test géolocalisation -->  
  	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
 	<table>
 		<tr> 
 			<td> 
 				<ul class="buttons">
 					<li>
-						<a href="#" id="" onclick="localiser();" 						class="switch_screen">Géolocaliser par wifi</a>
+						<a href="#" id="" onclick="localiser('carte');" 						class="switch_screen">localiser('carte')</a>
+					</li>	
+					
+					<li>	
+						<a href="#" id="" onclick="localiser();" 						class="switch_screen">localiser()</a>
 					</li>	
 				</ul>
 			</td> 
@@ -727,13 +818,14 @@
 	</div> 
 
 
-
 	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran paramètres  -->		 
 
 	<div id="a_setting" class="screen hidden" style="text-align:center;" >
 	<h2>Paramètres</h2>
-	<table class="table2" >
+ <table class="table2" >  
+
 	<col style="width:40%;">        
 	<col style="width:60%;">
 	<tr>
@@ -805,7 +897,7 @@
 
 
 
-	</table>	
+ </table>	 
 
 
 	</div> 
@@ -855,29 +947,27 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 </div>			 
    
   
-  
  	<script type="text/javascript" src="js/Mz.js"></script> 
 	<script type="text/javascript" src="js/helper.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>  
 	<script type="text/javascript" src="js/all.js"></script>
-
+	
+	
 	<script type="text/javascript" src="js/agGps.js"></script>
 	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
 	<script type="text/javascript" src="js/agListViewComm.js"></script>	
-	
-	
-	
 	<script type="text/javascript" src="js/agTakePic.js"></script>		
 	<script type="text/javascript" src="js/agAccel.js"></script>	
 	<script type="text/javascript" src="js/agUpload.js"></script>	
 	<script type="text/javascript" src="js/agOnOffLine.js"></script>		
 	<script type="text/javascript" src="js/agPhoto.js"></script>	
 	<script type="text/javascript" src="js/agUneObserv.js"></script>
+	<script type="text/javascript" src="js/agULListViewPhotos.js"></script>	
+
 	
 	<script type="text/javascript" src="js/ddTest.js"></script>
 	<script type="text/javascript" src="js/ddListViewDict.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
-	<script type="text/javascript" src="js/agULListViewPhotos.js"></script>	
 	
 	
 	
@@ -885,6 +975,9 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 <script type="text/javascript" >
 document.getElementById("id_comm_resume_data").value = "";
 document.getElementById("id_textarea_01").value = "";
+
+
+
 
 
 //dataAdapder
@@ -907,8 +1000,6 @@ objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
 
 objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
 afficher_les_observations_new(1,20);
-
-
 
 
 

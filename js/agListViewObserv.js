@@ -332,7 +332,8 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 
 	var newDivTouch = document.createElement("div");
 	newDivTouch.setAttribute("class", "divTouch");
-	newDivTouch.addEventListener('click',function(){afficheEcranObservations(objLObservation1, le_index)},false);
+	newDivTouch.addEventListener('click',function(){afficheEcranObservations
+(objLObservation1, le_index)},false);
 
 	//var newP2 = document.createElement("p");
 	//var newPContent2 = document.createTextNode("Coordonée GPS: "+la_coord);

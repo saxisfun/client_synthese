@@ -55,7 +55,8 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	 for(var i=0;i<localString.result.length;i++){
 		 var obj = localString.result[i];
 		
-		obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,localString.result[i].IDPhoto,localString.result[i].IDSon)
+		obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,
+			localString.result[i].IDPhoto,localString.result[i].IDSon,localString.result[i].flObsPermises)
 		 
 	 }
 		
@@ -74,7 +75,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  
  
 
- function obj2cell(le_id, l_espece,  la_descrip, le_IDPhoto , le_IDSon) {
+ function obj2cell(le_id, l_espece,  la_descrip, le_IDPhoto , le_IDSon ,le_flObsPermises) {
 			
  	var newDiv1 = document.createElement("div");
  	newDiv1.setAttribute("class", "la_liste1");
@@ -88,10 +89,13 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	audio.setAttribute("class", "bird_audio");
 	newDiv1.appendChild(audio);
 
+	
  	var newImg2 = document.createElement("img");
  	newImg2.src="img/musical_note.png";
 	newImg2.setAttribute("class", "speaker_img");
 	newDiv1.appendChild(newImg2);
+
+
 
  	var newImg1 = document.createElement("img");
 	newImg1.src="birds/"+le_IDPhoto+".jpg";
@@ -106,15 +110,22 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
     newP2.appendChild(newP2Content);
 	newDiv1.appendChild(newP2);	
 	
+	
+	// mettre ou ne pas mettre le bouton selon le flag  flObservationRequise
+	if (le_flObsPermises === true)
+	{
 	var newRadio4 = document.createElement("input");
 	newRadio4.setAttribute("type", "button");
 	//newRadio4.setAttribute('checked', '');
 	newRadio4.setAttribute("class", "ajout_observ_button");
 	newRadio4.setAttribute("value", "Ajouter une observation");
 	//newRadio4.setAttribute("id", "bouton_effacer_ligne");
-	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id);},false);
+	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation
+(le_id);},false);
 	newDiv1.appendChild(newRadio4);		
-	
+    }
+  
+  
  	var newP1 = document.createElement("p");
 	var newP1Content = document.createTextNode(tronquetxt(la_descrip));
  	newP1.setAttribute("class", "bird_descript");

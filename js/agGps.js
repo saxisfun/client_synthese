@@ -2,15 +2,6 @@
 	
 function MonGPS(strNom) {
     this.strNom = strNom;
-    //this.last = last;
-
-	 //alert(strNom);
-
-	 //this.gps_id_filename_d = "";
-	 ///this.gps_id_gps_position = "";
-	 //this.gps_id_registered_d = "";
-	 
-	
 	 
 }
 

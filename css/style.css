@@ -68,7 +68,7 @@ position:inherit;
 /* THE TWO ABOUT SUB-PAGES */
 
 
-#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_TEMPO, #a_setting, #ecran_login {
+#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_Notification, #a_setting, #ecran_login {
   background-color: #D5D6D7;
   margin: 15px 10px 17px 10px;
   -webkit-box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0;
@@ -245,19 +245,6 @@ tr {
 	
 }
 
-td {
-	/*border:1px solid red;*/
-	/*color:black;*/
-	
-	/*line-height:2px;*/
-}
-
-
-td.td_table2 {
-	
-	/*color:black;*/
-
-}
 
 
 td.tdhead {
@@ -823,13 +810,31 @@ animation:myfirst2 0.5s 1;
 -------------------------------------------------------------
 /*---------------- Pour le dictionnaire -------------------*/
  
-.bird_espece:hover{
-	color:#FF6666;
+.bird_msgObs{
+	float:right;
+	marging-top:50px;
+	marging-right:30px;
+
+
+/*	margin-top:1.8cm;
+	margin-left:3.5cm;
+	align:left; */
+	font-family:"Arial,Helvetica,sans-serif";
+	font-weight:900x;
+	font-size:12px;
+} 
+
+bird_imgPlus{
+	float:right;
+	marging-top:30px;
+	marging-right:30px;
+ 	width:20px;
+ 	height:20px;
 }
 
 .bird_espece{
 	margin-top:1.8cm;
-	margin-left:3.2cm;
+	margin-left:3.5cm;
 	align:left;
 	font-family:"Verdana,Geneva,sans-serif";
 	font-weight:900x;
@@ -1015,8 +1020,37 @@ position:relative;
 
 
 #tstImage{
-	width:960px;
+	width:100%;
 	height:520px;	
-	margin:0 auto;
     background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
+}
+
+#ecran_Notification_C1{
+    float: left;
+    padding: 0 0 0 20px;	
+}
+
+#ecran_Notification_C2{
+    float: right;
+		padding: 0 20px 0 0;
+	
+}
+
+#btnSauverCompte{
+	background: #33CC33;
+}
+
+#ecran_Notification h3 {
+	font-size: 1.5em;
+	font-weight: normal;
+	color: white;
+	background: #FF4D4D;
+    -webkit-border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
+    border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    border-top-right-radius: 8px;
 }
