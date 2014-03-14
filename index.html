@@ -314,6 +314,15 @@
 
 		    <!-- - - - - - - - -->
 			<li>
+			  <a href="#ecran_Parametres"  id="id_bouton_Parametres"
+			     onclick="hide_all();show_Parametres();show_back_button();" 
+			     class="switch_screen">Pour des tests ...(paramètres)</a>
+			</li>
+
+
+
+		    <!-- - - - - - - - -->
+			<li>
 			  <a href="#a_setting"  id="id_bouton_setting"
 			     onclick="hide_all();show_settings();show_back_button();"
 			     class="switch_screen">Paramètres</a>
@@ -524,10 +533,6 @@
 					<img src="about:blank" style="border-style:solid;border-width:4px;border-color:red;width:100%;" exif="true" alt="" id="img-tag-show-picture"/>
 					
 					
-						
-					
-					
-					
                 </p>	
 
 
@@ -687,98 +692,7 @@
    </div> 
  
 
-   <!---------------------------------------------------------------->
-   <!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
-   <!--  Écran compte utilisateur  -->	
-	<div id="ecran_Notification" style="text-align:center;" >
-	
-	
-	<table class="table2">
-	<col style="width:100%;">        
-	<tr>
-		<td>		
-			 <h3>Avis par courriel</h3>	
-		</td> 
-	</tr>	
 
-	
-	<!-- Bouton de sauvegarde  -->
-	
-	<tr> 
-		
-		<td> 
-    		<ul class="buttons">
-				<li>
-	   	 			<a href="#" id="btnSauverCompte" 
-					onclick="alert('Désolé vous avez un VIRUS :-) !');" class="switch_screen">Cliquez ici pour sauvegarder </a>
-				</li>					
-    		</ul>
-    	</td> 
-	</tr>				
-	
-
-	<!-- Adresse de courriel  -->
-	
-	
-	<tr>
-		<td class="tdhead" style="text-align:left;"><p id="id_Email_label" >Adresse de courriel:</p></td> 
-	</tr>
-	<tr>
-		<td class="tddata"><input  type="text" style="" id="id_Email_data" VALUE=""></td> 
-	</tr>			
-	
-	
-	<!-- flag pour reçevoir des couriels  -->
-	
-	
-	<tr>
-		<td class="tdhead" style="text-align:left;"><p id="id_Notifier_label" >Recevoir des avis par courriel:</p></td> 
-	</tr>
-	
-	<tr>
-		<td style="text-align:right;">
-	
-			<SELECT class="SELECTBLUE" 
-			onMouseWheel="return false;"
-			onchange="" style="width:250px;" name="XX1">
-			<OPTION selected VALUE="XX1A">Je ne veux pas recevoir de courriel</OPTION>
-			<OPTION VALUE="XX1B">Je veux être avisé pour toutes onbservations</OPTION>
-			<OPTION VALUE="XX1C">Je veux être avisé seulement pour mes oiseaux sélectionnés</OPTION>		
-					
-			</SELECT>	
-	
-		</td> 		
-	</tr>			
-	
-	
-
-	<!-- périmètre en km  -->
-	
-	
-	<tr>
-		<td class="tdhead" style="text-align:left;"><p id="id_Notifier_label" >Je veux être informé pour les observation qui sont:</p></td> 
-	</tr>
-	
-	<tr>
-		<td style="text-align:right;">
-	
-			<SELECT class="SELECTBLUE" 
-			onMouseWheel="return false;"
-			onchange="" style="width:250px;" name="XX2">
-			<OPTION selected VALUE="XX2A">Je ne veux pas recevoir de courriel</OPTION>
-			<OPTION VALUE="XX2B">Dans un périmètre de 5km de ma position</OPTION>
-			<OPTION VALUE="XX2C">Peu importe la distance</OPTION>		
-					
-			</SELECT>	
-	
-		</td> 		
-	</tr>			
-		
-	
-					
-	</table>
-		
-	</div> 
 
 
 
@@ -812,15 +726,133 @@
 	<div id="contentMap"></div>
 	</div>
 
-
-	<p>géolocalisation wifi...</p>
-
 	</div> 
+
+
+
+
+    <!---------------------------------------------------------------->
+    <!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+    <!--  Écran avis par courriel  -->	
+ 	<div id="ecran_Notification" style="text-align:center;" >
+	
+	
+ 	<table class="table2">
+ 	<col style="width:100%;">        
+ 	<tr>
+ 		<td>		
+ 			 <h3>Avis par courriel</h3>	
+ 		</td> 
+ 	</tr>	
+
+	
+ 	<!-- Bouton de sauvegarde  -->
+	
+ 	<tr> 
+		
+ 		<td> 
+     		<ul class="buttons">
+ 				<li>
+ 	   	 			<a href="#" id="btnSauverCompte" 
+ 					onclick="alert('DÉSOLÉ\nvous avez un virus...');" class="switch_screen">Cliquez ici pour sauvegarder </a>
+ 				</li>					
+     		</ul>
+     	</td> 
+ 	</tr>				
+	
+
+ 	<!-- Adresse de courriel  -->
+	
+	
+ 	<tr>
+ 		<td class="tdhead" style="text-align:left;"><p id="id_Email_label" >Adresse de courriel:</p></td> 
+ 	</tr>
+ 	<tr>
+ 		<td class="tddata"><input  type="text" style="" id="id_Email_data" VALUE=""></td> 
+ 	</tr>			
+	
+	
+ 	<!-- flag pour reçevoir des couriels  -->
+	
+	
+ 	<tr>
+ 		<td class="tdhead" style="text-align:left;"><p id="id_Notifier_label" >Recevoir des avis par courriel:</p></td> 
+ 	</tr>
+	
+ 	<tr>
+ 		<td style="text-align:right;">
+	
+ 			<SELECT class="SELECTBLUE" 
+ 			onMouseWheel="return false;"
+ 			onchange="" style="width:250px;" name="XX1">
+ 			<OPTION selected VALUE="XX1A">Je ne veux pas recevoir de courriel</OPTION>
+ 			<OPTION VALUE="XX1B">Je veux être avisé pour toutes onbservations</OPTION>
+ 			<OPTION VALUE="XX1C">Je veux être avisé seulement pour mes oiseaux sélectionnés</OPTION>		
+					
+ 			</SELECT>	
+	
+ 		</td> 		
+ 	</tr>			
+	
+	
+
+ 	<!-- périmètre en km  -->
+	
+	
+ 	<tr>
+ 		<td class="tdhead" style="text-align:left;"><p id="id_Notifier_label" >Je veux être informé pour les observation qui sont:</p></td> 
+ 	</tr>
+	
+ 	<tr>
+ 		<td style="text-align:right;">
+	
+ 			<SELECT class="SELECTBLUE" 
+ 			onMouseWheel="return false;"
+ 			onchange="" style="width:250px;" name="XX2">
+ 			<OPTION selected VALUE="XX2A">Je ne veux pas recevoir de courriel</OPTION>
+ 			<OPTION VALUE="XX2B">Dans un périmètre de 5km de ma position</OPTION>
+ 			<OPTION VALUE="XX2C">Peu importe la distance</OPTION>		
+					
+ 			</SELECT>	
+	
+ 		</td> 		
+ 	</tr>			
+		
+	
+					
+ 	</table>
+		
+ 	</div> 
+
+
+
+
+
+    <!---------------------------------------------------------------->
+    <!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+    <!--  Écran Paramètres  -->	
+ 	<div id="ecran_Parametres" style="text-align:center;" >
+ 	<table>
+		
+ 	 <div id="tstImage">  
+ 		<h3>Paramètres:</h3>
+ 		  <div id="ecran_Parametres_C1"> 
+ 		    <p>txt1</p>
+ 		    <p>txt2</p>
+ 		  </div> 
+ 		  <div id="ecran_Parametres_C2"> 
+ 		    <p>txt3</p>
+ 		  </div> 
+  	</div>  
+
+ 	</table>	
+ 	</div> 
+
 
 
 	<!---------------------------------------------------------------->
 	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
-	<!--  Écran paramètres  -->		 
+	<!--  Écran settings  -->		 
 
 	<div id="a_setting" class="screen hidden" style="text-align:center;" >
 	<h2>Paramètres</h2>
@@ -1004,7 +1036,6 @@ afficher_les_observations_new(1,20);
 
 
 
-leGps1 = new MonGPS("Gps 1");
 leAccel1 = new MonAccel("Accel 1");
 leAccel1.capture_acceleration2();
 

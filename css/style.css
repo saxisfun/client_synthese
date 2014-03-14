@@ -1019,20 +1019,27 @@ position:relative;
 }
 
 
-#tstImage{
+#ecran_Notification{
+	width:95%;
+	height:520px;	
+    background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
+}
+
+#ecran_geolocalisation, #tstImage{
 	width:100%;
 	height:520px;	
     background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
 }
 
-#ecran_Notification_C1{
+
+#ecran_Parametres_C1{
     float: left;
     padding: 0 0 0 20px;	
 }
 
-#ecran_Notification_C2{
+#ecran_Parametres_C2{
     float: right;
-		padding: 0 20px 0 0;
+	padding: 0 20px 0 0;
 	
 }
 
@@ -1040,7 +1047,7 @@ position:relative;
 	background: #33CC33;
 }
 
-#ecran_Notification h3 {
+#ecran_Notification h3, #ecran_Parametres h3{
 	font-size: 1.5em;
 	font-weight: normal;
 	color: white;
