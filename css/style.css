@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 
 html {
   font-size: 100%;
@@ -68,7 +68,7 @@ position:inherit;
 /* THE TWO ABOUT SUB-PAGES */
 
 
-#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_Notification, #a_setting, #ecran_login {
+#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_notification, #a_setting, #ecran_login {
   background-color: #D5D6D7;
   margin: 15px 10px 17px 10px;
   -webkit-box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0;
@@ -1019,7 +1019,7 @@ position:relative;
 }
 
 
-#ecran_Notification{
+#ecran_notification{
 	width:95%;
 	height:520px;	
     background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
@@ -1047,7 +1047,7 @@ position:relative;
 	background: #33CC33;
 }
 
-#ecran_Notification h3, #ecran_Parametres h3{
+#ecran_notification h3, #ecran_Parametres h3{
 	font-size: 1.5em;
 	font-weight: normal;
 	color: white;

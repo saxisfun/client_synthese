@@ -1,6 +1,13 @@
 // contenu du fichier ???zzz
 
 
+// Message effacer local storage
+
+function effacer_local_storage() {
+	localStorage.clear();
+	document.getElementById('id_msg_localstorageeffacer').innerHTML="Toutes les observations ont été effacées de votre appareil.";
+}
+
 
 // écran d'observation
 
@@ -65,12 +72,12 @@ function hide_dicti() {
 
 // écran pour paramétrez les avis par courriels «notification»
 
-function show_avis_Notification() {
-	show_element(document.getElementById('ecran_Notification'));
+function show_avis_notification() {
+	show_element(document.getElementById('ecran_notification'));
 }
 
-function hide_avis_Notification() {
-	hide_element(document.getElementById('ecran_Notification'));
+function hide_avis_notification() {
+	hide_element(document.getElementById('ecran_notification'));
 }
 
 
@@ -182,7 +189,7 @@ function hide_all() {
 
 	hide_dicti();
 	hide_ecran_commentaire();
-	hide_avis_Notification();
+	hide_avis_notification();
 	hide_geolocalisation();
 	hide_Parametres();
 
@@ -229,22 +236,33 @@ function hideLogin() {
 
 
 
+
+
+
+// callback de la fonctinalité du choix de la langue
 function get_lang_callback(le_str_output) {
 
-	//	alert('get_lang_callback:  '+le_str_output);
+	//alert('get_lang_callback:  '+le_str_output);
 
 	localString = JSON.parse(le_str_output);
-
-	document.getElementById("id_bouton_liste_commentaires").innerHTML = localString['str_bouton_liste_des_comm'];
-	document.getElementById("id_bouton_liste_des_observations").innerHTML = localString['str_bouton_liste_des_observs'];
-	document.getElementById("id_bouton_setting").innerHTML = localString['str_bouton_parametres'];
 	document.getElementById("id_utilisateur_label").innerHTML = localString['str_label_utilisateur'];
 	document.getElementById("id_motDePasse_label").innerHTML = localString['str_label_motDePasse'];
-	document.getElementById("id_actualiser").innerHTML = localString['str_bouton_actualiser'];
-	//	alert('JSON.parse(...):  '+localString['str_label_motDePasse']);
 
+	document.getElementById("id_bouton_lst_observations").innerHTML = localString['str_bouton_lst_observations'];
+	document.getElementById("id_bouton_lst_commentaires").innerHTML = localString['str_bouton_lst_commentaires'];
+	document.getElementById("id_bouton_recherche").innerHTML = localString['str_bouton_recherche'];
+	document.getElementById("id_bouton_actualiser").innerHTML = localString['str_bouton_actualiser'];
 
+	document.getElementById("id_bouton_geolocalisation").innerHTML = localString['str_bouton_geolocalisation'];
+	document.getElementById("id_bouton_notification").innerHTML = localString['str_bouton_notification'];
+	
+	document.getElementById("id_bouton_parametres").innerHTML = localString['str_bouton_parametres'];
+	document.getElementById("id_bouton_settings").innerHTML = localString['str_bouton_settings'];
+
+	
 }
+
+
 
 
 

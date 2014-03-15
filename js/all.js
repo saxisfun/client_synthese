@@ -20,6 +20,10 @@ function agRound(xyz) {
 
 var str_output = "";
 
+
+
+
+//choix de la langue
 function agXMLHttpReqLan(le_url) {
 
 	//alert(le_url);

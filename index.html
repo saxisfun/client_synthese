@@ -264,34 +264,35 @@
 
 		    <!-- - - - - - - - -->
 			<li>
-			  <a href="#liste_observation1" id="id_bouton_liste_des_observations" 
+			  <a href="#liste_observation1" id="id_bouton_lst_observations" 
 			  onclick="onClickButtonMenuListViewObserv();" 
-			  class="switch_screen">Visionner les observations</a>
+			  class="switch_screen">xxx</a>
 			</li>
-		
 			
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#liste_commentaires" id="id_bouton_lst_commentaires" 
+			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
+			  	  class="switch_screen">xxx</a>
+			</li>
+
 
 		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#ecran_recherche"  id="id_bouton_recherche"
 			     onclick="hide_all();show_dicti();show_back_button();" 
-			     class="switch_screen">Recherche dans le dictionnaire</a>
+			     class="switch_screen">xxx</a>
 			</li> 
  
 
-		    <!-- - - - - - - - -->
-			<li>
-			  <a href="#liste_commentaires" id="id_bouton_liste_commentaires" 
-			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
-			  	  class="switch_screen">Liste des commentaires</a>
-			</li>
 			
 
 		    <!-- - - - - - - - -->
 			<li>
-			  <a href="#liste_observation1" id="id_bouton_synchro" 
+			  <a href="#liste_observation1" id="id_bouton_actualiser" 
 			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
-			  class="switch_screen">Synchroniser</a>
+			  class="switch_screen">xxx</a>
 			</li>
 			
 
@@ -299,33 +300,33 @@
 			<li>
 			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
 			     onclick="hide_all();show_geolocalisation();show_back_button();"
-			     class="switch_screen">Test de géolocalisation</a>
+			     class="switch_screen">xxx</a>
 			</li>
 			
 			
 
 		    <!-- - - - - - - - -->
 			<li>
-			  <a href="#ecran_Notification"  id="id_bouton_avis_Notification"
-			     onclick="hide_all();show_avis_Notification();show_back_button();" 
-			     class="switch_screen">Restez informé !</a>
+			  <a href="#ecran_notification"  id="id_bouton_notification"
+			     onclick="hide_all();show_avis_notification();show_back_button();" 
+			     class="switch_screen">xxx</a>
 			</li>
 										
 
 		    <!-- - - - - - - - -->
 			<li>
-			  <a href="#ecran_Parametres"  id="id_bouton_Parametres"
+			  <a href="#ecran_Parametres"  id="id_bouton_parametres"
 			     onclick="hide_all();show_Parametres();show_back_button();" 
-			     class="switch_screen">Pour des tests ...(paramètres)</a>
+			     class="switch_screen">xxx</a>
 			</li>
 
 
 
 		    <!-- - - - - - - - -->
 			<li>
-			  <a href="#a_setting"  id="id_bouton_setting"
+			  <a href="#a_setting"  id="id_bouton_settings"
 			     onclick="hide_all();show_settings();show_back_button();"
-			     class="switch_screen">Paramètres</a>
+			     class="switch_screen">xxx</a>
 			</li>
 
 
@@ -734,7 +735,7 @@
     <!---------------------------------------------------------------->
     <!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
     <!--  Écran avis par courriel  -->	
- 	<div id="ecran_Notification" style="text-align:center;" >
+ 	<div id="ecran_notification" style="text-align:center;" >
 	
 	
  	<table class="table2">
@@ -852,126 +853,75 @@
 
 	<!---------------------------------------------------------------->
 	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
-	<!--  Écran settings  -->		 
+	<!--  Écran settings         <table class="table2" >    -->	  	 
 
 	<div id="a_setting" class="screen hidden" style="text-align:center;" >
-	<h2>Paramètres</h2>
- <table class="table2" >  
-
-	<col style="width:40%;">        
-	<col style="width:60%;">
+	<h2>Settings</h2>
+    <table>  
+	 
+		<col style="width:30%;">        
+		<col style="width:70%;">		
+	 		
 	<tr>
-		<td style="text-align:left;" id="xxxxxxx">Langue:</td> 
-
-	</tr>		
-	<tr>
-		<td style="text-align:right;">
-		
-			<SELECT class="SELECTBLUE" 
-			onMouseWheel="return false;"
-			onchange="" style="width:120px;" name="AccessKm">
-			<OPTION selected VALUE="fr">Français</OPTION>
-			<OPTION VALUE="en">Englais</OPTION>
-			<OPTION VALUE="es">Espagnole</OPTION>		
-						
-			</SELECT>	
-		
+		<td> 
+		<h3 style="text-align:right;">Vos données locales:</h3>
 		</td> 
-	</tr>				
-	<tr>
-		<td style="text-align:left;">Téléchargements:</td> 
-	</tr>
-
-
-	<tr>
-		<td style="text-align:left;">Données:</td> 
-	</tr>
-	<tr>
-		<td style="text-align:right;">
-			<button onclick="localStorage.clear();"  style="right:10px;width:170px;" class="">Effacer le Local Storage</button>
-		</td> 
-	</tr>		
-	<tr>
-		<td style="text-align:left;">Accélération:</td> 
-	</tr>	
-	<tr>
-		<td id="id_accel_data" style="text-align:right;">
+		
+		<td  style="text-align:left;">
+		<button onclick="effacer_local_storage();" style="width:170px;">Effacer le Local Storage</button>
 			
-		</td> 
-	</tr>		
-	<tr>
-		<td style="text-align:left;">Scanner:</td> 
-	</tr>			
-	<tr>
-		<td style="text-align:right;">
-			<a href="http://zxing.appspot.com/scan?ret=http://www.intranet-creation.com/cegep/tp1/index.html?code={CODE}">Scan</a>
-		</td> 
-	</tr>			
-	<tr>
-		<td style="text-align:left;vertical-align:top;">Navigateur:</td> 
-			
-	</tr>	
-	<tr>
 		
+		</td> 
+	</tr>	
+
+	<tr>
+		<td> </td> 
+		<td> 
+			<h4 id="id_msg_localstorageeffacer" style="text-align:left;color: red;"></h4>
+		</td> 
+	</tr>
+	
+	<!-- Accélération -->	
+	<tr>
+		<td> 
+		<h3 style="text-align:right;">Accélération:</h3>
+		</td> 
+	
+	
+		<td  id="id_accel_data" style="text-align:left;"></td> 	
+	</tr>	
+	
+	
+	<!-- Géolocalisation -->		
+	<tr>
+		<td> 
+		<h3 style="text-align:right;">Géolocalisation:</h3>
+		</td> 
+	
+		<td  id="id_geolocalisation" style="text-align:left;"></td> 	
+	</tr>	
+
+	<!-- Navigateur -->		
+	<tr>
+		<td> 
+		<h3 style="text-align:right;">Navigateur:</h3>
+		</td> 
+	
 		<td  id="id_navUserAgent" style="text-align:left;"></td> 	
 	</tr>	
 
-
-
+	<!-- Langue des menus (pour l'instant...) -->		
 	<tr>
-		<td style="text-align:left;">Test lien:</td> 
-	</tr>	
-	<tr>
-		<td style="text-align:right;">
-			<a href="http://www.google.ca/" onclick = "alert('yesssss');" id="id_test_lien">Test lien</a>
+		<td> 
+		<h3 style="text-align:right;">Langue:</h3>
 		</td> 
+
+		<td  id="id_language" style="text-align:left;"></td> 	
 	</tr>	
-
-
-
- </table>	 
-
-
+	</table>	 
 	</div> 
 
 
-
-
-
-	<!-- 
-
-    		<ul class="buttons">
-				<li>
-	   	 			<a href="#" id="" onclick="localise();" 						class="switch_screen">GPS</a>
-				</li>	
-    		</ul>
-		
-    -->
- 
- 
- 
- 
-   
-<!-- 
-		
- &SCAN_FORMATS=UPC_A,EAN_13 
-//voir ce lien
-http://code.google.com/p/zxing/wiki/ScanningFromWebPages
-
-•{CODE}: the formatted content of the barcode, or the raw content (unparsed) if raw=true 
-•{RAWCODE}: the raw content (unparsed) 
-•{FORMAT}: the name of the barcode format scanned like UPC_A 
-•{TYPE}: the name of the type of parsed content, like PRODUCT 
-•{META}: a string representation of the scan metadata, like {POSSIBLE_COUNTRY=US/CA} 
-
--->
- 
-
-
-
-
-   
-  </div> 
   
   
 <div>
@@ -985,7 +935,6 @@ http://code.google.com/p/zxing/wiki/ScanningFromWebPages
 	<script type="text/javascript" src="js/all.js"></script>
 	
 	
-	<script type="text/javascript" src="js/agGps.js"></script>
 	<script type="text/javascript" src="js/agListViewObserv.js"></script>	
 	<script type="text/javascript" src="js/agListViewComm.js"></script>	
 	<script type="text/javascript" src="js/agTakePic.js"></script>		
@@ -1009,53 +958,81 @@ document.getElementById("id_comm_resume_data").value = "";
 document.getElementById("id_textarea_01").value = "";
 
 
-
-
-
 //dataAdapder
 var dataAdapterSwitch_dataFromIIS = false;
-
 var varGlobal_UserConnected = "0";
 
-//Lire le bon fichier json selon le language du browser
-var userLang = (navigator.language) ? navigator.language : navigator.userLanguage; 
 
-agXMLHttpReqLan('json/'+ userLang.toLowerCase().substr(0,2) + '.json');
 
-//Afficher l'écran de login
-showLogin();
+// mise à jour de l'écran settings
+//choix de la langue pour les boutons du menu
+if (navigator.language===undefined)
+  {
+	  if (navigator.userLanguage===undefined)
+	    {
+	    userLang = 'en';
+	    }
+	  else
+	    {
+	    userLang = navigator.userLanguage.toLowerCase().substr(0,2);
+	    }
+  }
+else
+  {
+  	userLang = navigator.language.toLowerCase().substr(0,2);
+  }
+switch(userLang){
+	case "fr":
+	  document.getElementById('id_language').innerHTML="Français";
+	  break;
+	case "en":
+  	  document.getElementById('id_language').innerHTML="English";
+  	  break;
+	default:
+	   document.getElementById('id_language').innerHTML="Other: "+userLang;
+}
+agXMLHttpReqLan('json/langue_' + userLang + '.json');
 
+
+
+
+document.getElementById('id_navUserAgent').innerHTML=navigator.userAgent;
+if ("geolocation" in navigator) {  
+	document.getElementById('id_geolocalisation').innerHTML="Géolocalisation disponible";
+} else 
+{  
+	document.getElementById('id_geolocalisation').innerHTML="Pas de géolocalisation avec ce navigateur";
+}
+
+
+
+//showLogin();
+//-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+//Initialiser objets
 objListViewComm = new ClasseListViewComm("ListViewComm 1");
 objListViewObservations = new ClasseListViewObservations("Observation 1");
 objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
-
-
 objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
-afficher_les_observations_new(1,20);
-
-
-
-
-leAccel1 = new MonAccel("Accel 1");
-leAccel1.capture_acceleration2();
-
-var varGlobal1;
-var varGlobal2;
-var varGlobalNomImage;
 
 laCamera1 = new MaCamera('Cam 1');
 laCamera1.activateAudio();
 
+afficher_les_observations_new(1,20);
 
-document.getElementById('id_navUserAgent').innerHTML=navigator.userAgent;
 
-if ("geolocation" in navigator) {  
-	/* geolocation is available */
-} else 
-{  
-	alert("I'm sorry, but geolocation services are not supported by your browser.");
+leAccel1 = new MonAccel();
+leAccel1.capture_acceleration2();
 
-}
+//-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+// 
+var varGlobal1;
+var varGlobal2;
+var varGlobalNomImage;
+
+
+
+
+/*
 var la_reponse="";
 
 document.getElementById("id_redirectionMessage").innerHTML=la_reponse;
@@ -1064,7 +1041,7 @@ document.getElementById("id_redirectionMessage").innerHTML=la_reponse;
 var first = getUrlVars()["code"];
 var second = getUrlVars()["barcodeReturnedCode1"];
 
-
+*/
 
 
 /*
@@ -1077,64 +1054,8 @@ document.getElementById("img-tag-show-picture").onclick = function() {
 
 
 
-	
-				
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//alert(first);
-//alert(second);
-
-
-
-
-/*
-
-var geolocation = navigator.geolocation;
-
-
-if (geolocation) {
-    // We have a real geolocation service.
-	try {
-			function handleSuccess(position) {
-				alert("handleSuccess");
-				//successCallback(position.coords);
-			}
-			geolocation.watchPosition(handleSuccess, errorCallback, {enableHighAccuracy: false, maximumAge: 5000 });
-		} 
-		catch (err) {
-			errorCallback();
-			alert("errorCallback");
-		}
-} else {
-	errorCallback();
-	alert("errorCallback");
-}
-
-
-function errorCallback()
-{
-	alert("errorCallback");
-}
-*/
 
 
 function afficherJsonDansTextarea()
@@ -1152,10 +1073,6 @@ function afficherJsonDansTextarea()
 	
 	//ici oui
 	//document.getElementById("id_textarea_01").value = myListViewObservArray_strignified3;  
-	
-	
-	
-
 
 }
 
@@ -1170,9 +1087,6 @@ function creer_json_des_nouvelles_observations(){
 	var myArrayDObservationDansLocalStorage = objListViewObservations.myListViewObservArray;
 	
 	var myArrayDObservationAUploader = [];
-
-
-
 
 
 	if ((typeof myArrayDObservationDansLocalStorage == "undefined" ) || (myArrayDObservationDansLocalStorage == null) || (myArrayDObservationDansLocalStorage == "undefined")){
@@ -1208,18 +1122,21 @@ function creer_json_des_nouvelles_observations(){
 
 		//alert(e3e3e3rr443r);
 	}
-
-	
-
 	
 	return myArrayDObservationAUploader;
 }
+
+
+
 
 function envoyer_json_des_nouvelles_observations_au_serveur()
 {
 	
 	
 }
+
+
+
 
 
 function afficher_les_observations_new(observation_de, observation_a)
@@ -1309,10 +1226,12 @@ function b64_to_utf8( str ) {
 
 <script type="text/javascript">
  
-
- 
- 
- 
+/*
+$(document).ready(function(){
+	alert('ok jq');
+	console.log('ok jq');
+});
+*/
  
 </script>
 
