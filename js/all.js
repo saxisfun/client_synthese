@@ -2,9 +2,13 @@
 	return unescape(encodeURIComponent(s));
 }
 
+
+
 function decode_utf8(s) {
 	return decodeURIComponent(escape(s));
 }
+
+
 
 function agRound3(xyz) {
 	xyz = Number(xyz);
@@ -12,11 +16,15 @@ function agRound3(xyz) {
 	return (result);
 }
 
+
+
 function agRound(xyz) {
 	xyz = Number(xyz);
 	var result = Math.round(xyz * 100) / 100;
 	return (result);
 }
+
+
 
 var str_output = "";
 
@@ -42,7 +50,6 @@ function agXMLHttpReqLan(le_url) {
 					str_output = request.responseText;
 					//alert(str_output);
 					get_lang_callback(str_output);
-
 				}
 			}
 		}

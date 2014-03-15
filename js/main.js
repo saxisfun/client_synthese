@@ -9,6 +9,46 @@ function effacer_local_storage() {
 }
 
 
+
+//-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+//-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+// CACHER TOUS LES ÉCRANS
+
+function hide_all() {
+	//hide_liste_observs();
+	//alert("CACHER LES ÉCRANS");
+	objListViewObservations.removeAllObservFromListView();
+	objListViewComm.removeAllCommFromListView();
+
+	hide_menu1();
+	//hide_liste_des_comm();
+	hide_ecran_de_l_observation();
+	hideLogin();
+	hide_dicti();
+	hide_ecran_commentaire();
+	hide_avis_notification();
+	hide_geolocalisation();
+	hide_Parametres();
+	hide_settings();
+	document.getElementById("tool_button_ajouter_comm").style.visibility = "hidden";
+	document.getElementById("tool_button_ajouter_observ").style.visibility = "hidden";
+	//document.getElementById("tool_button_rechercher").style.visibility="hidden";
+	//document.getElementById("tool_button_seconnecter").style.visibility="hidden";
+}
+
+
+
+// Écran Menu 1
+
+function hide_menu1() {
+	hide_element(document.getElementById("le_menu1"));
+}
+
+function show_menu1() {
+	show_element(document.getElementById("le_menu1"));
+}
+
+
 // écran d'observation
 
 function show_ecran_de_l_observation() {
@@ -81,8 +121,6 @@ function hide_avis_notification() {
 }
 
 
-
-
 // écran des Paramètres
 
 function show_Parametres() {
@@ -92,10 +130,6 @@ function show_Parametres() {
 function hide_Parametres() {
 	hide_element(document.getElementById('ecran_Parametres'));
 }
-
-
-
-
 
 
 
@@ -112,8 +146,7 @@ function hide_geolocalisation() {
 
 
 
-
-
+// écran commentaire
 
 function affiche_ecran_commentaire(un_timestamp, un_observ_id, un_usager_id, un_resume, lindx) {
 	hide_all();
@@ -140,7 +173,7 @@ function hide_back_button() {
 }
 
 
-// liste dex Comm
+// liste des Commentaires
 
 function show_liste_des_comm() {
 	[].forEach.call(document.querySelectorAll("div.la_liste1"), function(el) {
@@ -157,55 +190,17 @@ function hide_liste_des_comm() {
 }
 
 
+// écran login
 
-
-
-
-// Écran Menu 1
-
-function hide_menu1() {
-	hide_element(document.getElementById("le_menu1"));
+function showLogin() {
+	show_element(document.getElementById('ecran_login'));
 }
 
-function show_menu1() {
-	show_element(document.getElementById("le_menu1"));
+function hideLogin() {
+	hide_element(document.getElementById('ecran_login'));
 }
 
 
-
-
-// CACHER LES ÉCRANS
-
-function hide_all() {
-	//hide_liste_observs();
-	//alert("CACHER LES ÉCRANS");
-	hide_settings();
-	objListViewObservations.removeAllObservFromListView();
-	objListViewComm.removeAllCommFromListView();
-
-	hide_menu1();
-	//hide_liste_des_comm();
-
-
-	hide_dicti();
-	hide_ecran_commentaire();
-	hide_avis_notification();
-	hide_geolocalisation();
-	hide_Parametres();
-
-	hideLogin();
-
-
-
-	hide_ecran_de_l_observation();
-
-	document.getElementById("tool_button_ajouter_comm").style.visibility = "hidden";
-
-	document.getElementById("tool_button_ajouter_observ").style.visibility = "hidden";
-	//document.getElementById("tool_button_rechercher").style.visibility="hidden";
-	//document.getElementById("tool_button_seconnecter").style.visibility="hidden";
-
-}
 
 
 
@@ -224,15 +219,7 @@ function effacer_ligne_div(le_idx) {
 }
 
 
-// écran login
 
-function showLogin() {
-	show_element(document.getElementById('ecran_login'));
-}
-
-function hideLogin() {
-	hide_element(document.getElementById('ecran_login'));
-}
 
 
 
@@ -245,9 +232,12 @@ function get_lang_callback(le_str_output) {
 	//alert('get_lang_callback:  '+le_str_output);
 
 	localString = JSON.parse(le_str_output);
+	
+	//login utilisateur
 	document.getElementById("id_utilisateur_label").innerHTML = localString['str_label_utilisateur'];
 	document.getElementById("id_motDePasse_label").innerHTML = localString['str_label_motDePasse'];
 
+	//menu général
 	document.getElementById("id_bouton_lst_observations").innerHTML = localString['str_bouton_lst_observations'];
 	document.getElementById("id_bouton_lst_commentaires").innerHTML = localString['str_bouton_lst_commentaires'];
 	document.getElementById("id_bouton_recherche").innerHTML = localString['str_bouton_recherche'];
@@ -259,7 +249,15 @@ function get_lang_callback(le_str_output) {
 	document.getElementById("id_bouton_parametres").innerHTML = localString['str_bouton_parametres'];
 	document.getElementById("id_bouton_settings").innerHTML = localString['str_bouton_settings'];
 
-	
+	//menu tool bar
+	document.getElementById("back_button").innerHTML = localString['str_back_button'];
+	document.getElementById("back_to_observ").innerHTML = localString['str_back_to_observ'];
+	document.getElementById("tool_button_ajouter_observ").innerHTML = localString['str_button_ajouter_observ'];	
+	document.getElementById("tool_button_ajouter_comm").innerHTML = localString['str_tool_button_ajouter_comm'];
+	document.getElementById("tool_button_rechercher").innerHTML = localString['str_tool_button_rechercher'];
+	document.getElementById("tool_button_deconnecter").innerHTML = localString['str_tool_button_deconnecter'];
+	document.getElementById("tool_button_seconnecter").innerHTML = localString['str_tool_button_seconnecter'];
+		
 }
 
 
@@ -474,9 +472,6 @@ function prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(le_index_oui
 			observObject2.ajouterUneAutrePhotoALobservation(0, dataUrl_img_strignified, "La descrip", observObject2.strObserv_Id, "",  varGlobalNomImage);
 			
 			
-	
-		
-			
 			
 			//objListViewObservations.saveObservToLocalStorage(); 
 
@@ -487,11 +482,6 @@ function prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(le_index_oui
 	
 	
 }
-
-
-
-
-
 
 
 
@@ -893,11 +883,6 @@ function removeAllPhotosFromUL() {
 		i = -1;
 	}
 }
-
-
-
-
-
 
 
 
