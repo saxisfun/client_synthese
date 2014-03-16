@@ -27,7 +27,6 @@ function ClasseListViewObservations(myName) {
 */
 
 
-
 ClasseListViewObservations.prototype.downloader_les_observations_dans_localstorage = function(observation_de, observation_a) {
 
 	//var storageObs = JSON.parse(localStorage.getItem("lsListViewObservArray")) || {},
@@ -52,9 +51,9 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 				resourcePath = 'http://ks365406.kimsufi.com/fpilote/tp1/files.json';
 			}else{
 				//resourcePath = "http://listObs.json?idx_de='+index_de+'&idx_a='+index_a+'";
-				//resourcePath = 'json/listObs2.json';
+				resourcePath = 'json/listObs2.json';
 				
-				resourcePath = 'http://198.100.145.177/test.php';
+				//resourcePath = 'http://198.100.145.177/test.php';
 				
 			}		
 			

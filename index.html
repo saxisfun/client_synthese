@@ -1217,8 +1217,15 @@ function creer_json_des_nouvelles_observations(){
 
 function envoyer_json_des_nouvelles_observations_au_serveur()
 {
-	
-	
+		
+	 var person = {
+	  name: 'yoel',
+	  age: 28
+	};
+	xmlhttp.open("POST","http://198.100.145.177/cegep/test.php",true);
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+	xmlhttp.send(JSON.stringify(person)); 
+		
 }
 
 
@@ -1253,7 +1260,7 @@ function onClickButtonSynchro()
 
 	creer_json_des_nouvelles_observations();
 
-	envoyer_json_des_nouvelles_observations_au_serveur();
+	//envoyer_json_des_nouvelles_observations_au_serveur();
 
 	objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
 		
