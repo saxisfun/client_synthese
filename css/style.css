@@ -68,7 +68,7 @@ position:inherit;
 /* THE TWO ABOUT SUB-PAGES */
 
 
-#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_notification, #a_setting, #ecran_login {
+#id_div_liste_commentaires, #ecran_observation, #liste_observation1, #ecran_recherche, #ecran_dun_commentaire, #ecran_notification, #ecran_settings, #ecran_login {
   background-color: #D5D6D7;
   margin: 15px 10px 17px 10px;
   -webkit-box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0;
@@ -1005,7 +1005,6 @@ position:relative;
 }
 
 
--------------------------------------------------------------
 /*---------------- Pour la catographie --------------------*/
 
 #conteneur{
@@ -1019,17 +1018,29 @@ position:relative;
 }
 
 
+/*---------------  Photos fond d'écran --------------------*/
+
+#ecran_login{
+	width:95%;
+	height:520px;	
+    background:url('../img/fond_login_1024x748.png') top center no-repeat fixed;
+}
+#ecran_settings{
+	width:95%;
+	height:520px;	
+    background:url('../img/fond_settings_1024x748.png') top center no-repeat fixed;
+}
+#tstImage{
+	width:100%;
+	height:520px;	
+    background:url('../img/fond_parametre_1024x748.png') top center no-repeat fixed;
+}
 #ecran_notification{
 	width:95%;
 	height:520px;	
-    background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
+    background:url('../img/fond_notification_1024x748.png') top center no-repeat fixed;
 }
 
-#ecran_geolocalisation, #tstImage{
-	width:100%;
-	height:520px;	
-    background:url('../img/soleil_1024_748.png') top center no-repeat fixed;
-}
 
 
 #ecran_Parametres_C1{
