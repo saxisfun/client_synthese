@@ -80,11 +80,11 @@ function hideObservationListView() {
 // écran des setting
 
 function show_settings() {
-	show_element(document.getElementById('a_setting'));
+	show_element(document.getElementById('ecran_settings'));
 }
 
 function hide_settings() {
-	hide_element(document.getElementById('a_setting'));
+	hide_element(document.getElementById('ecran_settings'));
 }
 
 
