@@ -287,7 +287,7 @@
 		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#liste_commentaires" id="id_bouton_lst_commentaires" 
-			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('http://ks365406.kimsufi.com/fpilote/tp1/comm.json');show_liste_des_comm();show_back_button();" 
+			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('json/comm.json');show_liste_des_comm();show_back_button();" 
 			  	  class="switch_screen">xxx</a>
 			</li>
 
@@ -703,8 +703,8 @@
 		</tr>
 	
 		
-	</table>	
-   </div> 
+		</table>	
+	</div> 
  
 
 
@@ -718,7 +718,7 @@
 	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
 	<!--  Écran de test géolocalisation -->  
  	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
-	<table>
+		<table>
 		<tr> 
 			<td> 
 				<ul class="buttons">
@@ -734,12 +734,12 @@
 		</tr>
 
 
-	</table>	
+		</table>	
 
-	<div>
-	<!-- <button onclick="localiser();">localise()</button>  -->
-	<div id="contentMap"></div>
-	</div>
+		<div>
+			<!-- <button onclick="localiser();">localise()</button>  -->
+			<div id="contentMap"></div>
+		</div>
 
 	</div> 
 
@@ -934,14 +934,18 @@
 	</tr>	
 	</table>	 
 	</div> 
-
+</div> 
 	
-  
-  
-<div>
-	<textarea rows="20"  style="width:100%;" id="id_textarea_01"></textarea> 
-</div>			 
-   
+	
+	
+	
+	
+  	<div style="" >
+		<textarea rows="20"  style="width:100%;" id="id_textarea_01"></textarea> 
+	</div>	
+	  
+		 
+	   
   
  	<script type="text/javascript" src="js/Mz.js"></script> 
 	<script type="text/javascript" src="js/helper.js"></script>
@@ -1132,7 +1136,7 @@ function creer_json_des_nouvelles_observations(){
 		
 		
 		//ici oui
-		document.getElementById("id_textarea_01").value = e3e3e3rr443r;  
+		//document.getElementById("id_textarea_01").value = e3e3e3rr443r;  
 
 		//alert(e3e3e3rr443r);
 	}
@@ -1143,17 +1147,46 @@ function creer_json_des_nouvelles_observations(){
 
 
 
-function envoyer_json_des_nouvelles_observations_au_serveur()
+function envoyer_json_des_nouvelles_observations_au_serveur(le_myArrayDObservationAUploader)
 {
-		
-	 var person = {
-	  name: 'yoel',
-	  age: 28
-	};
-	xmlhttp.open("POST","http://198.100.145.177/cegep/test.php",true);
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST","http://198.100.145.177/cegep/obs_up.php",true);
+	
+	
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
-	xmlhttp.send(JSON.stringify(person)); 
+	
+	//alert(JSON.stringify(le_myArrayDObservationAUploader));
+	
 		
+	xmlhttp.onreadystatechange = function(){
+		if (xmlhttp.readyState == 4) {
+			if (xmlhttp.status == 200 || xmlhttp.status == 0) {
+			
+				var str_output = xmlhttp.responseText;
+				
+					//storageDate.date1 = todaysDate;
+					//alert("str_output: "+str_output+"\n\n\n\n");
+					//storageObs = str_output;
+
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
+					document.getElementById("id_textarea_01").value = str_output;
+
+			}
+		}
+	}	
+	
+	
+	
+	//document.getElementById("id_textarea_01").value = JSON.stringify(le_myArrayDObservationAUploader, null, "\t");	
+	//alert("1234567:"+JSON.stringify(le_myArrayDObservationAUploader, null, "\t"));
+	
+	
+	xmlhttp.send(JSON.stringify(le_myArrayDObservationAUploader)); 
+
+			
+			
+			
 }
 
 
@@ -1188,10 +1221,10 @@ function afficher_les_observations_new(observation_de, observation_a)
 function onClickButtonSynchro()
 {
 
+	var myArray_DObs = [];
+	myArray_DObs = creer_json_des_nouvelles_observations();
 
-	creer_json_des_nouvelles_observations();
-
-	//envoyer_json_des_nouvelles_observations_au_serveur();
+	envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
 
 	objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
 		
