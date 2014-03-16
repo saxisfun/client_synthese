@@ -72,8 +72,6 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
  
  
  
- 
- 
 
  function obj2cell(le_id, l_espece,  la_descrip, le_IDPhoto , le_IDSon ,le_flObsPermises) {
 			
