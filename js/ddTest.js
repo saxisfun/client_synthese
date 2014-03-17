@@ -1,6 +1,7 @@
-/*
-Initier demande de lister le dictionnaire
-*/
+/*                                                  */
+/* Initialiser la demande de lister le dictionnaire */
+/*                                                  */
+
 
 
 function startRecherche() {
@@ -19,12 +20,47 @@ function startRecherche() {
 }
 
 
+/*                                  */
+/* Exemple de recherche avec jquery */
+/*                                  */
 
 
-/*
-	 Utilitaire pour la géolocalisation
-	 */
+$('#search').keyup(function() {
+	
+	var searchField = $('#search').val();
+	var myExp = new RegExp(searchField, "i");
+	
+	$.getJSON('json/oiseaux.json', function(data) {
+		
+		var output = '<ul class="searchresults">';
+		$.each(data, function(key, val) {
+			if ((val.espece.search(myExp) != -1) ||
+			(val.description.search(myExp) != -1)) 
+			{
+				output += '<li>';
+				output += '<h2>'+ val.espece +'</h2>';				
+				output += '<img src="birds/'+ val.IDPhoto +'.jpg" alt="'+ val.espece +'"> </audio>';
+				output += '<p>'+ val.description +'</p>';
+				if (val.flObsPermises === true)
+				{
+				output += '<button onclick="onClickBoutonAjouterObservation('+val.id+');" style="width:170px;">AJOUTER UNE OBSERVATION</button>';
+			    }
+				output += '<audio controls> <source src="sons/'+ val.IDSon +'.mp3"/>';
+				output += '</li>';
+			}
+		});
+		output += '</ul>';
+		$('#update').html(output);
+	}); //get JSON
+	
+});
 
+
+
+
+/*                     */
+/* api géolocalisation */
+/*                     */
 
 
 //appelé par new objet observation ...
