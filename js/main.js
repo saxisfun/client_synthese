@@ -204,14 +204,17 @@ function hideLogin() {
 
 
 
-function effacer_ligne_div(le_idx) {
+function effacer_ligne_div(le_this, le_obs_id) {
 
+	
+	
+	
 	VConfirm = ''
 	VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer cette observation?\n\n'
 	if (confirm(VConfirm)) {
-		objListViewObservations.deleteUneObservationFromListViewButton(le_idx);
-
-		objListViewObservations.saveObservToLocalStorage();
+		objListViewObservations.deleteUneObservationFromListViewButton(le_obs_id);
+		le_this.style.backgroundColor="red";
+		//objListViewObservations.saveObservToLocalStorage();
 
 	} else {
 
@@ -356,7 +359,7 @@ function onClickBoutonSaveObservation() {
 
 
 
-			alert("Date: " + observObject3.strObserv_DateObservation);
+			//alert("Date: " + observObject3.strObserv_DateObservation);
 
 			observObject3.strObserv_Id = parseInt(le_NoAutoGenereParlaDB, 10);
 			observObject3.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
@@ -806,10 +809,14 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 	document.getElementById("id_ObservResume_data").value = un_observation_ici.strObserv_Resume;
 
 
-	var tempDate = parseFloat(un_observation_ici.strObserv_DateObservation);
-
-
-	document.getElementById("id_ObservTimeStamp_data").value = tempDate;
+	//var tempDate = parseFloat(un_observation_ici.strObserv_DateObservation);
+	//document.getElementById("id_ObservTimeStamp_data").value = tempDate;
+	
+	
+	document.getElementById("id_ObservTimeStamp_data").value = un_observation_ici.strObserv_DateObservation;	
+	
+	
+	
 	document.getElementById("id_cell_index").innerHTML = la_index;
 
 	// objNode1 = document.getElementById("img-tag-show-picture");

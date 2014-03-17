@@ -17,7 +17,7 @@ $selected = mysql_select_db("cegep_oiseaux",$dbhandle)
 
 
 
-$result1 = mysql_query("SELECT obs_Id, obs_DateObservation, obs_Position_lat, obs_Image_ascii FROM tb_observations");
+$result1 = mysql_query("SELECT * FROM tb_observations");
 //fetch tha data from the database
 
 
@@ -35,13 +35,13 @@ while ($row1 = mysql_fetch_array($result1)) {
 	   
 	   //echo '777'.$row2{'ph_obs__Image'}.'<br>';
 	   
-	   echo "777<img src=".$row2{'ph_obs__Image'}." alt='' /><br>";
+	   echo "<img src=".$row2{'ph_obs__Image'}." alt='' /><br>";
 	   
 	   
 	}
 	
 
- 
+ echo "<br>";
    
    
 }

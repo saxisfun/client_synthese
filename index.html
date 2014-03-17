@@ -1194,6 +1194,12 @@ function envoyer_json_des_nouvelles_observations_au_serveur(le_myArrayDObservati
 
 					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
 					document.getElementById("id_textarea_01").value = str_output;
+					
+					
+					objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+		
+	//callback_de_downloader_les_observations_dans_localstorage
+					
 
 			}
 		}
@@ -1249,9 +1255,7 @@ function onClickButtonSynchro()
 
 	envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
 
-	objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
-		
-	//callback_de_downloader_les_observations_dans_localstorage
+	
 
 
 }
