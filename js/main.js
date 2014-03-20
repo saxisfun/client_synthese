@@ -623,7 +623,14 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 
 function onClickButtonCreerUser() {
 
-
+	document.getElementById('line_verif_mot').style.display='';
+	document.getElementById('line_courriel').style.display='';
+	document.getElementById('line_est_admin').style.display='';
+	document.getElementById('line_nom').style.display='';
+	
+	
+	
+	
 }
 
 
@@ -634,7 +641,12 @@ function callBack_du_login(obj_json) {
 		//alert(obj);
 		//alert(obj_json.LoginResult.ID+""+obj_json.LoginResult.NomUsager);
 		
-		if (obj_json.LoginResult.ID !== "" && obj_json.LoginResult.NomUsager !== "") 
+		varGlobal_UserConnected = "0";
+		
+		alert(obj_json.LoginResult.ID+"/"+obj_json.LoginResult.NomUsager)
+		
+		
+		if (obj_json.LoginResult.ID !== "0" && obj_json.LoginResult.NomUsager !== null) 
 		{
 			//alert("onClickButtonLogin");
 			hideLogin();
@@ -687,11 +699,15 @@ function onClickButtonLogin() {
 	if (v_txtMotDePasse_verif !== ""){
 		alert("Nouveau user");
 		
+		dba_InsertUsager();
+		
+		
+		
 		
 	} else {
 		alert("Login normal");
 		
-		var le_json_du_user = dba_Login(v_dba_TextNomUsager, v_dba_txtMotDePasse);
+		dba_Login(v_dba_TextNomUsager, v_dba_txtMotDePasse);
 		
 		
 			

@@ -186,22 +186,25 @@
 			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_dba_txtMotDePasse_data" VALUE="MotDePasse"></td> 
 		</tr>
 
-		<tr>
+		
+		
+
+		<tr id="line_verif_mot" style="display:none;">
 			<td style="text-align:left;" id="id_txtMotDePasse_verif_label">Vérification du mot de passe</td> 
 			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_txtMotDePasse_verif_data" VALUE=""></td> 
 		</tr>	
 
-		<tr>
+		<tr id="line_courriel" style="display:none;">
 			<td style="text-align:left;" id="id_dba_Courriel_label">Courriel</td> 
-			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_Courriel_data" VALUE="bbbb"></td> 
+			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_Courriel_data" VALUE=""></td> 
 		</tr>
-		<tr>
+		<tr id="line_est_admin" style="display:none;">
 			<td style="text-align:left;" id="id_dba_checkboxAdmin_label">Est admin</td> 
-			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_checkboxAdmin_data" VALUE="bbbb"></td> 
+			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_checkboxAdmin_data" VALUE=""></td> 
 		</tr>	
-		<tr>
-			<td style="text-align:left;" id="id_dba_txtNom_label">Nom</td> 
-			<td><input type="<br><br>" style="width:120px;" placeholder="Prénom suivi du nom" onChange="" id="id_dba_txtNom_data" VALUE="bbbb"></td> 
+		<tr id="line_nom" style="display:none;">
+			<td style="text-align:left;" id="id_dba_txtNom_label">Nom complet</td> 
+			<td><input type="<br><br>" style="width:120px;" placeholder="Prénom suivi du nom" onChange="" id="id_dba_txtNom_data" VALUE=""></td> 
 		</tr>
 
 		<tr>
@@ -214,8 +217,8 @@
 		
 		<tr>
 			<td colspan="2" style="text-align:center;">
-			<br>
-			<button class="buttonWatch" id="id_bouton_creer_nouv_user" onclick="onClickButtonCreerUser();">Créer un nouveau user</button>
+		
+			<button class="buttonWatch" id="id_bouton_creer_nouv_user" onclick="onClickButtonCreerUser();">Créer votre compte</button>
 			</td> 
 		</tr>				
 		

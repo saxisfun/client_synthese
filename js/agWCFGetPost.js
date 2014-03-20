@@ -138,22 +138,42 @@ function dba_Logout() {
 }
 
 function dba_InsertUsager() {
-       
-       var Courriel = $("#txtCourriel").val(); 
-       var EstAdmin = $("#checkboxAdmin").prop("checked");
-       var MotDePasse = $("#txtMotDePasse").val();
-       var Nom  = $("#txtNom").val();
-       var NomUsager = $("#TextNomUsager").val();
-    
-	
+ 	
+
+	/*
+	var Courriel = $("#txtCourriel").val(); 
+	var EstAdmin = $("#checkboxAdmin").prop("checked");
+	var MotDePasse = $("#txtMotDePasse").val();
+	var Nom  = $("#txtNom").val();
+	var NomUsager = $("#TextNomUsager").val();
+   
 	datas = { "Courriel": Courriel, 
                 "EstAdministrateur": EstAdmin, 
                 "MotDePasse": MotDePasse, 
                 "Nom": Nom, 
                 "NomUsager": NomUsager };
-				
-    dataToSend = JSON.stringify(datas);
+	saxisfun@gmail.com
+	 */		
+	datas = {};
+			
+	datas.Courriel = v_dba_Courriel;			
+	datas.EstAdministrateur = false;
+	datas.MotDePasse = v_dba_txtMotDePasse;	
+	//datas.MotDePasse = v_txtMotDePasse_verif;		
+	datas.Nom = v_dba_txtNom;		
+	datas.NomUsager = v_dba_TextNomUsager;	
+	
+	
+		
+	
+    dataToSend = JSON.stringify(datas, null, "\t");
     //jsonp: true, processData: true,
+	
+	
+	
+	alert(dataToSend);
+	
+	
 	
     $.ajax({
         type: "POST",
@@ -167,12 +187,19 @@ function dba_InsertUsager() {
             }
         },
         success: function (data) {
-            obj = JSON.stringify(data);
-            var msg = obj.valueOf('MessageErreur');
+            obj = JSON.stringify(data, null, "\t");
+           /*
+		   var msg = obj.valueOf('MessageErreur');
             if (msg != null){
                 alert(obj.valueOf('MessageErreur'));
-            }
-            return obj;
+            }*/
+           
+  alert(obj);
+
+		   return obj;
+			
+			
+			
 
         },
         error: function (xhr, textStatus) {
