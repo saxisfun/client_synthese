@@ -237,8 +237,8 @@ function get_lang_callback(le_str_output) {
 	localString = JSON.parse(le_str_output);
 	
 	//login utilisateur
-	document.getElementById("id_utilisateur_label").innerHTML = localString['str_label_utilisateur'];
-	document.getElementById("id_motDePasse_label").innerHTML = localString['str_label_motDePasse'];
+	document.getElementById("id_dba_TextNomUsager_label").innerHTML = localString['str_label_utilisateur'];
+	document.getElementById("id_dba_txtMotDePasse_label").innerHTML = localString['str_label_motDePasse'];
 
 	//menu général
 	document.getElementById("id_bouton_lst_observations").innerHTML = localString['str_bouton_lst_observations'];
@@ -621,42 +621,84 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 //a discuter avec la couche donnee
 //Dans chacune des requetes il y aura le login et le mot de passe sauf pour les non loggés
 
+function onClickButtonCreerUser() {
+
+
+}
+
+
+
+function callBack_du_login(obj_json) {
+			
+		//obj = JSON.stringify(obj_json, null, "\t");	
+		//alert(obj);
+		//alert(obj_json.LoginResult.ID+""+obj_json.LoginResult.NomUsager);
+		
+		if (obj_json.LoginResult.ID !== "" && obj_json.LoginResult.NomUsager !== "") 
+		{
+			//alert("onClickButtonLogin");
+			hideLogin();
+			
+			
+			//show_menu1();
+			onClickButtonMenuListViewObserv();
+			
+		
+			
+			
+			varGlobal_UserConnected = "1";
+
+			document.getElementById("tool_button_deconnecter").style.visibility = "visible";
+			document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
+
+
+
+		} else {
+			//hideLogin();
+			//show_menu1();
+			//document.getElementById("tool_button_deconnecter").style.visibility="visible";
+
+			alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
+
+
+		}		
+}
 
 
 function onClickButtonLogin() {
 
 
-	vUtil = document.getElementById("id_utilisateur_d").value;
-	vPass = document.getElementById("id_motDePasse_d").value;
-
-	//alert(vUtil+"/"+vPass);
+	v_dba_TextNomUsager = document.getElementById("id_dba_TextNomUsager_data").value;
+	v_dba_txtMotDePasse = document.getElementById("id_dba_txtMotDePasse_data").value;
 
 	
-	Try_Login(vUtil, vPass);
+	v_txtMotDePasse_verif = document.getElementById("id_txtMotDePasse_verif_data").value;
+	v_dba_Courriel = document.getElementById("id_dba_Courriel_data").value;
+	v_dba_checkboxAdmin = document.getElementById("id_dba_checkboxAdmin_data").value;
+	v_dba_txtNom = document.getElementById("id_dba_txtNom_data").value;
+
+
+	//alert(v_dba_TextNomUsager+"/"+v_dba_txtMotDePasse);
+
+	
+
 	
 	
-	if (vUtil == "1111" && vPass == "bbbb") 
-	{
-		//alert("onClickButtonLogin");
-		hideLogin();
-		//show_menu1();
-		onClickButtonMenuListViewObserv();
-		varGlobal_UserConnected = "1";
-
-		document.getElementById("tool_button_deconnecter").style.visibility = "visible";
-		document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
-
-
-
+	if (v_txtMotDePasse_verif !== ""){
+		alert("Nouveau user");
+		
+		
 	} else {
-		//hideLogin();
-		//show_menu1();
-		//document.getElementById("tool_button_deconnecter").style.visibility="visible";
-
-		alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
-
+		alert("Login normal");
+		
+		var le_json_du_user = dba_Login(v_dba_TextNomUsager, v_dba_txtMotDePasse);
+		
+		
+			
 
 	}
+	
+
 
 
 }

@@ -113,7 +113,7 @@
 			if (varGlobal_UserConnected == '1'){
 			
 			observ_id = document.getElementById('id_comm_observ_id_data').value;
-			user_id = document.getElementById('id_utilisateur_d').value;
+			user_id = document.getElementById('id_dba_TextNomUsager_data').value;
 			un_timestamp = new Date().getTime();
 			
 			affiche_ecran_commentaire(un_timestamp, observ_id, user_id, '', 999999);
@@ -177,20 +177,48 @@
 	
 	
 		<tr>
-			<td style="text-align:left;" id="id_utilisateur_label">Utilisateur</td> 
-			<td><input type="text" style="width:120px;" onChange="" id="id_utilisateur_d" VALUE="1111"></td> 
+			<td style="text-align:left;" id="id_dba_TextNomUsager_label">Utilisateur</td> 
+			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_TextNomUsager_data" VALUE="rferland"></td> 
 		</tr>
 		
 		<tr>
-			<td style="text-align:left;" id="id_motDePasse_label">Mot de passe</td> 
-			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_motDePasse_d" VALUE="bbbb"></td> 
+			<td style="text-align:left;" id="id_dba_txtMotDePasse_label">Mot de passe</td> 
+			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_dba_txtMotDePasse_data" VALUE="MotDePasse"></td> 
 		</tr>
+
+		<tr>
+			<td style="text-align:left;" id="id_txtMotDePasse_verif_label">Vérification du mot de passe</td> 
+			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_txtMotDePasse_verif_data" VALUE=""></td> 
+		</tr>	
+
+		<tr>
+			<td style="text-align:left;" id="id_dba_Courriel_label">Courriel</td> 
+			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_Courriel_data" VALUE="bbbb"></td> 
+		</tr>
+		<tr>
+			<td style="text-align:left;" id="id_dba_checkboxAdmin_label">Est admin</td> 
+			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_checkboxAdmin_data" VALUE="bbbb"></td> 
+		</tr>	
+		<tr>
+			<td style="text-align:left;" id="id_dba_txtNom_label">Nom</td> 
+			<td><input type="<br><br>" style="width:120px;" placeholder="Prénom suivi du nom" onChange="" id="id_dba_txtNom_data" VALUE="bbbb"></td> 
+		</tr>
+
 		<tr>
 			<td colspan="2" style="text-align:center;">
 			<br>
 			<button onclick="onClickButtonLogin();"  style="right:125px;" class="">Login</button>
 			</td> 
-		</tr>
+		</tr>		
+	
+		
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			<br>
+			<button class="buttonWatch" id="id_bouton_creer_nouv_user" onclick="onClickButtonCreerUser();">Créer un nouveau user</button>
+			</td> 
+		</tr>				
+		
 		
 		
 		<tr>
@@ -199,7 +227,7 @@
 			<button onclick="localStorage.clear();localStorage.removeItem('lsCartesName');localStorage.removeItem('lsCartesArray');"  style="right:125px;" class="">Clear localStorage</button>
 			</td> 
 		</tr>		
-		
+	
 		<tr>
 			<td colspan="2" style="text-align:center;">
 			<br>
@@ -210,14 +238,14 @@
 	
 					
 		<tr>
-			<td colspan="2" style="text-align:center;"><br><br>
-					
-				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc">
-				http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc</a>				
-				<br>
-				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html">
-				http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html</a>				
-
+			<td colspan="2" style="text-align:center;">
+				<div style="width:160px;">
+					<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc">
+					http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc</a>				
+					<br>
+					<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html">
+					http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html</a>				
+				</div>
 			</td> 
 		</tr>				
 		
@@ -1033,7 +1061,7 @@ document.getElementById("id_textarea_01").value = "";
 //dataAdapder
 var dataAdapterSwitch_dataFromIIS = false;
 var varGlobal_UserConnected = "0";
-
+var varGlobal_ModeAdmin = "0";
 
 
 // mise à jour de l'écran settings

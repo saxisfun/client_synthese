@@ -78,13 +78,11 @@ function GetUsager() {
 
 }
 
-function Try_Login( pUserName, pPassword) {
-    alert("23333333");
+function dba_Login( pUserName, pPassword) {
+   
     data = pUserName+"/"+pPassword;
   
 
-
-  alert(data);
 
 
    $.ajax({
@@ -102,10 +100,12 @@ function Try_Login( pUserName, pPassword) {
             }
         },
         success: function (data) {
-            obj = JSON.stringify(data);
+           
+			//obj = JSON.stringify(data, null, "\t");	
             //obj = JSON.parse(data);
-              alert(obj);
-			return obj;
+			callBack_du_login(data);
+		
+			return data;
 
         },
         error: function (xhr, textStatus) {
@@ -114,7 +114,7 @@ function Try_Login( pUserName, pPassword) {
     });
 
 }
-function Logout() {
+function dba_Logout() {
 
     $.ajax({
         cache: false,
@@ -137,20 +137,24 @@ function Logout() {
 
 }
 
-function InsertUsager() {
+function dba_InsertUsager() {
        
        var Courriel = $("#txtCourriel").val(); 
        var EstAdmin = $("#checkboxAdmin").prop("checked");
        var MotDePasse = $("#txtMotDePasse").val();
        var Nom  = $("#txtNom").val();
        var NomUsager = $("#TextNomUsager").val();
-    datas = { "Courriel": Courriel, 
+    
+	
+	datas = { "Courriel": Courriel, 
                 "EstAdministrateur": EstAdmin, 
                 "MotDePasse": MotDePasse, 
                 "Nom": Nom, 
                 "NomUsager": NomUsager };
-    dataToSend = JSON.stringify(datas)
+				
+    dataToSend = JSON.stringify(datas);
     //jsonp: true, processData: true,
+	
     $.ajax({
         type: "POST",
         dataType: "json",        
