@@ -79,8 +79,8 @@ function pretty_json($json) {
 	public $strPhoto_Description = "";
 	public $strPhoto_IDObservation = "";
 	public $strPhoto_ImageMiniature = "";
-	public $strObserv_Resume = "";
 	public $strPhoto_Commentaire = "";
+	public $strPhoto_url_big = "";
 	
 }
 	
@@ -150,6 +150,9 @@ while ($row1 = mysql_fetch_array($result1)) {
 		$e2->strPhoto_IDObservation = $row2{'ph_obs_IDObservation'};
 		$e2->strPhoto_ImageMiniature = "";
 		$e2->strPhoto_Commentaire = "";
+		$e2->strPhoto_url_big = $row2{'ph_obs_url_big'};
+		
+		
 		
 		//echo "-array_push--arrObservLesPhotos---ph_obs__Id:".$row2{'ph_obs_Description'}."<br>";	
 		

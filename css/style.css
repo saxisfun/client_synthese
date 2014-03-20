@@ -101,6 +101,11 @@ textarea {
   
     font-family: sans-serif;
 }
+
+
+
+
+
 /* MENU BUTTONS ON MAIN PAGE. */
 
 #div_main ul.buttons {
@@ -985,6 +990,18 @@ bird_imgPlus{
 	
 
 }
+
+
+.lvo_em_obs_id{
+	position:absolute;
+	top:123px;
+	left:20px;
+	/*float:right;*/
+	/*margin-right:10px;
+	margin-bottom:10px;*/
+}
+
+
 .lvo_h3_titre{
 	/*float:right;*/
 position:relative;

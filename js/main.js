@@ -325,7 +325,7 @@ function onClickBoutonSaveObservation() {
 
 			var observObject3 = new ClasseObservation();
 
-
+//alert("Insert");
 			observObject3.strObservFlagInsertUpdate = "I";
 
 
@@ -631,7 +631,12 @@ function onClickButtonLogin() {
 
 	//alert(vUtil+"/"+vPass);
 
-	if (vUtil == "1111" && vPass == "bbbb") {
+	
+	Try_Login(vUtil, vPass);
+	
+	
+	if (vUtil == "1111" && vPass == "bbbb") 
+	{
 		//alert("onClickButtonLogin");
 		hideLogin();
 		//show_menu1();
@@ -753,11 +758,16 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto) {
 
 
 	var dataPhoto2 = objListViewObservations.myListViewObservArray[indexObserv].arrObservLesPhotos[indexPhoto].strPhoto_Image;
-
-
-	if (dataPhoto2 != null && dataPhoto2 != "") {
-
+	if (dataPhoto2 != null && dataPhoto2 != ""){
 		objIMG1.setAttribute('src', JSON.parse(dataPhoto2));
+	}
+
+
+	var urlPhoto2 = objListViewObservations.myListViewObservArray[indexObserv].arrObservLesPhotos[indexPhoto].strPhoto_url_big;
+
+	//if (dataPhoto2 != null && dataPhoto2 != "") {
+	if (urlPhoto2 != null && urlPhoto2 != "") {
+		objIMG1.setAttribute('src', urlPhoto2);
 	}
 	//insérer image dans le div
 
@@ -781,6 +791,9 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 
 
 
+
+
+
 	removeAllPhotosFromUL();
 
 
@@ -792,11 +805,26 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 	show_ecran_de_l_observation();
 	//alert("la_index:"+la_index);
 	//alert(id_ObservDescrip+"/"+id_ObservDiskName);
-
+	
+	le_ObservTimestamp=parseFloat(document.getElementById('id_ObservTimeStamp_data').value); 
+	
+	un_date = convertTimeStampToDate(le_ObservTimestamp);
+	
+	
+	
+	document.getElementById("id_ObservTimeStamp_data").value = un_observation_ici.strObserv_DateObservation;	
 
 	document.getElementById('id_ObservFlagInsertUpdate_data').value = un_observation_ici.strObservFlagInsertUpdate;
 
 	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = parseInt(un_observation_ici.strObserv_Id, 10);
+	
+	document.getElementById('obs_id_titre').innerHTML = "Observation: "+document.getElementById("id_ObservNoAutoGenereParlaDB_data").value +', Date:'+un_date;
+	
+	
+	
+	
+	
+	
 	document.getElementById('id_ObservNoDeLusager_data').value = parseInt(un_observation_ici.strObserv_IDUsager, 10);
 	document.getElementById('id_Observ_id_oiseau_data').value = parseInt(un_observation_ici.strObserv_IDOiseau, 10);
 
@@ -813,7 +841,7 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 	//document.getElementById("id_ObservTimeStamp_data").value = tempDate;
 	
 	
-	document.getElementById("id_ObservTimeStamp_data").value = un_observation_ici.strObserv_DateObservation;	
+	
 	
 	
 	

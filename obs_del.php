@@ -11,7 +11,7 @@ $hostname = "localhost";
 //connection to the database
 $dbhandle = mysql_connect($hostname, $username, $password)
   or die("Unable to connect to MySQL");
-echo "1111Connected to MySQL yea-".$le_observ_id."<br>";
+echo "1111Connected to MySQL -".$le_observ_id."<br>";
 
 $selected = mysql_select_db("cegep_oiseaux",$dbhandle)
   or die("Could not select examples");

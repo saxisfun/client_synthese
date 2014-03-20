@@ -78,10 +78,16 @@ function GetUsager() {
 
 }
 
-function Login( pUserName, pPassword) {
-    
-    data = pusername+"/" +pPassword;
-    $.ajax({
+function Try_Login( pUserName, pPassword) {
+    alert("23333333");
+    data = pUserName+"/"+pPassword;
+  
+
+
+  alert(data);
+
+
+   $.ajax({
         cache: false,
         type: "GET",
         async: false,
@@ -98,7 +104,8 @@ function Login( pUserName, pPassword) {
         success: function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-            return obj;
+              alert(obj);
+			return obj;
 
         },
         error: function (xhr, textStatus) {

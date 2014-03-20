@@ -208,7 +208,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	var le_ObservTimestamp = objLObservation1.strObserv_DateObservation;
 	
-	//var le_ObservNoAutoGenereParlaDB= parseInt(objLObservation1.strObserv_Id, 10); 
+	var le_strObserv_Id= parseInt(objLObservation1.strObserv_Id, 10); 
 	//var le_ObservIdDeLoiseau = parseInt(objLObservation1.strObserv_IDOiseau, 10); 	
 	
 	var le_ObservNoDeLusager = parseInt(objLObservation1.strObserv_IDUsager, 10); 
@@ -253,21 +253,26 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	if(objLObservation1.arrObservLesPhotos != undefined && objLObservation1.arrObservLesPhotos.length > 0){
 	
-		if(objLObservation1.arrObservLesPhotos[0].strPhoto_Image != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_Image != ""){
-			
+		/*
+		if(objLObservation1.arrObservLesPhotos[0].strPhoto_Image != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_Image != ""){	
 			var newImg1 = document.createElement("img");
-			//alert(objLObservation1.arrObservLesPhotos[0].strPhoto_Image);
 			newImg1.setAttribute('src', JSON.parse(objLObservation1.arrObservLesPhotos[0].strPhoto_Image));
-			//newImg1.src=objLObservation1.arrObservLesPhotos[0].strPhoto_Image;
-			
 			newImg1.setAttribute("class", "lvc_img");
-			//newImg1.setAttribute("id", randomcssid());
-			//newImg1.addEventListener('click',autresphotos,false);
-		 
-		   newDiv1.appendChild(newImg1);
-		 
-		   
+			newDiv1.appendChild(newImg1);  
+		}		
+		*/
+		
+		if(objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != ""){	
+			var newImg1 = document.createElement("img");
+			newImg1.setAttribute('src', objLObservation1.arrObservLesPhotos[0].strPhoto_url_big);
+			newImg1.setAttribute("class", "lvc_img");	 
+			newDiv1.appendChild(newImg1);   
 		}
+		
+		
+		
+		
+		
 		//alert("zzzzz");
 	}
 	
@@ -282,15 +287,18 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	em_timestamp.appendChild(em_timestamp_content);
 	
 	
-
-	
-	
-	
-	
 	var em_obs_usager_id = document.createElement("em");
 	var em_obs_usager_id_content = document.createTextNode("Usager: "+le_ObservNoDeLusager);
 	em_obs_usager_id.setAttribute("class", "lvo_em_usager_id");	
 	em_obs_usager_id.appendChild(em_obs_usager_id_content);		
+	
+	
+	
+	
+	var em_obs_id = document.createElement("em");
+	var em_obs_id_content = document.createTextNode("Num: "+le_strObserv_Id);
+	em_obs_id.setAttribute("class", "lvo_em_obs_id");	
+	em_obs_id.appendChild(em_obs_id_content);		
 	
 	
 	
@@ -353,6 +361,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 
 	newDivContainer.appendChild(newP);
 	
+	newDiv1.appendChild(em_obs_id);
 	newDiv1.appendChild(newDivContainer);	
 	newDiv1.appendChild(newDivTouch);	
 	newDiv1.appendChild(newRadio);	
@@ -594,7 +603,8 @@ ClasseListViewObservations.prototype.deleteUneObservationFromListViewButton = fu
 					//storageObs = str_output;
 
 					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
-					document.getElementById("id_textarea_01").value = str_output;
+					//ici oui - delete
+					//document.getElementById("id_textarea_01").value = str_output;
 
 			}
 		}

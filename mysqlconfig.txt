@@ -98,6 +98,14 @@ ALTER TABLE tb_observations ADD obs_IDUsager INT AFTER obs_IDOiseau;
 ALTER TABLE tb_observations ADD obs_Titre INT AFTER obs_IDUsager;
 ALTER TABLE tb_observations ADD obs_Resume INT AFTER obs_Titre;
 ALTER TABLE tb_observations ADD obs_Position_long varchar(64) AFTER obs_Position_lat;
+ALTER TABLE tb_observations ADD obs_Position_long varchar(64) AFTER obs_Position_lat;
+
+
+ALTER TABLE tb_PhotoObservation ADD ph_obs_url_big varchar(255) AFTER ph_obs__ImageMiniature;
+
+
+ph_obs_url_big
+
 
 ALTER TABLE tb_observations ADD obs_strObservFlagInsertUpdate varchar(20) AFTER obs_Position_long;
 
