@@ -1,56 +1,602 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!doctype html>
+
+<html lang="fr" manifest="app.manifest">  
+<!--  <html manifest="cache-manifest.mf">  --> 
+
+
+<!---------------------------------------------------------------->
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+<!--  HEAD  -->
+
 <head>
-    <title>Test WCF</title>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
-    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-    <script type="application/javascript" src="Scripts/ScriptsDivers.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-    <meta content="yes" name="apple-mobile-web-app-capable" />
+	
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	
+    <title>Observations d'oiseaux</title>
+	
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	
+<!--
+	<link rel="apple-touch-startup-image" href="images/splash.png" />
+	<link rel="icon" href="favicon.ico" />
+-->
+	
+	<link rel="icon" type="image/png" href="img/favicon_32x32" />
+	
+    <!-- icons   -->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/Harfang_57x57" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/Harfang_72x72" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/Harfang_114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/Harfang_144x144.png" />
+
+    <!-- startup image for web apps - iPad - portrait (768x1024) -->
+    <link rel="apple-touch-startup-image" href="img/Harfang_768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+
+    <!-- startup image for web apps - iPad - landscape (1024x748)    2048x1496_32.png   -->
+    <link rel="apple-touch-startup-image" href="img/Harfang_2048x1496" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" />  
+
+    <!-- iPhone/iPod Touch Portrait – 320 x 480 (standard resolution) -->
+	<link rel="apple-touch-startup-image" href="img/Harfang_320x480.png" media="screen and (min-device-width: 325px) and (max-device-width: 500px) and (orientation:portrait)" />
+
+    <!-- Add to home screen bubble -->
+    <link rel="stylesheet" href="cubiq/style/add2home.css">
+   
+	<!-- Fichiers jquery utiliser pour faire des call ajax pour accéder aux données du wcf-->
+	
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	
+	<!-- Exemple fourni par les dba et aller surfer sur index2.html-->
+	<script type="application/javascript" src="Scripts/ScriptsDivers.js"></script>
+
+
+
+
+	<script type="application/javascript" src="cubiq/src/add2home.js"></script>
+				
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+	<link href="css/mystyle.css" type="text/css" rel="stylesheet" />
+	
+	
 </head>
-<body>
-    <div data-role="page" id="menu">
-        <div id="" data-role="header">
-            <h1>Test WCF</h1>
-            <!--<button onclick="bienvenue();" id="leftnav">
-                Précédent
-            </button>-->
-        </div>
-
-        <div data-role="content">
-            <div>
-                <div>
-                    <button onclick="LogAdmin();">
-                        Connexion administrateur
-                    </button>
-                    <button onclick="GetUsager();">
-                        Obtenir usager 
-                    </button>
-                    <button onclick="InsertUsager();">
-                        Insérer usager()
-                    </button>
-                    <button onclick="LogoutAdmin();">
-                        Deconnexion adminstrateur();
-                    </button>
-                </div>
-                <!--<div>
-                    <button onclick="listeCartes();">
-                        Consulter
-                    </button>
-                </div>-->
 
 
 
-            </div>
-        </div>
-        <div data-role="footer">
+<!---------------------------------------------------------------->
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+<!--  BODY  -->
 
-        </div>
+<body id="id_body" style="text-align:center;" >
+	
+	<div id="div_main" role="main">
 
+	
+	
+	
+	<!---------------------------------------------------------------->
+	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+	<!--  toolbar  -->
+	
+	<div id="toolbar">
+		  
+		<button id="back_button" onclick="hide_all();show_menu1();" class="hidden">xxx</button>
+		
+		<button id="back_to_observ" 
+		style="position:absolute;bottom:6px;left:2px;visibility:hidden;width:104px;"
+		onclick="
+		hide_all();
+		//show_menu1();
+		//document.getElementById('id_cell_index').value;
+		show_ecran_de_l_observation();
+		document.getElementById('back_button').style.visibility='visible'
+		document.getElementById('back_to_observ').style.visibility='hidden'
+		" >xxx</button>
+
+
+		
+		<button id="tool_button_ajouter_observ" 
+		onclick="
+			if (varGlobal_UserConnected == '1'){
+				hide_all();
+				show_dicti();
+				show_back_button();
+			}else{
+				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
+			}
+		"
+		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
+		class="">xxx</button>	  
+		
+
+		<button id="tool_button_ajouter_comm" 
+		onclick="		
+			if (varGlobal_UserConnected == '1'){
+			
+			observ_id = document.getElementById('id_comm_observ_id_data').value;
+			user_id = document.getElementById('id_utilisateur_d').value;
+			un_timestamp = new Date().getTime();
+			
+			affiche_ecran_commentaire(un_timestamp, observ_id, user_id, '', 999999);
+				
+			}else{
+				alert('Vous devez être connecté pour pouvoir ajouter des commentaires!');
+			}			
+		"
+		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
+		class="">xxx</button>	  		
+		
+		
+		
+		<button id="tool_button_rechercher" onclick="hide_all();show_dicti();show_back_button();"
+		style="position:absolute;bottom:6px;right:113px;visibility:hidden;width:104px;"
+		class="">xxx</button>
+
+		<button  id="tool_button_deconnecter" onclick="onClickBoutonDeconnecter();"
+		style="position:absolute;bottom:6px;right:12px;visibility:hidden;width:94px;"
+		class="">xxx</button>	
+
+		<button  id="tool_button_seconnecter" onclick="onClickBoutonSeConnecter();"
+		style="position:absolute;bottom:6px;right:12px;visibility:hidden;width:94px;"
+		class="">xxx</button>			
+		
+		
+	
+	</div> 
+		  
+      
+      
+	  <!-- 
+	  about_meow
+	  about_app
+      <div class="screen hidden"  id="ecran_settings">
+	  -->
+
+	
+	  	<!---------------------------------------------------------------->
+	  	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->	  
+		<!--  Écran du login  -->
+	 
+	<div id="ecran_login" style="" class="screen">
+	
+		<table class="table2">
+		<col style="width:40%;">        
+		<col style="width:60%;">		
+	
+		<tr>
+			<td class="td_table2" style="width:20%;">
+				<img style="width:60px;" exif="true"  src="img/owl.png" />
+		
+	
+			
+			</td>
+			
+			<td class="td_table2" style="color:black;">Application d'observation d'oiseaux</td> 
+
+		</tr>
+	
+	
+	
+		<tr>
+			<td style="text-align:left;" id="id_utilisateur_label">Utilisateur</td> 
+			<td><input type="text" style="width:120px;" onChange="" id="id_utilisateur_d" VALUE="1111"></td> 
+		</tr>
+		
+		<tr>
+			<td style="text-align:left;" id="id_motDePasse_label">Mot de passe</td> 
+			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_motDePasse_d" VALUE="bbbb"></td> 
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			<br>
+			<button onclick="onClickButtonLogin();"  style="right:125px;" class="">Login</button>
+			</td> 
+		</tr>
+		
+		
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			<br>
+			<button onclick="localStorage.clear();localStorage.removeItem('lsCartesName');localStorage.removeItem('lsCartesArray');"  style="right:125px;" class="">Clear localStorage</button>
+			</td> 
+		</tr>		
+		
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			<br>
+			<button class="buttonWatch" id="id_actualiser" onclick="location.reload(true);">Refresh</button>
+			</td> 
+		</tr>		
+		
+	
+					
+		<tr>
+			<td colspan="2" style="text-align:center;"><br><br>
+					
+				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc">
+				http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc</a>				
+				<br>
+				<a style="font-size:8pt;" href="http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html">
+				http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index.html</a>				
+
+			</td> 
+		</tr>				
+		
+		
+		
+		<tr>
+			<td colspan="2" style="text-align:center;" id="id_redirectionMessage"></td> 
+			
+		</tr>
+
+
+		<tr>
+			<td colspan="2" style="text-align:center;">
+			
+				<div>
+					<button onclick="GetUsager();">
+					GetUsager
+					</button>
+				</div>
+				
+				<div>
+					<button 
+					onclick="	
+					SendUsager('saxisfun@gmail.com','Alain Giguere','saxisfun','????');
+					//SendUsager('admin@diq.ca','Administrateur','admin','892f1ceab17e0df07e0ec8de8cb5a30621d97797555e61b80c65eb68061623982a33e66440f28b7dbd6cfe6c007621e4fdd4ae9641516c68b18a299b599a1dec');						
+					">
+					SendUsager
+					</button>
+				</div>			
+
+			
+			</td> 
+			
+		</tr>		
+
+
+
+		
+		
+		</table>	
+ 
+ 
+ 
+ 
+ 
+	</div> 	  
+
+
+<!---------------------------------------------------------------->
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+<!--  Écran du menu  -->
+
+
+	
+	<div id="le_menu1" class="screen hidden">
+		<ul class="buttons">
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#liste_observation1" id="id_bouton_lst_observations" 
+			  onclick="onClickButtonMenuListViewObserv();" 
+			  class="switch_screen">xxx</a>
+			</li>
+			
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#liste_commentaires" id="id_bouton_lst_commentaires" 
+			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('json/comm.json');show_liste_des_comm();show_back_button();" 
+			  	  class="switch_screen">xxx</a>
+			</li>
+
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#ecran_recherche"  id="id_bouton_recherche"
+			     onclick="hide_all();show_dicti();show_back_button();" 
+			     class="switch_screen">xxx</a>
+			</li> 
+ 
+
+			
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#liste_observation1" id="id_bouton_actualiser" 
+			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
+			  class="switch_screen">xxx</a>
+			</li>
+			
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
+			     onclick="hide_all();show_geolocalisation();show_back_button();"
+			     class="switch_screen">xxx</a>
+			</li>
+			
+			
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#ecran_notification"  id="id_bouton_notification"
+			     onclick="hide_all();show_avis_notification();show_back_button();" 
+			     class="switch_screen">xxx</a>
+			</li>
+										
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#ecran_Parametres"  id="id_bouton_parametres"
+			     onclick="hide_all();show_Parametres();show_back_button();" 
+			     class="switch_screen">xxx</a>
+			</li>
+
+
+
+		    <!-- - - - - - - - -->
+			<li>
+			  <a href="#ecran_settings"  id="id_bouton_settings"
+			     onclick="hide_all();show_settings();show_back_button();"
+			     class="switch_screen">xxx</a>
+			</li>
+
+
+			
+		</ul>
+	</div> 
+	
+	
+	
+	
+<!---------------------------------------------------------------->
+<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+<!--  Écran d'obsevation  -->	
+	
+   <div id="ecran_observation" class="screen hidden">
+     
+		<table class="table2">
+		<col style="width:100%;">        
+		<tr>
+			<td>		
+				 <h3 style="color:black;">Écran d'observation  </h3>		
+			</td> 
+		</tr>	
+
+		
+		
+		<tr> 
+			
+			<td> 
+	    		<ul class="buttons">
+					<li>
+		   	 			<a href="#" id="" 
+						onclick="onClickBoutonSaveObservation();" class="switch_screen">Cliquez ici pour sauvegarder </a>
+					</li>					
+	    		</ul>
+	    	</td> 
+		</tr>				
+		
+		
+		
+		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservDiskName_label" >Date:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservTimeStamp_data" VALUE="" READONLY></td> 
+		</tr>		
+		
+		
+		
+		
+
+				
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoAutoGenereParlaDB_label" >Identifiant de l'observation:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservNoAutoGenereParlaDB_data" VALUE=""></td> 
+		</tr>
+
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_Observ_id_oiseau_label" >Identifiant de l'oiseau:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_Observ_id_oiseau_data" VALUE=""></td> 
+		</tr>		
+		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoDeLusager_label" >Identifiant de l'usager:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservNoDeLusager_data" VALUE=""></td> 
+		</tr>			
+		
+		
+		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservTitre_label" >Titre:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservTitre_data" VALUE=""></td> 
+		</tr>
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservResume_label" >Résumé:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><textarea rows="5"  type="text" style="width:100%;" id="id_ObservResume_data" VALUE=""></textarea> </td> 
+		</tr>
+
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_long_label" >Position GPS - Latitude / Lonitude</p></td> 
+		</tr>		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservLaPositionGPS_lat_label" ></p>
+			
+		<table border="0" cellpadding="0">
+		<col style="width:32%;">  
+		<col style="width:32%;"> 
+		<col style="width:32%;"> 
+		<tr>
+			<td>		
+			    <ul class="buttons" >
+				<li>
+				  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
+					 onclick="hide_all();show_geolocalisation();show_back_button();"
+					 class="switch_screen">Actualiser ma position</a>
+				</li>
+
+	    		</ul>						
+				<ul class="buttons" >
+
+				<li>
+				  <a href="#ecran_geolocalisation"  id="id_bouton_geolocalisation"
+					 onclick="hide_all();show_geolocalisation();show_back_button();"
+					 class="switch_screen">Voir sur Google Map</a>
+				</li>
+	    		</ul>							
+			</td> 
+			
+			<td>		
+				<input  type="text" style="width:80%;" id="id_ObservLaPositionGPS_lat_data" VALUE="">
+				
+			</td> 
+			
+			<td>		
+				<input  type="text" style="width:80%;" id="id_ObservLaPositionGPS_long_data" VALUE="">
+					
+					
+			</td> 			
+			
+		</tr>	
+		</table>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			
+			</td> 
+		</tr>
+		
+		
+		
+		<tr>
+			<td class="tdhead" style="text-align:left;"><p id="id_ObservFlagInsertUpdate_label" >FlagInsertUpdate:</p></td> 
+		</tr>
+		<tr>
+			<td class="tddata"><input  type="text" style="" id="id_ObservFlagInsertUpdate_data" VALUE=""></td> 
+		</tr>		
+		
+	
+	
+
+		<tr> 
+			
+			<td> 
+	    		<ul class="buttons">
+
+					
+					<li>
+		   	 			<a href="#" id="" onclick="
+							hide_all();
+							
+							objListViewComm.agXMLHttpReqComm('json/comm.json');
+							show_liste_des_comm();
+							
+							document.getElementById('tool_button_ajouter_comm').style.visibility='visible';
+							document.getElementById('back_button').style.visibility='hidden';
+							document.getElementById('back_to_observ').style.visibility='visible';
+						" class="switch_screen">Commentaires </a>
+					</li>					
+					
+					
+					<li>
+		   	 			<a href="#" id="" onclick="onClickBoutonSaveObservation();onClickBoutonAjouterPhoto();" class="switch_screen">Ajouter une photos</a>
+					</li>
+
+					
+	    		</ul>
+	    	</td> 
+		</tr>		
+	
+		
+		
+		
+
+		<tr id="idTRInputDeLaPhoto" style="display:block;">
+			<td id="idTDInputDeLaPhoto" class="tddata"></td> 
+		</tr>
+
+
+		<tr style="display:none;">
+			<td style="text-align:left;">
+                <h3>Preview:</h3>
+                <p>
+                    Ce tag img est caché et sert de buffer pour loader l'image et le convertire en dataURL et ensuite j'affiche l'image dans une ligne du UL
+					<img src="about:blank" style="border-style:solid;border-width:4px;border-color:red;width:100%;" exif="true" alt="" id="img-tag-show-picture"/>
+					
+					
+                </p>	
+
+
+
+				
+			</td> 
+		</tr>	
+		
+		
+		<tr style="display:none;">
+			<td>	
+
+
+			
+				<button  id="" onclick="onClickAjouterUneAutrePhoto();" style="width:220px;" class="">Ajouter une autre photos</button>			
+			</td> 
+		</tr>				
+		
+		
+		<tr>
+			<td>	
+				<ul id="id_ul_les_photos" style=""></ul>
+			</td> 
+		</tr>	
+			
+		<tr>
+			<td style="text-align:left;">
+                <p id="error"></p>				
+			</td> 
+		</tr>			
+
+			
+		<tr>
+			<td style="text-align:center;">
+                <div>Index: <em id="id_cell_index"></em></div>				
+			</td> 
+		</tr>					
+		</table>	
+		
+    </div>      	
+	
+
+    
+    <div class="screen hidden" onclick="alert('55555');" id="liste_commentaires">
+        <h2>Liste des documents</h2>
+        <p>Photos of cats reading and photos of cats learning how to read.</p>
     </div>
-<<<<<<< HEAD
 
 	
     <div class="screen hidden" id="liste_observation1">
@@ -792,7 +1338,5 @@ $(document).ready(function(){
 
 
   
-=======
->>>>>>> d7c60aeaa62e5e5ccb29bcee2f9978dfa4648f71
 </body>
 </html>

@@ -21,34 +21,17 @@ INSERT INTO tb_observations (obs_Id,obs_DateObservation,obs_Position_lat) VALUES
 INSERT INTO tb_observations (obs_Id,obs_DateObservation,obs_Position_lat) VALUES("222222","1384143205423","48.5321");
 SELECT * FROM tb_observations;
 
-UPDATE tb_observations Set obs_DateObservation = '11111111', obs_Position_lat = '22222222' WHERE obs_Id = 2112";
-
-UPDATE tb_PhotoObservation Set ph_obs_IDObservation = '9' WHERE ph_obs__Id = 12;
-
-
-
 
 CREATE TABLE tb_PhotoObservation (ph_obs__Id INT auto_increment PRIMARY KEY, ph_obs__Image mediumtext CHARACTER SET ascii, ph_obs_Description VARCHAR(255), ph_obs_IDObservation INT, ph_obs__ImageMiniature mediumtext CHARACTER SET ascii);
 
 SELECT ph_obs__Id,ph_obs_Description,ph_obs_IDObservation FROM tb_PhotoObservation;
 
 
-
-//DROP
 ALTER TABLE tb_observations DROP obs_Id;
 ALTER TABLE tb_observations ADD obs_Id INT auto_increment PRIMARY KEY;
 
-
-ALTER TABLE tb_observations DROP obs_Image_ascii;
-
 ALTER TABLE tb_PhotoObservation DROP ph_obs__Id;
 ALTER TABLE tb_PhotoObservation ADD ph_obs__Id INT auto_increment PRIMARY KEY first;
-
-ALTER TABLE tb_observations ADD obs_Id INT auto_increment PRIMARY KEY;
-
-
-select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='tb_observations';
-
 
 
 
@@ -92,44 +75,15 @@ REPAIR TABLE tb_observations;
 REPAIR TABLE tb_PhotoObservation;
 
 
-ALTER TABLE tb_observations ADD obs_IDOiseau VARCHAR(255) 
-ALTER TABLE tb_observations ADD obs_IDOiseau INT AFTER obs_DateObservation; 
-ALTER TABLE tb_observations ADD obs_IDUsager INT AFTER obs_IDOiseau; 
-ALTER TABLE tb_observations ADD obs_Titre INT AFTER obs_IDUsager;
-ALTER TABLE tb_observations ADD obs_Resume INT AFTER obs_Titre;
-ALTER TABLE tb_observations ADD obs_Position_long varchar(64) AFTER obs_Position_lat;
-ALTER TABLE tb_observations ADD obs_Position_long varchar(64) AFTER obs_Position_lat;
 
 
-ALTER TABLE tb_PhotoObservation ADD ph_obs_url_big varchar(255) AFTER ph_obs__ImageMiniature;
+obs_Id,
+obs_DateObservation,
+obs_Position_lat
+obs_ImagePrincipale
+obs_Image_ascii          mediumtext CHARACTER SET ascii
 
 
-ph_obs_url_big
-
-
-ALTER TABLE tb_observations ADD obs_strObservFlagInsertUpdate varchar(20) AFTER obs_Position_long;
-
-ALTER TABLE tb_observations DROP obs_Id;
-ALTER TABLE tb_observations MODIFY COLUMN obs_Titre varchar(64) character SET utf8;
-ALTER TABLE tb_observations MODIFY COLUMN obs_Resume mediumtext character SET utf8;
-ALTER TABLE tb_observations MODIFY COLUMN obs_Position_lat varchar(64);
-
-
-obs_Id = 0;	
-obs_DateObservation = tempDate;
-obs_IDOiseau = 0;
-obs_IDUsager = 0;
-obs_Titre = "";
-obs_Resume = "";
-	//obs_arrObservLesPhotos = [];
-obs_Position_lat = "";
-obs_Position_long = "";
-	obs_strObservFlagInsertUpdate = "";
-
-	
-	
-	
-	
 CREATE TABLE `imageText` ( 
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(64) character SET utf8 NOT NULL,

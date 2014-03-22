@@ -54,4 +54,4 @@ array(1) {
     string(1) "U"
   }
 }
-Connected to MySQL
+Connected to MySQL yea he:()Connected to MySQL yea<br>

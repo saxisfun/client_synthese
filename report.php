@@ -10,14 +10,14 @@ $hostname = "localhost";
 //connection to the database
 $dbhandle = mysql_connect($hostname, $username, $password)
   or die("Unable to connect to MySQL");
-echo "Connected to MySQL<br>";
+echo "Connected to MySQL yea<br>";
 
 $selected = mysql_select_db("cegep_oiseaux",$dbhandle)
   or die("Could not select examples");
 
 
 
-$result1 = mysql_query("SELECT * FROM tb_observations");
+$result1 = mysql_query("SELECT obs_Id, obs_DateObservation, obs_Position_lat, obs_Image_ascii FROM tb_observations");
 //fetch tha data from the database
 
 
@@ -35,13 +35,13 @@ while ($row1 = mysql_fetch_array($result1)) {
 	   
 	   //echo '777'.$row2{'ph_obs__Image'}.'<br>';
 	   
-	   echo "<img src=".$row2{'ph_obs__Image'}." alt='' /><br>";
+	   echo "777<img src=".$row2{'ph_obs__Image'}." alt='' /><br>";
 	   
 	   
 	}
 	
 
- echo "<br>";
+ 
    
    
 }
