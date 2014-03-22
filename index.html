@@ -691,18 +691,24 @@
 			<td><h4>Specimen:</h4></td>
 			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
 		</tr>
-	
+
 		
 		<tr> 
-			<td> </td>
 			<td> 
-	    		<ul class="buttons">
+			<p id="resultat"></p>
+			</td>
+			<td> 
+	    		<ul class="buttons" >
 					<li>
-		   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
+		   	 			<a href="#" id="load" class="switch_screen">Charger le dictionnaire</a>
 					</li>	
 	    		</ul>
 	    	</td> 
 		</tr>
+	
+	
+	
+	
 	
 		
 		</table>	
@@ -967,10 +973,10 @@
 		
 		</td> 
 	</tr>		
-	
-	
 	</table>	 
-	</div> 
+	</div>
+	
+	 
 </div> 
 	
 	
@@ -1066,7 +1072,11 @@ if ("geolocation" in navigator) {
 //Initialiser objets
 objListViewComm = new ClasseListViewComm("ListViewComm 1");
 objListViewObservations = new ClasseListViewObservations("Observation 1");
-objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
+
+//objListViewDictionnaires = new ClasseListViewDictionnaire("Dictionnaire 1");
+
+
+
 objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
 
 laCamera1 = new MaCamera('Cam 1');
@@ -1325,17 +1335,6 @@ $(document).ready(function(){
 */
  
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 
   
