@@ -37,7 +37,7 @@ function ClasseObservation() {
 
 }
 
-ClasseObservation.prototype.ajouterUneAutrePhotoALobservation = function(str_la_Id, dataURL_la_Photo, str_la_Photo_Descrip, str_la_IDObservation, str_la_ImageMiniature, str_la_Photo_Commentaire) {
+ClasseObservation.prototype.ajouterUneAutrePhotoALobservation = function(str_la_Id, dataURL_la_Photo, str_la_Photo_Descrip, str_la_IDObservation, str_la_ImageMiniature, str_la_Photo_Commentaire, str_la_Photo_url_big) {
 
 	var photoObject1 = new ClassePhoto();
 
@@ -47,7 +47,7 @@ ClasseObservation.prototype.ajouterUneAutrePhotoALobservation = function(str_la_
 	photoObject1.strPhoto_IDObservation = parseInt(str_la_IDObservation, 10);
 	photoObject1.strPhoto_ImageMiniature = str_la_ImageMiniature;
 	photoObject1.strPhoto_Commentaire = str_la_Photo_Commentaire;
-	
+	photoObject1.strPhoto_url_big = str_la_Photo_url_big;
 	
 	
 	

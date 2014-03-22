@@ -108,14 +108,41 @@ function agConvertDate2(la_dadate) {
 
 function convertTimeStampToDate(la_bonne_date) {
 
-	var la_date = new Date(la_bonne_date);
-	var la_date2 =
-		la_date.getFullYear() + "-" +
-		(la_date.getMonth() + 1) + "-" +
-		la_date.getDate() + " " +
-		la_date.getHours() + ":" +
-		la_date.getMinutes() + ":" +
-		la_date.getSeconds();
-	return la_date2;
 
+var is_valid = (new Date(la_bonne_date)).getTime() > 0;
+//var valid = (new Date('2012-08-09')).getTime() > 0; // true
+//var valid = (new Date('abc')).getTime() > 0; // false
+
+
+
+
+	if(is_valid){
+
+		var la_date = new Date(la_bonne_date);
+		
+		var le_getMonth = la_date.getMonth()+1;
+		var le_getDate = la_date.getDate();
+		var le_getHours = la_date.getHours();
+		var le_getMinutes = la_date.getMinutes();
+		var le_getSeconds = la_date.getSeconds();
+		
+			
+		if (le_getMonth < 10) { le_getMonth = '0' + le_getMonth; }	
+		if (le_getDate < 10) { le_getDate = '0' + le_getDate; }
+		if (le_getHours < 10) { le_getHours = '0' + le_getHours; }
+		if (le_getMinutes < 10) { le_getMinutes = '0' + le_getMinutes; }
+		if (le_getSeconds < 10) { le_getSeconds = '0' + le_getSeconds; }
+		
+		
+		
+
+		var la_date2 =
+			la_date.getFullYear() + "-" +
+			(le_getMonth) + "-" +
+			le_getDate + " " +
+			le_getHours + ":" +
+			le_getMinutes + ":" +
+			le_getSeconds;
+		return la_date2;
+	}
 }

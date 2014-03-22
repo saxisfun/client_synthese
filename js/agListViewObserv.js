@@ -51,9 +51,9 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 				resourcePath = 'http://ks365406.kimsufi.com/fpilote/tp1/files.json';
 			}else{
 				//resourcePath = "http://listObs.json?idx_de='+index_de+'&idx_a='+index_a+'";
-				resourcePath = 'json/listObs2.json';
+				//resourcePath = 'json/listObs2.json';
 				
-				//resourcePath = 'http://198.100.145.177/cegep/test.php';
+				resourcePath = 'http://198.100.145.177/cegep/obs_dwn.php';
 				
 			}		
 			
@@ -208,7 +208,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	var le_ObservTimestamp = objLObservation1.strObserv_DateObservation;
 	
-	//var le_ObservNoAutoGenereParlaDB= parseInt(objLObservation1.strObserv_Id, 10); 
+	var le_strObserv_Id= parseInt(objLObservation1.strObserv_Id, 10); 
 	//var le_ObservIdDeLoiseau = parseInt(objLObservation1.strObserv_IDOiseau, 10); 	
 	
 	var le_ObservNoDeLusager = parseInt(objLObservation1.strObserv_IDUsager, 10); 
@@ -225,6 +225,8 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	var le_PositionGPS_lat = parseFloat(objLObservation1.strObserv_Position_lat); 
 	var le_PositionGPS_long = parseFloat(objLObservation1.strObserv_Position_long);
 	
+	var le_PositionGPS_lat = parseFloat(objLObservation1.strObserv_Position_lat); 
+	var le_PositionGPS_long = parseFloat(objLObservation1.strObserv_Position_long);
 	
 	
 		
@@ -251,27 +253,33 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	if(objLObservation1.arrObservLesPhotos != undefined && objLObservation1.arrObservLesPhotos.length > 0){
 	
-		if(objLObservation1.arrObservLesPhotos[0].strPhoto_Image != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_Image != ""){
-			
+		/*
+		if(objLObservation1.arrObservLesPhotos[0].strPhoto_Image != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_Image != ""){	
 			var newImg1 = document.createElement("img");
-			//alert(objLObservation1.arrObservLesPhotos[0].strPhoto_Image);
 			newImg1.setAttribute('src', JSON.parse(objLObservation1.arrObservLesPhotos[0].strPhoto_Image));
-			//newImg1.src=objLObservation1.arrObservLesPhotos[0].strPhoto_Image;
-			
 			newImg1.setAttribute("class", "lvc_img");
-			//newImg1.setAttribute("id", randomcssid());
-			//newImg1.addEventListener('click',autresphotos,false);
-		 
-		   newDiv1.appendChild(newImg1);
-		 
-		   
+			newDiv1.appendChild(newImg1);  
+		}		
+		*/
+		
+		if(objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != ""){	
+			var newImg1 = document.createElement("img");
+			newImg1.setAttribute('src', objLObservation1.arrObservLesPhotos[0].strPhoto_url_big);
+			newImg1.setAttribute("class", "lvc_img");	 
+			newDiv1.appendChild(newImg1);   
 		}
+		
+		
+		
+		
+		
 		//alert("zzzzz");
 	}
 	
-	
+	le_ObservTimestamp=parseFloat(le_ObservTimestamp); 
 	
 	une_date = convertTimeStampToDate(le_ObservTimestamp);
+	
 	var em_timestamp = document.createElement("em");
 	//var em_timestamp_content = document.createTextNode("Date: "+le_ObservTimestamp);
 	var em_timestamp_content = document.createTextNode("Date: "+une_date);	
@@ -279,15 +287,18 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	em_timestamp.appendChild(em_timestamp_content);
 	
 	
-
-	
-	
-	
-	
 	var em_obs_usager_id = document.createElement("em");
 	var em_obs_usager_id_content = document.createTextNode("Usager: "+le_ObservNoDeLusager);
 	em_obs_usager_id.setAttribute("class", "lvo_em_usager_id");	
 	em_obs_usager_id.appendChild(em_obs_usager_id_content);		
+	
+	
+	
+	
+	var em_obs_id = document.createElement("em");
+	var em_obs_id_content = document.createTextNode("Num: "+le_strObserv_Id);
+	em_obs_id.setAttribute("class", "lvo_em_obs_id");	
+	em_obs_id.appendChild(em_obs_id_content);		
 	
 	
 	
@@ -327,15 +338,14 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	newRadio.setAttribute("class", "delete_button");
 	newRadio.setAttribute("value", "Effacer");
 	newRadio.setAttribute("id", "bouton_effacer_ligne");
-	newRadio.addEventListener('click',function(){effacer_ligne_div(le_index)},false);
+	newRadio.addEventListener('click',function(){effacer_ligne_div(this, objLObservation1.strObserv_Id)},false);
 	
 	
 	
 
 	var newDivTouch = document.createElement("div");
 	newDivTouch.setAttribute("class", "divTouch");
-	newDivTouch.addEventListener('click',function(){afficheEcranObservations
-(objLObservation1, le_index)},false);
+	newDivTouch.addEventListener('click',function(){afficheEcranObservations(objLObservation1, le_index)},false);
 
 	//var newP2 = document.createElement("p");
 	//var newPContent2 = document.createTextNode("Coordonée GPS: "+la_coord);
@@ -351,6 +361,7 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 
 	newDivContainer.appendChild(newP);
 	
+	newDiv1.appendChild(em_obs_id);
 	newDiv1.appendChild(newDivContainer);	
 	newDiv1.appendChild(newDivTouch);	
 	newDiv1.appendChild(newRadio);	
@@ -556,18 +567,69 @@ ClasseListViewObservations.prototype.removeSelectedObservsFromListView = functio
 }
 
 
-ClasseListViewObservations.prototype.deleteUneObservationFromListViewButton = function(l_indx) {
+ClasseListViewObservations.prototype.deleteUneObservationFromListViewButton = function(id_de_lobs) {
 	
 	
 	
-	var les_lignes = document.getElementsByClassName('list_View_Observ');	
-	var theObject = les_lignes[l_indx];	
-	this.myListViewObservArray.splice(l_indx,1);
-	theObject.parentNode.removeChild(theObject);
+	//var les_lignes = document.getElementsByClassName('list_View_Observ');	
+	//var theObject = les_lignes[id_de_lobs];	
+	//this.myListViewObservArray.splice(id_de_lobs,1);
+	//theObject.parentNode.removeChild(theObject);
 	
 		
-}
+	xmlhttp = new XMLHttpRequest();
+	
+	//http://198.100.145.177/cegep/obs_del.php?le_id_de_obs=12";
+	
+	var le_url_21="http://198.100.145.177/cegep/obs_del.php?le_id_de_obs="+id_de_lobs+"";
+	
+	
+	xmlhttp.open("POST",le_url_21,true);
+	
+	
+	//xmlhttp.setRequestHeader("Content-Type", "application/json");
+	
+	//alert(JSON.stringify(le_myArrayDObservationAUploader));
+	
+		
+	xmlhttp.onreadystatechange = function(){
+		if (xmlhttp.readyState == 4) {
+			if (xmlhttp.status == 200 || xmlhttp.status == 0) {
+			
+				var str_output = xmlhttp.responseText;
+				
+					//storageDate.date1 = todaysDate;
+					//alert("str_output: "+str_output+"\n\n\n\n");
+					//storageObs = str_output;
 
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
+					//ici oui - delete
+					//document.getElementById("id_textarea_01").value = str_output;
+
+			}
+		}
+	}	
+	
+	
+	
+	//document.getElementById("id_textarea_01").value = JSON.stringify(le_myArrayDObservationAUploader, null, "\t");	
+	//alert("1234567:"+JSON.stringify(le_myArrayDObservationAUploader, null, "\t"));
+	
+	
+	xmlhttp.send(); 
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+}
 
 
 

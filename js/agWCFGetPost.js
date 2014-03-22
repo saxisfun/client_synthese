@@ -78,10 +78,14 @@ function GetUsager() {
 
 }
 
-function Login( pUserName, pPassword) {
-    
-    data = pusername+"/" +pPassword;
-    $.ajax({
+function dba_Login( pUserName, pPassword) {
+   
+    data = pUserName+"/"+pPassword;
+  
+
+
+
+   $.ajax({
         cache: false,
         type: "GET",
         async: false,
@@ -96,9 +100,12 @@ function Login( pUserName, pPassword) {
             }
         },
         success: function (data) {
-            obj = JSON.stringify(data);
+           
+			//obj = JSON.stringify(data, null, "\t");	
             //obj = JSON.parse(data);
-            return obj;
+			callBack_du_login(data);
+		
+			return data;
 
         },
         error: function (xhr, textStatus) {
@@ -107,7 +114,7 @@ function Login( pUserName, pPassword) {
     });
 
 }
-function Logout() {
+function dba_Logout() {
 
     $.ajax({
         cache: false,
@@ -130,20 +137,44 @@ function Logout() {
 
 }
 
-function InsertUsager() {
-       
-       var Courriel = $("#txtCourriel").val(); 
-       var EstAdmin = $("#checkboxAdmin").prop("checked");
-       var MotDePasse = $("#txtMotDePasse").val();
-       var Nom  = $("#txtNom").val();
-       var NomUsager = $("#TextNomUsager").val();
-    datas = { "Courriel": Courriel, 
+function dba_InsertUsager() {
+ 	
+
+	/*
+	var Courriel = $("#txtCourriel").val(); 
+	var EstAdmin = $("#checkboxAdmin").prop("checked");
+	var MotDePasse = $("#txtMotDePasse").val();
+	var Nom  = $("#txtNom").val();
+	var NomUsager = $("#TextNomUsager").val();
+   
+	datas = { "Courriel": Courriel, 
                 "EstAdministrateur": EstAdmin, 
                 "MotDePasse": MotDePasse, 
                 "Nom": Nom, 
                 "NomUsager": NomUsager };
-    dataToSend = JSON.stringify(datas)
+	saxisfun@gmail.com
+	 */		
+	datas = {};
+			
+	datas.Courriel = v_dba_Courriel;			
+	datas.EstAdministrateur = false;
+	datas.MotDePasse = v_dba_txtMotDePasse;	
+	//datas.MotDePasse = v_txtMotDePasse_verif;		
+	datas.Nom = v_dba_txtNom;		
+	datas.NomUsager = v_dba_TextNomUsager;	
+	
+	
+		
+	
+    dataToSend = JSON.stringify(datas, null, "\t");
     //jsonp: true, processData: true,
+	
+	
+	
+	alert(dataToSend);
+	
+	
+	
     $.ajax({
         type: "POST",
         dataType: "json",        
@@ -156,12 +187,19 @@ function InsertUsager() {
             }
         },
         success: function (data) {
-            obj = JSON.stringify(data);
-            var msg = obj.valueOf('MessageErreur');
+            obj = JSON.stringify(data, null, "\t");
+           /*
+		   var msg = obj.valueOf('MessageErreur');
             if (msg != null){
                 alert(obj.valueOf('MessageErreur'));
-            }
-            return obj;
+            }*/
+           
+  alert(obj);
+
+		   return obj;
+			
+			
+			
 
         },
         error: function (xhr, textStatus) {

@@ -204,14 +204,17 @@ function hideLogin() {
 
 
 
-function effacer_ligne_div(le_idx) {
+function effacer_ligne_div(le_this, le_obs_id) {
 
+	
+	
+	
 	VConfirm = ''
 	VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer cette observation?\n\n'
 	if (confirm(VConfirm)) {
-		objListViewObservations.deleteUneObservationFromListViewButton(le_idx);
-
-		objListViewObservations.saveObservToLocalStorage();
+		objListViewObservations.deleteUneObservationFromListViewButton(le_obs_id);
+		le_this.style.backgroundColor="red";
+		//objListViewObservations.saveObservToLocalStorage();
 
 	} else {
 
@@ -234,8 +237,8 @@ function get_lang_callback(le_str_output) {
 	localString = JSON.parse(le_str_output);
 	
 	//login utilisateur
-	document.getElementById("id_utilisateur_label").innerHTML = localString['str_label_utilisateur'];
-	document.getElementById("id_motDePasse_label").innerHTML = localString['str_label_motDePasse'];
+	document.getElementById("id_dba_TextNomUsager_label").innerHTML = localString['str_label_utilisateur'];
+	document.getElementById("id_dba_txtMotDePasse_label").innerHTML = localString['str_label_motDePasse'];
 
 	//menu général
 	document.getElementById("id_bouton_lst_observations").innerHTML = localString['str_bouton_lst_observations'];
@@ -322,7 +325,7 @@ function onClickBoutonSaveObservation() {
 
 			var observObject3 = new ClasseObservation();
 
-
+//alert("Insert");
 			observObject3.strObservFlagInsertUpdate = "I";
 
 
@@ -356,7 +359,7 @@ function onClickBoutonSaveObservation() {
 
 
 
-			alert("Date: " + observObject3.strObserv_DateObservation);
+			//alert("Date: " + observObject3.strObserv_DateObservation);
 
 			observObject3.strObserv_Id = parseInt(le_NoAutoGenereParlaDB, 10);
 			observObject3.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
@@ -618,37 +621,100 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 //a discuter avec la couche donnee
 //Dans chacune des requetes il y aura le login et le mot de passe sauf pour les non loggés
 
+function onClickButtonCreerUser() {
+
+	document.getElementById('line_verif_mot').style.display='';
+	document.getElementById('line_courriel').style.display='';
+	document.getElementById('line_est_admin').style.display='';
+	document.getElementById('line_nom').style.display='';
+	
+	
+	
+	
+}
+
+
+
+function callBack_du_login(obj_json) {
+			
+		//obj = JSON.stringify(obj_json, null, "\t");	
+		//alert(obj);
+		//alert(obj_json.LoginResult.ID+""+obj_json.LoginResult.NomUsager);
+		
+		varGlobal_UserConnected = "0";
+		
+		alert(obj_json.LoginResult.ID+"/"+obj_json.LoginResult.NomUsager)
+		
+		
+		if (obj_json.LoginResult.ID !== "0" && obj_json.LoginResult.NomUsager !== null) 
+		{
+			//alert("onClickButtonLogin");
+			hideLogin();
+			
+			
+			//show_menu1();
+			onClickButtonMenuListViewObserv();
+			
+		
+			
+			
+			varGlobal_UserConnected = "1";
+
+			document.getElementById("tool_button_deconnecter").style.visibility = "visible";
+			document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
+
+
+
+		} else {
+			//hideLogin();
+			//show_menu1();
+			//document.getElementById("tool_button_deconnecter").style.visibility="visible";
+
+			alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
+
+
+		}		
+}
 
 
 function onClickButtonLogin() {
 
 
-	vUtil = document.getElementById("id_utilisateur_d").value;
-	vPass = document.getElementById("id_motDePasse_d").value;
+	v_dba_TextNomUsager = document.getElementById("id_dba_TextNomUsager_data").value;
+	v_dba_txtMotDePasse = document.getElementById("id_dba_txtMotDePasse_data").value;
 
-	//alert(vUtil+"/"+vPass);
-
-	if (vUtil == "1111" && vPass == "bbbb") {
-		//alert("onClickButtonLogin");
-		hideLogin();
-		//show_menu1();
-		onClickButtonMenuListViewObserv();
-		varGlobal_UserConnected = "1";
-
-		document.getElementById("tool_button_deconnecter").style.visibility = "visible";
-		document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
+	
+	v_txtMotDePasse_verif = document.getElementById("id_txtMotDePasse_verif_data").value;
+	v_dba_Courriel = document.getElementById("id_dba_Courriel_data").value;
+	v_dba_checkboxAdmin = document.getElementById("id_dba_checkboxAdmin_data").value;
+	v_dba_txtNom = document.getElementById("id_dba_txtNom_data").value;
 
 
+	//alert(v_dba_TextNomUsager+"/"+v_dba_txtMotDePasse);
 
+	
+
+	
+	
+	if (v_txtMotDePasse_verif !== ""){
+		alert("Nouveau user");
+		
+		dba_InsertUsager();
+		
+		
+		
+		
 	} else {
-		//hideLogin();
-		//show_menu1();
-		//document.getElementById("tool_button_deconnecter").style.visibility="visible";
-
-		alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
-
+		alert("Login normal");
+		
+		dba_Login(v_dba_TextNomUsager, v_dba_txtMotDePasse);
+		
+		
+			
 
 	}
+	
+
 
 
 }
@@ -750,11 +816,16 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto) {
 
 
 	var dataPhoto2 = objListViewObservations.myListViewObservArray[indexObserv].arrObservLesPhotos[indexPhoto].strPhoto_Image;
-
-
-	if (dataPhoto2 != null && dataPhoto2 != "") {
-
+	if (dataPhoto2 != null && dataPhoto2 != ""){
 		objIMG1.setAttribute('src', JSON.parse(dataPhoto2));
+	}
+
+
+	var urlPhoto2 = objListViewObservations.myListViewObservArray[indexObserv].arrObservLesPhotos[indexPhoto].strPhoto_url_big;
+
+	//if (dataPhoto2 != null && dataPhoto2 != "") {
+	if (urlPhoto2 != null && urlPhoto2 != "") {
+		objIMG1.setAttribute('src', urlPhoto2);
 	}
 	//insérer image dans le div
 
@@ -778,6 +849,9 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 
 
 
+
+
+
 	removeAllPhotosFromUL();
 
 
@@ -789,11 +863,26 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 	show_ecran_de_l_observation();
 	//alert("la_index:"+la_index);
 	//alert(id_ObservDescrip+"/"+id_ObservDiskName);
-
+	
+	le_ObservTimestamp=parseFloat(document.getElementById('id_ObservTimeStamp_data').value); 
+	
+	un_date = convertTimeStampToDate(le_ObservTimestamp);
+	
+	
+	
+	document.getElementById("id_ObservTimeStamp_data").value = un_observation_ici.strObserv_DateObservation;	
 
 	document.getElementById('id_ObservFlagInsertUpdate_data').value = un_observation_ici.strObservFlagInsertUpdate;
 
 	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = parseInt(un_observation_ici.strObserv_Id, 10);
+	
+	document.getElementById('obs_id_titre').innerHTML = "Observation: "+document.getElementById("id_ObservNoAutoGenereParlaDB_data").value +', Date:'+un_date;
+	
+	
+	
+	
+	
+	
 	document.getElementById('id_ObservNoDeLusager_data').value = parseInt(un_observation_ici.strObserv_IDUsager, 10);
 	document.getElementById('id_Observ_id_oiseau_data').value = parseInt(un_observation_ici.strObserv_IDOiseau, 10);
 
@@ -806,10 +895,14 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 	document.getElementById("id_ObservResume_data").value = un_observation_ici.strObserv_Resume;
 
 
-	var tempDate = parseFloat(un_observation_ici.strObserv_DateObservation);
-
-
-	document.getElementById("id_ObservTimeStamp_data").value = tempDate;
+	//var tempDate = parseFloat(un_observation_ici.strObserv_DateObservation);
+	//document.getElementById("id_ObservTimeStamp_data").value = tempDate;
+	
+	
+	
+	
+	
+	
 	document.getElementById("id_cell_index").innerHTML = la_index;
 
 	// objNode1 = document.getElementById("img-tag-show-picture");

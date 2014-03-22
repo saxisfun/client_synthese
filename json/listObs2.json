@@ -15,7 +15,8 @@
 				"strPhoto_Description": "Photo 1",
 				"strPhoto_IDObservation": 111111,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"
 			},
 			{
 				"strPhoto_Id": 98765,
@@ -23,7 +24,8 @@
 				"strPhoto_Description": "Photo 2",
 				"strPhoto_IDObservation": 111111,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			}			
 		],
 		"strObservFlagInsertUpdate": "" 
@@ -46,7 +48,8 @@
 				"strPhoto_Description": "Photo 2",
 				"strPhoto_IDObservation": 222222,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			},
 			{
 				"strPhoto_Id": 86754,
@@ -54,7 +57,8 @@
 				"strPhoto_Description": "Photo 2",
 				"strPhoto_IDObservation": 222222,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			}			
 			
 		],	
@@ -89,7 +93,8 @@
 				"strPhoto_Description": "Photo 2",
 				"strPhoto_IDObservation": 444444,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			}		
 			
 		],	
@@ -111,7 +116,8 @@
 				"strPhoto_Description": "Photo 2",
 				"strPhoto_IDObservation": 555555,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			}		
 			
 		],	
@@ -133,7 +139,8 @@
 				"strPhoto_Description": "Photo 2",
 				"strPhoto_IDObservation": 777777,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			}		
 			
 		],	
@@ -155,7 +162,8 @@
 				"strPhoto_Description": "Photo 1",
 				"strPhoto_IDObservation": 111111,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			}		
 		],
 		"strObservFlagInsertUpdate": "" 
@@ -181,7 +189,8 @@
 				"strPhoto_Description": "Photo 2",
 				"strPhoto_IDObservation": 777777,
 				"strPhoto_ImageMiniature": "\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"",
-				"strPhoto_Commentaire": "bla bla bla"	
+				"strPhoto_Commentaire": "bla bla bla",
+				"strPhoto_url_big": "bla bla bla"	
 			}		
 			
 		],	

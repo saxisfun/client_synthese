@@ -98,6 +98,11 @@ input.checkbox_autres_photos {
 textarea {
 	font-family: sans-serif;
 }
+
+
+
+
+
 /* MENU BUTTONS ON MAIN PAGE. */
 
 #div_main ul.buttons {
@@ -1216,7 +1221,23 @@ bird_imgPlus {
 /*lvo=ListViewObservation*/
 .lvo_em_usager_id {
 }
+<<<<<<< HEAD
 .lvo_h3_titre {
+=======
+
+
+.lvo_em_obs_id{
+	position:absolute;
+	top:123px;
+	left:20px;
+	/*float:right;*/
+	/*margin-right:10px;
+	margin-bottom:10px;*/
+}
+
+
+.lvo_h3_titre{
+>>>>>>> d7c60aeaa62e5e5ccb29bcee2f9978dfa4648f71
 	/*float:right;*/
 	position:relative;
 	/*left:130px;*/
