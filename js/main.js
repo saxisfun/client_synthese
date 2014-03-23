@@ -522,8 +522,8 @@ function onClickBoutonSeConnecter() {
 	hide_all();
 	showLogin();
 
-	document.getElementById('tool_button_deconnecter').style.visibility = 'visible';
-	document.getElementById('tool_button_seconnecter').style.visibility = 'hidden';
+	//document.getElementById('tool_button_deconnecter').style.visibility = 'visible';
+	//document.getElementById('tool_button_seconnecter').style.visibility = 'hidden';
 	hide_element(back_button);
 }
 
@@ -595,7 +595,7 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 		observObject7.strObserv_DateObservation = tempDate;
 		observObject7.strObserv_Id = 0;
 		observObject7.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
-		observObject7.strObserv_IDUsager = parseInt(document.getElementById("id_utilisateur_d").value);
+		observObject7.strObserv_IDUsager = parseInt(document.getElementById("id_dba_id_Usager_data").value);
 		observObject7.strObserv_Titre = "";
 		observObject7.strObserv_Resume = "";
 		//observObject7.strObserv_Position_lat = 0;
@@ -627,13 +627,13 @@ function onClickButtonCreerUser() {
 	document.getElementById('line_courriel').style.display='';
 	document.getElementById('line_est_admin').style.display='';
 	document.getElementById('line_nom').style.display='';
-	
+	document.getElementById('line_id_de_lusager').style.display='';
 	
 	
 	
 }
 
-
+//http://50.63.147.89/gestionlac2000/sites/default/files/GEI_20140320_013855.zip
 
 function callBack_du_login(obj_json) {
 			
@@ -648,7 +648,7 @@ function callBack_du_login(obj_json) {
 		
 		if (obj_json.LoginResult.ID !== "0" && obj_json.LoginResult.NomUsager !== null) 
 		{
-			//alert("onClickButtonLogin");
+			//alert("onClickButtonLoginWCF");
 			hideLogin();
 			
 			
@@ -669,15 +669,56 @@ function callBack_du_login(obj_json) {
 			//hideLogin();
 			//show_menu1();
 			//document.getElementById("tool_button_deconnecter").style.visibility="visible";
-
-			alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
+varGlobal_UserConnected = "1";
+			alert("Accès refusé!\n");
 
 
 		}		
 }
 
 
-function onClickButtonLogin() {
+
+
+function onClickButtonLoginPHP() {
+
+//id_utilisateur_d
+	vNomUsager = document.getElementById("id_dba_TextNomUsager_data").value;
+	vPass = document.getElementById("id_dba_txtMotDePasse_data").value;
+	vId_de_lusager = document.getElementById("id_dba_id_Usager_data").value;
+
+	
+	//Try_Login(vNomUsager, vPass);
+	
+	//alert(vNomUsager+"/"+vPass);
+	if (vNomUsager == "aaaa" && vPass == "bbbb") 
+	{
+		//alert("onClickButtonLogin");
+		hideLogin();
+		//show_menu1();
+		onClickButtonMenuListViewObserv();
+		varGlobal_UserConnected = "1";
+
+		document.getElementById("tool_button_deconnecter").style.visibility = "visible";
+		document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
+
+
+
+	} else {
+		//hideLogin();
+		//show_menu1();
+		//document.getElementById("tool_button_deconnecter").style.visibility="visible";
+
+		alert("Accès refusé!\nle nom d'utilisateur est: aaaa\nle mot de passe est: bbbb");
+
+
+	}
+
+
+}
+
+
+
+function onClickButtonLoginWCF() {
 
 
 	v_dba_TextNomUsager = document.getElementById("id_dba_TextNomUsager_data").value;
@@ -697,7 +738,7 @@ function onClickButtonLogin() {
 	
 	
 	if (v_txtMotDePasse_verif !== ""){
-		alert("Nouveau user");
+		//alert("Nouveau user");
 		
 		dba_InsertUsager();
 		
@@ -705,7 +746,7 @@ function onClickButtonLogin() {
 		
 		
 	} else {
-		alert("Login normal");
+		//alert("Login normal");
 		
 		dba_Login(v_dba_TextNomUsager, v_dba_txtMotDePasse);
 		
@@ -718,6 +759,7 @@ function onClickButtonLogin() {
 
 
 }
+
 
 
 function onClickTelechargerLeFichier() {

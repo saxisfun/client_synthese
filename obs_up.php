@@ -124,12 +124,7 @@ foreach($data as $item) { //foreach element in $arr
 			$result = mysql_query($SQL2);
 			$x2++;
  
- 
- 
- 
- 
-			
-			
+ 		
 			
 		}
 		
@@ -141,7 +136,7 @@ foreach($data as $item) { //foreach element in $arr
 	
 
 	//if ($La_reponse == "U")
-	if ($La_strObserv_Id !== "0")
+	if ($La_strObserv_Id != "0")
 	{		
 		//update
 		$SQL2="";
@@ -185,19 +180,21 @@ foreach($data as $item) { //foreach element in $arr
 				
 				
 				$str_trimmed = left($item2['strPhoto_Image'], 20);
-				
+				$strObserv_Id_cumu=$strObserv_Id_cumu."str_trimmed:".$str_trimmed."\n";
 				
 				
 				$web_url = "";
 				//if(strlen($item2['ph_obs_url_big'])== 0 || is_null($item2['ph_obs_url_big'])){	
 				if(strlen($str_trimmed) > 10){	
 				
+					$strObserv_Id_cumu=$strObserv_Id_cumu."str_trimmed) > 10\n";
+				
 					//save image sur le disque, creer un url et sauvegarder dans table
 					//$la_img = preg_replace('#^data:image/[^;]+;base64,#', '', $item2['strPhoto_Image']);
 					$la_img = preg_replace('#data:image/[^;]+;base64,#', '', $item2['strPhoto_Image']);		
 					$image_file_name = $un_obs_Id."_".rand(1000000,9000000);
 					$image_file_name = $image_file_name.".jpg";
-					$strObserv_Id_cumu=$strObserv_Id_cumu."URL Vide\n";
+					
 									
 					//if ( base64_encode(base64_decode($la_img)) === $la_img){
 						$image = base64_to_jpeg( $la_img, '/var/www/html/cegep/images_obs/'.$image_file_name.'' );
@@ -212,7 +209,9 @@ foreach($data as $item) { //foreach element in $arr
 				}	
 				
 		
-				
+				//faire attention à 'ph_obs_url_big' cette valeur n'est jamais renvoyée 
+				//par le json de l'app client (du javascript) car il faut que je mette de escape caracter /\/\ dans l'url et j'ai pas eu le temps de le faire
+				//À la place je vérifie sil y a une image en base 64 et si oui je flush l'ancien "ph_obs_url_big" s'il y en avait un
 				
 				
 				
@@ -222,18 +221,19 @@ foreach($data as $item) { //foreach element in $arr
 				$SQL2=$SQL2."ph_obs_Description = '".$item2['strPhoto_Description']."', ";
 				$SQL2=$SQL2."ph_obs__Image = '', ";
 				
-				if($item2['ph_obs_url_big']===""){
-					
+				//si kek chose dans $web_url ca veut dire qu'il y a une photo qu s'est importé en base64 et a été sauvegardé sur le disque
+				if($web_url==""){
+					$strObserv_Id_cumu=$strObserv_Id_cumu."web_url est vide \n";
 				}else
 				{
 					$SQL2=$SQL2."ph_obs_url_big = '".$web_url."', ";
-					$strObserv_Id_cumu=$strObserv_Id_cumu."Enregistre URL\n";
+					$strObserv_Id_cumu=$strObserv_Id_cumu."web_url est plein : ".$web_url."\n";
 				}
 				
 				$SQL2=$SQL2."ph_obs_IDObservation = '".$La_strObserv_Id."' ";
 				
 				
-				if ($item2['strPhoto_Id'] === "0")
+				if ($item2['strPhoto_Id'] == "0")
 				{		
 				
 					$strObserv_Id_cumu=$strObserv_Id_cumu."INSERT PHOTO 2\n";
@@ -242,9 +242,6 @@ foreach($data as $item) { //foreach element in $arr
 				{
 					$SQL2=$SQL2."WHERE ph_obs__Id = '".$item2['strPhoto_Id']."'";
 				}				
-				
-				
-				
 				
 				$result = mysql_query($SQL2);
 				$x2++;
@@ -256,6 +253,15 @@ foreach($data as $item) { //foreach element in $arr
 	
 	$x1++;
 	$strObserv_Id_cumu=$strObserv_Id_cumu."(x1: ".$x1.", x2:".$x2.", La_strObserv_Id:".$La_strObserv_Id.")\n";
+	
+	//effacer les enregistrements de photos dans la table s'il n'y a pas d'url de photo dans l'enregistrement
+	//
+	$result22 = mysql_query("DELETE FROM tb_PhotoObservation WHERE ph_obs_url_big = '' or ph_obs_url_big IS NULL");
+	if($result22){
+		
+		$strObserv_Id_cumu=$strObserv_Id_cumu."Delete yes 1\n";
+	}
+	
 	
 }
 
@@ -290,7 +296,7 @@ foreach($data as $item) { //foreach element in $arr
  */
  
  
-echo "Test data: (".$strObserv_Id_cumu.")\n";
+echo "Test data:\n(".$strObserv_Id_cumu.")\n";
 
 
 

@@ -1,5 +1,15 @@
 ﻿
+/*
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/Login/
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/GetUsager/1
 
+
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/GetObservation/1
+
+
+
+
+*/
 function Callback(result) {
     alert(result); // string
     alert(result.d.Company);
