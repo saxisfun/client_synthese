@@ -112,7 +112,11 @@
 		onclick="		
 			if (varGlobal_UserConnected == '1'){
 			
-			observ_id = document.getElementById('id_comm_observ_id_data').value;
+			observ_id = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
+			
+			
+			
+			
 			user_id = document.getElementById('id_dba_id_Usager_data').value;
 			un_timestamp = new Date().getTime();
 			
@@ -212,7 +216,15 @@
 			<td style="text-align:left;" id="id_dba_txtNom_label">Nom complet</td> 
 			<td><input type="<br><br>" style="width:120px;" placeholder="Prénom suivi du nom" onChange="" id="id_dba_txtNom_data" VALUE="Alain Giguere"></td> 
 		</tr>
-
+		<tr id="line_alerte" style="display:none;">
+			<td style="text-align:left;" id="id_dba_txtNom_label">Recevoir alertes</td> 
+			<td><input type="<br><br>" style="width:120px;" placeholder="" onChange="" id="id_dba_recevoir_alertes_data" VALUE="1"></td> 
+		</tr>
+		<tr id="line_rayon" style="display:none;">
+			<td style="text-align:left;" id="id_dba_txtNom_label">Rayon en Km</td> 
+			<td><input type="<br><br>" style="width:120px;" placeholder="" onChange="" id="id_dba_rayon_en_km_data" VALUE="200"></td> 
+		</tr>		
+		
 		<tr>
 			<td colspan="2" style="text-align:center;">
 			<br>
@@ -566,14 +578,11 @@
 					
 					<li>
 		   	 			<a href="#" id="" onclick="
-							hide_all();
-							
-							objListViewComm.agXMLHttpReqComm('json/comm.json');
-							show_liste_des_comm();
-							
-							document.getElementById('tool_button_ajouter_comm').style.visibility='visible';
-							document.getElementById('back_button').style.visibility='hidden';
-							document.getElementById('back_to_observ').style.visibility='visible';
+						
+						onClickAfficheCommentaires();
+						
+
+
 						" class="switch_screen">Commentaires </a>
 					</li>					
 					
@@ -1411,7 +1420,30 @@ function callback_de_downloader_les_observations_dans_localstorage()
 }	
 
 
+function onClickAfficheCommentaires()
+{
+	hide_all();
+	
+	var le_id_obs = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
+	
+	//objListViewComm.agXMLHttpReqComm('http://198.100.145.177/cegep/json/comm.json');
+	
+	
+	
+	objListViewComm.agXMLHttpReqComm("comm_dwn.php?le_id_de_obs="+le_id_obs+"");
+	//objListViewComm.agXMLHttpReqComm("http://198.100.145.177/cegep/comm_dwn.php");
+	
+	
+	
+	
+	show_liste_des_comm();
+	
+	document.getElementById('tool_button_ajouter_comm').style.visibility='visible';
+	document.getElementById('back_button').style.visibility='hidden';
+	document.getElementById('back_to_observ').style.visibility='visible';						
 
+
+}
 
 
 

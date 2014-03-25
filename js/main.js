@@ -630,6 +630,8 @@ function onClickButtonCreerUser() {
 	document.getElementById('line_est_admin').style.display='';
 	document.getElementById('line_nom').style.display='';
 	document.getElementById('line_id_de_lusager').style.display='';
+	document.getElementById('line_alerte').style.display='';
+	document.getElementById('line_rayon').style.display='';
 	
 	
 	

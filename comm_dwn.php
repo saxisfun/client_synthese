@@ -1,4 +1,9 @@
 <?php 
+
+
+
+
+
 function pretty_json($json) {
      
     $result = '';
@@ -50,44 +55,27 @@ function pretty_json($json) {
     return $result;
 }
 
- class AgUneObserv {
-	public $strObserv_DateObservation = "";
-	public $strObserv_Id = "";
-	public $strObserv_IDOiseau = "";
-	public $strObserv_IDUsager = "";
-	public $strObserv_Titre = "";
-	public $strObserv_Resume = "";
-	public $arrObservLesPhotos = "";
+
+class AgUnCommentaire {
 	
-	public $strObserv_Position_lat = "";
-	public $strObserv_Position_long = "";	
+
+	public $strComm_comm_Id = "";
+	public $strComm_comm_Date = "";
+	public $strComm_comm_ObservationId = "";
+	public $strComm_comm_UserId = "";
+	public $strComm_comm_Resume = "";
+
 	//$e->birthdate = date('m/d/Y h:i:s a', "8/5/1974 12:20:03 p");
 	//$e->birthdate = date('m/d/Y h:i:s a', strtotime("8/5/1974 12:20:03"));
-	public $strObservFlagInsertUpdate = "";
-	
-	
-	
+
 	
 }
 
 
-				
- class AgPhotoObservation {
- 
-	public $strPhoto_Id = "";
-	public $strPhoto_Image = "";
-	public $strPhoto_Description = "";
-	public $strPhoto_IDObservation = "";
-	public $strPhoto_ImageMiniature = "";
-	public $strPhoto_Commentaire = "";
-	public $strPhoto_url_big = "";
-	
-}
-	
-   
-   
-   
-   
+
+$le_obs_id = $_GET["le_id_de_obs"];
+
+  
  
 //phpinfo();
 $username = "user1_cegep";
@@ -102,87 +90,39 @@ $dbhandle = mysql_connect($hostname, $username, $password)
 $selected = mysql_select_db("cegep_oiseaux",$dbhandle)
   or die("Could not select examples");
 
+$le_obs_id = intval($le_obs_id);   
 
-
-$result1 = mysql_query("SELECT * FROM tb_observations Order by obs_DateObservation desc");
+$result1 = mysql_query("SELECT * FROM tb_commentaires where comm_ObservationId = '".$le_obs_id."' Order by comm_Date Desc");
 //fetch tha data from the database
 
 
 
-$arr_les_observations = array();
+$arr_les_commentaires = array();
 
 while ($row1 = mysql_fetch_array($result1)) {
    
    //echo "obs_Id:".$row1{'obs_Id'}.", obs_DateObservation:".$row1{'obs_DateObservation'}.", obs_Position_lat: ".$row1{'obs_Position_lat'}."<br>";
-
- 
-   
 	  
-	$e1 = new AgUneObserv();
-	$e1->strObserv_DateObservation = $row1{'obs_DateObservation'};
-	$e1->strObserv_Id  = $row1{'obs_Id'};
-	$e1->strObserv_IDOiseau  = $row1{'obs_IDOiseau'};  
-	$e1->strObserv_IDUsager  = $row1{'obs_IDUsager'};  
-	$e1->strObserv_Titre  = $row1{'obs_Titre'};  
-	$e1->strObserv_Resume  = $row1{'obs_Resume'}; 
-	$e1->strObserv_Position_lat = $row1{'obs_Position_lat'};
-	$e1->strObserv_Position_long = $row1{'obs_Position_long'};
+	$e1 = new AgUnCommentaire();
+	$e1->strComm_comm_Id = $row1{'comm_Id'};
+	$e1->strComm_comm_Date  = $row1{'comm_Date'};
+	$e1->strComm_comm_ObservationId  = $row1{'comm_ObservationId'};  
+	$e1->strComm_comm_UserId  = $row1{'comm_UserId'};  
+	$e1->strComm_comm_Resume  = $row1{'comm_Resume'};  
+	//echo var_dump($row1)."<br>";
+	//echo $e1->strComm_comm_Date."<br>";
 	
-	
-	//$e1->strObservFlagInsertUpdate = $row1{'obs_Position_long'};
-
-	$e1->arrObservLesPhotos  = array();
-	
-	
-	   
-	
-	$result2 = mysql_query("SELECT * FROM tb_PhotoObservation where ph_obs_IDObservation = ".$row1{'obs_Id'}."");
-	while ($row2 = mysql_fetch_array($result2)) {
-	
-		//echo "ph_obs_IDObservation: ".$row2{'ph_obs_IDObservation'}.", ph_obs__Id:".$row2{'ph_obs__Id'}.", ph_obs_Description:".$row1{'ph_obs_Description'}."<br>";
-		//echo '777'.$row2{'ph_obs__Image'}.'<br>';
-		//echo "777<img src=".$row2{'ph_obs__Image'}." alt='' /><br>";
-		//$e1->arrObservLesPhotos[] = $e2;
-		$e2 = new AgPhotoObservation();
-		$e2->strPhoto_Id = $row2{'ph_obs__Id'};
-		$e2->strPhoto_Image = $row2{'ph_obs__Image'};
-		$e2->strPhoto_Description = $row2{'ph_obs_Description'};
-		$e2->strPhoto_IDObservation = $row2{'ph_obs_IDObservation'};
-		$e2->strPhoto_ImageMiniature = "";
-		$e2->strPhoto_Commentaire = "";
-		$e2->strPhoto_url_big = $row2{'ph_obs_url_big'};
-		
-		
-		
-		//echo "-array_push--arrObservLesPhotos---ph_obs__Id:".$row2{'ph_obs_Description'}."<br>";	
-		
-		//$e1->arrObservLesPhotos[] = $e2;
-		
-		array_push($e1->arrObservLesPhotos, $e2);
-	   
-	   
-	   
-	   
-	}
-	
-
-	//$arr_les_observations[] = $e1;
-	array_push($arr_les_observations, $e1);
-   
-   
+	array_push($arr_les_commentaires, $e1);
 }
-
-
-//echo "<br><br><br>";
 
 
 
 if(0){
 	echo "<pre>";	
-	echo pretty_json(json_encode($arr_les_observations));
+	echo pretty_json(json_encode($arr_les_commentaires));
 	echo "</pre>";
 }else{
-	echo json_encode($arr_les_observations);
+	echo json_encode($arr_les_commentaires);
 }
 
 

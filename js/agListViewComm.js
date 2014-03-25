@@ -12,7 +12,7 @@ function ClasseListViewComm(myName) {
 
 ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 
-
+//alert(le_url);
 
 	var storageFiles = JSON.parse(localStorage.getItem("storageFilesFichiers3")) || {},
 		storageFilesDate = storageFiles.date1,
@@ -39,7 +39,7 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 				if (request.status == 200 || request.status == 0) {
 
 					str_output = request.responseText;
-
+/*
 					storageFiles.date1 = todaysDate;
 					storageFiles.output = str_output;
 					try {
@@ -47,7 +47,7 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 					} catch (e) {
 						alert("Storage failed: " + e);
 					}
-
+*/
 					objListViewComm.fillCommListView(str_output);
 
 				}
@@ -82,7 +82,10 @@ ClasseListViewComm.prototype.addCommListViewCell = function(la_comm_id, la_times
 	//newDiv1.addEventListener('click', test55, false)
 	//newDiv1.addEventListener('click',function(){affichePageXXXXX(le_id, le_non_fich, le_url, la_descrip, la_date_eng)},false);
 
-	une_date = convertTimeStampToDate(la_timestamp);
+
+	var le_la_timestamp = parseInt(la_timestamp, 10);
+
+	var une_date = convertTimeStampToDate(le_la_timestamp);
 
 	var em_timestamp = document.createElement("em");
 	var em_timestamp_content = document.createTextNode("Date: " + une_date);
@@ -134,59 +137,18 @@ ClasseListViewComm.prototype.addCommListViewCell = function(la_comm_id, la_times
 
 ClasseListViewComm.prototype.fillCommListView = function(le_str_output) {
 
-
+	
 	var localString = JSON.parse(le_str_output);
 
 
 
-	/*
-    alert(le_str_output);
-	alert('le_str_output.length ' + le_str_output.length);
-    alert('localString.result.length ' + localString.result.length);
-	alert('id ' + localString['id']);
-	alert('jsonrpc ' + localString['jsonrpc']);
-	alert('total ' + localString['total']);
-	alert('result ' + localString['result']);
-	*/
-
-
 	//var JSONstring=[{"key1":"value1","key2":"value2"},{"key3":"value3"}];
 
-	for (var i = 0; i < localString.result.length; i++) {
-		var obj = localString.result[i];
+	for (var i = 0; i < localString.length; i++) {
+		//var obj = localString.result[i];
 
+		objListViewComm.addCommListViewCell(localString[i].strComm_comm_Id, localString[i].strComm_comm_Date, localString[i].strComm_comm_ObservationId, localString[i].strComm_comm_UserId, localString[i].strComm_comm_Resume, i)
 
-
-		/*
-		alert(localString.result[i].id);
-		alert(localString.result[i].filename);
-		alert(localString.result[i].url);
-		alert(localString.result[i].description);
-		alert(localString.result[i].registered);	
-			
-		*/
-		//la_timestamp, la_observ_id, la_usager_id, la_resume ,l_in_dex
-
-		/*		
-	document.getElementById('id_comm_id_data').value = un_timestamp;
-	document.getElementById('id_comm_timestamp_data').value = un_timestamp;
-	document.getElementById('id_comm_observ_id_data').value = un_observ_id;
-	document.getElementById('id_comm_usager_data').value = un_usager_id;
-	document.getElementById('id_comm_resume_data').value = un_resume;	
-	*/
-
-		objListViewComm.addCommListViewCell(localString.result[i].un_comm_id, localString.result[i].un_timestamp, localString.result[i].un_observ_id, localString.result[i].un_usager_id, localString.result[i].un_resume, i)
-		/*
-		 for(var key in obj){
-				 var attrName = key;
-				 var attrValue = obj[key];
-				if(attrName=="id"){alert(attrName+"/"+attrValue);}
-				if(attrName=="filename"){alert(attrName+"/"+attrValue);}
-				//alert(attrName+"/"+attrValue);
-				
-				
-			}
-		*/
 	}
 
 }
