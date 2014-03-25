@@ -6,13 +6,17 @@
 
 function startRecherche() {
 
-	var x = document.getElementById("id_recherher_dict").value;
+
+	var champ_de_recgerche = document.getElementById("id_recherher_dict").value;
 	//alert('Recherche sur: ' + x);
 
 	hide_all();
 
 
-	objListViewDictionnaires.XMLHttpReqDict('json/dictionnaire.json');
+	objListViewDictionnaires.XMLHttpReqDict('json/dictionnaire.json', champ_de_recgerche, "List_view");
+	
+	
+	
 
 
 	show_back_button();

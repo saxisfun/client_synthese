@@ -986,7 +986,7 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 	*/
 
 
-
+	objListViewDictionnaires.XMLHttpReqDict('json/dictionnaire.json', document.getElementById('id_Observ_id_oiseau_data').value, "get_espece_str");
 
 
 }

@@ -9,8 +9,14 @@ function ClasseListViewDictionnaire(myName) {
 
 
 
-ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
-     
+ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url, chmp_de_rech, type_de_recherche) {
+    /* 
+	 type_de_recherche="List_view"
+	 type_de_recherche="get_espece_str"
+	 
+	 
+	 */
+	 
 //	alert('ddXMLHttpDictionnaire le_url: '+le_url);
  	try {
      
@@ -23,7 +29,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
              if (request.readyState == 4) {
                  if (request.status == 200 || request.status == 0) {
  					str_output = request.responseText;
-					file2obj(str_output);              
+					file2obj(str_output, chmp_de_rech, type_de_recherche);              
                  }
              }
          }
@@ -38,8 +44,15 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 
 
 
- function file2obj(le_str_output) 
+ function file2obj(le_str_output, ch_de_rech, typ_de_rech) 
  { 
+
+	/* 
+	 type_de_recherche="List_view"
+	 type_de_recherche="get_espece_str"
+	*/
+	
+
 //	 alert(le_str_output);
 //	 alert('le_str_output.length ' + le_str_output.length);
 	 
@@ -53,11 +66,35 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url) {
 	
 	
 	 for(var i=0;i<localString.result.length;i++){
-		 var obj = localString.result[i];
+		var obj = localString.result[i];
 		
-		obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,
-			localString.result[i].IDPhoto,localString.result[i].IDSon,localString.result[i].flObsPermises)
-		 
+		//alert(ch_de_rech+'/'+localString.result[i].espece+'/'+localString.result[i].espece.indexOf(ch_de_rech));
+		
+		if(typ_de_rech=="List_view"){
+			
+			var le_espece = localString.result[i].espece;
+			le_espece = le_espece.toLowerCase();
+			ch_de_rech = ch_de_rech.toLowerCase();
+	
+			if (le_espece.indexOf(ch_de_rech) !== -1)
+			{
+					obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,
+				localString.result[i].IDPhoto,localString.result[i].IDSon,localString.result[i].flObsPermises)
+			}
+		}
+	
+		if(typ_de_rech=="get_espece_str"){	
+			
+			var le_bon_id = localString.result[i].id;
+			
+			//alert("ch_de_rech: "+ch_de_rech+", le_bon_id:"+le_bon_id);
+			
+			if (le_bon_id == ch_de_rech)
+			{
+				//alert("yeaaa:"+localString.result[i].espece);
+				document.getElementById('id_Observ_nom_oiseau_data').value = localString.result[i].espece;
+			}
+		}		
 	 }
 		
  	    /*

@@ -759,7 +759,7 @@
 
 		<tr>
 			<td><h4>Specimen:</h4></td>
-			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
+			<td><input type="text" id="id_recherher_dict"  placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
 		</tr>
 	
 		
@@ -768,7 +768,7 @@
 			<td> 
 	    		<ul class="buttons">
 					<li>
-		   	 			<a href="#" id="" onclick="startRecherche();" 						class="switch_screen">Démarrer la recherche </a>
+		   	 			<a href="#" id="" onclick="startRecherche();" class="switch_screen">Démarrer la recherche </a>
 					</li>	
 	    		</ul>
 	    	</td> 
@@ -1463,6 +1463,18 @@ function b64_to_utf8( str ) {
     return decodeURIComponent(escape(window.atob( str )));
 }
 
+function search_dic( search_str ) {
+		alert(search_str);
+	var results = [];
+	var searchField = "name";
+	var searchVal = search_str;
+	for (var i=0 ; i < obj.list.length ; i++)
+	{
+		if (obj.list[i][searchField] == searchVal) {
+			results.push(obj.list[i]);
+		}
+	}
+}
 // Usage:
 //utf8_to_b64('✓ à la mode'); // "4pyTIMOgIGxhIG1vZGU="
 //b64_to_utf8('4pyTIMOgIGxhIG1vZGU='); // "✓ à la mode"
