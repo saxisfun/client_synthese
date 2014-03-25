@@ -187,7 +187,8 @@ textarea {
   z-index: 10;
   position: relative;
   padding: 10px;
-  height: 85px;
+  height: 84px;
+  /*margin-top:10px;*/
   
 }
 	
@@ -426,15 +427,15 @@ background-color: red;
 input.ajout_observ_button  {
 	position:relative;
 	right:1px;
-	top:-74px;
+	top:-83px;
 	float:right;
 
 	/*-webkit-appearance: none; 
 	-moz-appearance: none; 
 	-o-appearance: none;*/
 
-	  width: 211px;
-	  height: 35px;
+	  width: 164px;
+	  height: 25px;
 
 	/*
 	-webkit-transform: scale(2,2);
@@ -446,6 +447,25 @@ input.ajout_observ_button  {
 
  
 }
+
+input.voir_dautres_obs_css  {
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	
+	
+	top:10px;
+
+left:40px;
+
+	  width: 155px;
+	  height: 35px;
+
+
+ 
+}
+
+
 
 input.delete_button  {
 	position:absolute;
@@ -920,6 +940,7 @@ bird_imgPlus{
 	float:right;
 	marging-top:30px;
 	marging-right:30px;
+	width:160px;
 }
 
 

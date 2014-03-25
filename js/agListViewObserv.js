@@ -198,6 +198,57 @@ ClasseListViewObservations.prototype.fillMyListViewObservArrayFromLocalStorage =
 
 
 
+ClasseListViewObservations.prototype.addListViewObservLastCell = function(le_index) {
+	
+	
+	
+	var newDiv1 = document.createElement("div");
+	newDiv1.setAttribute("class", "list_View_Observ");
+	newDiv1.setAttribute("align", "left");
+	
+	newDiv1.id="liste_observation1";
+	
+	//Math.round(new Date().getTime()/1000.0)
+	
+	
+	var newDivContainer = document.createElement("div");
+	newDivContainer.setAttribute("class", "lvo_cell_container");
+	//newDivContainer.setAttribute("align", "left");
+	
+	var h3_ObservTitre = document.createElement("h3");
+	h3_ObservTitre.setAttribute("class", "lvo_h3_titre");		
+	var h3_ObservTitre_content = document.createTextNode("Voir d'autres observations");
+	h3_ObservTitre.appendChild(h3_ObservTitre_content);
+	
+
+
+	
+	var newDivTouch = document.createElement("div");
+	newDivTouch.setAttribute("class", "divTouch");
+	newDivTouch.addEventListener('click',function(){afficher_les_observations_new(1,20)},false);
+
+	//var newP2 = document.createElement("p");
+	//var newPContent2 = document.createTextNode("Coordonée GPS: "+la_coord);
+	//newP2.appendChild(newPContent2);		
+	
+	newDivContainer.appendChild(h3_ObservTitre);		
+
+
+	newDiv1.appendChild(newDivContainer);	
+	newDiv1.appendChild(newDivTouch);	
+	
+	
+	//newDiv1.innerHTML = newDiv1.innerHTML +"88888888888888888888"+ radioHtml;
+	
+	//newDiv1.appendChild(newP2);	
+				
+	my_mainDiv = document.getElementById("div_main");  
+	my_mainDiv.appendChild(newDiv1);
+	
+
+		
+}
+
 
 
 ClasseListViewObservations.prototype.addListViewObservCell = function(objLObservation1 ,le_index) {
@@ -500,6 +551,10 @@ ClasseListViewObservations.prototype.fillObservsListView = function() {
 		
 		//le_id, le_non_fich, le_url, la_descrip, la_date_eng
 	}
+	
+	this.addListViewObservLastCell(i);
+	
+	
 	//alert("fillObservsListView end");
 	//alert(myVar);
 }

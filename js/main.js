@@ -526,7 +526,7 @@ function onClickBoutonSeConnecter() {
 
 	//document.getElementById('tool_button_deconnecter').style.visibility = 'visible';
 	//document.getElementById('tool_button_seconnecter').style.visibility = 'hidden';
-	hide_element(back_button);
+	//hide_element(back_button);
 }
 
 
@@ -704,7 +704,7 @@ function onClickButtonLoginPHP() {
 
 		document.getElementById("tool_button_deconnecter").style.visibility = "visible";
 		document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
-
+document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
 
 
 	} else {
@@ -799,7 +799,7 @@ function onClickButtonMenuListViewObserv() {
 
 	document.getElementById("tool_button_ajouter_comm").style.visibility = "hidden";
 
-	document.getElementById("tool_button_ajouter_observ").style.visibility = "visible";
+	//document.getElementById("tool_button_ajouter_observ").style.visibility = "visible";
 
 	document.getElementById("tool_button_rechercher").style.visibility = "visible";
 	document.getElementById("tool_button_seconnecter").style.visibility = "visible";

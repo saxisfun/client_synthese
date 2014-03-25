@@ -89,6 +89,28 @@ $strObserv_Id_cumu=$data;
 		$strObserv_Id_cumu=$strObserv_Id_cumu."un_obs_Id: ".$La_comm_Resume." Insert Data\n";
 	
 	
+	}else{
+	
+		//update
+		$SQL2="";
+		$SQL2=$SQL2."UPDATE tb_commentaires Set ";
+		
+		//if(){
+		//$SQL2=$SQL2."comm_Id = '".$La_comm_Id."', ";
+		//}
+		
+		
+		$SQL2=$SQL2."comm_Date = '".$La_comm_Date."', ";
+		$SQL2=$SQL2."comm_ObservationId = '".$La_comm_ObservationId."', ";
+		$SQL2=$SQL2."comm_UserId = '".$La_comm_UserId."', ";
+		$SQL2=$SQL2."comm_Resume = '".$La_comm_Resume."' ";
+	
+		$SQL2=$SQL2."WHERE comm_Id = '".$La_comm_Id."'";
+		$result = mysql_query($SQL2);
+
+		$strObserv_Id_cumu=$strObserv_Id_cumu."un_obs_Id: ".$La_comm_Resume." Update Data\n";	
+	
+	
 	}	
 	
 

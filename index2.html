@@ -79,10 +79,10 @@
 	
 	<div id="toolbar">
 		  
-		<button id="back_button" onclick="hide_all();show_menu1();" class="hidden">xxx</button>
+		<button id="back_button" onclick="hide_all();show_menu1();" style="top:5px;height:72px;" class="hidden">xxx</button>
 		
 		<button id="back_to_observ" 
-		style="position:absolute;bottom:6px;left:2px;visibility:hidden;width:104px;"
+		style="position:absolute;bottom:6px;left:2px;visibility:hidden;width:104px;top:5px;height:72px;"
 		onclick="
 		hide_all();
 		//show_menu1();
@@ -104,7 +104,7 @@
 				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
 			}
 		"
-		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
+		style="position:absolute;bottom:6px;right:173px;visibility:hidden;width:88px;top:5px;height:72px;"
 		class="">xxx</button>	  
 		
 
@@ -126,21 +126,21 @@
 				alert('Vous devez être connecté pour pouvoir ajouter des commentaires!');
 			}			
 		"
-		style="position:absolute;bottom:6px;right:223px;visibility:hidden;width:88px;"
+		style="position:absolute;bottom:6px;right:173px;visibility:hidden;width:88px;top:5px;height:72px;"
 		class="">xxx</button>	  		
 		
 		
 		
 		<button id="tool_button_rechercher" onclick="hide_all();show_dicti();show_back_button();"
-		style="position:absolute;bottom:6px;right:113px;visibility:hidden;width:104px;"
+		style="position:absolute;bottom:6px;right:83px;visibility:hidden;width:86px;top:5px;height:72px;"
 		class="">xxx</button>
 
 		<button  id="tool_button_deconnecter" onclick="onClickBoutonDeconnecter();"
-		style="position:absolute;bottom:6px;right:12px;visibility:hidden;width:94px;"
+		style="position:absolute;bottom:6px;right:12px;visibility:hidden;width:65px;top:5px;height:72px;"
 		class="">xxx</button>	
 
 		<button  id="tool_button_seconnecter" onclick="onClickBoutonSeConnecter();"
-		style="position:absolute;bottom:6px;right:12px;visibility:visible;width:94px;"
+		style="position:absolute;bottom:6px;right:12px;visibility:visible;width:65px;top:5px;height:72px;"
 		class="">xxx</button>			
 		
 		
@@ -1370,14 +1370,14 @@ function afficher_les_observations_new(observation_de, observation_a)
 {
 	hide_all();
 	
-	
+	alert("2222");
 	objListViewObservations.fillObservsListView();
 
 
 	
 	document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
 	
-	document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
+	//document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
 	document.getElementById("tool_button_rechercher").style.visibility="visible";
 
 	

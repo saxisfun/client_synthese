@@ -1,6 +1,7 @@
 function MonAccel(strNom) {
 	if (window.DeviceMotionEvent) {
-		window.addEventListener('devicemotion', this.capture_acceleration, false);
+	
+		window.addEventListener('devicemotion', this.capture_acceleration2, false);
 
 	} else {
 		document.getElementById('id_accel_data').innerHTML = "Accélération non disponible";
