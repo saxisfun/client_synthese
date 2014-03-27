@@ -47,19 +47,47 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 			var resourcePath = "";
 				
 			if(dataAdapterSwitch_dataFromIIS){
-				//resourcePath = "http://xxxxxxxxxxxxxxxxxxx/xxxxxx.json?idx_de='+index_de+'&idx_a='+index_a+'";
-				resourcePath = 'http://ks365406.kimsufi.com/fpilote/tp1/files.json';
+				resourcePath = 'http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/observation';
 			}else{
-				//resourcePath = "http://listObs.json?idx_de='+index_de+'&idx_a='+index_a+'";
-				//resourcePath = 'json/listObs2.json';
-				
 				resourcePath = 'http://198.100.145.177/cegep/obs_dwn.php';
-				
 			}		
+	
+
+
+/*
+{
+	"DateObservation": "2014-01-01",
+	"IDOiseau": 1,
+	"IDUsager": 1,
+	"Id": 0,
+	"Latitude": 123,
+	"Longitude": 345,
+	"Titre": "sdada"
+}
+	
+			{
+  "GetAllObservationResult": [
+    {
+      "DateObservation": "2012-01-01",
+      "IDOiseau": 1,
+      "IDUsager": 1,
+      "Id": 0,
+      "Latitude": 1,
+      "Longitude": 1,
+      "Oiseau": {
+        "Description": "C'est bon",
+        "Espece": "Poulet",
+        "ID": 1
+      },
+      "Titre": null,
+      "Usager": {
+        "ID": 1,
+        "Nom": "Raymond",
+        "NomUsager": "rferland"
+      }
+    },
 			
-			
-			
-			
+*/			
 			var request = new XMLHttpRequest();
 			
 			request.open("GET", resourcePath, true);
@@ -68,19 +96,32 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 					if (request.status == 200 || request.status == 0) {
 					
 						var str_output = request.responseText;
+						str_output = JSON.parse(str_output);
+						var temp98877 = JSON.stringify(str_output, null, "\t"); 
+						alert("downloader_les_observations_dans_localstorage1:"+temp98877);
 						
+					
 						//storageDate.date1 = todaysDate;
 
+						//jsonRenamer();
+						
+						//str_output = str_output.replace(/"DateObservation":/g, "");
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 						//storageObs = str_output;
 						try {
-							//localStorage.setItem("lsListViewObservArray", JSON.stringify(storageObs));
-							localStorage.setItem("lsListViewObservArray", str_output);
-					
 						
-							
-							
-							
-							localStorage.setItem("lsListViewObservLastDate", todaysDate);
+						//canceller le localstaorage temporairement 
+							//localStorage.setItem("lsListViewObservArray", str_output);
+							//localStorage.setItem("lsListViewObservLastDate", todaysDate);
 							
 							
 							callback_de_downloader_les_observations_dans_localstorage();

@@ -96,7 +96,7 @@
 		
 		<button id="tool_button_ajouter_observ" 
 		onclick="
-			if (varGlobal_UserConnected == '1'){
+			if (varGlobal_UserConnected !== '0'){
 				hide_all();
 				show_dicti();
 				show_back_button();
@@ -110,7 +110,7 @@
 
 		<button id="tool_button_ajouter_comm" 
 		onclick="		
-			if (varGlobal_UserConnected == '1'){
+			if (varGlobal_UserConnected !== '0'){
 			
 			observ_id = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
 			
@@ -182,12 +182,12 @@
 	
 		<tr>
 			<td style="text-align:left;" id="id_dba_TextNomUsager_label">Utilisateur</td> 
-			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_TextNomUsager_data" VALUE="aaaa"></td> 
+			<td><input type="<br><br>" style="width:120px;" onChange="" id="id_dba_TextNomUsager_data" VALUE="rferland"></td> 
 		</tr>
 		
 		<tr>
 			<td style="text-align:left;" id="id_dba_txtMotDePasse_label">Mot de passe</td> 
-			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_dba_txtMotDePasse_data" VALUE="bbbb"></td> 
+			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_dba_txtMotDePasse_data" VALUE="MotDePasse"></td> 
 		</tr>
 
 		
@@ -195,7 +195,7 @@
 
 		<tr id="line_verif_mot" style="display:none;">
 			<td style="text-align:left;" id="id_txtMotDePasse_verif_label">Vérification du mot de passe</td> 
-			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_txtMotDePasse_verif_data" VALUE="bbbb"></td> 
+			<td><input type="PASSWORD" style="width:120px;" onChange="" id="id_txtMotDePasse_verif_data" VALUE=""></td> 
 		</tr>	
 
 		<tr id="line_id_de_lusager" style="display:none;" >
@@ -230,8 +230,8 @@
 			<br>
 			<button onclick="
 			
-			//onClickButtonLoginWCF();
-			onClickButtonLoginPHP();
+			onClickButtonLoginWCF();
+			//onClickButtonLoginPHP();
 			
 			
 			"  style="right:125px;" class="">Login</button>
@@ -292,6 +292,15 @@
 					GetUsager
 					</button>
 				</div>
+				
+				
+				<div>
+					<button onclick="wcf_InsertObservation('');">
+					wcf_InsertObservation
+					</button>
+				</div>				
+				
+				
 				
 				<div>
 					<button 
@@ -1091,7 +1100,7 @@ document.getElementById("id_textarea_01").value = "";
 //document.getElementById("tool_button_seconnecter").style.visibility="visible";
 
 //dataAdapder
-var dataAdapterSwitch_dataFromIIS = false;
+var dataAdapterSwitch_dataFromIIS = true;
 var varGlobal_UserConnected = "0";
 var varGlobal_ModeAdmin = "0";
 
@@ -1193,7 +1202,7 @@ document.getElementById("img-tag-show-picture").onclick = function() {
 function afficherJsonDansTextarea()
 {
 	
-	document.getElementById("id_textarea_01").value = "";
+	//document.getElementById("id_textarea_01").value = "";
 	//afficher je json d'obs dans le textarea
 	var myListViewObservArray_strignified = JSON.stringify(objListViewObservations.myListViewObservArray, null, "\t"); 
 	
@@ -1239,8 +1248,18 @@ function creer_json_des_nouvelles_observations(){
 			
 			if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
 			
-				myArrayDObservationAUploader1.push(observ_Object);	
-				
+				if(dataAdapterSwitch_dataFromIIS){
+					//back-end wcf recoit une par une
+					
+					alert("sleep");
+					wcf_InsertObservation(observ_Object);
+					//sleep(2000);
+					
+					
+				}else{
+					//back-end php recoit toute le array d'une claque
+					myArrayDObservationAUploader1.push(observ_Object);	
+				}
 				//alert("Ok un nouveau");
 				
 			}
@@ -1249,7 +1268,7 @@ function creer_json_des_nouvelles_observations(){
 		//var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader1); 
 		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader1, null, "\t");	
 		
-		document.getElementById("id_textarea_01").value = "";
+		//document.getElementById("id_textarea_01").value = "";
 
 		
 		
@@ -1370,7 +1389,7 @@ function afficher_les_observations_new(observation_de, observation_a)
 {
 	hide_all();
 	
-	alert("2222");
+	
 	objListViewObservations.fillObservsListView();
 
 

@@ -31,7 +31,7 @@ function hide_all() {
 	hide_Parametres();
 	hide_settings();
 	document.getElementById("tool_button_ajouter_comm").style.visibility = "hidden";
-	document.getElementById("tool_button_ajouter_observ").style.visibility = "hidden";
+	//document.getElementById("tool_button_ajouter_observ").style.visibility = "hidden";
 	//document.getElementById("tool_button_rechercher").style.visibility="hidden";
 	//document.getElementById("tool_button_seconnecter").style.visibility="hidden";
 }
@@ -575,7 +575,7 @@ function destroyTagInputFilePourLaPhotoPrincipale() {
 function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 
 
-	if (varGlobal_UserConnected == "1") {
+	if (varGlobal_UserConnected !== "0") {
 		/*document.getElementById("img-tag-show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");*/
 
 		hide_all();
@@ -597,7 +597,7 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 		observObject7.strObserv_DateObservation = tempDate;
 		observObject7.strObserv_Id = 0;
 		observObject7.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
-		observObject7.strObserv_IDUsager = parseInt(document.getElementById("id_dba_id_Usager_data").value);
+		observObject7.strObserv_IDUsager = parseInt(varGlobal_UserConnected);
 		observObject7.strObserv_Titre = "";
 		observObject7.strObserv_Resume = "";
 		//observObject7.strObserv_Position_lat = 0;
@@ -659,21 +659,18 @@ function callBack_du_login(obj_json) {
 			//show_menu1();
 			onClickButtonMenuListViewObserv();
 			
-		
-			
-			
-			varGlobal_UserConnected = "1";
+			varGlobal_UserConnected = ""+obj_json.LoginResult.ID+"";
 
 			document.getElementById("tool_button_deconnecter").style.visibility = "visible";
 			document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
-
+			document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
 
 
 		} else {
 			//hideLogin();
 			//show_menu1();
 			//document.getElementById("tool_button_deconnecter").style.visibility="visible";
-varGlobal_UserConnected = "1";
+varGlobal_UserConnected = "0";
 			alert("Accès refusé!\n");
 
 
@@ -700,7 +697,7 @@ function onClickButtonLoginPHP() {
 		hideLogin();
 		//show_menu1();
 		onClickButtonMenuListViewObserv();
-		varGlobal_UserConnected = "1";
+		varGlobal_UserConnected = ""+vId_de_lusager+"";
 
 		document.getElementById("tool_button_deconnecter").style.visibility = "visible";
 		document.getElementById("tool_button_seconnecter").style.visibility = "hidden";

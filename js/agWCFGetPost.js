@@ -6,6 +6,9 @@ http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/G
 
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/GetObservation/1
 
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/observation/1
+
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/observation
 
 
 
@@ -216,5 +219,89 @@ function dba_InsertUsager() {
             alert(xhr.responseText);
         }
     });
+
+}
+/*
+function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+*/
+function wcf_InsertObservation(un_observ1) {
+ 	//http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/observation/1
+	//un_observ1 ={"DateObservation":"2014-01-01","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Titre":"sdada"}
+	
+	/*
+	"strObserv_Id": 111111,
+	"strObserv_DateObservation": 1394148405287,
+	"strObserv_Position_lat": 345.6775,
+	"strObserv_Position_long": 47.6776,			
+	"strObserv_IDUsager": 111111,		
+	"strObserv_IDOiseau": 121212,	
+	"strObserv_Titre": "Moineau", 
+	"strObserv_Resume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
+	*/	
+	
+	
+	
+	un_observ1.strObserv_DateObservation = convertTimeStampToDate(un_observ1.strObserv_DateObservation);
+	un_observ1.strObserv_IDOiseau = parseInt(un_observ1.strObserv_IDOiseau, 10);
+	un_observ1.strObserv_IDUsager = parseInt(un_observ1.strObserv_IDUsager, 10);
+	un_observ1.strObserv_Position_lat = parseFloat(un_observ1.strObserv_Position_lat);
+	un_observ1.strObserv_Position_long = parseFloat(un_observ1.strObserv_Position_long);
+	delete un_observ1["strObserv_Resume"];
+	delete un_observ1["strObservFlagInsertUpdate"];
+	delete un_observ1["arrObservLesPhotos"];
+	
+	
+	dataToSend = JSON.stringify(un_observ1, null, "\t");
+
+	
+	dataToSend = dataToSend.replace(/strObserv_Id/g, "Id");
+	dataToSend = dataToSend.replace(/strObserv_DateObservation/g, "DateObservation");
+	dataToSend = dataToSend.replace(/strObserv_IDOiseau/g, "IDOiseau");
+	dataToSend = dataToSend.replace(/strObserv_IDUsager/g, "IDUsager");
+	dataToSend = dataToSend.replace(/strObserv_Position_lat/g, "Latitude");
+	dataToSend = dataToSend.replace(/strObserv_Position_long/g, "Longitude");
+	dataToSend = dataToSend.replace(/strObserv_Titre/g, "Titre");
+	
+	
+    //jsonp: true, processData: true,
+	document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n"+dataToSend+"\n";
+	//alert("dataToSend:"+dataToSend);
+	
+	
+	
+    $.ajax({
+        type: "POST",
+        dataType: "json",        
+        url: "/WCF_Synthese/ServiceWCF_Synthese.svc/observation",
+        contentType: "application/json; charset=utf-8",
+        data: dataToSend,
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data, null, "\t");
+       
+           
+			//alert(obj);
+
+		   return obj;
+			
+			
+			
+
+        },
+        error: function (xhr, textStatus) {
+            alert(xhr.responseText);
+        }
+    });
+	
+	
 
 }

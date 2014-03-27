@@ -143,6 +143,16 @@ var is_valid = (new Date(la_bonne_date)).getTime() > 0;
 			le_getHours + ":" +
 			le_getMinutes + ":" +
 			le_getSeconds;
-		return la_date2;
+			
+			
+		var la_date3 =
+			la_date.getFullYear() + "-" +
+			(le_getMonth) + "-" +
+			le_getDate;
+			
+			
+			
+			
+		return la_date3;
 	}
 }
