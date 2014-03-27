@@ -104,8 +104,10 @@ function agConvertDate2(la_dadate) {
 	return la_dadate.getFullYear() + "/" + dm + "/" + dd;
 }
 
+function convertDateToTimestamp(une_bonn_date) {
 
-
+	return un_timestamp = new Date(une_bonn_date).getTime();
+}
 function convertTimeStampToDate(la_bonne_date) {
 
 

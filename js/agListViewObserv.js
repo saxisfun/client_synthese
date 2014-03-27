@@ -96,36 +96,112 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 					if (request.status == 200 || request.status == 0) {
 					
 						var str_output = request.responseText;
-						str_output = JSON.parse(str_output);
-						var temp98877 = JSON.stringify(str_output, null, "\t"); 
-						alert("downloader_les_observations_dans_localstorage1:"+temp98877);
-						
 					
-						//storageDate.date1 = todaysDate;
+						if(dataAdapterSwitch_dataFromIIS){
 
-						//jsonRenamer();
+
+							/////////////Conversion du json à l'entrée//////////////////////////////
+							var str_outpu2 = JSON.parse(str_output);
+							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
+							var dataReceived = JSON.stringify(str_outpu2, null, "\t"); 
+							//renomer var
+	/*
+	"strObserv_DateObservation": "2012-01-01",
+		"Detail": null,
+		"strObserv_IDOiseau": "1",
+		"strObserv_IDUsager": "1",
+		"strObserv_Id": 1,
+		"strObserv_Position_lat": "1",
+		"strObserv_Position_long": "1",
+		"strObserv_Titre": "Test",
+		"Usager": {
+			"ID": 1,
+			"Nom": "Raymond",
+			"NomUsager": "rferland"
+		}					
+		*/					
+							
+							dataReceived = dataReceived.replace(/Id/g, "strObserv_Id");
+							dataReceived = dataReceived.replace(/DateObservation/g, "strObserv_DateObservation");
+							dataReceived = dataReceived.replace(/Detail/g, "strObserv_Resume");
+							dataReceived = dataReceived.replace(/IDOiseau/g, "strObserv_IDOiseau");
+							dataReceived = dataReceived.replace(/IDUsager/g, "strObserv_IDUsager");
+							dataReceived = dataReceived.replace(/Latitude/g, "strObserv_Position_lat");
+							dataReceived = dataReceived.replace(/Longitude/g, "strObserv_Position_long");
+							dataReceived = dataReceived.replace(/Titre/g, "strObserv_Titre");		
+
+								
 						
-						//str_output = str_output.replace(/"DateObservation":/g, "");
+							var arr_new_json_pour_enlever_element_parent = [];
+							
+							var obj_dataReceived = JSON.parse(dataReceived);
+							//alert(obj_dataReceived.GetAllObservationResult.length);
+							for (var i=0; i < obj_dataReceived.GetAllObservationResult.length; i++){
+								
+								var theObject_obs = obj_dataReceived.GetAllObservationResult[i];	
+
+								//conversion de type
+								theObject_obs.strObserv_DateObservation = convertDateToTimestamp(theObject_obs.strObserv_DateObservation);
+
+								theObject_obs.strObserv_IDOiseau = theObject_obs.strObserv_IDOiseau.toString();
+
+
+								theObject_obs.strObserv_IDUsager = theObject_obs.strObserv_IDUsager.toString();
+								theObject_obs.strObserv_Position_lat = theObject_obs.strObserv_Position_lat.toString();
+								theObject_obs.strObserv_Position_long = theObject_obs.strObserv_Position_long.toString();
+
+
+								//delete theObject_obs["Oiseau"];
+
+
+
+
+
+								
+								arr_new_json_pour_enlever_element_parent.push(theObject_obs);
+								
+							
+								//						
+								
+								
+	
+								//delete theObject_obs["strObservFlagInsertUpdate"];
+								//delete theObject_obs["arrObservLesPhotos"];								
+			
+							}
+							
+							
+							
+							
+							
+							
+
+							str_output = JSON.stringify(arr_new_json_pour_enlever_element_parent, null, "\t");
+							
+							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
+						
+							
+							//alert("str_output:"+str_output);
+							
+
+
+						}					
+		
 						
 						
-						
-						
-						
-						
-						
-						
-						
-						
+						//////////////////////////////////////////
+					
+					
 						//storageObs = str_output;
 						try {
 						
 						//canceller le localstaorage temporairement 
-							//localStorage.setItem("lsListViewObservArray", str_output);
-							//localStorage.setItem("lsListViewObservLastDate", todaysDate);
+							localStorage.setItem("lsListViewObservArray", str_output);
+							localStorage.setItem("lsListViewObservLastDate", todaysDate);
 							
 							
 							callback_de_downloader_les_observations_dans_localstorage();
-							
+							//alert("callback_de_downloader_les_observations_dans_localstorage end");
 						}
 						catch (e) {
 								alert("Storage failed: " + e);                

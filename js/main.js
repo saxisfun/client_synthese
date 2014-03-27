@@ -647,7 +647,7 @@ function callBack_du_login(obj_json) {
 		
 		varGlobal_UserConnected = "0";
 		
-		alert(obj_json.LoginResult.ID+"/"+obj_json.LoginResult.NomUsager)
+		//alert(obj_json.LoginResult.ID+"/"+obj_json.LoginResult.NomUsager)
 		
 		
 		if (obj_json.LoginResult.ID !== "0" && obj_json.LoginResult.NomUsager !== null) 
@@ -889,7 +889,7 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto) {
 
 function afficheEcranObservations(un_observation_ici, la_index) {
 
-
+window.scrollTo(0, 60);
 
 
 

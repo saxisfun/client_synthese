@@ -123,6 +123,11 @@ function dba_Login( pUserName, pPassword) {
         },
         error: function (xhr, textStatus) {
             alert(xhr.responseText);
+					
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +xhr.responseText;
+	
+			
+			
         }
     });
 
@@ -154,18 +159,12 @@ function dba_InsertUsager() {
  	
 
 	/*
-	var Courriel = $("#txtCourriel").val(); 
-	var EstAdmin = $("#checkboxAdmin").prop("checked");
-	var MotDePasse = $("#txtMotDePasse").val();
-	var Nom  = $("#txtNom").val();
-	var NomUsager = $("#TextNomUsager").val();
-   
-	datas = { "Courriel": Courriel, 
-                "EstAdministrateur": EstAdmin, 
-                "MotDePasse": MotDePasse, 
-                "Nom": Nom, 
-                "NomUsager": NomUsager };
-	saxisfun@gmail.com
+	
+{"DateObservation":"2014-01-01","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Titre":"sdada"}
+
+
+
+
 	 */		
 	datas = {};
 			
@@ -207,8 +206,8 @@ function dba_InsertUsager() {
                 alert(obj.valueOf('MessageErreur'));
             }*/
            
-  alert(obj);
-
+ alert("1111"+obj);
+//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +obj;
 		   return obj;
 			
 			
@@ -216,7 +215,11 @@ function dba_InsertUsager() {
 
         },
         error: function (xhr, textStatus) {
-            alert(xhr.responseText);
+            
+			  alert("22222"+xhr.responseText);
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +xhr.responseText;
+			
+			
         }
     });
 
@@ -231,7 +234,7 @@ function sleep(miliseconds) {
 */
 function wcf_InsertObservation(un_observ1) {
  	//http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/observation/1
-	//un_observ1 ={"DateObservation":"2014-01-01","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Titre":"sdada"}
+	un_observ2 ={"DateObservation":"2014-01-01","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Detail":"11aa1111111","Titre":"22ss222222"}
 	
 	/*
 	"strObserv_Id": 111111,
@@ -251,11 +254,11 @@ function wcf_InsertObservation(un_observ1) {
 	un_observ1.strObserv_IDUsager = parseInt(un_observ1.strObserv_IDUsager, 10);
 	un_observ1.strObserv_Position_lat = parseFloat(un_observ1.strObserv_Position_lat);
 	un_observ1.strObserv_Position_long = parseFloat(un_observ1.strObserv_Position_long);
-	delete un_observ1["strObserv_Resume"];
+	//delete un_observ1["strObserv_Resume"];
 	delete un_observ1["strObservFlagInsertUpdate"];
 	delete un_observ1["arrObservLesPhotos"];
 	
-	
+		
 	dataToSend = JSON.stringify(un_observ1, null, "\t");
 
 	
@@ -266,7 +269,7 @@ function wcf_InsertObservation(un_observ1) {
 	dataToSend = dataToSend.replace(/strObserv_Position_lat/g, "Latitude");
 	dataToSend = dataToSend.replace(/strObserv_Position_long/g, "Longitude");
 	dataToSend = dataToSend.replace(/strObserv_Titre/g, "Titre");
-	
+	dataToSend = dataToSend.replace(/strObserv_Resume/g, "Detail");
 	
     //jsonp: true, processData: true,
 	document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n"+dataToSend+"\n";
@@ -274,12 +277,18 @@ function wcf_InsertObservation(un_observ1) {
 	
 	
 	
+	//var ereeddree = JSON.stringify(dataToSend, null, "\t");	
+		
+	//alert("79999999:"+ereeddree);
+
+//dataToSend = JSON.stringify(un_observ2, null, "\t");	
+	
     $.ajax({
         type: "POST",
         dataType: "json",        
         url: "/WCF_Synthese/ServiceWCF_Synthese.svc/observation",
         contentType: "application/json; charset=utf-8",
-        data: dataToSend,
+        data: un_observ2,
         statusCode: {
             default: function () {
                 alert(status);
@@ -287,18 +296,22 @@ function wcf_InsertObservation(un_observ1) {
         },
         success: function (data) {
             obj = JSON.stringify(data, null, "\t");
-       
-           
-			//alert(obj);
-
+			
+			
+			alert("success 77777777:"+obj);
+			
 		   return obj;
-			
-			
-			
 
         },
         error: function (xhr, textStatus) {
-            alert(xhr.responseText);
+            
+		
+			
+			alert("error 777777777:"+xhr.responseText);
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +xhr.responseText;
+			
+			
+			
         }
     });
 	

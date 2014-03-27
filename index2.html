@@ -1171,7 +1171,7 @@ var varGlobal2;
 var varGlobalNomImage;
 
 
-
+//onClickButtonSynchro();
 
 /*
 var la_reponse="";
@@ -1251,10 +1251,15 @@ function creer_json_des_nouvelles_observations(){
 				if(dataAdapterSwitch_dataFromIIS){
 					//back-end wcf recoit une par une
 					
-					alert("sleep");
+					alert("sleep 1");
+					
+					
+					var sadsaasddads = JSON.stringify(observ_Object, null, "\t");
+					alert(sadsaasddads);
+					
 					wcf_InsertObservation(observ_Object);
 					//sleep(2000);
-					
+					alert("sleep 2");
 					
 				}else{
 					//back-end php recoit toute le array d'une claque
