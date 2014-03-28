@@ -926,35 +926,48 @@
 
     <!---------------------------------------------------------------->
     <!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
-    <!--  Écran Paramètres  -->	
- 	<div id="ecran_Parametres" style="text-align:center;" >
- 	<table>
+    <!--  Écran Dictionnaire 2iè modèle  -->	
 
-   <!--		
- 	 <div id="tstImage">  
- 		<h3>Paramètres:</h3>
- 		  <div id="ecran_Parametres_C1"> 
- 		    <p>txt1</p>
- 		    <p>txt2</p>
- 		  </div> 
- 		  <div id="ecran_Parametres_C2"> 
- 		    <p>txt3</p>
- 		  </div> 
-  	</div>  
-    -->
+ 
+	 <div id="ecran_Parametres" class="screen hidden" style="text-align:center;" >
+
+		<table>
+		<col style="width:40%;">        
+		<col style="width:60%;">		
+
+		<tr>
+			<td><img style="width:60px;"src="img/dictionary.png"/></td>		
+			<td> <h3> Rechercher dans le dictionnaire </h3></td>
+		</tr>
 
 
-<div id="searcharea">
-	<label for="search">Chercheur d'oiseau</label>
-	<p>Recherche dans la liste des oiseaux de la société</p>
-	<input type="search" name="search" id="search" placeholder="Donnez une partie du nom ou sa description" />
-</div>
+		<tr>
+			<td><h4>Specimen:</h4></td>
+			<td><input type="text" id="id_recherher_dict" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
+		</tr>
 
-<div id="update"></div>
-
- 	</table>	
- 	</div> 
-
+		
+		<tr> 
+			<td> 
+			<p id="resultat"></p>
+			</td>
+			<td> 
+	    		<ul class="buttons" >
+					<li>
+		   	 			<a href="#" id="load" class="switch_screen">Charger le dictionnaire</a>
+					</li>	
+	    		</ul>
+	    	</td> 
+		</tr>
+	
+	
+	
+	
+	
+		
+		</table>	
+	</div> 
+ 
 
 
 	<!---------------------------------------------------------------->
@@ -1080,6 +1093,7 @@
 	<script type="text/javascript" src="js/agULListViewPhotos.js"></script>	
 
 	
+	<script type="text/javascript" src="js/ddDictJQ.js"></script>
 	<script type="text/javascript" src="js/ddTest.js"></script>
 	<script type="text/javascript" src="js/ddListViewDict.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
