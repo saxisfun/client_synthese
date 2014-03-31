@@ -41,7 +41,7 @@ $(document).ready(function() {
 	$("#load").click(function() {
 		hide_all();
 
-		var jqxhr = $.getJSON('json/oiseaux.json', function(data) {
+		var jqxhr = $.getJSON('birds/_DescriptionDesEspeces.json', function(data) {
 			$.each(data, function(key, val) {
 				obj2cellule(val.id, val.espece, val.description,
 					val.IDPhoto, val.IDSon, val.flObsPermises);
