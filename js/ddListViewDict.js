@@ -9,13 +9,24 @@ function ClasseListViewDictionnaire(myName) {
 
 
 
-ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url, chmp_de_rech, type_de_recherche) {
+ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, type_de_recherche) {
     /* 
 	 type_de_recherche="List_view"
 	 type_de_recherche="get_espece_str"
 	 
 	 
 	 */
+	 
+	if(dataAdapterSwitch_dataFromIIS){
+
+		 var le_url="http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/getOiseau/0/100";
+	}else{
+		
+		 var le_url="json/dictionnaire.json";
+	}
+	 
+	
+	 
 	 
 //	alert('ddXMLHttpDictionnaire le_url: '+le_url);
  	try {
@@ -29,6 +40,129 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url, chmp_de_r
              if (request.readyState == 4) {
                  if (request.status == 200 || request.status == 0) {
  					str_output = request.responseText;
+					
+					
+					if(dataAdapterSwitch_dataFromIIS){
+
+						
+
+						
+						var str_outpu2 = JSON.parse(str_output);
+						
+						var une_variable_json = {};
+						une_variable_json.result = [];
+						//alert(str_outpu2.GetAllOiseauxResult.OiseauxWCF.length);
+						for (var i=0; i < str_outpu2.GetAllOiseauxResult.OiseauxWCF.length; i++){
+			
+							var theObject_oiseau = str_outpu2.GetAllOiseauxResult.OiseauxWCF[i];	
+
+							//conversion de type
+							
+							
+							/*
+							theObject_obs.strObserv_DateObservation = convertDateToTimestamp(theObject_obs.strObserv_DateObservation);
+							//alert("111111111111111111111:"+theObject_obs.strObserv_DateObservation)
+							theObject_obs.strObserv_IDOiseau = theObject_obs.strObserv_IDOiseau.toString();
+							theObject_obs.strObserv_IDUsager = theObject_obs.strObserv_IDUsager.toString();
+							//strObs_Ois_Nom
+							//strObs_Usr_NomUsager
+							//strObs_Usr_NomComplet
+							
+							theObject_obs.strObserv_Position_lat = theObject_obs.strObserv_Position_lat.toString();
+							theObject_obs.strObserv_Position_long = theObject_obs.strObserv_Position_long.toString();
+							theObject_obs.arrObservLesPhotos = [];
+							//delete theObject_obs["MessageErreur"];
+							*/
+							
+							//Effacer des elements du json
+							delete theObject_oiseau["MessageErreur"];
+							delete theObject_oiseau["CrisOiseau"];
+														
+							//Cancellé l'image de Raymond parce qu'un peut downloader l'image mais pas la visionner dans un fureteur
+							//Bin en tous cas peut etre, mais j'ai plus de temps donc je hardcode les images ici
+							//var debut_url = "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image/oiseau/10";
+							//var debut_url = "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc";
+							//var debut_url = "http://periodiqco1.web703.discountasp.net/WCF_Synthese/WCF_Synthese/web/birds/aigrette_garzette.jpg";
+							//var url_au_complet = debut_url+""+theObject_oiseau.Photos[0].Path;
+							
+							var le_idd = theObject_oiseau["ID"];
+							//alert("le_idd:"+le_idd);
+							var url_au_complet = "aigrette_garzette";
+							if(le_idd == 1){ url_au_complet = "aigle_royal";}
+							if(le_idd == 2){ url_au_complet = "aigrette_bleue";}
+							if(le_idd == 3){ url_au_complet = "aigrette_garzette";}
+							if(le_idd == 4){ url_au_complet = "grand_heron.jpg";}
+							if(le_idd == 5){ url_au_complet = "arlequin_plongeur.jpg";}
+							if(le_idd == 6){ url_au_complet = "harfang_des_neiges.jpg";}
+							if(le_idd == 7){ url_au_complet = "hirondelle_rustique.jpg";}
+							if(le_idd == 8){ url_au_complet = "merle_amerique.jpg";}
+							if(le_idd == 9){ url_au_complet = "moineau.jpg";}
+							if(le_idd == 10){ url_au_complet = "sizerin_flamme.jpg";}
+
+
+
+							theObject_oiseau["IDPhoto"] = url_au_complet;
+							theObject_oiseau["IDSon"] = url_au_complet;
+
+
+
+
+							delete theObject_oiseau["Photos"];	
+
+							
+							
+							//Renommer des elements au json
+							theObject_oiseau["id"] = theObject_oiseau["ID"];
+							delete theObject_oiseau["ID"];
+							
+							theObject_oiseau["espece"] = theObject_oiseau["Espece"];
+							delete theObject_oiseau["Espece"];
+							
+							theObject_oiseau["description"] = theObject_oiseau["Description"];
+							delete theObject_oiseau["Description"];	
+							
+							//Ajouter des elements au json
+							//theObject_oiseau["IDPhoto"] = "";
+							
+							theObject_oiseau["flObsPermises"] = true;
+						
+							une_variable_json.result.push(theObject_oiseau);
+			
+							/*
+							"id": 1,
+							"espece": "Aigle royal",
+							"description": "L'Aigle royal (Aquila chrysaetos) est une espèce de grands rapaces de la famille des Accipitridae. C'est un oiseau brun foncé, avec un plumage plus brun-doré sur la tête et le cou. L'aigle royal utilise son agilité, sa vitesse et ses serres extrêmement puissantes pour attraper ses proies : des lapins, des marmottes, des écureuils, et de grands mammifères comme les renards, les chats sauvages et domestiques, de jeunes chèvres de montagne, de jeunes bouquetins, et de jeunes cervidés. Il consomme aussi des charognes, si les proies sont rares, ainsi que des reptiles. Des oiseaux, dont des espèces de grande taille comme des cygnes ou des grues, des corbeaux et des Goélands marins ont tous été reportés comme proies potentielles.",
+							"IDPhoto": "aigle_royal",
+							"IDSon": "aigle_royal",
+							"flObsPermises": true
+							*/
+							str_output2 = JSON.stringify(une_variable_json, null, "\t");
+							str_output = str_output2;		
+						
+						}
+					
+					}else{
+						
+						
+					}					
+
+					
+					
+					document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
+
+					
+					
+					
+					
+					/*
+					var sadsaasddads = JSON.stringify(str_outpu2, null, "\t");
+					alert(sadsaasddads);
+					
+					
+					document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + sadsaasddads+"\n--------------------------------------------------------------------\n\n";
+					*/
+	
+					
 					file2obj(str_output, chmp_de_rech, type_de_recherche);              
                  }
              }
@@ -92,7 +226,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url, chmp_de_r
 			if (le_bon_id == ch_de_rech)
 			{
 				//alert("yeaaa:"+localString.result[i].espece);
-				document.getElementById('id_Observ_nom_oiseau_data').value = localString.result[i].espece;
+				document.getElementById('id_Observ_oiseau_espece_data').value = localString.result[i].espece;
 			}
 		}		
 	 }
@@ -162,8 +296,9 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url, chmp_de_r
   
   
  	var newP1 = document.createElement("p");
-	var newP1Content = document.createTextNode(tronquetxt(la_descrip));
- 	newP1.setAttribute("class", "bird_descript");
+	//var newP1Content = document.createTextNode(tronquetxt(la_descrip));
+ 	var newP1Content = document.createTextNode(la_descrip);
+	newP1.setAttribute("class", "bird_descript");
  	newP1.appendChild(newP1Content);	
 	newDiv1.appendChild(newP1);	
 	

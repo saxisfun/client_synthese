@@ -57,8 +57,14 @@ $(document).ready(function() {
 			var ix = 0
 			for (var i = 0; i < vecteurLgnDictionnaire.length; i++) {
 				var new_img = document.createElement("img");
-				new_img.src = "birds/" + vecteurLgnDictionnaire[i].IDPhoto + ".jpg";
-
+				
+				
+				
+				//new_img.src = "birds/" + vecteurLgnDictionnaire[i].IDPhoto + ".jpg";
+				new_img.src = "birds/" + vecteurLgnDictionnaire[i].IDPhoto;
+				
+				
+				
 				new_img.onload = function() {
 					var canvas = document.createElement('canvas');
 					canvas.width = this.naturalWidth;

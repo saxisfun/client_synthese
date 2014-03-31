@@ -10,9 +10,18 @@ function ClasseListViewComm(myName) {
 
 
 
-ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
+ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_id_obs) {
 
 //alert(le_url);
+
+	
+
+//var le_url = "comm_dwn.php?le_id_de_obs="+le_id_obs+"";
+	if(dataAdapterSwitch_dataFromIIS){
+		var le_url = "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/commentaire/"+le_id_obs;
+	}else{
+		var le_url = "comm_dwn.php?le_id_de_obs="+le_id_obs+"";
+	}	
 
 	var storageFiles = JSON.parse(localStorage.getItem("storageFilesFichiers3")) || {},
 		storageFilesDate = storageFiles.date1,
@@ -39,6 +48,53 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 				if (request.status == 200 || request.status == 0) {
 
 					str_output = request.responseText;
+					
+							var str_outpu2 = JSON.parse(str_output);
+							var data2Received = JSON.stringify(str_outpu2, null, "\t"); 
+							//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + data2Received+"\n--------------------------------------------------------------------\n\n";
+							document.getElementById("id_textarea_01").value = data2Received+"\n--------------------------------------------------------------------\n\n";
+							
+							//renomer var
+			
+							data2Received = data2Received.replace(/\WDate\W/g, '"strComm_comm_Date"');
+							data2Received = data2Received.replace(/\WIDUsager\W/g, '"strComm_comm_UserId"');
+							data2Received = data2Received.replace(/\WId\W/g, '"strComm_comm_Id"');
+							data2Received = data2Received.replace(/\WTexte\W/g, '"strComm_comm_Resume"');
+							data2Received = data2Received.replace(/\WobservationId\W/g, '"strComm_comm_ObservationId"');			
+					
+					//alert(data2Received);
+/*
+		"strComm_comm_Id": 1,
+		"strComm_comm_Date": 1394144405287,
+		"strComm_comm_ObservationId": "1",
+		"strComm_comm_UserId": "2",
+		"strComm_comm_Resume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam, ut ipsum ut consequat. Vero, et ut facilisis dolor sed, illum ipsum esse dolore feugait, nonummy adipiscing euismod. Facilisi qui, esse odio praesent te te, ex duis."
+*/	
+
+
+
+
+					
+	/*				
+[
+  {
+    "IDUsager": 1,
+    "Id": 0,
+    "Texte": "blabla",
+    "observationId": 1
+  },
+  {
+    "IDUsager": 1,
+    "Id": 0,
+    "Texte": "Commentaire 2",
+    "observationId": 1
+  }
+]					
+	*/				
+					
+					
+					
+					
 /*
 					storageFiles.date1 = todaysDate;
 					storageFiles.output = str_output;
@@ -48,7 +104,7 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_url) {
 						alert("Storage failed: " + e);
 					}
 */
-					objListViewComm.fillCommListView(str_output);
+					objListViewComm.fillCommListView(data2Received);
 
 				}
 			}

@@ -18,7 +18,14 @@ function ClasseObservation() {
 	this.strObserv_Id = 0;
 	this.strObserv_IDOiseau = 0;
 	this.strObserv_IDUsager = 0;
-
+	this.strObserv_Oiseau={};
+	this.strObserv_Oiseau.strObs_Ois_Nom = "";
+	this.strObserv_Oiseau.strObs_Ois_Espece = "";
+	
+	this.strObserv_Usager={};
+	this.strObserv_Usager.strObs_Usr_NomUsager = "";
+	this.strObserv_Usager.strObs_Usr_NomComplet = "";
+	
 	this.strObserv_Titre = "";
 	this.strObserv_Resume = "";
 

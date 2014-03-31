@@ -52,42 +52,7 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 				resourcePath = 'http://198.100.145.177/cegep/obs_dwn.php';
 			}		
 	
-
-
-/*
-{
-	"DateObservation": "2014-01-01",
-	"IDOiseau": 1,
-	"IDUsager": 1,
-	"Id": 0,
-	"Latitude": 123,
-	"Longitude": 345,
-	"Titre": "sdada"
-}
-	
-			{
-  "GetAllObservationResult": [
-    {
-      "DateObservation": "2012-01-01",
-      "IDOiseau": 1,
-      "IDUsager": 1,
-      "Id": 0,
-      "Latitude": 1,
-      "Longitude": 1,
-      "Oiseau": {
-        "Description": "C'est bon",
-        "Espece": "Poulet",
-        "ID": 1
-      },
-      "Titre": null,
-      "Usager": {
-        "ID": 1,
-        "Nom": "Raymond",
-        "NomUsager": "rferland"
-      }
-    },
-			
-*/			
+		
 			var request = new XMLHttpRequest();
 			
 			request.open("GET", resourcePath, true);
@@ -121,35 +86,74 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 		}					
 		*/					
 							
-							dataReceived = dataReceived.replace(/Id/g, "strObserv_Id");
-							dataReceived = dataReceived.replace(/DateObservation/g, "strObserv_DateObservation");
-							dataReceived = dataReceived.replace(/Detail/g, "strObserv_Resume");
-							dataReceived = dataReceived.replace(/IDOiseau/g, "strObserv_IDOiseau");
-							dataReceived = dataReceived.replace(/IDUsager/g, "strObserv_IDUsager");
-							dataReceived = dataReceived.replace(/Latitude/g, "strObserv_Position_lat");
-							dataReceived = dataReceived.replace(/Longitude/g, "strObserv_Position_long");
-							dataReceived = dataReceived.replace(/Titre/g, "strObserv_Titre");		
+							dataReceived = dataReceived.replace(/\WId\W/g, '"strObserv_Id"');
+							dataReceived = dataReceived.replace(/\WDateObservation\W/g, '"strObserv_DateObservation"');
+							dataReceived = dataReceived.replace(/\WDetail\W/g, '"strObserv_Resume"');
+							/////Oiseau
+							dataReceived = dataReceived.replace(/\WIDOiseau\W/g, '"strObserv_IDOiseau"');
+							dataReceived = dataReceived.replace(/\WOiseau\W/g, '"strObserv_Oiseau"');
+							dataReceived = dataReceived.replace(/\WDescription\W/g, '"strObs_Ois_Nom"');
+							dataReceived = dataReceived.replace(/\WEspece\W/g, '"strObs_Ois_Espece"');
+						
+							/////Usager
+							dataReceived = dataReceived.replace(/\WIDUsager\W/g, '"strObserv_IDUsager"');							
+							dataReceived = dataReceived.replace(/\WUsager\W/g, '"strObserv_Usager"');
+							dataReceived = dataReceived.replace(/\WNom\W/g, '"strObs_Usr_NomComplet"');
+							dataReceived = dataReceived.replace(/\WNomUsager\W/g, '"strObs_Usr_NomUsager"');
+							
+							//this.strObs_Usr_NomUsager = "";
+							//this.strObs_Usr_NomComplet = "";
+							
+							
+							dataReceived = dataReceived.replace(/\WLatitude\W/g, '"strObserv_Position_lat"');
+							dataReceived = dataReceived.replace(/\WLongitude\W/g, '"strObserv_Position_long"');
+							dataReceived = dataReceived.replace(/\WTitre\W/g, '"strObserv_Titre"');		
 
-								
+							
+							
+							
+//alert("dataReceived:\n\n"+dataReceived);
+							
 						
 							var arr_new_json_pour_enlever_element_parent = [];
 							
 							var obj_dataReceived = JSON.parse(dataReceived);
+							
+							//alert(dataReceived);
+							
+							
 							//alert(obj_dataReceived.GetAllObservationResult.length);
 							for (var i=0; i < obj_dataReceived.GetAllObservationResult.length; i++){
 								
 								var theObject_obs = obj_dataReceived.GetAllObservationResult[i];	
 
 								//conversion de type
+								
+								
+								
 								theObject_obs.strObserv_DateObservation = convertDateToTimestamp(theObject_obs.strObserv_DateObservation);
-
+								
+								//alert("111111111111111111111:"+theObject_obs.strObserv_DateObservation)
+								
+								
+								
 								theObject_obs.strObserv_IDOiseau = theObject_obs.strObserv_IDOiseau.toString();
 
 
 								theObject_obs.strObserv_IDUsager = theObject_obs.strObserv_IDUsager.toString();
+								
+								
+								
+								//strObs_Ois_Nom
+								//strObs_Usr_NomUsager
+								//strObs_Usr_NomComplet
+								
 								theObject_obs.strObserv_Position_lat = theObject_obs.strObserv_Position_lat.toString();
 								theObject_obs.strObserv_Position_long = theObject_obs.strObserv_Position_long.toString();
 
+								
+								theObject_obs.arrObservLesPhotos = [];
+								
 
 								//delete theObject_obs["Oiseau"];
 
@@ -173,13 +177,13 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 							
 							
 							
-							
+						
 							
 
 							str_output = JSON.stringify(arr_new_json_pour_enlever_element_parent, null, "\t");
 							
 							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
-						
+//alert("str_output:\n\n"+str_output);							
 							
 							//alert("str_output:"+str_output);
 							
@@ -379,7 +383,17 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	var le_strObserv_Id= parseInt(objLObservation1.strObserv_Id, 10); 
 	//var le_ObservIdDeLoiseau = parseInt(objLObservation1.strObserv_IDOiseau, 10); 	
 	
-	var le_ObservNoDeLusager = parseInt(objLObservation1.strObserv_IDUsager, 10); 
+	var le_ObservNoDeLusager = parseInt(objLObservation1.strObserv_IDUsager, 10);
+	
+	//var le_ObservNoDeLusager = objLObservation1.strObs_Ois_Nom; 
+	//var le_ObservOiseauEspece = objLObservation1.strObs_Ois_Espece; 
+	
+	//var le_ObservNomUsager = objLObservation1.strObs_Usr_NomUsager; 
+	//var le_ObservNomUsager = objLObservation1.strObs_Usr_NomComplet; 
+	
+	
+	
+	
 	
 	var le_ObservTitre = objLObservation1.strObserv_Titre; 
 	var le_ObservDescrip = objLObservation1.strObserv_Resume; 
