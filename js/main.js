@@ -152,7 +152,15 @@ function affiche_ecran_commentaire(un_comm_id, un_timestamp, un_observ_id, un_us
 	hide_all();
 	show_ecran_commentaire();
 	
-
+	le_comm_timestamp = parseFloat(document.getElementById('id_comm_timestamp_data').value); 
+	
+	un_date = convertTimeStampToDate(le_comm_timestamp);
+	
+	
+	document.getElementById('com_id_titre').innerHTML = "Observation: "+document.getElementById("id_ObservNoAutoGenereParlaDB_data").value +', Date:'+un_date;
+	
+	
+	
 	document.getElementById('id_comm_id_data').value = un_comm_id;
 	document.getElementById('id_comm_timestamp_data').value = un_timestamp;
 	document.getElementById('id_comm_observ_id_data').value = un_observ_id;
@@ -276,12 +284,24 @@ function onClickBoutonSaveObservation() {
 
 	var le_NoAutoGenereParlaDB = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
 	var le_NoDeLusager = document.getElementById('id_ObservNoDeLusager_data').value;
-
-	var le_id_de_loiseau = document.getElementById('id_Observ_id_oiseau_data').value;
-
+	
 
 
-
+	var le_id_de_loiseau = document.getElementById('id_Observ_oiseau_id_data').value;
+	var le_Ois_Nom = document.getElementById('id_Observ_oiseau_descrip_data').value;
+	
+	
+	
+	
+	var le_Ois_Espece = document.getElementById('id_Observ_oiseau_espece_data').value;
+	
+	
+	var le_Usr_NomUsager = document.getElementById('id_ObservNomDeLusager_data').value;
+	var le_Usr_NomComplet = document.getElementById('id_ObservNomComplet_data').value;;
+	
+	
+	
+	
 	var le_PositionGPS_lat = document.getElementById('id_ObservLaPositionGPS_lat_data').value;
 	var le_PositionGPS_long = document.getElementById('id_ObservLaPositionGPS_long_data').value;
 
@@ -366,6 +386,14 @@ function onClickBoutonSaveObservation() {
 			observObject3.strObserv_Id = parseInt(le_NoAutoGenereParlaDB, 10);
 			observObject3.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
 			observObject3.strObserv_IDUsager = parseInt(le_NoDeLusager, 10);
+			observObject3.strObserv_Oiseau.strObs_Ois_Nom = le_Ois_Nom;
+			observObject3.strObserv_Oiseau.strObs_Ois_Espece = le_Ois_Espece;
+			
+			
+			observObject3.strObserv_Usager.strObs_Usr_NomUsager = le_Usr_NomUsager;
+			observObject3.strObserv_Usager.strObs_Usr_NomComplet = le_Usr_NomComplet;
+			
+			
 			observObject3.strObserv_Titre = le_titre;
 			observObject3.strObserv_Resume = le_resume;
 			observObject3.strObserv_Position_lat = parseFloat(le_PositionGPS_lat);
@@ -399,9 +427,13 @@ function onClickBoutonSaveObservation() {
 		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Id = parseInt(le_NoAutoGenereParlaDB, 10);
 		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
 		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_IDUsager = parseInt(le_NoDeLusager, 10);
-
-
-
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Oiseau.strObs_Ois_Nom = le_Ois_Nom;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Oiseau.strObs_Ois_Espece = le_Ois_Espece;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Usager.strObs_Usr_NomUsager = le_Usr_NomUsager;
+		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Usager.strObs_Usr_NomComplet = le_Usr_NomComplet;
+		
+		
+		
 
 		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Titre = le_titre;
 		objListViewObservations.myListViewObservArray[id_cell_index].strObserv_Resume = le_resume;
@@ -586,18 +618,26 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 
 		var observObject7 = new ClasseObservation();
 
-		observObject7.strObservFlagInsertUpdate = "";
+		observObject7.strObservFlagInsertUpdate = "I";
 		
 	var tempDate = new Date().getTime();
 	tempDate = parseFloat(tempDate); 
 	
 	
-		
+		//alert("le_id_de_loiseau:"+le_id_de_loiseau);
 		
 		observObject7.strObserv_DateObservation = tempDate;
 		observObject7.strObserv_Id = 0;
 		observObject7.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
 		observObject7.strObserv_IDUsager = parseInt(varGlobal_UserConnected);
+		observObject7.strObserv_Oiseau.strObs_Ois_Nom = "";
+		observObject7.strObserv_Oiseau.strObs_Ois_Espece = "";
+		observObject7.strObserv_Usager.strObs_Usr_NomUsager = "";
+		observObject7.strObserv_Usager.strObs_Usr_NomComplet = "";
+		
+		
+		
+		
 		observObject7.strObserv_Titre = "";
 		observObject7.strObserv_Resume = "";
 		//observObject7.strObserv_Position_lat = 0;
@@ -907,7 +947,11 @@ window.scrollTo(0, 60);
 	//alert("la_index:"+la_index);
 	//alert(id_ObservDescrip+"/"+id_ObservDiskName);
 	
-	le_ObservTimestamp=parseFloat(document.getElementById('id_ObservTimeStamp_data').value); 
+	//alert("1111:"+un_observation_ici.strObserv_DateObservation);
+	
+	le_ObservTimestamp=parseFloat(un_observation_ici.strObserv_DateObservation); 
+	
+	//alert("2222:"+le_ObservTimestamp);
 	
 	un_date = convertTimeStampToDate(le_ObservTimestamp);
 	
@@ -920,16 +964,34 @@ window.scrollTo(0, 60);
 	document.getElementById('id_ObservNoAutoGenereParlaDB_data').value = parseInt(un_observation_ici.strObserv_Id, 10);
 	
 	document.getElementById('obs_id_titre').innerHTML = "Observation: "+document.getElementById("id_ObservNoAutoGenereParlaDB_data").value +', Date:'+un_date;
+	//alert(document.getElementById('obs_id_titre').innerHTML);
 	
 	
 	
-	
+
 	
 	
 	document.getElementById('id_ObservNoDeLusager_data').value = parseInt(un_observation_ici.strObserv_IDUsager, 10);
-	document.getElementById('id_Observ_id_oiseau_data').value = parseInt(un_observation_ici.strObserv_IDOiseau, 10);
+	
+	document.getElementById('id_Observ_oiseau_id_data').value = parseInt(un_observation_ici.strObserv_IDOiseau, 10);
 
-
+	document.getElementById('id_Observ_oiseau_descrip_data').value = un_observation_ici.strObserv_Oiseau.strObs_Ois_Nom;
+	document.getElementById('id_Observ_oiseau_espece_data').value = un_observation_ici.strObserv_Oiseau.strObs_Ois_Espece;	
+	
+//alert("str_output:\n\n"+str_output);	
+	
+	
+	
+	
+	
+	
+	
+	document.getElementById('id_ObservNomDeLusager_data').value = un_observation_ici.strObserv_Usager.strObs_Usr_NomUsager;
+	document.getElementById('id_ObservNomComplet_data').value = un_observation_ici.strObserv_Usager.strObs_Usr_NomComplet;
+	
+	
+	
+	
 	document.getElementById('id_ObservLaPositionGPS_lat_data').value = parseFloat(un_observation_ici.strObserv_Position_lat);
 	document.getElementById('id_ObservLaPositionGPS_long_data').value = parseFloat(un_observation_ici.strObserv_Position_long);
 
@@ -968,8 +1030,14 @@ window.scrollTo(0, 60);
 		 //alert("33333333333333333");		
 	}
 	*/
-
-	remplirEtAfficheLeULDesPhotos(la_index);
+	//observ_id = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
+	
+	//alert("observ_id:"+observ_id);
+	
+	//if(observ_id !== "0"){
+		remplirEtAfficheLeULDesPhotos(la_index);
+	//}
+	//remplirEtAfficheLeULDesPhotos(la_index);
 
 
 
@@ -983,7 +1051,7 @@ window.scrollTo(0, 60);
 	*/
 
 
-	objListViewDictionnaires.XMLHttpReqDict('json/dictionnaire.json', document.getElementById('id_Observ_id_oiseau_data').value, "get_espece_str");
+	//objListViewDictionnaires.XMLHttpReqDict('json/dictionnaire.json', document.getElementById('id_Observ_oiseau_id_data').value, "get_espece_str");
 
 
 }
@@ -993,8 +1061,19 @@ function remplirEtAfficheLeULDesPhotos(la_index) {
 
 	var objLeULDesPhotos = document.getElementsByClassName('id_ul_les_photos');
 	//alert(objLeULDesPhotos.length+"/"+this.myListViewObservArray.length);
-
-	//
+	//var la_index = parseInt(la_index, 10)-1;
+	
+	//alert("111111:"+la_index);
+	
+	
+	
+	//alert("2222222:"+objListViewObservations.myListViewObservArray[la_index]);
+	if(objListViewObservations.myListViewObservArray[la_index].arrObservLesPhotos == null){
+	
+	}else{
+	
+	}
+	//alert("5555555:"+objListViewObservations.myListViewObservArray[la_index].arrObservLesPhotos.length);
 	array_les_photos = objListViewObservations.myListViewObservArray[la_index].arrObservLesPhotos;
 
 

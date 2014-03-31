@@ -105,8 +105,22 @@ function agConvertDate2(la_dadate) {
 }
 
 function convertDateToTimestamp(une_bonn_date) {
+	
+	//"1909-09-09 09:09:09"
+	var str_An = une_bonn_date.substr(0,4);
+	var str_Mois = une_bonn_date.substr(5,2);
+	var str_Jour = une_bonn_date.substr(8,2);
+	var str_Heure = une_bonn_date.substr(11,2);
+	var str_Min = une_bonn_date.substr(14,2);
+	var str_Sec = une_bonn_date.substr(17,2);
 
-	return un_timestamp = new Date(une_bonn_date).getTime();
+	var str_date = str_Mois+"/"+str_Jour+"/"+str_An+" "+str_Heure+":"+str_Min+":"+str_Sec
+
+	//alert("str_date:"+str_date);
+	//alert("une_bonn_date:"+une_bonn_date);
+
+	var un_timestamp = new Date(str_date).getTime();
+	return un_timestamp;	
 }
 function convertTimeStampToDate(la_bonne_date) {
 
@@ -155,6 +169,6 @@ var is_valid = (new Date(la_bonne_date)).getTime() > 0;
 			
 			
 			
-		return la_date3;
+		return la_date2;
 	}
 }

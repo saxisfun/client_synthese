@@ -92,7 +92,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(le_url, chmp_de_r
 			if (le_bon_id == ch_de_rech)
 			{
 				//alert("yeaaa:"+localString.result[i].espece);
-				document.getElementById('id_Observ_nom_oiseau_data').value = localString.result[i].espece;
+				document.getElementById('id_Observ_oiseau_espece_data').value = localString.result[i].espece;
 			}
 		}		
 	 }

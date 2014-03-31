@@ -10,6 +10,18 @@ http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/o
 
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/observation
 
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/getOiseau/0/1
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/getOiseau/0/1
+
+
+Format de date
+Date dans commentaire
+Insert Observation
+Delete Observation
+Insert Commentaire
+Delete commentaire
+
+
 
 
 */
@@ -234,7 +246,17 @@ function sleep(miliseconds) {
 */
 function wcf_InsertObservation(un_observ1) {
  	//http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/observation/1
-	un_observ2 ={"DateObservation":"2014-01-01","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Detail":"11aa1111111","Titre":"22ss222222"}
+	
+	un_observ2 ={"DateObservation":"2014-02-25","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Detail":"11aa1111111","Titre":"22ss222222"}
+	
+	
+	un_observ3 ={"IDUsager":1,"Id":0, "DateObservation":"2014-04-01 12:13:14", "Latitude":123, "Longitude":456, "IDOiseau":1, "Titre":"Mon observation", "Detail":"Vraiment cool"}
+	
+	un_observ4 ={"IDUsager":1,"Id":0, "DateObservation":"2014-04-01 12:13:14", "Latitude":46.9218747, "Longitude":-71.37613929999999, "IDOiseau":1, "Titre":"Mon observation", "Detail":"Vraiment cool float"}
+	
+	
+	
+	
 	
 	/*
 	"strObserv_Id": 111111,
@@ -252,11 +274,21 @@ function wcf_InsertObservation(un_observ1) {
 	un_observ1.strObserv_DateObservation = convertTimeStampToDate(un_observ1.strObserv_DateObservation);
 	un_observ1.strObserv_IDOiseau = parseInt(un_observ1.strObserv_IDOiseau, 10);
 	un_observ1.strObserv_IDUsager = parseInt(un_observ1.strObserv_IDUsager, 10);
+	//strObs_Ois_Nom
+	//strObs_Ois_Espece
+	//strObs_Usr_NomUsager
+	//strObs_Usr_NomComplet
+	
+	
 	un_observ1.strObserv_Position_lat = parseFloat(un_observ1.strObserv_Position_lat);
 	un_observ1.strObserv_Position_long = parseFloat(un_observ1.strObserv_Position_long);
 	//delete un_observ1["strObserv_Resume"];
 	delete un_observ1["strObservFlagInsertUpdate"];
 	delete un_observ1["arrObservLesPhotos"];
+	
+
+	delete un_observ1["strObserv_Oiseau"];
+	delete un_observ1["strObserv_Usager"];
 	
 		
 	dataToSend = JSON.stringify(un_observ1, null, "\t");
@@ -264,8 +296,19 @@ function wcf_InsertObservation(un_observ1) {
 	
 	dataToSend = dataToSend.replace(/strObserv_Id/g, "Id");
 	dataToSend = dataToSend.replace(/strObserv_DateObservation/g, "DateObservation");
+	
 	dataToSend = dataToSend.replace(/strObserv_IDOiseau/g, "IDOiseau");
+	
+	
+	
+	
 	dataToSend = dataToSend.replace(/strObserv_IDUsager/g, "IDUsager");
+	
+	//strObs_Ois_Nom
+	//strObs_Ois_Espece
+	//strObs_Usr_NomUsager
+	//strObs_Usr_NomComplet
+	
 	dataToSend = dataToSend.replace(/strObserv_Position_lat/g, "Latitude");
 	dataToSend = dataToSend.replace(/strObserv_Position_long/g, "Longitude");
 	dataToSend = dataToSend.replace(/strObserv_Titre/g, "Titre");
@@ -281,14 +324,20 @@ function wcf_InsertObservation(un_observ1) {
 		
 	//alert("79999999:"+ereeddree);
 
-//dataToSend = JSON.stringify(un_observ2, null, "\t");	
+
+	
+	//dataToSend = JSON.stringify(un_observ4, null, "\t");	
+	alert(dataToSend);
+
+	
+	
 	
     $.ajax({
         type: "POST",
         dataType: "json",        
         url: "/WCF_Synthese/ServiceWCF_Synthese.svc/observation",
         contentType: "application/json; charset=utf-8",
-        data: un_observ2,
+        data: dataToSend,
         statusCode: {
             default: function () {
                 alert(status);

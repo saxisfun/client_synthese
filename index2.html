@@ -466,29 +466,37 @@
 		</tr>
 
 		<tr>
-			<td class="tdhead" style="text-align:left;"><p id="id_Observ_id_oiseau_label" >Identifiant de l'oiseau:</p></td> 
-		</tr>
-		
+			<td class="tdhead">
+			<span style="margin-top:-1px;width:25%;" id="id_Observ_oiseau_espece_label">Espèce</span>
+			<span style="margin-top:-1px;float:right;width:70%;" id="id_Observ_oiseau_descrip_label">Description</span>
+			</td>
+		</tr>	
 		
 		<tr>
 			<td class="tddata">
-			<input  type="text" readonly style="background-color:#cccccc;width:15%;" id="id_Observ_id_oiseau_data" VALUE="">
-			<input  type="text" readonly style="background-color:#cccccc;float:right;width:80%;" id="id_Observ_nom_oiseau_data" VALUE="XXXX">
-			</td> 
+			<input  type="text" readonly style="background-color:#cccccc;width:20%;" id="id_Observ_oiseau_espece_data" VALUE="">
+			<input  type="text" readonly style="background-color:#cccccc;float:right;width:10%;" id="id_Observ_oiseau_id_data" VALUE="XXXX">
+			<input  type="text" readonly style="background-color:#cccccc;float:right;width:60%;" id="id_Observ_oiseau_descrip_data" VALUE="XXXX">			
+			</td>	
+		</tr>	
+
+
+		
+		
+		<tr>
+			<td class="tdhead">
+			<span style="margin-top:-1px;width:25%;" id="id_ObservNomDeLusager_label">Usager</span>
+			<span style="margin-top:-1px;float:right;width:70%;" id="id_ObservNomComplet_label">Nom</span>
+			</td>
 		</tr>			
 		
 		
-		
-		
-		
-		
-		<tr>
-			<td class="tdhead" style="text-align:left;"><p id="id_ObservNoDeLusager_label" >Identifiant de l'usager:</p></td> 
-		</tr>
 		<tr>
 			<td class="tddata">
-			<input  type="text" readonly style="background-color:#cccccc;width:15%;" id="id_ObservNoDeLusager_data" VALUE="">
-			<input  type="text" readonly style="background-color:#cccccc;float:right;width:80%;" id="id_ObservNomDeLusager_data" VALUE="XXXX">
+			<input  type="text" readonly style="background-color:#cccccc;width:20%;" id="id_ObservNomDeLusager_data" VALUE="">
+			<input  type="text" readonly style="background-color:#cccccc;float:right;width:10%;" id="id_ObservNoDeLusager_data" VALUE="XXXX">
+			<input  type="text" readonly style="background-color:#cccccc;float:right;width:60%;" id="id_ObservNomComplet_data" VALUE="XXXX">
+
 			</td> 
 		</tr>			
 		
@@ -687,7 +695,15 @@
 
 		<table  class="table2">
 		<col style="width:100%;">        
-		<tr> 
+		<tr>
+			<td>		
+				 <EM id="com_id_titre" style="color:black;"></EM>
+				 
+			</td> 
+		</tr>			
+
+
+	<tr> 
 			
 			<td> 
 	    		<ul class="buttons">
@@ -703,34 +719,32 @@
 	    	</td> 
 		</tr>				
 		
-		<tr>
-			<td style="text-align:left;"> <h3>Ajouter un commentaire</h3></td>
-		</tr>		
-		<tr>
+	
+		<tr style="display:none;">
 			<td class="tdhead" style="text-align:left;"><p id="id_comm_id_label">Id:</p></td>	
 		</tr>
-		<tr>
+		<tr style="display:none;">
 			<td class="tddata"><input type="text"  id="id_comm_id_data"></td> 
 		</tr>	
 
-		<tr>
+		<tr style="display:none;">
 			<td class="tdhead" style="text-align:left;"><p id="id_comm_timestamp_label">Timestamp:</p></td>	
 		</tr>
-		<tr>
+		<tr style="display:none;">
 			<td class="tddata"><input type="text" READONLY id="id_comm_timestamp_data" ></td> 
 		</tr>		
 	
-		<tr>
+		<tr style="display:none;">
 			<td class="tdhead" style="text-align:left;"><p id="id_comm_observ_id_label">Observation:</p></td>	
 		</tr>
-		<tr>
+		<tr style="display:none;">
 			<td class="tddata"><input type="text"  id="id_comm_observ_id_data"  ></td> 
 		</tr>		
 	
 		<tr>
-			<td style="text-align:left;"><p id="id_comme_usager_label">Usager:</p></td>	
+			<td style="display:none;text-align:left;"><p id="id_comme_usager_label">Usager:</p></td>	
 		</tr>
-		<tr>
+		<tr style="display:none;">
 			<td><input type="text" id="id_comm_usager_id_data"  ></td> 
 		</tr>
 
@@ -739,7 +753,7 @@
 		</tr>		
 		<tr>
 			<td>
-				<textarea rows="20"  style="width:100%;" id="id_comm_resume_data" placeholder="Écrivez votre commentaire" ></textarea> 		
+				<textarea rows="7"  style="width:100%;" id="id_comm_resume_data" placeholder="Écrivez votre commentaire" ></textarea> 		
 			</td> 
 		</tr>			
 	
@@ -1269,7 +1283,7 @@ function creer_json_des_nouvelles_observations(){
 					
 					
 					var sadsaasddads = JSON.stringify(observ_Object, null, "\t");
-					alert(sadsaasddads);
+					
 					
 					wcf_InsertObservation(observ_Object);
 					//sleep(2000);
@@ -1468,7 +1482,9 @@ function onClickAfficheCommentaires()
 	
 	
 	
-	objListViewComm.agXMLHttpReqComm("comm_dwn.php?le_id_de_obs="+le_id_obs+"");
+	objListViewComm.agXMLHttpReqComm(le_id_obs);
+	
+	
 	//objListViewComm.agXMLHttpReqComm("http://198.100.145.177/cegep/comm_dwn.php");
 	
 	
