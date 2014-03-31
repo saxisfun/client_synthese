@@ -430,14 +430,14 @@ background-color: red;
 input.ajout_observ_button  {
 	position:relative;
 	right:1px;
-	top:-83px;
+	top:-1px;
 	float:right;
 
 	/*-webkit-appearance: none; 
 	-moz-appearance: none; 
 	-o-appearance: none;*/
 
-	  width: 164px;
+	  width: 159px;
 	  height: 25px;
 
 	/*
@@ -865,8 +865,9 @@ bird_imgPlus{
 	margin-left:3.5cm;
 	align:left;
 	font-family:"Verdana,Geneva,sans-serif";
-	font-weight:900x;
+	font-weight:900px;
 	font-size:25px;
+	line-height:100%;
 } 
 
 
@@ -875,6 +876,7 @@ bird_imgPlus{
 	margin-top:1cm;
 	text-indent:50px;
 	color:#478FB2;
+	line-height:100%;
 }
  
 .bird_img{

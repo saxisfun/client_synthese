@@ -11,9 +11,12 @@ function startRecherche() {
 	//alert('Recherche sur: ' + x);
 
 	hide_all();
+//alert("startRecherche");
 
 
-	objListViewDictionnaires.XMLHttpReqDict('json/dictionnaire.json', champ_de_recgerche, "List_view");
+
+
+	objListViewDictionnaires.XMLHttpReqDict(champ_de_recgerche, "List_view");
 	
 	
 	

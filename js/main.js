@@ -1051,8 +1051,7 @@ window.scrollTo(0, 60);
 	*/
 
 
-	//objListViewDictionnaires.XMLHttpReqDict('json/dictionnaire.json', document.getElementById('id_Observ_oiseau_id_data').value, "get_espece_str");
-
+	
 
 }
 
