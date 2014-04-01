@@ -542,7 +542,8 @@ function onClickBoutonDeconnecter() {
 	//showObservationListView();
 
 	onClickButtonMenuListViewObserv();
-
+	
+dba_Logout();
 
 	document.getElementById('tool_button_deconnecter').style.visibility = 'hidden';
 	document.getElementById('tool_button_seconnecter').style.visibility = 'visible';
