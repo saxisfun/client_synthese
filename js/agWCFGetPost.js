@@ -12,7 +12,7 @@ http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/o
 
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/getOiseau/0/1
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/getOiseau/0/1
-
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index2.html#
 
 Format de date
 Date dans commentaire
