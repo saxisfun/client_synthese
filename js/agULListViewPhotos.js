@@ -14,7 +14,7 @@ function effacerUnePhotoDuULListViewPhotos(index_Observ, index_Photo) {
 	//var id_cell_index = document.getElementById('id_cell_index').innerHTML;
 
 	VConfirm = ''
-	VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer cette observation?\n\n'
+	VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer cette photo?\n\n'
 	if (confirm(VConfirm)) {
 		//alert(index_Observ+"/"+index_Photo);
 		var les_lignes = document.getElementsByClassName('li_de_ul_des_photos');

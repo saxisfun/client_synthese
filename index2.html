@@ -1278,15 +1278,12 @@ function creer_json_des_nouvelles_observations(){
 				if(dataAdapterSwitch_dataFromIIS){
 					//back-end wcf recoit une par une
 					
-					alert("sleep 1");
 					
-					
-					var sadsaasddads = JSON.stringify(observ_Object, null, "\t");
-					
-					
+
 					wcf_InsertObservation(observ_Object);
+			
 					//sleep(2000);
-					alert("sleep 2");
+					
 					
 				}else{
 					//back-end php recoit toute le array d'une claque
@@ -1361,7 +1358,7 @@ function envoyer_json_dun_nouveau_commentaire_au_serveur()
 					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
 					
 					//ici oui - envoyer_json_des_nouvelles_observations_au_serveur
-					document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n\n"+str_output;
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n\n"+str_output;
 				
 					//objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
 
@@ -1398,7 +1395,7 @@ function envoyer_json_des_nouvelles_observations_au_serveur(le_myArrayDObservati
 					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
 					
 					//ici oui - envoyer_json_des_nouvelles_observations_au_serveur
-					document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n\n"+str_output;
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n\n"+str_output;
 				
 					objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
 

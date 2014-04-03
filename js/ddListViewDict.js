@@ -91,13 +91,13 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 							if(le_idd == 1){ url_au_complet = "aigle_royal";}
 							if(le_idd == 2){ url_au_complet = "aigrette_bleue";}
 							if(le_idd == 3){ url_au_complet = "aigrette_garzette";}
-							if(le_idd == 4){ url_au_complet = "grand_heron.jpg";}
-							if(le_idd == 5){ url_au_complet = "arlequin_plongeur.jpg";}
-							if(le_idd == 6){ url_au_complet = "harfang_des_neiges.jpg";}
-							if(le_idd == 7){ url_au_complet = "hirondelle_rustique.jpg";}
-							if(le_idd == 8){ url_au_complet = "merle_amerique.jpg";}
-							if(le_idd == 9){ url_au_complet = "moineau.jpg";}
-							if(le_idd == 10){ url_au_complet = "sizerin_flamme.jpg";}
+							if(le_idd == 4){ url_au_complet = "grand_heron";}
+							if(le_idd == 5){ url_au_complet = "arlequin_plongeur";}
+							if(le_idd == 6){ url_au_complet = "harfang_des_neiges";}
+							if(le_idd == 7){ url_au_complet = "hirondelle_rustique";}
+							if(le_idd == 8){ url_au_complet = "merle_amerique";}
+							if(le_idd == 9){ url_au_complet = "moineau";}
+							if(le_idd == 10){ url_au_complet = "sizerin_flamme";}
 
 
 
@@ -148,7 +148,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 
 					
 					
-					document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
 
 					
 					
@@ -159,7 +159,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 					alert(sadsaasddads);
 					
 					
-					document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + sadsaasddads+"\n--------------------------------------------------------------------\n\n";
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + sadsaasddads+"\n--------------------------------------------------------------------\n\n";
 					*/
 	
 					

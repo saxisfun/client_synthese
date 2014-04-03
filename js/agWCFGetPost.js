@@ -136,7 +136,7 @@ function dba_Login( pUserName, pPassword) {
         error: function (xhr, textStatus) {
             alert(xhr.responseText);
 					
-			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +xhr.responseText;
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +xhr.responseText;
 	
 			
 			
@@ -218,8 +218,8 @@ function dba_InsertUsager() {
                 alert(obj.valueOf('MessageErreur'));
             }*/
            
- alert("1111"+obj);
-//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +obj;
+			alert("dba_InsertUsager response success :"+obj);
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +obj;
 		   return obj;
 			
 			
@@ -228,7 +228,7 @@ function dba_InsertUsager() {
         },
         error: function (xhr, textStatus) {
             
-			  alert("22222"+xhr.responseText);
+			  alert("dba_InsertUsager response error 13212"+xhr.responseText);
 			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +xhr.responseText;
 			
 			
@@ -244,8 +244,147 @@ function sleep(miliseconds) {
    }
 }
 */
+function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
+
+
+	var str_un_observ2 = JSON.stringify(un_observ2, null, "\t");
+	
+	
+	document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_un_observ2-----------------------\n"+str_un_observ2+"\n";
+
+	
+	
+	var obj_json_les_photos_a_envoyer = {};
+	
+	obj_json_les_photos_a_envoyer.IDObservation = parseInt(le_id_de_lobservation, 10);
+	obj_json_les_photos_a_envoyer.photoList = [];
+	
+	
+	
+	alert("un_observ2.arrObservLesPhotos.length:"+un_observ2.arrObservLesPhotos.length);
+
+	for (var i=0; i < un_observ2.arrObservLesPhotos.length; i++){
+		var observ_une_photo = un_observ2.arrObservLesPhotos[i];
+		var str_le_base64 = observ_une_photo.strPhoto_Image;
+		
+		//data:image/png;base64,
+		str_le_base64 = str_le_base64.replace("data:image/png;base64,", "");
+		str_le_base64 = str_le_base64.replace('\"', '');
+		str_le_base64 = str_le_base64.replace('\"', '');
+		
+		//str_le_base64 = str_le_base64+'===';
+		
+		
+		//\""
+		
+		
+		
+		//str_le_base64 = str_le_base64.replace('\""', '');
+		
+		
+		
+		//str_le_base64 = Regex.Replace(str_le_base64, "\"", ""); 
+		//str_le_base64 = Regex.Replace(str_le_base64, "\"", ""); 
+		
+		//       "\"iV        CC\""
+		//str_le_base64 = str_le_base64+"==";
+		var temp9876 = str_le_base64.substr(0,23);
+		
+		alert(temp9876);
+		
+		//Construire le nouveau json pour envoyer les photos
+		//alert("wcf_InsertUnePhoto"+temp9876);
+		obj_json_les_photos_a_envoyer.photoList.push(str_le_base64);
+		
+		//this.myListViewObservArray.push(test3546);	
+		
+		//{"IDObservation":1,"photoList":["R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="]}
+		//observ_Object.strObservFlagInsertUpdate = "";
+		//alert("strObservFlagInsertUpdate:"+observ_Object.strObservFlagInsertUpdate);
+		
+		/*
+		if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
+		}*/
+	} 
+	//var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer, null, "\t");
+	var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer);	
+	document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_json_des_photos-----------------------\n"+str_json_des_photos+"\n";
+
+			/*	
+			Pour l'insertion d'une image :
+
+			l'url du service :
+
+			http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image
+			Json :
+
+			{"IDObservation":1,"photoList":["R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="]}
+
+			Affichage d'une image :
+ 
+			http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image/observation/4
+			*/	
+
+
+   $.ajax({
+        type: "POST",
+        dataType: "json",        
+        url: "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image",
+        contentType: "application/json; charset=utf-8",
+        data: str_json_des_photos,
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            var str_obj_succes_response = JSON.stringify(data, null, "\t");
+			
+	
+			alert("wcf_InsertLesPhotos str_obj_succes_response:\n"+str_obj_succes_response);
+			
+			//alert("wcf_InsertObservation response success:\n"+str_obj);
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----str_obj_succes_response----------\n" +str_obj_succes_response;		
+			
+
+        },
+        error: function (xhr, textStatus) {
+		
+			alert("wcf_InsertLesPhotos response error:\n"+xhr.responseText);	
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----error booooo----------\n" +xhr.responseText;		
+
+        }
+    });	
+	
+	
+	
+
+
+}
+
+
+
+
+
 function wcf_InsertObservation(un_observ1) {
  	//http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/observation/1
+	
+	//Faire une copie du json avant de le modifier
+		
+	var str_copie_observ_Object = JSON.stringify(un_observ1, null, "\t");
+
+	
+	//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----str_copie_observ_Object----------\n" +str_copie_observ_Object;		
+
+	
+
+	
+	var copie_observ_Object = JSON.parse(str_copie_observ_Object);			
+	
+	
+	
+	
+	
 	
 	un_observ2 ={"DateObservation":"2014-02-25","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Detail":"11aa1111111","Titre":"22ss222222"}
 	
@@ -315,7 +454,7 @@ function wcf_InsertObservation(un_observ1) {
 	dataToSend = dataToSend.replace(/strObserv_Resume/g, "Detail");
 	
     //jsonp: true, processData: true,
-	document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n"+dataToSend+"\n";
+	//document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n"+dataToSend+"\n";
 	//alert("dataToSend:"+dataToSend);
 	
 	
@@ -344,23 +483,51 @@ function wcf_InsertObservation(un_observ1) {
             }
         },
         success: function (data) {
-            obj = JSON.stringify(data, null, "\t");
+            var str_obj = JSON.stringify(data, null, "\t");
+			
+		
+			/*
+			{
+				"DateObservation": "2014-04-02 21:00:39",
+				"Detail": "ewrweq",
+				"IDOiseau": 1,
+				"IDUsager": 1,
+				"Id": 77,
+				"Latitude": 46.9218318,
+				"Longitude": -71.3761956,
+				"Oiseau": null,
+				"Titre": "rwrwqr",
+				"Usager": null
+			}
+			*/		
+	
+			
+		
+		
+			//var le_obj = JSON.parse(data);
+						
 			
 			
-			alert("success 77777777:"+obj);
+			//alert("le_obj:\n"+data.Id);
+			//alert("wcf_InsertObservation response success:\n"+str_obj);
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----wcf_InsertObservation response success-str_obj----------\n" +str_obj;		
 			
-		   return obj;
+			
+			
+			//un_observ2
+			
+			wcf_InsertLesPhotos(data.Id, copie_observ_Object); 
+			
+			
+			
+		   //return obj;
 
         },
         error: function (xhr, textStatus) {
-            
 		
-			
-			alert("error 777777777:"+xhr.responseText);
-			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +xhr.responseText;
-			
-			
-			
+			alert("wcf_InsertObservation response error:\n"+xhr.responseText);	
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----error booooo----------\n" +xhr.responseText;		
+
         }
     });
 	

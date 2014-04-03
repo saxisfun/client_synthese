@@ -67,25 +67,10 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 
 							/////////////Conversion du json à l'entrée//////////////////////////////
 							var str_outpu2 = JSON.parse(str_output);
-							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
+							//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
 							var dataReceived = JSON.stringify(str_outpu2, null, "\t"); 
 							//renomer var
-	/*
-	"strObserv_DateObservation": "2012-01-01",
-		"Detail": null,
-		"strObserv_IDOiseau": "1",
-		"strObserv_IDUsager": "1",
-		"strObserv_Id": 1,
-		"strObserv_Position_lat": "1",
-		"strObserv_Position_long": "1",
-		"strObserv_Titre": "Test",
-		"Usager": {
-			"ID": 1,
-			"Nom": "Raymond",
-			"NomUsager": "rferland"
-		}					
-		*/					
-							
+
 							dataReceived = dataReceived.replace(/\WId\W/g, '"strObserv_Id"');
 							dataReceived = dataReceived.replace(/\WDateObservation\W/g, '"strObserv_DateObservation"');
 							dataReceived = dataReceived.replace(/\WDetail\W/g, '"strObserv_Resume"');
@@ -108,93 +93,56 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 							dataReceived = dataReceived.replace(/\WLatitude\W/g, '"strObserv_Position_lat"');
 							dataReceived = dataReceived.replace(/\WLongitude\W/g, '"strObserv_Position_long"');
 							dataReceived = dataReceived.replace(/\WTitre\W/g, '"strObserv_Titre"');		
-
-							
-							
-							
-//alert("dataReceived:\n\n"+dataReceived);
-							
+							//dataReceived = dataReceived.replace(/\ListePhoto\W/g, '"arrObservLesPhotos"');		
 						
 							var arr_new_json_pour_enlever_element_parent = [];
 							
 							var obj_dataReceived = JSON.parse(dataReceived);
-							
-							//alert(dataReceived);
-							
-							
+						
 							//alert(obj_dataReceived.GetAllObservationResult.length);
 							for (var i=0; i < obj_dataReceived.GetAllObservationResult.length; i++){
 								
 								var theObject_obs = obj_dataReceived.GetAllObservationResult[i];	
 
-								//conversion de type
-								
-								
-								
-								theObject_obs.strObserv_DateObservation = convertDateToTimestamp(theObject_obs.strObserv_DateObservation);
-								
-								//alert("111111111111111111111:"+theObject_obs.strObserv_DateObservation)
-								
-								
-								
+								//conversion de type							
+								theObject_obs.strObserv_DateObservation = convertDateToTimestamp(theObject_obs.strObserv_DateObservation);		
 								theObject_obs.strObserv_IDOiseau = theObject_obs.strObserv_IDOiseau.toString();
-
-
 								theObject_obs.strObserv_IDUsager = theObject_obs.strObserv_IDUsager.toString();
-								
-								
-								
-								//strObs_Ois_Nom
-								//strObs_Usr_NomUsager
-								//strObs_Usr_NomComplet
-								
+						
 								theObject_obs.strObserv_Position_lat = theObject_obs.strObserv_Position_lat.toString();
 								theObject_obs.strObserv_Position_long = theObject_obs.strObserv_Position_long.toString();
 
-								
 								theObject_obs.arrObservLesPhotos = [];
 								
-
-								//delete theObject_obs["Oiseau"];
-
-
-
-
-
-								
-								arr_new_json_pour_enlever_element_parent.push(theObject_obs);
-								
-							
-								//						
-								
-								
+								for (var i2=0; i2 < theObject_obs.ListePhoto.length; i2++){
+									
+									var str_le_url = theObject_obs.ListePhoto[i2];	
+									//alert("str_le_url:"+str_le_url);
 	
-								//delete theObject_obs["strObservFlagInsertUpdate"];
-								//delete theObject_obs["arrObservLesPhotos"];								
+									var len_str_le_url = str_le_url.length; 
+									var indexLastSlash = str_le_url.lastIndexOf("/"); 
+									var id_de_la_photo = str_le_url.substr(indexLastSlash+1,len_str_le_url-indexLastSlash);
+	
+									var photoObject7 = new ClassePhoto();
+									
+									photoObject7.strPhoto_Id = id_de_la_photo;
+									photoObject7.strPhoto_Image = "";							
+									photoObject7.strPhoto_Description = "";
+									photoObject7.strPhoto_IDObservation = parseInt(theObject_obs.strObserv_Id, 10);
+									photoObject7.strPhoto_ImageMiniature = "";
+									photoObject7.strPhoto_Commentaire = "";
+									photoObject7.strPhoto_url_big = "/WCF_Synthese/ServiceWCF_Synthese.svc"+str_le_url;
+
+									theObject_obs.arrObservLesPhotos.push(photoObject7);
+
+								}
+								delete theObject_obs["ListePhoto"];
+								arr_new_json_pour_enlever_element_parent.push(theObject_obs);								
 			
 							}
-							
-							
-							
-							
-						
-							
-
 							str_output = JSON.stringify(arr_new_json_pour_enlever_element_parent, null, "\t");
-							
-							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n--------------------------------------------------------------------\n\n";
-//alert("str_output:\n\n"+str_output);							
-							
-							//alert("str_output:"+str_output);
-							
-
-
+							//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + str_output+"\n-----------------arr_new_json_pour_enlever_element_parent---------------\n\n";
 						}					
-		
-						
-						
-						//////////////////////////////////////////
-					
 					
 						//storageObs = str_output;
 						try {

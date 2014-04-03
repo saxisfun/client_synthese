@@ -52,7 +52,7 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_id_obs) {
 							var str_outpu2 = JSON.parse(str_output);
 							var data2Received = JSON.stringify(str_outpu2, null, "\t"); 
 							//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + data2Received+"\n--------------------------------------------------------------------\n\n";
-							document.getElementById("id_textarea_01").value = data2Received+"\n--------------------------------------------------------------------\n\n";
+							//document.getElementById("id_textarea_01").value = data2Received+"\n--------------------------------------------------------------------\n\n";
 							
 							//renomer var
 			
