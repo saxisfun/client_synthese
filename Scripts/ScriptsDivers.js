@@ -1,5 +1,4 @@
 ﻿
-
 function Callback(result) {
     alert(result); // string
     alert(result.d.Company);
@@ -19,10 +18,7 @@ function init() {
 var ID;
 function GetUsager() {
     ID = 1;
-    
-	alert("1111122222");
-	
-	$.ajax({
+    $.ajax({
         cache: false,
         type: "GET",
         async: false,
@@ -39,36 +35,31 @@ function GetUsager() {
         success: function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-			alert(obj);
             return obj;
            
                    },
         ajaxSuccess: function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-			alert(obj);
             return obj;
            
                    },
         ajaxError: function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-           alert(obj);
-		   return obj;
+            return obj;
            
                    },
         ajaxComplete:function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-            alert(obj);
-			return obj;
+            return obj;
            
                    }, 
         complete :function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-            alert(obj);
-			return obj;
+            return obj;
            
                    },
         error: function (xhr, textStatus) {
@@ -130,6 +121,102 @@ function Logout() {
 
 }
 
+function InsertAlert(){
+
+           
+    datas = { "ID": "1", 
+                "IDOiseau": "1", 
+                "IDUsager": "2" };
+
+    dataToSend = JSON.stringify(datas)
+    //jsonp: true, processData: true,
+    $.ajax({
+        type: "POST",
+        dataType: "json",        
+        url: "/WCF_Synthese/servicewcf_synthese.svc/Alerte",
+        contentType: "application/json; charset=utf-8",
+        data: dataToSend,
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }
+            return obj;
+
+        },
+        error: function (xhr, textStatus) {
+            alert(xhr.responseText);
+        }
+    });
+}
+
+function GetAlerts(){
+           
+    $.ajax({
+        type: "GET",
+        dataType: "json",        
+        url: "/WCF_Synthese/servicewcf_synthese.svc/Alerte/1",
+        contentType: "application/json; charset=utf-8",
+        
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }
+            return obj;
+
+        },
+        error: function (xhr, textStatus) {
+            alert(xhr.responseText);
+        }
+    });
+}
+function DeleteAlert(){
+
+           
+    datas = { "ID": "1", 
+                "IDOiseau": "1", 
+                "IDUsager": "1" };
+
+    dataToSend = JSON.stringify(datas)
+    //jsonp: true, processData: true,
+    $.ajax({
+        type: "DELETE",
+        dataType: "json",        
+        url: "/WCF_Synthese/servicewcf_synthese.svc/Alerte",
+        contentType: "application/json; charset=utf-8",
+        data: dataToSend,
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }
+            return obj;
+
+        },
+        error: function (xhr, textStatus) {
+            alert(xhr.responseText);
+        }
+    });
+}
 function InsertUsager() {
        
        var Courriel = $("#txtCourriel").val(); 
@@ -137,7 +224,6 @@ function InsertUsager() {
        var MotDePasse = $("#txtMotDePasse").val();
        var Nom  = $("#txtNom").val();
        var NomUsager = $("#TextNomUsager").val();
-	   
     datas = { "Courriel": Courriel, 
                 "EstAdministrateur": EstAdmin, 
                 "MotDePasse": MotDePasse, 
@@ -171,3 +257,4 @@ function InsertUsager() {
     });
 
 }
+

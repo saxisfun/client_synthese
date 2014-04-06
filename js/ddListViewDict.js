@@ -289,10 +289,23 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 	newRadio4.setAttribute("class", "ajout_observ_button");
 	newRadio4.setAttribute("value", "Ajouter une observation");
 	//newRadio4.setAttribute("id", "bouton_effacer_ligne");
-	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation
-(le_id);},false);
+	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id);},false);
 	newDiv1.appendChild(newRadio4);		
     }
+  
+  
+  	var newBoutonAlerte = document.createElement("input");
+	newBoutonAlerte.setAttribute("type", "button");
+	//newBoutonAlerte.setAttribute('checked', '');
+	newBoutonAlerte.setAttribute("class", "ajout_alerte_button");
+	newBoutonAlerte.setAttribute("value", "Recevoir alertes");
+
+	newBoutonAlerte.addEventListener('click',function(){onClickBoutonActiverAlertePourUnOiseau(le_id);},false);
+	newDiv1.appendChild(newBoutonAlerte);		
+  
+  
+  
+  
   
   
  	var newP1 = document.createElement("p");

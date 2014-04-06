@@ -427,26 +427,34 @@ background-color: red;
 
 
 
+input.ajout_alerte_button  {
+	position:relative;
+	right:1px;
+	top:-1px;
+	float:right;
+
+margin-top: 10px;
+margin-bottom: 10px;
+	/*width: 159px;*/
+	height: 33px;
+
+}
+
+
+
+
 input.ajout_observ_button  {
 	position:relative;
 	right:1px;
 	top:-1px;
 	float:right;
 
-	/*-webkit-appearance: none; 
-	-moz-appearance: none; 
-	-o-appearance: none;*/
+margin-top: 10px;
+/*margin-bottom: 10px;*/	
 
-	  width: 159px;
-	  height: 25px;
+	  /*width: 159px;*/
+	  height: 33px;
 
-	/*
-	-webkit-transform: scale(2,2);
-	-moz-transform: scale(2,2);
-	-o-transform: scale(2,2);
-	*/
-	 /*border: 2px solid blue;*/
-	/*background-color: green;*/
 
  
 }
@@ -469,6 +477,19 @@ left:40px;
 }
 
 
+input.delete_comm_button  {
+	position:absolute;
+	right:10px;
+	top:10px;
+
+
+
+	  width: 55px;
+	  height: 35px;
+
+
+ 
+}
 
 input.delete_button  {
 	position:absolute;
@@ -476,20 +497,10 @@ input.delete_button  {
 	top:10px;
 
 
-	/*-webkit-appearance: none; 
-	-moz-appearance: none; 
-	-o-appearance: none;*/
 
 	  width: 55px;
 	  height: 35px;
 
-	/*
-	-webkit-transform: scale(2,2);
-	-moz-transform: scale(2,2);
-	-o-transform: scale(2,2);
-	*/
-	 /*border: 2px solid blue;*/
-	/*background-color: green;*/
 
  
 }
@@ -964,7 +975,7 @@ bird_imgPlus{
  	padding:10px;
 	
  	font-size:12px;
-	
+	top:11px;
  	alt:Photo;
  	align:left;
  	width:100;
@@ -1020,7 +1031,7 @@ bird_imgPlus{
 
 .lvo_em_obs_id{
 	position:absolute;
-	top:103px;
+	top:110px;
 	left:20px;
 	/*float:right;*/
 	/*margin-right:10px;

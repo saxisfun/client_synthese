@@ -710,7 +710,12 @@
 		   	 			<a href="#" id="" 
 						onclick="
 					
-							envoyer_json_dun_nouveau_commentaire_au_serveur();
+						if(dataAdapterSwitch_dataFromIIS){
+							dba_InsertUnCommentaire();
+						}else{
+							envoyer_json_dun_nouveau_commentaire_au_serveur_php();
+						}
+						
 						
 						" class="switch_screen">Cliquez ici pour sauvegarder </a>
 					</li>					
@@ -1323,7 +1328,7 @@ function creer_json_des_nouvelles_observations(){
 
 
 
-function envoyer_json_dun_nouveau_commentaire_au_serveur()
+function envoyer_json_dun_nouveau_commentaire_au_serveur_php()
 {
 
 	var le_json = {};

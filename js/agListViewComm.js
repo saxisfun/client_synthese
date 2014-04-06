@@ -51,7 +51,7 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_id_obs) {
 					
 							var str_outpu2 = JSON.parse(str_output);
 							var data2Received = JSON.stringify(str_outpu2, null, "\t"); 
-							//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + data2Received+"\n--------------------------------------------------------------------\n\n";
+							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + data2Received+"\n--------------agXMLHttpReqComm------------\n\n";
 							//document.getElementById("id_textarea_01").value = data2Received+"\n--------------------------------------------------------------------\n\n";
 							
 							//renomer var
@@ -151,11 +151,28 @@ ClasseListViewComm.prototype.addCommListViewCell = function(la_comm_id, la_times
 
 
 	var em_usager_id = document.createElement("em");
-	var em_usager_id_content = document.createTextNode("Usager: " + la_usager_id);
+	var em_usager_id_content = document.createTextNode("Commentaire: " + la_comm_id +", Usager: " + la_usager_id);
 	em_usager_id.setAttribute("class", "lvc_em_usager");
 	em_usager_id.appendChild(em_usager_id_content);
 
 
+	
+	
+	
+	var boutonDeleteComm = document.createElement("input");
+	boutonDeleteComm.setAttribute("type", "button");
+	//boutonDeleteComm.setAttribute('checked', '');
+	boutonDeleteComm.setAttribute("class", "delete_comm_button");
+	boutonDeleteComm.setAttribute("value", "Effacer");
+	//boutonDeleteComm.setAttribute("id", "bouton_effacer_ligne_comm");
+	boutonDeleteComm.addEventListener('click',function(){effacer_ligne_comm_div(this, la_comm_id)},false);
+	
+	newDiv1.appendChild(boutonDeleteComm);	
+	
+	
+	
+	
+	
 	var newP = document.createElement("p");
 	var newPContent = document.createTextNode(la_resume);
 	newP.appendChild(newPContent);
@@ -232,3 +249,27 @@ ClasseListViewComm.prototype.removeAllCommFromListView = function(le_url) {
 		}
 	}
 }
+
+ClasseListViewComm.prototype.deleteUnCommentaireFromListView = function(id_du_comm) {
+	
+	//var les_lignes = document.getElementsByClassName('list_View_Observ');	
+	//var theObject = les_lignes[id_du_comm];	
+	//this.myListViewObservArray.splice(id_du_comm,1);
+	//theObject.parentNode.removeChild(theObject);
+	
+	if(dataAdapterSwitch_dataFromIIS){
+		DeleteCommentaire(id_du_comm);
+	}else
+	{	
+
+	}	
+		
+		
+		
+		
+		
+		
+}
+
+
+

@@ -213,12 +213,22 @@ function hideLogin() {
 
 
 
+function effacer_ligne_comm_div(le_this, le_comm_id) {
+
+	VConfirm = ''
+	VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer ce commentaire?\n\n'
+	if (confirm(VConfirm)) {
+		objListViewComm.deleteUnCommentaireFromListView(le_comm_id);
+		le_this.style.backgroundColor="red";
+		//objListViewObservations.saveObservToLocalStorage();
+
+	} else {
+
+	}
+}
 
 function effacer_ligne_div(le_this, le_obs_id) {
 
-	
-	
-	
 	VConfirm = ''
 	VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer cette observation?\n\n'
 	if (confirm(VConfirm)) {
@@ -593,9 +603,6 @@ function onClickBoutonAjouterPhoto() {
 	//html5 createElement input appendChild accept image/*
 
 }
-
-
-
 function destroyTagInputFilePourLaPhotoPrincipale() {
 	var objTD = document.getElementById("idTDInputDeLaPhoto");
 	var olddiv = document.getElementById('take-picture');
@@ -605,7 +612,25 @@ function destroyTagInputFilePourLaPhotoPrincipale() {
 }
 
 
+function onClickBoutonActiverAlertePourUnOiseau(l_id_de_loiseau) {
+
+	
+	
+	
+			if (varGlobal_UserConnected !== '0'){
+				InsertUnAlert(varGlobal_UserConnected, l_id_de_loiseau);
+			}else{
+				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
+			}	
+	
+	
+	
+}
+
+
 function onClickBoutonAjouterObservation(le_id_de_loiseau) {
+
+
 
 
 	if (varGlobal_UserConnected !== "0") {

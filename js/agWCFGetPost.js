@@ -12,7 +12,21 @@ http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/o
 
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/getOiseau/0/1
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/getOiseau/0/1
+
+
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/commentaire/1
+
+
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/Alerte/
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/deleteObservation/67
+
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/web/index2.html#
+
+
+"NetworkError: 400 Bad Request - http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/deleteObservation/67"
+
+
+
 
 Format de date
 Date dans commentaire
@@ -250,7 +264,7 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 	var str_un_observ2 = JSON.stringify(un_observ2, null, "\t");
 	
 	
-	document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_un_observ2-----------------------\n"+str_un_observ2+"\n";
+	//document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_un_observ2-----------------------\n"+str_un_observ2+"\n";
 
 	
 	
@@ -308,7 +322,7 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 	} 
 	//var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer, null, "\t");
 	var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer);	
-	document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_json_des_photos-----------------------\n"+str_json_des_photos+"\n";
+	//document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_json_des_photos-----------------------\n"+str_json_des_photos+"\n";
 
 			/*	
 			Pour l'insertion d'une image :
@@ -344,14 +358,14 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 			alert("wcf_InsertLesPhotos str_obj_succes_response:\n"+str_obj_succes_response);
 			
 			//alert("wcf_InsertObservation response success:\n"+str_obj);
-			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----str_obj_succes_response----------\n" +str_obj_succes_response;		
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----str_obj_succes_response----------\n" +str_obj_succes_response;		
 			
 
         },
         error: function (xhr, textStatus) {
 		
 			alert("wcf_InsertLesPhotos response error:\n"+xhr.responseText);	
-			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----error booooo----------\n" +xhr.responseText;		
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----error booooo----------\n" +xhr.responseText;		
 
         }
     });	
@@ -534,3 +548,316 @@ function wcf_InsertObservation(un_observ1) {
 	
 
 }
+
+
+
+//1-Aller activer les alertes pour un usager (pouvoir modifier un usager pour activer les alertes) l'url que je dois utiliser?
+//2-Aller activer les alertes pour une espèce,  c'est quoi l'url?
+
+
+//onClickBoutonActiverAlertePourUnOiseau
+
+
+
+function InsertUnAlert(le_id_du_user, le_id_de_loiseau){
+
+    /*datas = { "IDOiseau": "9",
+                "IDUsager": "1" };*/
+			
+			
+	 datas = { "ID": "1", 
+                "IDOiseau": "8", 
+                "IDUsager": "1" };		
+			
+			
+			
+			
+			
+//{"IDOiseau":"1","IDUsager":"1"}
+
+
+			
+	datas.IDUsager = le_id_du_user.toString();		
+	datas.IDOiseau = le_id_de_loiseau.toString();
+	
+
+    dataToSend = JSON.stringify(datas)
+    //jsonp: true, processData: true,
+	
+	document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----dataToSend--------\n"+dataToSend+"\n";		
+	
+	alert(dataToSend);
+	
+	
+	
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "/WCF_Synthese/servicewcf_synthese.svc/Alerte",
+        contentType: "application/json; charset=utf-8",
+        data: dataToSend,
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+				
+				document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----obj--------\n"+obj+"\n";	
+				
+				
+            }
+			
+			alert("InsertUnAlert success:"+obj);
+			
+            return obj;
+			
+			
+
+        },
+        error: function (xhr, textStatus) {
+           // alert(xhr.responseText);
+				 alert("InsertUnAlert error:"+xhr.responseText);
+        }
+    });
+	
+}
+
+
+//3- Obtenir les alertes d'un usager
+//http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/Alerte/1
+function GetAlerts(){
+
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/WCF_Synthese/servicewcf_synthese.svc/Alerte/1",
+        contentType: "application/json; charset=utf-8",
+
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }
+            return obj;
+
+        },
+        error: function (xhr, textStatus) {
+            alert(xhr.responseText);
+        }
+    });
+}
+/*
+4- Supprimer les alertes
+Si tu passe l'ID > 0, je ne supprime que cette alerte
+Si tu passes seulement IDOiseau > 0 je supprime toutes les alertes de cet oiseau
+Si tu passes seulement l'IDUsager > 0 je supprime toutes les alertes de cet usager
+*/
+function DeleteAlert(){
+
+
+    datas = { "ID": "1",
+                "IDOiseau": "1",
+                "IDUsager": "1" };
+
+    dataToSend = JSON.stringify(datas)
+    //jsonp: true, processData: true,
+    $.ajax({
+        type: "DELETE",
+        dataType: "json",
+        url: "/WCF_Synthese/servicewcf_synthese.svc/Alerte",
+        contentType: "application/json; charset=utf-8",
+        data: dataToSend,
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }
+            return obj;
+
+        },
+        error: function (xhr, textStatus) {
+            alert(xhr.responseText);
+        }
+    });
+}
+
+//Pour le reste, je laisse ça à Gabriel
+
+
+
+//de Gabriel
+//Pour la supression d'une observation :
+//WCF_Synthese/servicewcf_synthese.svc/deleteObservation/{id}
+
+//ou {id} est l'id de l'observation
+
+//Pour la supression d'un commentaire
+//WCF_Synthese/servicewcf_synthese.svc/deletecommentaire/{id}
+
+//Ou {id} est l'id du commentaire
+
+//Les deux calls sont en GET 
+
+function DeleteObservation(le_id_de_lobs){
+	alert("le_id_de_lobs:"+le_id_de_lobs);
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/WCF_Synthese/servicewcf_synthese.svc/deleteObservation/"+le_id_de_lobs,
+        contentType: "application/json; charset=utf-8",
+
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }
+			 alert("DeleteObservation success:"+obj);
+			 
+			 	document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + obj+"\n--------------DeleteObservation success------------\n\n";
+			 
+            return obj;
+
+        },
+        error: function (xhr, textStatus) {
+            alert("DeleteObservation error:"+xhr.responseText);
+			
+			
+				document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + xhr.responseText+"\n--------------DeleteObservation error------------\n\n";
+			
+        }
+    });
+}
+
+function DeleteCommentaire(le_id_du_comm){
+	alert("le_id_du_comm:"+le_id_du_comm);
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/WCF_Synthese/servicewcf_synthese.svc/deletecommentaire/"+le_id_du_comm,
+        contentType: "application/json; charset=utf-8",
+
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data);
+            var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }
+			 alert("DeleteObservation success:"+obj);
+            return obj;
+
+        },
+        error: function (xhr, textStatus) {
+            alert("DeleteObservation error:"+xhr.responseText);
+        }
+    });
+}
+
+
+
+function dba_InsertUnCommentaire() {
+ 	
+	
+/*	
+Pour ajouter une commentaire :
+
+
+
+Le Json à me passer pour l'ajout :
+
+{"IDUsager":1,"Id":0,"Texte":"blabla","observationId":1}
+
+
+*/		
+
+   datas = {"IDUsager":1,"Id":1,"Texte":"blabla","observationId":110}
+
+
+
+	/*
+	datas.Courriel = v_dba_Courriel;			
+	datas.EstAdministrateur = false;
+	datas.MotDePasse = v_dba_txtMotDePasse;	
+	//datas.MotDePasse = v_txtMotDePasse_verif;		
+	datas.Nom = v_dba_txtNom;		
+	datas.NomUsager = v_dba_TextNomUsager;	
+	*/
+	
+		
+	
+    dataToSend = JSON.stringify(datas, null, "\t");
+    //jsonp: true, processData: true,
+	
+	
+	
+	alert(dataToSend);
+	
+	
+	
+    $.ajax({
+        type: "POST",
+        dataType: "json",        
+        url: "/WCF_Synthese/ServiceWCF_Synthese.svc/Commentaire",
+        contentType: "application/json; charset=utf-8",
+        data: dataToSend,
+        statusCode: {
+            default: function () {
+                alert(status);
+            }
+        },
+        success: function (data) {
+            obj = JSON.stringify(data, null, "\t");
+           /*
+		   var msg = obj.valueOf('MessageErreur');
+            if (msg != null){
+                alert(obj.valueOf('MessageErreur'));
+            }*/
+           
+			alert("dba_InsertUnCommentaire response success :"+obj);
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------dba_InsertUnCommentaire success--------\n"+obj+"\n\n";
+			
+		   return obj;
+			
+			
+			
+
+        },
+        error: function (xhr, textStatus) {
+            
+			//alert("dba_InsertUnCommentaire response error 788776"+xhr.responseText);
+		
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------dba_InsertUnCommentaire error--------\n"+xhr.responseText+"\n\n";
+	
+			
+        }
+    });
+
+}
+

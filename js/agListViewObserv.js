@@ -703,60 +703,40 @@ ClasseListViewObservations.prototype.removeSelectedObservsFromListView = functio
 
 ClasseListViewObservations.prototype.deleteUneObservationFromListViewButton = function(id_de_lobs) {
 	
-	
-	
 	//var les_lignes = document.getElementsByClassName('list_View_Observ');	
 	//var theObject = les_lignes[id_de_lobs];	
 	//this.myListViewObservArray.splice(id_de_lobs,1);
 	//theObject.parentNode.removeChild(theObject);
 	
-		
-	xmlhttp = new XMLHttpRequest();
-	
-	//http://198.100.145.177/cegep/obs_del.php?le_id_de_obs=12";
-	
-	var le_url_21="http://198.100.145.177/cegep/obs_del.php?le_id_de_obs="+id_de_lobs+"";
-	
-	
-	xmlhttp.open("POST",le_url_21,true);
-	
-	
-	//xmlhttp.setRequestHeader("Content-Type", "application/json");
-	
-	//alert(JSON.stringify(le_myArrayDObservationAUploader));
-	
-		
-	xmlhttp.onreadystatechange = function(){
-		if (xmlhttp.readyState == 4) {
-			if (xmlhttp.status == 200 || xmlhttp.status == 0) {
-			
-				var str_output = xmlhttp.responseText;
+	if(dataAdapterSwitch_dataFromIIS){
+		DeleteObservation(id_de_lobs);
+	}else
+	{	
+		xmlhttp = new XMLHttpRequest();
+		//http://198.100.145.177/cegep/obs_del.php?le_id_de_obs=12";
+		var le_url_21="http://198.100.145.177/cegep/obs_del.php?le_id_de_obs="+id_de_lobs+"";
+		xmlhttp.open("POST",le_url_21,true);
+		xmlhttp.onreadystatechange = function(){
+			if (xmlhttp.readyState == 4) {
+				if (xmlhttp.status == 200 || xmlhttp.status == 0) {
 				
-					//storageDate.date1 = todaysDate;
-					//alert("str_output: "+str_output+"\n\n\n\n");
-					//storageObs = str_output;
+					var str_output = xmlhttp.responseText;
+					
+						//storageDate.date1 = todaysDate;
+						//alert("str_output: "+str_output+"\n\n\n\n");
+						//storageObs = str_output;
 
-					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
-					//ici oui - delete
-					//document.getElementById("id_textarea_01").value = str_output;
-
+						//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
+						//ici oui - delete
+						//document.getElementById("id_textarea_01").value = str_output;
+				}
 			}
-		}
-	}	
-	
-	
-	
-	//document.getElementById("id_textarea_01").value = JSON.stringify(le_myArrayDObservationAUploader, null, "\t");	
-	//alert("1234567:"+JSON.stringify(le_myArrayDObservationAUploader, null, "\t"));
-	
-	
-	xmlhttp.send(); 
+		}	
 
-		
-		
-		
-		
-		
+		//document.getElementById("id_textarea_01").value = JSON.stringify(le_myArrayDObservationAUploader, null, "\t");	
+		//alert("1234567:"+JSON.stringify(le_myArrayDObservationAUploader, null, "\t"));
+		xmlhttp.send(); 	
+	}	
 		
 		
 		
