@@ -132,6 +132,34 @@ function localiser(sans_Carte) {
 
 
 
+
+function ClasseCoorGPS(flat, flon) {
+   this.latitude = parseFloat(flat); 
+   this.longitude = parseFloat(flon); 
+}
+
+
+// lat -90.XXXXXX to 90.XXXXXX and lng -180.XXXXXX to 180.XXXXXX
+ClasseCoorGPS.prototype.tst = function() {
+	
+	if (this.latitude < -90 || this.latitude > 90
+	   ||  this.longitude < -180 || this.longitude > 180){
+		   alert('Les coordonnées latitude et longitude\nne sont pas valides.')
+	   }else{
+	   		alert('afficher la map...\n\nlatitude: '+this.latitude+'\nlongitude: '+this.longitude)
+		 	position.coords.latitude=this.latitude;
+		  	position.coords.longitude=this.longitude;
+	   }
+}
+
+function myTstGPS() {
+ 	var coor = new ClasseCoorGPS (46,-71)
+ 	coor.tst();
+}
+
+
+
+
 //fonctions passées en parmêtre dans «navigator.geolocation.getCurrentPosition»
 
 function AfficheCarte(position) {
