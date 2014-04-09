@@ -136,7 +136,7 @@ function obj2cellule(le_id, l_espece, la_descrip, le_IDPhoto, le_IDSon, le_flObs
 		newRadio4.setAttribute("value", "Ajouter une observation");
 		//newRadio4.setAttribute("id", "bouton_effacer_ligne");
 		newRadio4.addEventListener('click', function() {
-			onClickBoutonAjouterObservation(le_id);
+			onClickBoutonAjouterObservation(le_id, l_espece);
 		}, false);
 		newDiv1.appendChild(newRadio4);
 	}

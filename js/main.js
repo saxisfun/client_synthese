@@ -30,7 +30,7 @@ function hide_all() {
 	hide_geolocalisation();
 	hide_Parametres();
 	hide_settings();
-	document.getElementById("tool_button_ajouter_comm").style.visibility = "hidden";
+	//document.getElementById("tool_button_ajouter_comm").style.visibility = "hidden";
 	//document.getElementById("tool_button_ajouter_observ").style.visibility = "hidden";
 	//document.getElementById("tool_button_rechercher").style.visibility="hidden";
 	//document.getElementById("tool_button_seconnecter").style.visibility="hidden";
@@ -618,7 +618,7 @@ function onClickBoutonActiverAlertePourUnOiseau(l_id_de_loiseau) {
 	
 	
 			if (varGlobal_UserConnected !== '0'){
-				InsertUnAlert(varGlobal_UserConnected, l_id_de_loiseau);
+				wcf_InsertUnAlert(varGlobal_UserConnected, l_id_de_loiseau);
 			}else{
 				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
 			}	
@@ -628,7 +628,7 @@ function onClickBoutonActiverAlertePourUnOiseau(l_id_de_loiseau) {
 }
 
 
-function onClickBoutonAjouterObservation(le_id_de_loiseau) {
+function onClickBoutonAjouterObservation(le_id_de_loiseau, nom_de_lespece) {
 
 
 
@@ -657,12 +657,13 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau) {
 		observObject7.strObserv_IDOiseau = parseInt(le_id_de_loiseau, 10);
 		observObject7.strObserv_IDUsager = parseInt(varGlobal_UserConnected);
 		observObject7.strObserv_Oiseau.strObs_Ois_Nom = "";
-		observObject7.strObserv_Oiseau.strObs_Ois_Espece = "";
-		observObject7.strObserv_Usager.strObs_Usr_NomUsager = "";
-		observObject7.strObserv_Usager.strObs_Usr_NomComplet = "";
+		observObject7.strObserv_Oiseau.strObs_Ois_Espece = nom_de_lespece;
+		observObject7.strObserv_Usager.strObs_Usr_NomUsager = varGlobal_NomUsagerConnected;
+		observObject7.strObserv_Usager.strObs_Usr_NomComplet = varGlobal_NomConnected;
 		
 		
-		
+			
+
 		
 		observObject7.strObserv_Titre = "";
 		observObject7.strObserv_Resume = "";
@@ -707,8 +708,22 @@ function onClickButtonCreerUser() {
 
 function callBack_du_login(obj_json) {
 			
-		//obj = JSON.stringify(obj_json, null, "\t");	
+		obj = JSON.stringify(obj_json, null, "\t");	
 		//alert(obj);
+		document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-------callBack_du_login---------------" +obj;
+	/*
+		{
+	"LoginResult": {
+		"MessageErreur": null,
+		"Courriel": "rferland@diq.ca",
+		"EstAdministrateur": true,
+		"ID": 1,
+		"MotDePasse": null,
+		"Nom": "Raymond",
+		"NomUsager": "rferland"
+	}
+}
+	*/	
 		//alert(obj_json.LoginResult.ID+""+obj_json.LoginResult.NomUsager);
 		
 		varGlobal_UserConnected = "0";
@@ -726,6 +741,9 @@ function callBack_du_login(obj_json) {
 			onClickButtonMenuListViewObserv();
 			
 			varGlobal_UserConnected = ""+obj_json.LoginResult.ID+"";
+			
+			varGlobal_NomConnected = ""+obj_json.LoginResult.Nom+"";
+			varGlobal_NomUsagerConnected = ""+obj_json.LoginResult.NomUsager+"";
 
 			document.getElementById("tool_button_deconnecter").style.visibility = "visible";
 			document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
@@ -815,7 +833,7 @@ function onClickButtonLoginWCF() {
 	} else {
 		//alert("Login normal");
 		
-		dba_Login(v_dba_TextNomUsager, v_dba_txtMotDePasse);
+		wcf_Login(v_dba_TextNomUsager, v_dba_txtMotDePasse);
 		
 		
 			
@@ -865,7 +883,7 @@ function onClickButtonMenuListViewObserv() {
 	//document.getElementById("tool_button_ajouter_observ").style.visibility = "visible";
 
 	document.getElementById("tool_button_rechercher").style.visibility = "visible";
-	document.getElementById("tool_button_seconnecter").style.visibility = "visible";
+	//document.getElementById("tool_button_seconnecter").style.visibility = "visible";
 
 
 

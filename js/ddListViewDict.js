@@ -289,7 +289,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 	newRadio4.setAttribute("class", "ajout_observ_button");
 	newRadio4.setAttribute("value", "Ajouter une observation");
 	//newRadio4.setAttribute("id", "bouton_effacer_ligne");
-	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id);},false);
+	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id, l_espece);},false);
 	newDiv1.appendChild(newRadio4);		
     }
   

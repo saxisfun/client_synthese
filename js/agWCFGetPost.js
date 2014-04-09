@@ -1,5 +1,12 @@
 ﻿
 /*
+
+http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/Alerte/2
+
+1-comment effacer une photo
+2-localiser sur la carte
+
+
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/Login/
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/GetUsager/1
 
@@ -117,7 +124,7 @@ function GetUsager() {
 
 }
 
-function dba_Login( pUserName, pPassword) {
+function wcf_Login( pUserName, pPassword) {
    
     data = pUserName+"/"+pPassword;
   
@@ -267,48 +274,56 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 	//document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_un_observ2-----------------------\n"+str_un_observ2+"\n";
 
 	
-	
-	var obj_json_les_photos_a_envoyer = {};
-	
+	//construire le json pour envoyer au wcf
+	var obj_json_les_photos_a_envoyer = {};	
 	obj_json_les_photos_a_envoyer.IDObservation = parseInt(le_id_de_lobservation, 10);
 	obj_json_les_photos_a_envoyer.photoList = [];
 	
 	
-	
+	//prendre les images en base64 d'une observations et les mettre dans le json à envoyer
 	alert("un_observ2.arrObservLesPhotos.length:"+un_observ2.arrObservLesPhotos.length);
 
 	for (var i=0; i < un_observ2.arrObservLesPhotos.length; i++){
+		//pour chacune des objet ClassePhoto on prend ce qu'on a de besoin à envoyer
 		var observ_une_photo = un_observ2.arrObservLesPhotos[i];
+		//on a seulement besoin de la photo le reste on en a pas besoin
+		
+		
+		
+		
+		
 		var str_le_base64 = observ_une_photo.strPhoto_Image;
 		
-		//data:image/png;base64,
+		//Je convertie le base64 comme Gabriel le veut
 		str_le_base64 = str_le_base64.replace("data:image/png;base64,", "");
 		str_le_base64 = str_le_base64.replace('\"', '');
 		str_le_base64 = str_le_base64.replace('\"', '');
 		
-		//str_le_base64 = str_le_base64+'===';
-		
-		
-		//\""
-		
-		
-		
-		//str_le_base64 = str_le_base64.replace('\""', '');
-		
-		
-		
+		//yea ca fonctionne	
 		//str_le_base64 = Regex.Replace(str_le_base64, "\"", ""); 
 		//str_le_base64 = Regex.Replace(str_le_base64, "\"", ""); 
-		
 		//       "\"iV        CC\""
 		//str_le_base64 = str_le_base64+"==";
-		var temp9876 = str_le_base64.substr(0,23);
 		
-		alert(temp9876);
 		
-		//Construire le nouveau json pour envoyer les photos
-		//alert("wcf_InsertUnePhoto"+temp9876);
-		obj_json_les_photos_a_envoyer.photoList.push(str_le_base64);
+
+
+		var temp9876 ="";
+		
+		if (str_le_base64.length > 300){
+			var temp9876 = str_le_base64.substr(0,23);
+			//seulement pour afficher pour voir si il y a quelque chose
+			alert("ok yess go: "+temp9876);
+			//observ_une_photo.strPhoto_url_big;
+		
+			//remplir le array de photos à envoyer au wcf seulement s'il y a un base 64 dedans
+			//S'il n'y a pas de base64 dedans ca veut dire que cette photo on l'a recu du serveur avec un url et que l'image n'est pas dans notre mobile
+			//donc on a pas besoin de l'envoyer elle a déja été envoyé
+			obj_json_les_photos_a_envoyer.photoList.push(str_le_base64);		
+		
+		
+		
+		}
 		
 		//this.myListViewObservArray.push(test3546);	
 		
@@ -321,59 +336,62 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 		}*/
 	} 
 	//var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer, null, "\t");
+	
+	//afficher le json des photos à envoyer dans le textarea
 	var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer);	
 	//document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n-----------------------str_json_des_photos-----------------------\n"+str_json_des_photos+"\n";
 
-			/*	
-			Pour l'insertion d'une image :
+	/*	
+	Pour l'insertion d'une image :
 
-			l'url du service :
+	l'url du service :
 
-			http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image
-			Json :
+	http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image
+	Json :
 
-			{"IDObservation":1,"photoList":["R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="]}
+	{"IDObservation":1,"photoList":["R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="]}
 
-			Affichage d'une image :
- 
-			http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image/observation/4
-			*/	
+	Affichage d'une image :
 
+	http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image/observation/4
+	*/	
 
-   $.ajax({
-        type: "POST",
-        dataType: "json",        
-        url: "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image",
-        contentType: "application/json; charset=utf-8",
-        data: str_json_des_photos,
-        statusCode: {
-            default: function () {
-                alert(status);
-            }
-        },
-        success: function (data) {
-            var str_obj_succes_response = JSON.stringify(data, null, "\t");
-			
+	//vérif s'il y a des photos a envoyer et les envoyer s'il y a lieu		
 	
-			alert("wcf_InsertLesPhotos str_obj_succes_response:\n"+str_obj_succes_response);
-			
-			//alert("wcf_InsertObservation response success:\n"+str_obj);
-			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----str_obj_succes_response----------\n" +str_obj_succes_response;		
-			
-
-        },
-        error: function (xhr, textStatus) {
+	//alert("33333333333333333333333: "+obj_json_les_photos_a_envoyer.photoList.length);
+	
+	if(obj_json_les_photos_a_envoyer.photoList.length > 0){
+	
+	  $.ajax({
+			type: "POST",
+			dataType: "json",        
+			url: "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image",
+			contentType: "application/json; charset=utf-8",
+			data: str_json_des_photos,
+			statusCode: {
+				default: function () {
+					alert(status);
+				}
+			},
+			success: function (data) {
+				var str_obj_succes_response = JSON.stringify(data, null, "\t");
+				
 		
-			alert("wcf_InsertLesPhotos response error:\n"+xhr.responseText);	
-			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----error booooo----------\n" +xhr.responseText;		
+				alert("wcf_InsertLesPhotos str_obj_succes_response:\n"+str_obj_succes_response);
+				
+				//alert("wcf_InsertObservation response success:\n"+str_obj);
+				//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----str_obj_succes_response----------\n" +str_obj_succes_response;		
+				
 
-        }
-    });	
-	
-	
-	
+			},
+			error: function (xhr, textStatus) {
+			
+				alert("wcf_InsertLesPhotos response error:\n"+xhr.responseText);	
+				document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----error booooo----------\n" +xhr.responseText;		
 
-
+			}
+		});		
+	}
 }
 
 
@@ -383,47 +401,16 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 function wcf_InsertObservation(un_observ1) {
  	//http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/observation/1
 	
-	//Faire une copie du json avant de le modifier
-		
+	//Faire une copie du json importé avant de le modifier	
 	var str_copie_observ_Object = JSON.stringify(un_observ1, null, "\t");
-
 	
 	//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----str_copie_observ_Object----------\n" +str_copie_observ_Object;		
-
-	
-
-	
 	var copie_observ_Object = JSON.parse(str_copie_observ_Object);			
-	
-	
-	
-	
-	
-	
-	un_observ2 ={"DateObservation":"2014-02-25","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Detail":"11aa1111111","Titre":"22ss222222"}
-	
-	
-	un_observ3 ={"IDUsager":1,"Id":0, "DateObservation":"2014-04-01 12:13:14", "Latitude":123, "Longitude":456, "IDOiseau":1, "Titre":"Mon observation", "Detail":"Vraiment cool"}
-	
+
+	un_observ2 ={"DateObservation":"2014-02-25","IDOiseau":1,"IDUsager":1,"Id":0,"Latitude":123,"Longitude":345,"Detail":"11aa1111111","Titre":"22ss222222"}	
+	un_observ3 ={"IDUsager":1,"Id":0, "DateObservation":"2014-04-01 12:13:14", "Latitude":123, "Longitude":456, "IDOiseau":1, "Titre":"Mon observation", "Detail":"Vraiment cool"}	
 	un_observ4 ={"IDUsager":1,"Id":0, "DateObservation":"2014-04-01 12:13:14", "Latitude":46.9218747, "Longitude":-71.37613929999999, "IDOiseau":1, "Titre":"Mon observation", "Detail":"Vraiment cool float"}
-	
-	
-	
-	
-	
-	/*
-	"strObserv_Id": 111111,
-	"strObserv_DateObservation": 1394148405287,
-	"strObserv_Position_lat": 345.6775,
-	"strObserv_Position_long": 47.6776,			
-	"strObserv_IDUsager": 111111,		
-	"strObserv_IDOiseau": 121212,	
-	"strObserv_Titre": "Moineau", 
-	"strObserv_Resume": "Dignissim autem magna ipsum qui luptatum, praesent autem duis vel veniam",
-	*/	
-	
-	
-	
+
 	un_observ1.strObserv_DateObservation = convertTimeStampToDate(un_observ1.strObserv_DateObservation);
 	un_observ1.strObserv_IDOiseau = parseInt(un_observ1.strObserv_IDOiseau, 10);
 	un_observ1.strObserv_IDUsager = parseInt(un_observ1.strObserv_IDUsager, 10);
@@ -438,23 +425,13 @@ function wcf_InsertObservation(un_observ1) {
 	//delete un_observ1["strObserv_Resume"];
 	delete un_observ1["strObservFlagInsertUpdate"];
 	delete un_observ1["arrObservLesPhotos"];
-	
-
 	delete un_observ1["strObserv_Oiseau"];
 	delete un_observ1["strObserv_Usager"];
-	
 		
 	dataToSend = JSON.stringify(un_observ1, null, "\t");
-
-	
 	dataToSend = dataToSend.replace(/strObserv_Id/g, "Id");
 	dataToSend = dataToSend.replace(/strObserv_DateObservation/g, "DateObservation");
-	
 	dataToSend = dataToSend.replace(/strObserv_IDOiseau/g, "IDOiseau");
-	
-	
-	
-	
 	dataToSend = dataToSend.replace(/strObserv_IDUsager/g, "IDUsager");
 	
 	//strObs_Ois_Nom
@@ -466,23 +443,14 @@ function wcf_InsertObservation(un_observ1) {
 	dataToSend = dataToSend.replace(/strObserv_Position_long/g, "Longitude");
 	dataToSend = dataToSend.replace(/strObserv_Titre/g, "Titre");
 	dataToSend = dataToSend.replace(/strObserv_Resume/g, "Detail");
-	
-    //jsonp: true, processData: true,
-	//document.getElementById("id_textarea_01").value=document.getElementById("id_textarea_01").value+"\n"+dataToSend+"\n";
-	//alert("dataToSend:"+dataToSend);
-	
-	
-	
-	//var ereeddree = JSON.stringify(dataToSend, null, "\t");	
-		
+
 	//alert("79999999:"+ereeddree);
-
-
 	
 	//dataToSend = JSON.stringify(un_observ4, null, "\t");	
-	alert(dataToSend);
+	document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----wcf_InsertObservation---dataToSend-----\n" +dataToSend;		
 
 	
+	alert(dataToSend);
 	
 	
     $.ajax({
@@ -498,41 +466,12 @@ function wcf_InsertObservation(un_observ1) {
         },
         success: function (data) {
             var str_obj = JSON.stringify(data, null, "\t");
-			
-		
-			/*
-			{
-				"DateObservation": "2014-04-02 21:00:39",
-				"Detail": "ewrweq",
-				"IDOiseau": 1,
-				"IDUsager": 1,
-				"Id": 77,
-				"Latitude": 46.9218318,
-				"Longitude": -71.3761956,
-				"Oiseau": null,
-				"Titre": "rwrwqr",
-				"Usager": null
-			}
-			*/		
-	
-			
-		
-		
-			//var le_obj = JSON.parse(data);
-						
-			
-			
 			//alert("le_obj:\n"+data.Id);
 			//alert("wcf_InsertObservation response success:\n"+str_obj);
-			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----wcf_InsertObservation response success-str_obj----------\n" +str_obj;		
-			
-			
-			
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----wcf_InsertObservation response success-str_obj----------\n" +str_obj;	
 			//un_observ2
 			
-			wcf_InsertLesPhotos(data.Id, copie_observ_Object); 
-			
-			
+			wcf_InsertLesPhotos(data.Id, copie_observ_Object); 		
 			
 		   //return obj;
 
@@ -559,7 +498,7 @@ function wcf_InsertObservation(un_observ1) {
 
 
 
-function InsertUnAlert(le_id_du_user, le_id_de_loiseau){
+function wcf_InsertUnAlert(le_id_du_user, le_id_de_loiseau){
 
     /*datas = { "IDOiseau": "9",
                 "IDUsager": "1" };*/
@@ -584,7 +523,7 @@ function InsertUnAlert(le_id_du_user, le_id_de_loiseau){
     dataToSend = JSON.stringify(datas)
     //jsonp: true, processData: true,
 	
-	document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----dataToSend--------\n"+dataToSend+"\n";		
+	//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----dataToSend--------\n"+dataToSend+"\n";		
 	
 	alert(dataToSend);
 	
@@ -607,12 +546,12 @@ function InsertUnAlert(le_id_du_user, le_id_de_loiseau){
             if (msg != null){
                 alert(obj.valueOf('MessageErreur'));
 				
-				document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----obj--------\n"+obj+"\n";	
+				//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----obj--------\n"+obj+"\n";	
 				
 				
             }
 			
-			alert("InsertUnAlert success:"+obj);
+			alert("wcf_InsertUnAlert success:"+obj);
 			
             return obj;
 			
@@ -621,7 +560,7 @@ function InsertUnAlert(le_id_du_user, le_id_de_loiseau){
         },
         error: function (xhr, textStatus) {
            // alert(xhr.responseText);
-				 alert("InsertUnAlert error:"+xhr.responseText);
+				 alert("wcf_InsertUnAlert error:"+xhr.responseText);
         }
     });
 	
@@ -716,7 +655,7 @@ function DeleteAlert(){
 //Les deux calls sont en GET 
 
 function DeleteObservation(le_id_de_lobs){
-	alert("le_id_de_lobs:"+le_id_de_lobs);
+	//alert("le_id_de_lobs:"+le_id_de_lobs);
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -732,11 +671,11 @@ function DeleteObservation(le_id_de_lobs){
             obj = JSON.stringify(data);
             var msg = obj.valueOf('MessageErreur');
             if (msg != null){
-                alert(obj.valueOf('MessageErreur'));
+                //alert(obj.valueOf('MessageErreur'));
             }
-			 alert("DeleteObservation success:"+obj);
+			 //alert("DeleteObservation success:"+obj);
 			 
-			 	document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + obj+"\n--------------DeleteObservation success------------\n\n";
+			 	//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + obj+"\n--------------DeleteObservation success------------\n\n";
 			 
             return obj;
 
@@ -745,7 +684,7 @@ function DeleteObservation(le_id_de_lobs){
             alert("DeleteObservation error:"+xhr.responseText);
 			
 			
-				document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + xhr.responseText+"\n--------------DeleteObservation error------------\n\n";
+				//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + xhr.responseText+"\n--------------DeleteObservation error------------\n\n";
 			
         }
     });
@@ -786,6 +725,15 @@ function dba_InsertUnCommentaire() {
  	
 	
 /*	
+
+
+
+
+
+
+
+
+
 Pour ajouter une commentaire :
 
 
@@ -793,6 +741,17 @@ Pour ajouter une commentaire :
 Le Json à me passer pour l'ajout :
 
 {"IDUsager":1,"Id":0,"Texte":"blabla","observationId":1}
+
+
+
+Je viens de livrer des modification :
+
+La suppression de l'observation devrait fonctionner.
+J'ai ajouté le code pour envoyer l'alerte à la création d'un observation
+L'id du commentaire est corrigé
+J'ai commencé l'update de l'observation mais ce n'est pas fonctionnel encore... (demain!)
+
+Pour l'ID je pourrai juste regarder demain, je suis en visite dans la famille ce soir!
 
 
 */		
@@ -841,7 +800,7 @@ Le Json à me passer pour l'ajout :
             }*/
            
 			alert("dba_InsertUnCommentaire response success :"+obj);
-			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------dba_InsertUnCommentaire success--------\n"+obj+"\n\n";
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------dba_InsertUnCommentaire success--------\n"+obj+"\n\n";
 			
 		   return obj;
 			
@@ -853,7 +812,7 @@ Le Json à me passer pour l'ajout :
             
 			//alert("dba_InsertUnCommentaire response error 788776"+xhr.responseText);
 		
-			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------dba_InsertUnCommentaire error--------\n"+xhr.responseText+"\n\n";
+			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------dba_InsertUnCommentaire error--------\n"+xhr.responseText+"\n\n";
 	
 			
         }

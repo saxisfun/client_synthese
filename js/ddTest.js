@@ -50,7 +50,7 @@ $('#search').keyup(function() {
 				output += '<p>'+ val.description +'</p>';
 				if (val.flObsPermises === true)
 				{
-				output += '<button onclick="onClickBoutonAjouterObservation('+val.id+');" style="width:170px;">AJOUTER UNE OBSERVATION</button>';
+				output += '<button onclick="onClickBoutonAjouterObservation('+val.id+',333);" style="width:170px;">AJOUTER UNE OBSERVATION</button>';
 			    }
 				output += '<audio controls> <source src="sons/'+ val.IDSon +'.mp3"/>';
 				output += '</li>';
