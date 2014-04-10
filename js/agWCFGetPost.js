@@ -68,10 +68,10 @@ function init() {
 }
 
 var ID;
-function GetUsager() {
+function wcf_GetUsager() {
     ID = 1;
     
-	alert("1111122222");
+	//alert("1111122222");
 	
 	$.ajax({
         cache: false,
@@ -84,46 +84,62 @@ function GetUsager() {
         processData: false,
         statusCode: {
             default: function () {
-                alert(status);
+                //alert(status);
+				document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------wcf_GetUsager statusCode--------\n"+obj+"\n\n";
+
+				
             }
         },
         success: function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-			alert(obj);
+			//alert("wcf_GetUsager success:"+obj);
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------wcf_GetUsager success--------\n"+obj+"\n\n";
+
+			
+			
             return obj;
            
                    },
         ajaxSuccess: function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-			alert(obj);
-            return obj;
+			//alert("wcf_GetUsager ajaxSuccess:"+obj);
+ 			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------wcf_GetUsager ajaxSuccess--------\n"+obj+"\n\n";
+
+			return obj;
            
                    },
         ajaxError: function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-           alert(obj);
+			//alert("wcf_GetUsager ajaxError:"+obj);
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------wcf_GetUsager ajaxError--------\n"+obj+"\n\n";
+		   
 		   return obj;
            
                    },
         ajaxComplete:function (data) {
             obj = JSON.stringify(data);
             //obj = JSON.parse(data);
-            alert(obj);
+             //alert("wcf_GetUsager ajaxComplete:"+obj);
+			document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------wcf_GetUsager ajaxComplete--------\n"+obj+"\n\n";
+
 			return obj;
            
                    }, 
         complete :function (data) {
-            obj = JSON.stringify(data);
-            //obj = JSON.parse(data);
-            alert(obj);
+            //obj = JSON.stringify(data);
+            //alert("wcf_GetUsager complete:"+obj);
+            document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------wcf_GetUsager complete--------\n"+obj+"\n\n";
 			return obj;
            
                    },
         error: function (xhr, textStatus) {
-            alert(xhr.responseText);
+            document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n--------------wcf_GetUsager error:--------\n"+xhr.responseText+"\n\n";
+
+			//alert("wcf_GetUsager error:"+xhr.responseText);
+			
         }
     });
 
@@ -170,7 +186,7 @@ function wcf_Login( pUserName, pPassword) {
     });
 
 }
-function dba_Logout() {
+function wcf_Logout() {
 
     $.ajax({
         cache: false,
@@ -244,7 +260,7 @@ function dba_InsertUsager() {
                 alert(obj.valueOf('MessageErreur'));
             }*/
            
-			alert("dba_InsertUsager response success :"+obj);
+			//alert("dba_InsertUsager response success :"+obj);
 			//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "" +obj;
 		   return obj;
 			

@@ -553,7 +553,7 @@ function onClickBoutonDeconnecter() {
 
 	onClickButtonMenuListViewObserv();
 	
-dba_Logout();
+wcf_Logout();
 
 	document.getElementById('tool_button_deconnecter').style.visibility = 'hidden';
 	document.getElementById('tool_button_seconnecter').style.visibility = 'visible';
@@ -694,7 +694,7 @@ function onClickButtonCreerUser() {
 
 	document.getElementById('line_verif_mot').style.display='';
 	document.getElementById('line_courriel').style.display='';
-	//document.getElementById('line_est_admin').style.display='';
+	document.getElementById('line_est_admin').style.display='';
 	document.getElementById('line_nom').style.display='';
 	//document.getElementById('line_id_de_lusager').style.display='';
 	//document.getElementById('line_alerte').style.display='';
@@ -745,6 +745,7 @@ function callBack_du_login(obj_json) {
 			varGlobal_NomConnected = ""+obj_json.LoginResult.Nom+"";
 			varGlobal_NomUsagerConnected = ""+obj_json.LoginResult.NomUsager+"";
 
+			
 			document.getElementById("tool_button_deconnecter").style.visibility = "visible";
 			document.getElementById("tool_button_seconnecter").style.visibility = "hidden";
 			document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
@@ -973,10 +974,23 @@ function insererUnePhotoDansLeUL(indexObserv, indexPhoto) {
 
 function afficheEcranObservations(un_observation_ici, la_index) {
 
-window.scrollTo(0, 60);
+	window.scrollTo(0, 60);
 
-
-
+/*
+	varGlobal_UserConnected = ""+obj_json.LoginResult.ID+"";	
+	varGlobal_NomConnected = ""+obj_json.LoginResult.Nom+"";
+	varGlobal_NomUsagerConnected = ""+obj_json.LoginResult.NomUsager+"";
+*/
+	if(varGlobal_UserConnected != un_observation_ici.strObserv_IDUsager.toString()){
+	
+		document.getElementById("ligne_bouton_save_observation").style.display = "none";
+	}else{
+	
+		document.getElementById("ligne_bouton_save_observation").style.display = "";
+	}
+	
+			
+			
 
 
 	removeAllPhotosFromUL();
@@ -1143,6 +1157,277 @@ function removeAllPhotosFromUL() {
 }
 
 
+
+function afficherJsonDansTextarea()
+{
+	
+	//document.getElementById("id_textarea_01").value = "";
+	//afficher je json d'obs dans le textarea
+	var myListViewObservArray_strignified = JSON.stringify(objListViewObservations.myListViewObservArray, null, "\t"); 
+	
+		  
+	//myListViewObservArray_strignified2 = myListViewObservArray_strignified.replace('strObserv_', '777');
+	var myListViewObservArray_strignified2 = myListViewObservArray_strignified.replace(/strObserv_/g, "")
+	var myListViewObservArray_strignified3 = myListViewObservArray_strignified2.replace(/strPhoto_/g, "")
+	
+	
+	//ici oui - afficherJsonDansTextarea
+	//document.getElementById("id_textarea_01").value = myListViewObservArray_strignified3;  
+
+}
+
+
+
+
+
+
+function envoyer_au_serveur_les_observations_avec_photos(){
+	//créer variable json des nouveux observations à envoyer et ceux modifiées
+    //var myArrayDObservationDansLocalStorage = JSON.parse(localStorage.getItem("lsListViewObservArray"));
+	var myArrayDObservationDansLocalStorage = objListViewObservations.myListViewObservArray;
+	
+	//var sadsaasddads = JSON.stringify(myArrayDObservationDansLocalStorage, null, "\t");
+	
+	var myArrayDObservationAUploader1 = [];
+	if ((typeof myArrayDObservationDansLocalStorage == "undefined" ) || (myArrayDObservationDansLocalStorage == null) || (myArrayDObservationDansLocalStorage == "undefined")){
+		
+	}else{	
+	
+		for (var i=0; i < myArrayDObservationDansLocalStorage.length; i++){
+			var observ_Object = myArrayDObservationDansLocalStorage[i];
+			
+			if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
+			
+				if(dataAdapterSwitch_dataFromIIS){
+					//back-end wcf recoit une par une
+					wcf_InsertObservation(observ_Object);
+					
+				}else{
+					//back-end php recoit toute le array d'une claque
+					myArrayDObservationAUploader1.push(observ_Object);	
+				}
+				
+			}
+		} 
+		//var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader1); 
+		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader1, null, "\t");	
+	}
+	return myArrayDObservationAUploader1;
+}
+
+
+
+
+function envoyer_json_dun_nouveau_commentaire_au_serveur_php()
+{
+
+	var le_json = {};
+	
+
+	le_json.comm_Id = document.getElementById('id_comm_id_data').value;
+	le_json.comm_Date = document.getElementById('id_comm_timestamp_data').value;
+	le_json.comm_ObservationId = document.getElementById('id_comm_observ_id_data').value;
+	le_json.comm_UserId = document.getElementById('id_comm_usager_id_data').value;
+	le_json.comm_Resume = document.getElementById('id_comm_resume_data').value;
+	
+
+
+
+	var test343 = JSON.stringify(le_json, null, "\t"); 
+	alert(test343);
+
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST","http://198.100.145.177/cegep/comm_up.php",true);
+	xmlhttp.setRequestHeader("Content-Type", "application/json");	
+			
+	xmlhttp.onreadystatechange = function(){
+		if (xmlhttp.readyState == 4) {
+			if (xmlhttp.status == 200 || xmlhttp.status == 0) {		
+			
+			var str_output = xmlhttp.responseText;
+				
+					//storageDate.date1 = todaysDate;
+					//alert("str_output: "+str_output+"\n\n\n\n");
+					//storageObs = str_output;
+
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
+					
+					//ici oui - envoyer_json_des_nouvelles_observations_au_serveur
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n\n"+str_output;
+				
+					//objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+
+			}
+		}
+	}	
+
+	//document.getElementById("id_textarea_01").value = JSON.stringify(le_myArrayDObservationAUploader, null, "\t");	
+	//alert("1234567:"+JSON.stringify(le_myArrayDObservationAUploader, null, "\t"));
+
+	xmlhttp.send(JSON.stringify(le_json)); 
+	
+}
+
+
+
+
+function envoyer_json_des_nouvelles_observations_au_serveur(le_myArrayDObservationAUploader)
+{
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST","http://198.100.145.177/cegep/obs_up.php",true);
+	xmlhttp.setRequestHeader("Content-Type", "application/json");	
+	//alert(JSON.stringify(le_myArrayDObservationAUploader));		
+	xmlhttp.onreadystatechange = function(){
+		if (xmlhttp.readyState == 4) {
+			if (xmlhttp.status == 200 || xmlhttp.status == 0) {		
+			
+			var str_output = xmlhttp.responseText;
+				
+					//storageDate.date1 = todaysDate;
+					//alert("str_output: "+str_output+"\n\n\n\n");
+					//storageObs = str_output;
+
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n"+ str_output;				
+					
+					//ici oui - envoyer_json_des_nouvelles_observations_au_serveur
+					//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n\n\n"+str_output;
+				
+					objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+
+			}
+		}
+	}	
+
+	//document.getElementById("id_textarea_01").value = JSON.stringify(le_myArrayDObservationAUploader, null, "\t");	
+	//alert("1234567:"+JSON.stringify(le_myArrayDObservationAUploader, null, "\t"));
+
+	xmlhttp.send(JSON.stringify(le_myArrayDObservationAUploader)); 
+	
+}
+
+
+
+
+
+function afficher_les_observations_new(observation_de, observation_a)
+{
+	hide_all();
+	
+	
+	objListViewObservations.fillObservsListView();
+
+
+	
+	document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
+	
+	//document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
+	document.getElementById("tool_button_rechercher").style.visibility="visible";
+
+	
+	
+	
+	
+	show_back_button();
+
+}	
+
+
+
+
+function onClickButtonSynchro()
+{
+
+	var myArray_DObs = [];
+	myArray_DObs = envoyer_au_serveur_les_observations_avec_photos();
+
+	///envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
+	///envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
+	the_timer_01 = setInterval(function(){objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);window.clearInterval(the_timer_01)},3000);
+
+	
+	
+
+}
+
+
+
+
+
+
+
+function callback_de_downloader_les_observations_dans_localstorage()
+{
+	objListViewObservations.clearMyListViewObservArray();
+	
+	
+	objListViewObservations.removeAllObservFromListView();
+	
+	objListViewObservations.fillMyListViewObservArrayFromLocalStorage();
+
+	
+
+	
+	afficher_les_observations_new(1,20);
+}	
+
+
+function onClickAfficheCommentaires()
+{
+	hide_all();
+	
+	var le_id_obs = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
+	
+	//objListViewComm.agXMLHttpReqComm('http://198.100.145.177/cegep/json/comm.json');
+	
+	
+	
+	objListViewComm.agXMLHttpReqComm(le_id_obs);
+	
+	
+	//objListViewComm.agXMLHttpReqComm("http://198.100.145.177/cegep/comm_dwn.php");
+	
+	
+	
+	
+	show_liste_des_comm();
+	
+	document.getElementById('tool_button_ajouter_comm').style.visibility='visible';
+	document.getElementById('back_button').style.visibility='hidden';
+	document.getElementById('back_to_observ').style.visibility='visible';						
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function utf8_to_b64( str ) {
+    return window.btoa(unescape(encodeURIComponent( str )));
+}
+
+function b64_to_utf8( str ) {
+    return decodeURIComponent(escape(window.atob( str )));
+}
+
+function search_dic( search_str ) {
+		alert(search_str);
+	var results = [];
+	var searchField = "name";
+	var searchVal = search_str;
+	for (var i=0 ; i < obj.list.length ; i++)
+	{
+		if (obj.list[i][searchField] == searchVal) {
+			results.push(obj.list[i]);
+		}
+	}
+}
 
 
 // Execute the provided anonymous function when the DOM is ready.

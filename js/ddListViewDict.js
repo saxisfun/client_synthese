@@ -78,8 +78,6 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 							delete theObject_oiseau["MessageErreur"];
 							delete theObject_oiseau["CrisOiseau"];
 														
-							//Cancellé l'image de Raymond parce qu'un peut downloader l'image mais pas la visionner dans un fureteur
-							//Bin en tous cas peut etre, mais j'ai plus de temps donc je hardcode les images ici
 							//var debut_url = "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc/image/oiseau/10";
 							//var debut_url = "http://periodiqco1.web703.discountasp.net/WCF_Synthese/ServiceWCF_Synthese.svc";
 							//var debut_url = "http://periodiqco1.web703.discountasp.net/WCF_Synthese/WCF_Synthese/web/birds/aigrette_garzette.jpg";
@@ -212,7 +210,10 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 	
 			if (le_espece.indexOf(ch_de_rech) !== -1)
 			{
-					obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,
+				//alert("222222222222222222222222:"+ch_de_rech);
+				
+				
+				obj2cell(localString.result[i].id,localString.result[i].espece,localString.result[i].description,
 				localString.result[i].IDPhoto,localString.result[i].IDSon,localString.result[i].flObsPermises)
 			}
 		}

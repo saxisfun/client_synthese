@@ -181,7 +181,9 @@ MaCamera.prototype.agImgToCanvasToDataURL = function() {
 		
 	*/
 
-	widthTarget = 320;
+	//widthTarget = 320;
+	widthTarget = 200;
+	
 	heightTarget = (widthTarget * imgTag1.height) / imgTag1.width;
 
 	imgCanvas.width = widthTarget;

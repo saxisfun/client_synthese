@@ -151,11 +151,17 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 						try {
 						
 						//canceller le localstaorage temporairement 
+							//alert("localStorage.setItem start");
+							
 							localStorage.setItem("lsListViewObservArray", str_output);
 							localStorage.setItem("lsListViewObservLastDate", todaysDate);
-							
-							
+							//alert("localStorage.setItem end");
+							//alert("callback_de_downloader_les_observations_dans_localstorage start");
 							callback_de_downloader_les_observations_dans_localstorage();
+							
+							//alert("callback_de_downloader_les_observations_dans_localstorage end");
+							
+							
 							//alert("callback_de_downloader_les_observations_dans_localstorage end");
 						}
 						catch (e) {
@@ -178,7 +184,7 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
     }
 					
 	//return storageObs.output;
-	
+
 	
 }
 
@@ -615,8 +621,15 @@ ClasseListViewObservations.prototype.fillObservsListView = function() {
 	
 	//alert("fillObservsListView");
 	
+	var intMaxParPage = 10;
+	var intStartFrom=1;
+	if(this.myListViewObservArray.length > intMaxParPage){}else{intMaxParPage = this.myListViewObservArray.length;}
 	
-	for (var i=0; i < this.myListViewObservArray.length; i++){
+	
+	for (var i = intStartFrom; i < intMaxParPage; i++){
+		/*for (var i=0; i < this.myListViewObservArray.length; i++){*/
+	
+	
 		//var theObject = this.myListViewObservArray[i];
 		
 		
