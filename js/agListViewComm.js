@@ -51,9 +51,8 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_id_obs) {
 					
 							var str_outpu2 = JSON.parse(str_output);
 							var data2Received = JSON.stringify(str_outpu2, null, "\t"); 
-							//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + data2Received+"\n--------------agXMLHttpReqComm------------\n\n";
-							//document.getElementById("id_textarea_01").value = data2Received+"\n--------------------------------------------------------------------\n\n";
-							
+							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n---------data2Received avant---"+data2Received+"---------\n\n";
+						
 							//renomer var
 			
 							data2Received = data2Received.replace(/\WDate\W/g, '"strComm_comm_Date"');
@@ -61,8 +60,14 @@ ClasseListViewComm.prototype.agXMLHttpReqComm = function(le_id_obs) {
 							data2Received = data2Received.replace(/\WId\W/g, '"strComm_comm_Id"');
 							data2Received = data2Received.replace(/\WTexte\W/g, '"strComm_comm_Resume"');
 							data2Received = data2Received.replace(/\WobservationId\W/g, '"strComm_comm_ObservationId"');			
-					
-					//alert(data2Received);
+						
+							document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value +"\n---------data2Received apres---"+data2Received+"---------\n\n";				
+
+
+							
+							
+
+							//alert(data2Received);
 /*
 		"strComm_comm_Id": 1,
 		"strComm_comm_Date": 1394144405287,
@@ -218,8 +223,9 @@ ClasseListViewComm.prototype.fillCommListView = function(le_str_output) {
 	//var JSONstring=[{"key1":"value1","key2":"value2"},{"key3":"value3"}];
 
 	for (var i = 0; i < localString.length; i++) {
-		//var obj = localString.result[i];
-
+		//var obj = localString.result[i];	
+		localString[i].strComm_comm_Date = convertDateToTimestamp(localString[i].strComm_comm_Date);
+	
 		objListViewComm.addCommListViewCell(localString[i].strComm_comm_Id, localString[i].strComm_comm_Date, localString[i].strComm_comm_ObservationId, localString[i].strComm_comm_UserId, localString[i].strComm_comm_Resume, i)
 
 	}

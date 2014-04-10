@@ -718,14 +718,6 @@ function dba_InsertUnCommentaire() {
 	
 /*	
 
-
-
-
-
-
-
-
-
 Pour ajouter une commentaire :
 
 
@@ -748,18 +740,55 @@ Pour l'ID je pourrai juste regarder demain, je suis en visite dans la famille ce
 
 */		
 
-   datas = {"IDUsager":1,"Id":1,"Texte":"blabla","observationId":110}
 
 
 
-	/*
-	datas.Courriel = v_dba_Courriel;			
-	datas.EstAdministrateur = false;
-	datas.MotDePasse = v_dba_txtMotDePasse;	
-	//datas.MotDePasse = v_txtMotDePasse_verif;		
-	datas.Nom = v_dba_txtNom;		
-	datas.NomUsager = v_dba_TextNomUsager;	
-	*/
+
+
+//json de départ des données
+datas = {"IDUsager":1,"Id":1,"Texte":"blabla","observationId":110}
+
+/*
+json d'arrivée des données
+[
+  {
+    "Date": "2014-04-07 21:04:39",
+    "IDUsager": 1,
+    "Id": 7,
+    "Texte": "blabla",
+    "observationId": 1
+  },
+  {
+    "Date": "2014-04-07 21:04:39",
+    "IDUsager": 1,
+    "Id": 6,
+    "Texte": "blabla",
+    "observationId": 1
+  }
+]
+*/
+	datas.Date = document.getElementById('id_comm_timestamp_data').value;
+	
+	datas.Date = convertTimeStampToDate(datas.Date);
+	
+	//datas.IDUsager = document.getElementById('id_comm_usager_id_data').value;	
+	datas.IDUsager = varGlobal_UserConnected;
+
+
+	
+	datas.Id = "0";
+	datas.Texte = document.getElementById('id_comm_resume_data').value;		
+	datas.observationId = document.getElementById('id_comm_observ_id_data').value;;		
+	
+
+	
+/*
+	le_json.comm_Id = document.getElementById('id_comm_id_data').value;
+	le_json.comm_Date = document.getElementById('id_comm_timestamp_data').value;
+	le_json.comm_ObservationId = document.getElementById('id_comm_observ_id_data').value;
+	le_json.comm_UserId = document.getElementById('id_comm_usager_id_data').value;
+	le_json.comm_Resume = document.getElementById('id_comm_resume_data').value;
+*/	
 	
 		
 	
