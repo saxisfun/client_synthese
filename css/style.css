@@ -252,7 +252,7 @@ tr {
 }
 
 p {
-	line-height:1px;
+	/*line-height:1px;*/
 	
 }
 
@@ -593,11 +593,62 @@ background-color: green;
 
 
 div.list_View_Observ  {
-	
+	min-height:111px;
 }
 
 
 
+#table_observation_gps{
+	width:100%;
+	border-width:1px;
+	border-style:solid;
+	border-color:#666666;
+	margin:auto;
+	
+	border-radius:15px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;	
+	margin-top:5px;
+}
+
+#id_ObservLaPositionGPS_long_data{
+font-size:12pt;
+}
+#id_ObservLaPositionGPS_lat_data{
+	font-size:12pt;
+
+}
+#id_ObservTitre_data{
+font-size:12pt;
+	width:96%;
+	padding:5px;
+	border-radius:10px;
+	
+
+}
+#id_ObservResume_data{
+	font-size:12pt;
+	border-width:1px;
+	border-style:solid;
+	border-color:#666666;
+	width:96%;
+	padding:5px;
+	border-radius:10px;
+	
+	margin-top:5px;
+}
+
+#id_ObservTitre_label, #id_ObservResume_label, #id_ObservLaPositionGPS_long_label{
+	margin-bottom:5px;
+	margin-top:5px;
+}
+
+
+#obs_id_titre{
+	font-size:12pt;
+	font-weight:bold;
+}
 /* TEST DENIS ----------------------------------------------------------------*/
 
    #time {
@@ -1031,7 +1082,7 @@ bird_imgPlus{
 
 .lvo_em_obs_id{
 	position:absolute;
-	top:110px;
+	top:118px;
 	left:20px;
 	/*float:right;*/
 	/*margin-right:10px;
@@ -1075,7 +1126,9 @@ position:relative;
 /*---------------  Photos fond d'écran --------------------*/
 
 #ecran_login{
-	width:95%;
+	/*width:95%;*/
+	min-width:216px;
+	
 	height:520px;	
     background:url('../img/fond_login_1024x748.png') top center no-repeat fixed;
 }

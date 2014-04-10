@@ -7,6 +7,11 @@ http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/A
 2-localiser sur la carte
 
 
+Présentation 
+cache fichier manifest
+responsive design
+traduction 2 langues
+
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/Login/
 http://periodiqco1.web703.discountasp.net/WCF_Synthese/servicewcf_synthese.svc/GetUsager/1
 
@@ -281,7 +286,7 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 	
 	
 	//prendre les images en base64 d'une observations et les mettre dans le json à envoyer
-	alert("un_observ2.arrObservLesPhotos.length:"+un_observ2.arrObservLesPhotos.length);
+	//alert("un_observ2.arrObservLesPhotos.length:"+un_observ2.arrObservLesPhotos.length);
 
 	for (var i=0; i < un_observ2.arrObservLesPhotos.length; i++){
 		//pour chacune des objet ClassePhoto on prend ce qu'on a de besoin à envoyer
@@ -313,29 +318,16 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 		if (str_le_base64.length > 300){
 			var temp9876 = str_le_base64.substr(0,23);
 			//seulement pour afficher pour voir si il y a quelque chose
-			alert("ok yess go: "+temp9876);
+			//alert("ok yess go: "+temp9876);
 			//observ_une_photo.strPhoto_url_big;
 		
 			//remplir le array de photos à envoyer au wcf seulement s'il y a un base 64 dedans
 			//S'il n'y a pas de base64 dedans ca veut dire que cette photo on l'a recu du serveur avec un url et que l'image n'est pas dans notre mobile
 			//donc on a pas besoin de l'envoyer elle a déja été envoyé
 			obj_json_les_photos_a_envoyer.photoList.push(str_le_base64);		
-		
-		
-		
 		}
 		
-		//this.myListViewObservArray.push(test3546);	
-		
-		//{"IDObservation":1,"photoList":["R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="]}
-		//observ_Object.strObservFlagInsertUpdate = "";
-		//alert("strObservFlagInsertUpdate:"+observ_Object.strObservFlagInsertUpdate);
-		
-		/*
-		if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
-		}*/
 	} 
-	//var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer, null, "\t");
 	
 	//afficher le json des photos à envoyer dans le textarea
 	var str_json_des_photos = JSON.stringify(obj_json_les_photos_a_envoyer);	
@@ -377,7 +369,7 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 				var str_obj_succes_response = JSON.stringify(data, null, "\t");
 				
 		
-				alert("wcf_InsertLesPhotos str_obj_succes_response:\n"+str_obj_succes_response);
+				//alert("wcf_InsertLesPhotos str_obj_succes_response:\n"+str_obj_succes_response);
 				
 				//alert("wcf_InsertObservation response success:\n"+str_obj);
 				//document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n----str_obj_succes_response----------\n" +str_obj_succes_response;		
@@ -386,7 +378,7 @@ function wcf_InsertLesPhotos(le_id_de_lobservation, un_observ2) {
 			},
 			error: function (xhr, textStatus) {
 			
-				alert("wcf_InsertLesPhotos response error:\n"+xhr.responseText);	
+				//alert("wcf_InsertLesPhotos response error:\n"+xhr.responseText);	
 				document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----error booooo----------\n" +xhr.responseText;		
 
 			}
@@ -450,7 +442,7 @@ function wcf_InsertObservation(un_observ1) {
 	document.getElementById("id_textarea_01").value = document.getElementById("id_textarea_01").value + "\n-----wcf_InsertObservation---dataToSend-----\n" +dataToSend;		
 
 	
-	alert(dataToSend);
+	//alert(dataToSend);
 	
 	
     $.ajax({

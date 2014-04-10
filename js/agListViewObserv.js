@@ -428,8 +428,8 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	
 	
-	var em_obs_id = document.createElement("em");
-	var em_obs_id_content = document.createTextNode("Num: "+le_strObserv_Id);
+	var em_obs_id = document.createElement("div");
+	var em_obs_id_content = document.createTextNode("Observ: "+le_strObserv_Id);
 	em_obs_id.setAttribute("class", "lvo_em_obs_id");	
 	em_obs_id.appendChild(em_obs_id_content);		
 	
@@ -452,7 +452,8 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	var newP = document.createElement("p");
 	newP.setAttribute("class", "lvo_p_resume");	
-	var newPContent = document.createTextNode("Description: "+le_ObservDescrip);
+	//var newPContent = document.createTextNode("Description: "+le_ObservDescrip);
+	var newPContent = document.createTextNode("Détail: "+le_ObservDescrip);
 	newP.appendChild(newPContent);	
 	
 	
