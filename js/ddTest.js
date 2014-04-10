@@ -159,6 +159,30 @@ function myTstGPS() {
 
 
 
+function carteNo2(latitude, longitude) {
+
+    alert('lat., lon.: ' + latitude + ', ' + longitude)
+    var options = {
+        zoom: 17,
+        center: new google.maps.LatLng(latitude, longitude),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("contentMap"), options);
+	var ICON = new google.maps.MarkerImage('img/blue-bird.png',null,null, new google.maps.Point(14,13));
+	var SHADOW = new google.maps.MarkerImage('img/bird-shadow.png',null,null, new google.maps.Point(14,13));
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(latitude, longitude),
+		icon: ICON,
+		shadow: SHADOW,
+		title: 'Observation'
+    });
+    marker.setMap(map);
+}
+
+
+
 
 //fonctions passées en parmêtre dans «navigator.geolocation.getCurrentPosition»
 
