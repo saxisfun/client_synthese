@@ -67,22 +67,33 @@ function ClasseCoorGPS(flat, flon) {
     this.latitude = parseFloat(flat);
     this.longitude = parseFloat(flon);
     //lat -90.XXXXXX to 90.XXXXXX and lng -180.XXXXXX to 180.XXXXXX
-    this.ok = !(this.latitude < -90 || this.latitude > 90 || this.longitude < -180 || this.longitude > 180);
+    this.ok = !(this.latitude == 0 || this.latitude < -90 || this.latitude > 90 || this.longitude < -180 || this.longitude > 180);
 }
 
 
 
 function carteNo2(latitude, longitude) {
-    var yx = new ClasseCoorGPS(latitude, longitude);
+	if (latitude == 0) {
+		alert('La position était éronnée et elle a été remplacée\npar votre position courante.');
+	    latitude = 0;
+		longitude = 0;
+	}
+	if (latitude === undefined ) {
+	    latitude = 0;
+		longitude = 0;
+	}
+	//alert('latitude: ' + latitude + ' longitude: ' + longitude);
+
+   var yx = new ClasseCoorGPS(latitude, longitude);
 
     if (!yx.ok) {
         prendrePositionActuelle(yx);
-		alert('La position était éronnée et elle a été remplacée!');
     }
 	else
 	{
     afficherCarteOiseau(yx);
 	}
+	
 }
 
 
@@ -96,7 +107,7 @@ function prendrePositionActuelle(obyx) {
         navigator.geolocation.getCurrentPosition(trfPosition, gestionErreurs, {timeout: 40000});
     } else
 	{
-		alert('Impossible de vous localiser... Position du Cégep !');
+		alert('Impossible de vous localiser...\nremplacé par la position du Cégep !');
 	}
 
     function trfPosition(position) {
