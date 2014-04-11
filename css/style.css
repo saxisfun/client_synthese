@@ -1119,11 +1119,11 @@ position:relative;
 }
 
 #contentMap{
-	width:520px;
-	height:520px;	
+	width:1200px;
+	height:600px;	
 }
 
-
+/*  width:520px;*/
 /*---------------  Photos fond d'écran --------------------*/
 
 #ecran_login{

@@ -138,11 +138,28 @@ function hide_Parametres() {
 
 function show_geolocalisation() {
 	show_element(document.getElementById('ecran_geolocalisation'));
+	carteNo2(46.785136, -71.2847);
 }
 
 function hide_geolocalisation() {
 	hide_element(document.getElementById('ecran_geolocalisation'));
 }
+
+
+
+/*
+// écran géolocalisation d'une observation
+//RÉCUPÉRER LAT ET LONG DE L'OBSERVATION COURANTE
+*/
+
+
+function show_geolocalisation_from_observation() {
+	show_element(document.getElementById('ecran_geolocalisation'));
+	//alert(document.getElementById('id_ObservLaPositionGPS_long_data').value);
+	carteNo2(document.getElementById('id_ObservLaPositionGPS_lat_data').value, document.getElementById('id_ObservLaPositionGPS_long_data').value);
+
+}
+
 
 
 
@@ -276,7 +293,8 @@ function get_lang_callback(le_str_output) {
 	document.getElementById("id_bouton_actualiser").innerHTML = localString['str_bouton_actualiser'];
 
 	document.getElementById("id_bouton_geolocalisation").innerHTML = localString['str_bouton_geolocalisation'];
-	document.getElementById("id_bouton_notification").innerHTML = localString['str_bouton_notification'];
+	
+	//document.getElementById("id_bouton_notification").innerHTML = localString['str_bouton_notification'];
 	
 	document.getElementById("id_bouton_parametres").innerHTML = localString['str_bouton_parametres'];
 	document.getElementById("id_bouton_settings").innerHTML = localString['str_bouton_settings'];

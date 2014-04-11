@@ -337,14 +337,16 @@
 			
 			
 
-		    <!-- - - - - - - - -->
-			<li>
-			  <a href="#ecran_notification"  id="id_bouton_notification"
+		    <!-- - - - - - - -   
+			<li>   
+			  <a href="#ecran_notification"  id="id_bouton_notification"   
 			     onclick="hide_all();show_avis_notification();show_back_button();" 
-			     class="switch_screen">xxx</a>
-			</li>
-										
+			     class="switch_screen">xxx</a>   
+			</li>  
+				 -->						
 
+				
+				
 		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#ecran_Parametres"  id="id_bouton_parametres"
@@ -495,7 +497,7 @@
 
 							<li>
 							  <a href="#"  id="id_bouton_geolocalisation"
-								 onclick="hide_all();show_geolocalisation();show_back_button();"
+								 onclick="hide_all();show_geolocalisation_from_observation();show_back_button();"
 								 class="switch_screen">Voir sur Google Map</a>
 							</li>
 						</ul>		
@@ -514,7 +516,7 @@
 				</tr>	
 				<tr>
 					<td>		
-						Lonitude:
+						Longitude:
 					</td> 			
 				</tr>		
 				<tr>
@@ -772,16 +774,16 @@
 	<!--  Écran de test géolocalisation -->  
  	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
 		
-		
+<!--		
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0px; padding: 0px }
       #map_canvas { height: 100% ; width:100%;}
     </style>
+	-->		
 		
 		
-		
-		
+		<!--
 		<table>
 		<tr> 
 			<td> 
@@ -796,12 +798,12 @@
 				</ul>
 			</td> 
 		</tr>
+		</table>  -->	
 
-
-		</table>	
+<!-- <button onclick="localiser();">localise()</button>  -->
 
 		<div>
-			<!-- <button onclick="localiser();">localise()</button>  -->
+			
 			<div id="contentMap"></div>
 		</div>
 
