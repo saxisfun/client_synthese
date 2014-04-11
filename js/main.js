@@ -138,7 +138,8 @@ function hide_Parametres() {
 
 function show_geolocalisation() {
 	show_element(document.getElementById('ecran_geolocalisation'));
-	carteNo2(46.785136, -71.2847);
+	//carteNo2(46.785136, -71.2847);
+	carteNo2();
 }
 
 function hide_geolocalisation() {
