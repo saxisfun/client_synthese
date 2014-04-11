@@ -81,7 +81,7 @@
 		<button id="back_button" onclick="hide_all();show_menu1();" style="top:5px;height:72px;" class="hidden">xxx</button>
 		
 		<button id="back_to_observ" 
-		style="position:absolute;bottom:6px;left:2px;visibility:hidden;width:104px;top:5px;height:72px;"
+		style="position:absolute;bottom:6px;left:10px;visibility:hidden;width:77px;top:5px;height:72px;"
 		onclick="
 		hide_all();
 		//show_menu1();
@@ -103,7 +103,7 @@
 				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
 			}
 		"
-		style="position:absolute;bottom:6px;right:173px;visibility:hidden;width:88px;top:5px;height:72px;"
+		style="position:absolute;bottom:6px;right:83px;visibility:hidden;width:86px;top:5px;height:72px;"
 		class="">xxx</button>	  
 		
 
@@ -125,14 +125,12 @@
 				alert('Vous devez être connecté pour pouvoir ajouter des commentaires!');
 			}			
 		"
-		style="position:absolute;bottom:6px;right:173px;visibility:hidden;width:88px;top:5px;height:72px;"
+		style="position:absolute;bottom:6px;right:83px;visibility:hidden;width:86px;top:5px;height:72px;"
 		class="">xxx</button>	  		
 		
 		
 		
-		<button id="tool_button_rechercher" onclick="hide_all();show_dicti();show_back_button();"
-		style="position:absolute;bottom:6px;right:83px;visibility:hidden;width:86px;top:5px;height:72px;"
-		class="">xxx</button>
+
 
 		<button  id="tool_button_deconnecter" onclick="onClickBoutonDeconnecter();"
 		style="position:absolute;bottom:6px;right:12px;visibility:hidden;width:65px;top:5px;height:72px;"
@@ -159,7 +157,7 @@
 	  	<!--/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->	  
 		<!--  Écran du login  -->
 	 
-	<div id="ecran_login" style="" class="screen">
+	<div id="ecran_login" style="" class="screen hidden">
 	
 		<table class="table2">
 		<col style="width:40%;">        
@@ -419,7 +417,7 @@
 		<tr>
 			<td class="tdhead">
 			<span style="margin-top:-1px;width:20%;" id="id_Observ_oiseau_espece_label">Espèce</span>
-			<span style="margin-top:-1px;float:right;width:72%;" id="id_Observ_oiseau_descrip_label">Description</span>
+			<span style="margin-top:-1px;float:right;width:65%;" id="id_Observ_oiseau_descrip_label">Description</span>
 			</td>
 		</tr>	
 		
@@ -427,7 +425,7 @@
 			<td class="tddata">
 			<input  type="text" readonly style="background-color:#cccccc;width:20%;" id="id_Observ_oiseau_id_data" VALUE="">
 			<input  type="text" readonly style="background-color:#cccccc;float:right;width:10%;display:none;" id="id_Observ_oiseau_descrip_data" VALUE="XXXX">
-			<input  type="text" readonly style="background-color:#cccccc;float:right;width:72%;" id="id_Observ_oiseau_espece_data" VALUE="XXXX">			
+			<input  type="text" readonly style="background-color:#cccccc;float:right;width:65%;" id="id_Observ_oiseau_espece_data" VALUE="XXXX">			
 			</td>	
 		</tr>	
 
@@ -437,7 +435,7 @@
 		<tr>
 			<td class="tdhead">
 			<span style="margin-top:-1px;width:20%;" id="id_ObservNomDeLusager_label">Usager</span>
-			<span style="margin-top:-1px;float:right;width:72%;" id="id_ObservNomComplet_label">Nom</span>
+			<span style="margin-top:-1px;float:right;width:65%;" id="id_ObservNomComplet_label">Nom</span>
 			</td>
 		</tr>			
 		
@@ -446,7 +444,7 @@
 			<td class="tddata">
 			<input  type="text" readonly style="background-color:#cccccc;width:20%;" id="id_ObservNomDeLusager_data" VALUE="">
 			<input  type="text" readonly style="background-color:#cccccc;float:right;width:10%;display:none;" id="id_ObservNoDeLusager_data" VALUE="XXXX">
-			<input  type="text" readonly style="background-color:#cccccc;float:right;width:72%;" id="id_ObservNomComplet_data" VALUE="XXXX">
+			<input  type="text" readonly style="background-color:#cccccc;float:right;width:65%;" id="id_ObservNomComplet_data" VALUE="XXXX">
 
 			</td> 
 		</tr>			
@@ -791,11 +789,11 @@
 			<td> 
 				<ul class="buttons">
 					<li>
-						<a href="#" id="" onclick="carteNo2(46.785136, -71.2847);" 						class="switch_screen">localiser('carte')</a>
+						<a href="#" id="" onclick="carteNo2(46.785136, -71.2847);" 						class="switch_screen">Afficher la position sur la carte</a>
 					</li>	
 					
 					<li>	
-						<a href="#" id="" onclick="localiser();" 						class="switch_screen">localiser()</a>
+						<a href="#" id="" onclick="localiser();" 						class="switch_screen">Obtenir la latitude et longitude</a>
 					</li>	
 				</ul>
 			</td> 
@@ -1056,7 +1054,7 @@
 	
 	
 	
-  	<div style="display:;" >
+  	<div style="display:none;" >
 		<textarea rows="20"  style="width:100%;" id="id_textarea_01"></textarea> 
 	</div>	
 	  
@@ -1169,7 +1167,7 @@ laCamera1.activateAudio();
 
 afficher_les_observations_new(1,20);
 
-
+window.scrollTo(0, 0);
 //wcf_GetUsager();
 
 //leAccel1 = new MonAccel();
@@ -1182,7 +1180,7 @@ var varGlobal2;
 var varGlobalNomImage;
 
 
-//onClickButtonSynchro();
+onClickButtonSynchro();
 
 /*
 var la_reponse="";

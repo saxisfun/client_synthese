@@ -161,7 +161,7 @@ function myTstGPS() {
 
 function carteNo2(latitude, longitude) {
 
-    alert('lat., lon.: ' + latitude + ', ' + longitude)
+   // alert('lat., lon.: ' + latitude + ', ' + longitude)
     var options = {
         zoom: 17,
         center: new google.maps.LatLng(latitude, longitude),
