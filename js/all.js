@@ -34,29 +34,85 @@ var str_output = "";
 //choix de la langue
 function agXMLHttpReqLan(le_url) {
 
-	//alert(le_url);
-	try {
 
-		var resourcePath = le_url;
-		var request = new XMLHttpRequest();
+	var str_output = localStorage.getItem("local_storage_last_date_str_output");
+
+	//var storageObs = JSON.parse(localStorage.getItem("lsListViewObservArray")) || {},
+	var storageDate = localStorage.getItem("local_storage_last_date_lang_update"),
+	une_date = new Date(),
+	//todaysDate = (date.getMonth() + 1).toString() + date.getDate().toString();
+	todaysDate=agConvertDate2(une_date);
+	
+	//alert(storageObservationsDate+"/"+todaysDate); 
+    // Vérifier si Comm existe et n'est pas trop vieux 
+	//Télécharger seulement une fois par jour. Si pas date d'aujourd'hui on télécharge
+   	//alert("start localstorage lang, storageDate:"+storageDate+" ,todaysDate:"+todaysDate+" ,str_output:"+str_output);
+   if (typeof storageDate === "undefined" || storageDate != todaysDate || str_output === null || str_output.length < 10 || typeof str_output === "undefined")
+	{
+
+			//alert("go localstorage lang:"+une_date);
+			try {
+
+				var resourcePath = le_url;
+				var request = new XMLHttpRequest();
 
 
-		request.open("GET", resourcePath, true);
-		request.onreadystatechange = function() {
-			if (request.readyState == 4) {
+				request.open("GET", resourcePath, true);
+				request.onreadystatechange = function() {
+					if (request.readyState == 4) {
 
-				if (request.status == 200 || request.status == 0) {
-					//str_output = JSON.parse(request.responseText);
-					str_output = request.responseText;
-					//alert(str_output);
-					get_lang_callback(str_output);
+						if (request.status == 200 || request.status == 0) {
+							//str_output = JSON.parse(request.responseText);
+							str_output = request.responseText;
+							localStorage.setItem("local_storage_last_date_str_output", str_output);
+							
+							//alert(str_output);
+							get_lang_callback(str_output);
+						}
+					}
 				}
+				request.send();
+			} catch (e) {
+				//errorEvent(e);
 			}
-		}
-		request.send();
-	} catch (e) {
-		//errorEvent(e);
-	}
+			
+			localStorage.setItem("local_storage_last_date_lang_update", todaysDate);
+			//storageDate = une_date;
+
+    }
+    else {
+	
+		
+		get_lang_callback(str_output);
+	   //str_output = storageObs.output;
+	   //this.fillObservsListView(str_output); 
+	   //storageObs.output = str_output;
+    }
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 

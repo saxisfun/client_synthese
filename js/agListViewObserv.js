@@ -32,6 +32,10 @@ function ClasseListViewObservations(myName) {
 
 ClasseListViewObservations.prototype.downloader_les_observations_dans_localstorage = function(observation_de, observation_a) {
 
+document.getElementById("id_message_01").innerHTML = "";
+
+
+
 	//var storageObs = JSON.parse(localStorage.getItem("lsListViewObservArray")) || {},
 	var storageDate = localStorage.getItem("lsListViewObservLastDate"),
 	une_date = new Date(),
@@ -193,7 +197,7 @@ ClasseListViewObservations.prototype.downloader_les_observations_dans_localstora
 
 
 
-ClasseListViewObservations.prototype.saveObservToLocalStorage = function() {
+ClasseListViewObservations.prototype.saveObservArrayToLocalStorage = function() {
 	
 	//alert(this.myListViewObservArray.length);
 	
@@ -392,22 +396,20 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 	
 	if(objLObservation1.arrObservLesPhotos != undefined && objLObservation1.arrObservLesPhotos.length > 0){
 	
-		/*
 		if(objLObservation1.arrObservLesPhotos[0].strPhoto_Image != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_Image != ""){	
 			var newImg1 = document.createElement("img");
 			newImg1.setAttribute('src', JSON.parse(objLObservation1.arrObservLesPhotos[0].strPhoto_Image));
 			newImg1.setAttribute("class", "lvc_img");
 			newDiv1.appendChild(newImg1);  
-		}		
-		*/
-		
-		if(objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != ""){	
-			var newImg1 = document.createElement("img");
-			newImg1.setAttribute('src', objLObservation1.arrObservLesPhotos[0].strPhoto_url_big);
-			newImg1.setAttribute("class", "lvc_img");	 
-			newDiv1.appendChild(newImg1);   
+		}else
+		{
+			if(objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != undefined && objLObservation1.arrObservLesPhotos[0].strPhoto_url_big != ""){	
+				var newImg1 = document.createElement("img");
+				newImg1.setAttribute('src', objLObservation1.arrObservLesPhotos[0].strPhoto_url_big);
+				newImg1.setAttribute("class", "lvc_img");	 
+				newDiv1.appendChild(newImg1);   
+			}
 		}
-		
 		
 		
 		
@@ -521,7 +523,12 @@ ClasseListViewObservations.prototype.addListViewObservCell = function(objLObserv
 
 
 ClasseListViewObservations.prototype.ajouterUneObservationDans_myListViewObservArray = function(objUnObservation1) {
-	this.myListViewObservArray.push(objUnObservation1);	
+	//this.myListViewObservArray.push(objUnObservation1);	
+	this.myListViewObservArray.unshift(objUnObservation1);	
+	document.getElementById('id_cell_index').innerHTML="0";
+	//unshift pour mettre en haut du array
+	
+	
 
 }
 
@@ -621,8 +628,8 @@ ClasseListViewObservations.prototype.fillObservsListView = function() {
 	
 	//alert("fillObservsListView");
 	
-	var intMaxParPage = 10;
-	var intStartFrom=1;
+	var intMaxParPage = 100;
+	var intStartFrom=0;
 	if(this.myListViewObservArray.length > intMaxParPage){}else{intMaxParPage = this.myListViewObservArray.length;}
 	
 	

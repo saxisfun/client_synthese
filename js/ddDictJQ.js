@@ -128,7 +128,7 @@ function obj2cellule(le_id, l_espece, la_descrip, le_IDPhoto, le_IDSon, le_flObs
 
 
 	// mettre ou ne pas mettre le bouton selon le flag  flObservationRequise
-	if (le_flObsPermises === true) {
+	//if (le_flObsPermises === true) {
 		var newRadio4 = document.createElement("input");
 		newRadio4.setAttribute("type", "button");
 		//newRadio4.setAttribute('checked', '');
@@ -139,7 +139,7 @@ function obj2cellule(le_id, l_espece, la_descrip, le_IDPhoto, le_IDSon, le_flObs
 			onClickBoutonAjouterObservation(le_id, l_espece);
 		}, false);
 		newDiv1.appendChild(newRadio4);
-	}
+	//}
 
 	var newP1 = document.createElement("p");
 	//var newP1Content = document.createTextNode(tronquetxt(la_descrip));

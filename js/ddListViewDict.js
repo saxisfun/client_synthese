@@ -282,8 +282,8 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 	
 	
 	// mettre ou ne pas mettre le bouton selon le flag  flObservationRequise
-	if (le_flObsPermises === true)
-	{
+	//if (le_flObsPermises === true)
+	//{
 	var newRadio4 = document.createElement("input");
 	newRadio4.setAttribute("type", "button");
 	//newRadio4.setAttribute('checked', '');
@@ -292,7 +292,7 @@ ClasseListViewDictionnaire.prototype.XMLHttpReqDict = function(chmp_de_rech, typ
 	//newRadio4.setAttribute("id", "bouton_effacer_ligne");
 	newRadio4.addEventListener('click',function(){onClickBoutonAjouterObservation(le_id, l_espece);},false);
 	newDiv1.appendChild(newRadio4);		
-    }
+    //}
   
   
   	var newBoutonAlerte = document.createElement("input");

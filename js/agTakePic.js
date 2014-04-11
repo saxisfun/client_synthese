@@ -111,7 +111,7 @@ MaCamera.prototype.activateCamera = function() {
 
 					//alert("file on change");
 
-					//showPicture.onload=function(){onClickAjouterUneAutrePhoto();};
+					
 
 				} catch (e) {
 					try {
@@ -135,9 +135,9 @@ MaCamera.prototype.activateCamera = function() {
 				varGlobalNomImage = document.getElementById('take-picture').files[0].name;
 				//document.getElementById('id_ObservTimeStamp_data').value = varGlobalNomImage;
 
-				timer5 = window.setInterval("window.clearInterval(timer5),onClickAjouterUneAutrePhoto()", 500);
+				timer5 = window.setInterval("window.clearInterval(timer5),callback_ajouterUneAutrePhoto()", 500);
 
-				//onClickAjouterUneAutrePhoto();
+			
 
 				//timer5  = window.setInterval( "window.clearInterval(timer5),document.getElementById('img-tag-show-picture').setAttribute('src', JSON.parse(varGlobal1))", 500 );
 			}
@@ -182,7 +182,7 @@ MaCamera.prototype.agImgToCanvasToDataURL = function() {
 	*/
 
 	//widthTarget = 320;
-	widthTarget = 200;
+	widthTarget = 700;
 	
 	heightTarget = (widthTarget * imgTag1.height) / imgTag1.width;
 
