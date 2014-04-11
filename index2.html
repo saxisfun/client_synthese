@@ -12,7 +12,7 @@
 	
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 	
-    <title>Observations d'oiseaux</title>
+    <title id="id_title">Observations d'oiseaux</title>
 	
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -95,30 +95,25 @@
 		
 		<button id="tool_button_ajouter_observ" 
 		onclick="
-			if (varGlobal_UserConnected !== '0'){
+			//if (varGlobal_UserConnected !== '0'){
 				hide_all();
 				show_dicti();
 				show_back_button();
-			}else{
-				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
-			}
+			//}else{
+			//	alert('Vous devez être connecté pour pouvoir ajouter des observations!');
+			//}
 		"
-		style="position:absolute;bottom:6px;right:83px;visibility:hidden;width:86px;top:5px;height:72px;"
+		style="position:absolute;bottom:6px;right:83px;visibility:visible;width:86px;top:5px;height:72px;"
 		class="">xxx</button>	  
 		
 
+		
 		<button id="tool_button_ajouter_comm" 
 		onclick="		
-			if (varGlobal_UserConnected !== '0'){
-			
+			if (varGlobal_UserConnected !== '0'){	
 			observ_id = document.getElementById('id_ObservNoAutoGenereParlaDB_data').value;
-			
-			
-			
-			
 			user_id = document.getElementById('id_dba_id_Usager_data').value;
 			un_timestamp = new Date().getTime();
-			
 			affiche_ecran_commentaire(0,un_timestamp, observ_id, user_id, '', 999999);
 				
 			}else{
@@ -299,8 +294,8 @@
 		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#liste_commentaires" id="id_bouton_lst_commentaires" 
-			  					onclick="hide_all();objListViewComm.agXMLHttpReqComm('json/comm.json');show_liste_des_comm();show_back_button();" 
-			  	  class="switch_screen">xxx</a>
+			  	onclick="hide_all();objListViewComm.agXMLHttpReqComm('json/comm.json');show_liste_des_comm();show_back_button();" 
+			  	 class="switch_screen">xxx</a>
 			</li>
 
 
@@ -317,7 +312,18 @@
 		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#liste_observation1" id="id_bouton_actualiser" 
-			  onclick="hide_all();show_back_button();onClickButtonSynchro();" 
+			  onclick="
+				if (varGlobal_UserConnected !== '0'){
+					hide_all();show_back_button();onClickButtonSynchro();
+				}else{
+					alert('Vous devez être connecté pour pouvoir envoyer vos observations!');
+				}
+			  
+			  
+			  
+			  
+			  
+			  " 
 			  class="switch_screen">xxx</a>
 			</li>
 			
@@ -331,14 +337,16 @@
 			
 			
 
-		    <!-- - - - - - - - -->
-			<li>
-			  <a href="#ecran_notification"  id="id_bouton_notification"
+		    <!-- - - - - - - -   
+			<li>   
+			  <a href="#ecran_notification"  id="id_bouton_notification"   
 			     onclick="hide_all();show_avis_notification();show_back_button();" 
-			     class="switch_screen">xxx</a>
-			</li>
-										
+			     class="switch_screen">xxx</a>   
+			</li>  
+				 -->						
 
+				
+				
 		    <!-- - - - - - - - -->
 			<li>
 			  <a href="#ecran_Parametres"  id="id_bouton_parametres"
@@ -489,7 +497,7 @@
 
 							<li>
 							  <a href="#"  id="id_bouton_geolocalisation"
-								 onclick="hide_all();show_geolocalisation();show_back_button();"
+								 onclick="hide_all();show_geolocalisation_from_observation();show_back_button();"
 								 class="switch_screen">Voir sur Google Map</a>
 							</li>
 						</ul>		
@@ -508,7 +516,7 @@
 				</tr>	
 				<tr>
 					<td>		
-						Lonitude:
+						Longitude:
 					</td> 			
 				</tr>		
 				<tr>
@@ -594,14 +602,7 @@
 		</tr>	
 		
 		
-		<tr style="display:none;">
-			<td>	
-
-
 			
-				<button  id="" onclick="onClickAjouterUneAutrePhoto();" style="width:220px;" class="">Ajouter une autre photos</button>			
-			</td> 
-		</tr>				
 		
 		
 		<tr>
@@ -730,24 +731,28 @@
  
 	 <div id="ecran_recherche" class="screen hidden" style="text-align:center;" >
 
-		<table>
-		<col style="width:40%;">        
-		<col style="width:60%;">		
-
+		<table style="margin-left:auto;margin-right:auto;">
+	
 		<tr>
 			<td><img style="width:60px;"src="img/dictionary.png"/></td>		
+			
+		</tr>
+		<tr>
+				
 			<td> <h3> Rechercher dans le dictionnaire </h3></td>
 		</tr>
 
-
 		<tr>
 			<td><h4>Specimen:</h4></td>
-			<td><input type="text" id="id_recherher_dict"  placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
+			
 		</tr>
-	
+		<tr>
+			
+			<td><input type="text" id="id_recherher_dict" style="width:95%;" placeholder="Écrivez une partie du nom de l'oiseau" autofocus></td> 
+		</tr>	
 		
 		<tr> 
-			<td> </td>
+			
 			<td> 
 	    		<ul class="buttons">
 					<li>
@@ -774,36 +779,36 @@
 	<!--  Écran de test géolocalisation -->  
  	<div id="ecran_geolocalisation" class="screen hidden" style="text-align:center;" >
 		
-		
+<!--		
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0px; padding: 0px }
       #map_canvas { height: 100% ; width:100%;}
     </style>
+	-->		
 		
 		
-		
-		
+		<!--
 		<table>
 		<tr> 
 			<td> 
 				<ul class="buttons">
 					<li>
-						<a href="#" id="" onclick="carteNo2(46.785136, -71.2847);" 						class="switch_screen">Afficher la position sur la carte</a>
+						<a href="#" id="" onclick="carteNo2(46.785136, -71.2847);" 						class="switch_screen">localiser('carte')</a>
 					</li>	
 					
 					<li>	
-						<a href="#" id="" onclick="localiser();" 						class="switch_screen">Obtenir la latitude et longitude</a>
+						<a href="#" id="" onclick="localiser();" 						class="switch_screen">localiser()</a>
 					</li>	
 				</ul>
 			</td> 
 		</tr>
+		</table>  -->	
 
-
-		</table>	
+<!-- <button onclick="localiser();">localise()</button>  -->
 
 		<div>
-			<!-- <button onclick="localiser();">localise()</button>  -->
+			
 			<div id="contentMap"></div>
 		</div>
 
@@ -1054,10 +1059,12 @@
 	
 	
 	
+  	<div style="display:block;" >
+		<p style="width:100%;background-color:red;display:block;font-size:20pt;color:white;" class="blink_me" id="id_message_01"></p> 
+	</div>	
   	<div style="display:none;" >
 		<textarea rows="20"  style="width:100%;" id="id_textarea_01"></textarea> 
-	</div>	
-	  
+	</div>		  
 		 
 	   
   
@@ -1179,8 +1186,8 @@ var varGlobal1;
 var varGlobal2;
 var varGlobalNomImage;
 
-
-onClickButtonSynchro();
+objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+//onClickButtonSynchro();
 
 /*
 var la_reponse="";

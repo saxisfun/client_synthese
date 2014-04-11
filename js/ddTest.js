@@ -6,22 +6,13 @@
 
 function startRecherche() {
 
-
 	var champ_de_recgerche = document.getElementById("id_recherher_dict").value;
 	//alert('Recherche sur: ' + x);
 
 	hide_all();
 //alert("startRecherche");
 
-
-
-
 	objListViewDictionnaires.XMLHttpReqDict(champ_de_recgerche, "List_view");
-	
-	
-	
-
-
 	show_back_button();
 
 }
@@ -61,6 +52,86 @@ $('#search').keyup(function() {
 	}); //get JSON
 	
 });
+
+
+
+/*             */
+/* 2ième carte */
+/*             */
+
+
+
+
+
+function ClasseCoorGPS(flat, flon) {
+    this.latitude = parseFloat(flat);
+    this.longitude = parseFloat(flon);
+    //lat -90.XXXXXX to 90.XXXXXX and lng -180.XXXXXX to 180.XXXXXX
+    this.ok = !(this.latitude < -90 || this.latitude > 90 || this.longitude < -180 || this.longitude > 180);
+}
+
+
+
+function carteNo2(latitude, longitude) {
+    var yx = new ClasseCoorGPS(latitude, longitude);
+
+    if (!yx.ok) {
+        prendrePositionActuelle(yx);
+		alert('La position était éronnée et elle a été remplacée!');
+    }
+	else
+	{
+    afficherCarteOiseau(yx);
+	}
+}
+
+
+//Cégep 46.785136, -71.2847 
+function prendrePositionActuelle(obyx) {
+    //coordonné défault...
+    obyx.latitude = 46.785136;
+    obyx.longitude = -71.2847;
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(trfPosition, gestionErreurs, {timeout: 40000});
+    } else
+	{
+		alert('Impossible de vous localiser... Position du Cégep !');
+	}
+
+    function trfPosition(position) {
+        obyx.latitude = position.coords.latitude;
+        obyx.longitude = position.coords.longitude;
+		afficherCarteOiseau(obyx);
+  }
+}
+
+
+
+
+function afficherCarteOiseau(objX) {
+    var options = {
+        zoom: 17,
+        center: new google.maps.LatLng(objX.latitude, objX.longitude),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("contentMap"), options);
+    var ICON = new google.maps.MarkerImage('img/blue-bird.png',null,null, new google.maps.Point(14,13));
+    var SHADOW = new google.maps.MarkerImage('img/bird-shadow.png',null,null, new google.maps.Point(14,13));
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(objX.latitude, objX.longitude),
+		icon: ICON,
+		shadow: SHADOW,
+		title: 'Observation'
+		
+    });
+    marker.setMap(map);
+}
+
+
+
 
 
 
@@ -129,59 +200,6 @@ function localiser(sans_Carte) {
 		}
 	}
 }
-
-
-
-
-function ClasseCoorGPS(flat, flon) {
-   this.latitude = parseFloat(flat); 
-   this.longitude = parseFloat(flon); 
-}
-
-
-// lat -90.XXXXXX to 90.XXXXXX and lng -180.XXXXXX to 180.XXXXXX
-ClasseCoorGPS.prototype.tst = function() {
-	
-	if (this.latitude < -90 || this.latitude > 90
-	   ||  this.longitude < -180 || this.longitude > 180){
-		   alert('Les coordonnées latitude et longitude\nne sont pas valides.')
-	   }else{
-	   		alert('afficher la map...\n\nlatitude: '+this.latitude+'\nlongitude: '+this.longitude)
-		 	position.coords.latitude=this.latitude;
-		  	position.coords.longitude=this.longitude;
-	   }
-}
-
-function myTstGPS() {
- 	var coor = new ClasseCoorGPS (46,-71)
- 	coor.tst();
-}
-
-
-
-function carteNo2(latitude, longitude) {
-
-   // alert('lat., lon.: ' + latitude + ', ' + longitude)
-    var options = {
-        zoom: 17,
-        center: new google.maps.LatLng(latitude, longitude),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    var map = new google.maps.Map(document.getElementById("contentMap"), options);
-	var ICON = new google.maps.MarkerImage('img/blue-bird.png',null,null, new google.maps.Point(14,13));
-	var SHADOW = new google.maps.MarkerImage('img/bird-shadow.png',null,null, new google.maps.Point(14,13));
-
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(latitude, longitude),
-		icon: ICON,
-		shadow: SHADOW,
-		title: 'Observation'
-    });
-    marker.setMap(map);
-}
-
-
 
 
 //fonctions passées en parmêtre dans «navigator.geolocation.getCurrentPosition»

@@ -32,7 +32,7 @@ function hide_all() {
 	hide_settings();
 	//document.getElementById("tool_button_ajouter_comm").style.visibility = "hidden";
 	//document.getElementById("tool_button_ajouter_observ").style.visibility = "hidden";
-	//document.getElementById("tool_button_rechercher").style.visibility="hidden";
+	
 	//document.getElementById("tool_button_seconnecter").style.visibility="hidden";
 }
 
@@ -138,11 +138,28 @@ function hide_Parametres() {
 
 function show_geolocalisation() {
 	show_element(document.getElementById('ecran_geolocalisation'));
+	carteNo2(46.785136, -71.2847);
 }
 
 function hide_geolocalisation() {
 	hide_element(document.getElementById('ecran_geolocalisation'));
 }
+
+
+
+/*
+// écran géolocalisation d'une observation
+//RÉCUPÉRER LAT ET LONG DE L'OBSERVATION COURANTE
+*/
+
+
+function show_geolocalisation_from_observation() {
+	show_element(document.getElementById('ecran_geolocalisation'));
+	//alert(document.getElementById('id_ObservLaPositionGPS_long_data').value);
+	carteNo2(document.getElementById('id_ObservLaPositionGPS_lat_data').value, document.getElementById('id_ObservLaPositionGPS_long_data').value);
+
+}
+
 
 
 
@@ -220,7 +237,7 @@ function effacer_ligne_comm_div(le_this, le_comm_id) {
 	if (confirm(VConfirm)) {
 		objListViewComm.deleteUnCommentaireFromListView(le_comm_id);
 		le_this.style.backgroundColor="red";
-		//objListViewObservations.saveObservToLocalStorage();
+		//objListViewObservations.saveObservArrayToLocalStorage();
 
 	} else {
 
@@ -229,16 +246,25 @@ function effacer_ligne_comm_div(le_this, le_comm_id) {
 
 function effacer_ligne_div(le_this, le_obs_id) {
 
-	VConfirm = ''
-	VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer cette observation?\n\n'
-	if (confirm(VConfirm)) {
-		objListViewObservations.deleteUneObservationFromListViewButton(le_obs_id);
-		le_this.style.backgroundColor="red";
-		//objListViewObservations.saveObservToLocalStorage();
+	
+	if (varGlobal_UserConnected !== '0'){
+		VConfirm = ''
+		VConfirm = VConfirm + 'Êtes-vous certain de vouloir effacer cette observation?\n\n'
+		if (confirm(VConfirm)) {
+			objListViewObservations.deleteUneObservationFromListViewButton(le_obs_id);
+			le_this.style.backgroundColor="red";
+			//objListViewObservations.saveObservArrayToLocalStorage();
 
-	} else {
+		} else {
 
-	}
+		}	
+		
+	}else{
+		alert('Vous devez être connecté pour pouvoir détruire des observations!');
+	}	
+	
+	//http://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2Fperiodiqco1.web703.discountasp.net%2FWCF_Synthese%2Fweb%2Findex2.html%23&5e1&callback=_xdc_._3gkcpw&token=16734
+
 }
 
 
@@ -267,7 +293,8 @@ function get_lang_callback(le_str_output) {
 	document.getElementById("id_bouton_actualiser").innerHTML = localString['str_bouton_actualiser'];
 
 	document.getElementById("id_bouton_geolocalisation").innerHTML = localString['str_bouton_geolocalisation'];
-	document.getElementById("id_bouton_notification").innerHTML = localString['str_bouton_notification'];
+	
+	//document.getElementById("id_bouton_notification").innerHTML = localString['str_bouton_notification'];
 	
 	document.getElementById("id_bouton_parametres").innerHTML = localString['str_bouton_parametres'];
 	document.getElementById("id_bouton_settings").innerHTML = localString['str_bouton_settings'];
@@ -277,7 +304,7 @@ function get_lang_callback(le_str_output) {
 	document.getElementById("back_to_observ").innerHTML = localString['str_back_to_observ'];
 	document.getElementById("tool_button_ajouter_observ").innerHTML = localString['str_button_ajouter_observ'];	
 	document.getElementById("tool_button_ajouter_comm").innerHTML = localString['str_tool_button_ajouter_comm'];
-	document.getElementById("tool_button_rechercher").innerHTML = localString['str_tool_button_rechercher'];
+	
 	document.getElementById("tool_button_deconnecter").innerHTML = localString['str_tool_button_deconnecter'];
 	document.getElementById("tool_button_seconnecter").innerHTML = localString['str_tool_button_seconnecter'];
 		
@@ -354,43 +381,15 @@ function onClickBoutonSaveObservation() {
 
 			//alert("444444:"+varGlobalNomImage);
 
-
 			var observObject3 = new ClasseObservation();
 
-//alert("Insert");
+
 			observObject3.strObservFlagInsertUpdate = "I";
-
-
-			/*
-			Losrsque l'application démarre, elle fonctionne avec le localstorage uniquement.
-			C'est seulement losqu'on pèse sur "synchro" que ces deux opérations se produisent
-			
-				1-l'application client upload vers le serveur des nouvelles observations et des observations modifiées.
-					A-Si l'observation contien un NoAutoGenParLaDB ca veut dire qu'elle n'est pas nouvelle et doit être modifiée. 
-						Étant donné que le nombre de photos peut changer l'ors d'une modification je suggère qu'on 
-						efface l'observation au complet sur la DB et qu'on la ré-insert à nouveau. Puisque les photos sont dans l'observation et probablement les commentaires aussi.					
-					
-					B-Si l'observation ne contien pas un NoAutoGenParLaDB ca veut dire qu'elle est nouvelle et doit être insérée.
-				
-				2-Download les 20 dernières observations en ordre de dates décroissantes incluant celles qu'on vient juste de créer.
-			
-
-			
-			remarque: le NoAutoGenParLaDB est un numéro qui sera automatiquement généré par la base de données à 
-			la création d'une nouvelle observation et qui nous sera retourné.
-			*/
-
-
 
 			var tempDate = new Date().getTime();
 			tempDate = parseFloat(tempDate);
 
-
 			observObject3.strObserv_DateObservation = tempDate;
-
-
-
-
 			//alert("Date: " + observObject3.strObserv_DateObservation);
 
 			observObject3.strObserv_Id = parseInt(le_NoAutoGenereParlaDB, 10);
@@ -399,10 +398,8 @@ function onClickBoutonSaveObservation() {
 			observObject3.strObserv_Oiseau.strObs_Ois_Nom = le_Ois_Nom;
 			observObject3.strObserv_Oiseau.strObs_Ois_Espece = le_Ois_Espece;
 			
-			
 			observObject3.strObserv_Usager.strObs_Usr_NomUsager = le_Usr_NomUsager;
 			observObject3.strObserv_Usager.strObs_Usr_NomComplet = le_Usr_NomComplet;
-			
 			
 			observObject3.strObserv_Titre = le_titre;
 			observObject3.strObserv_Resume = le_resume;
@@ -411,7 +408,7 @@ function onClickBoutonSaveObservation() {
 
 			objListViewObservations.ajouterUneObservationDans_myListViewObservArray(observObject3);
 
-			objListViewObservations.saveObservToLocalStorage();
+			objListViewObservations.saveObservArrayToLocalStorage();
 		}
 
 
@@ -461,7 +458,7 @@ function onClickBoutonSaveObservation() {
 
 
 
-		objListViewObservations.saveObservToLocalStorage();
+		objListViewObservations.saveObservArrayToLocalStorage();
 	}
 
 
@@ -471,8 +468,9 @@ function onClickBoutonSaveObservation() {
 
 
 
-function onClickAjouterUneAutrePhoto() {
+function callback_ajouterUneAutrePhoto() {
 	var id_cell_index = document.getElementById('id_cell_index').innerHTML;
+	
 	prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(id_cell_index);
 
 	//vider le ul
@@ -509,10 +507,14 @@ function prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(le_index_oui
 			var observObject2 = new ClasseObservation();
 	
 
-		
+			//unshift
+			
 			observObject2.arrObservLesPhotos = objListViewObservations.myListViewObservArray[le_index_oui].arrObservLesPhotos;
 			observObject2.strObserv_Id = objListViewObservations.myListViewObservArray[le_index_oui].strObserv_Id;
 
+			//alert("finally le_index_oui:"+le_index_oui);			
+			
+			
 			//str_la_Id, dataURL_la_Photo, str_la_Photo_Descrip, str_la_IDObservation, str_la_ImageMiniature, str_la_Photo_Commentaire
 		
 		
@@ -520,7 +522,7 @@ function prendreLImageDuCanvasEtLAjouterDansLesPhotosDunObservation(le_index_oui
 			
 			
 			
-			//objListViewObservations.saveObservToLocalStorage(); 
+			//objListViewObservations.saveObservArrayToLocalStorage(); 
 
 		}
 		
@@ -539,7 +541,7 @@ function onClickBoutonSupprimer() {
 	//showLogin();
 
 	objListViewObservations.removeSelectedObservsFromListView();
-	objListViewObservations.saveObservToLocalStorage();
+	objListViewObservations.saveObservArrayToLocalStorage();
 
 
 
@@ -620,7 +622,7 @@ function onClickBoutonActiverAlertePourUnOiseau(l_id_de_loiseau) {
 			if (varGlobal_UserConnected !== '0'){
 				wcf_InsertUnAlert(varGlobal_UserConnected, l_id_de_loiseau);
 			}else{
-				alert('Vous devez être connecté pour pouvoir ajouter des observations!');
+				alert('Vous devez être connecté pour pouvoir activer les alertes!');
 			}	
 	
 	
@@ -633,7 +635,7 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau, nom_de_lespece) {
 
 
 
-	if (varGlobal_UserConnected !== "0") {
+	//if (varGlobal_UserConnected !== "0") {
 		/*document.getElementById("img-tag-show-picture").setAttribute("src", "http://www.groupeallumage.com/templates/mytech-et/images/logo.png");*/
 
 		hide_all();
@@ -675,10 +677,10 @@ function onClickBoutonAjouterObservation(le_id_de_loiseau, nom_de_lespece) {
 		afficheEcranObservations(observObject7, valNum2);
 
 
-	} else {
-		alert("Vous devez être connecté pour pouvoir ajouter des observations!");
+	//} else {
+	//	alert("Vous devez être connecté pour pouvoir ajouter des observations!");
 
-	}
+	//}
 
 
 
@@ -883,7 +885,7 @@ function onClickButtonMenuListViewObserv() {
 
 	//document.getElementById("tool_button_ajouter_observ").style.visibility = "visible";
 
-	document.getElementById("tool_button_rechercher").style.visibility = "visible";
+	
 	//document.getElementById("tool_button_seconnecter").style.visibility = "visible";
 
 
@@ -1182,25 +1184,56 @@ function afficherJsonDansTextarea()
 
 
 function envoyer_au_serveur_les_observations_avec_photos(){
+	
+
+	
+	
+	
+	
+	
+	
+	
+	//alert("envoyer_au_serveur_les_observations_avec_photos go");
 	//créer variable json des nouveux observations à envoyer et ceux modifiées
     //var myArrayDObservationDansLocalStorage = JSON.parse(localStorage.getItem("lsListViewObservArray"));
 	var myArrayDObservationDansLocalStorage = objListViewObservations.myListViewObservArray;
 	
 	//var sadsaasddads = JSON.stringify(myArrayDObservationDansLocalStorage, null, "\t");
-	
+	var intCount = 0;
+	var intCounTot = 0;
 	var myArrayDObservationAUploader1 = [];
 	if ((typeof myArrayDObservationDansLocalStorage == "undefined" ) || (myArrayDObservationDansLocalStorage == null) || (myArrayDObservationDansLocalStorage == "undefined")){
 		
 	}else{	
-	
+		
+		
 		for (var i=0; i < myArrayDObservationDansLocalStorage.length; i++){
 			var observ_Object = myArrayDObservationDansLocalStorage[i];
-			
+			//alert("11111111111111 strObservFlagInsertUpdate: "+observ_Object.strObservFlagInsertUpdate);
+			if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
+				intCounTot=intCounTot+1
+			}	
+		}
+		
+		//document.getElementById("id_title").innerHTML = intCounTot;
+		document.getElementById("id_message_01").innerHTML = "Synchronisation en cours.<br>Observations à envoyer: "+intCounTot+"<br>Veuillez patienter!<br>";				
+	
+		
+		
+		for (var i=0; i < myArrayDObservationDansLocalStorage.length; i++){
+			var observ_Object = myArrayDObservationDansLocalStorage[i];
+			//alert("11111111111111 strObservFlagInsertUpdate: "+observ_Object.strObservFlagInsertUpdate);
 			if(observ_Object.strObservFlagInsertUpdate=="I" || observ_Object.strObservFlagInsertUpdate=="U"){
 			
+				
 				if(dataAdapterSwitch_dataFromIIS){
 					//back-end wcf recoit une par une
+					intCount=intCount+1;
+					
+					//alert("wcf_InsertObservation go");
+					observ_Object.strObservFlagInsertUpdate=="";
 					wcf_InsertObservation(observ_Object);
+					i=999;
 					
 				}else{
 					//back-end php recoit toute le array d'une claque
@@ -1212,6 +1245,16 @@ function envoyer_au_serveur_les_observations_avec_photos(){
 		//var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader1); 
 		var e3e3e3rr443r = JSON.stringify(myArrayDObservationAUploader1, null, "\t");	
 	}
+	if(intCount == 0){
+		
+		//s'il n'y a plus d'observation a envoyer on download les obs
+		//alert("intCount = 0: "+intCount);
+		objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);
+	
+	}
+	
+	
+	
 	return myArrayDObservationAUploader1;
 }
 
@@ -1321,7 +1364,7 @@ function afficher_les_observations_new(observation_de, observation_a)
 	document.getElementById("tool_button_ajouter_comm").style.visibility="hidden";
 	
 	//document.getElementById("tool_button_ajouter_observ").style.visibility="visible";
-	document.getElementById("tool_button_rechercher").style.visibility="visible";
+	
 
 	
 	
@@ -1340,9 +1383,9 @@ function onClickButtonSynchro()
 	var myArray_DObs = [];
 	myArray_DObs = envoyer_au_serveur_les_observations_avec_photos();
 
-	///envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
-	///envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
-	the_timer_01 = setInterval(function(){objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);window.clearInterval(the_timer_01)},3000);
+	//envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
+	//envoyer_json_des_nouvelles_observations_au_serveur(myArray_DObs);
+	//the_timer_01 = setInterval(function(){objListViewObservations.downloader_les_observations_dans_localstorage(1, 20);window.clearInterval(the_timer_01)},3000);
 
 	
 	
