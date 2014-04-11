@@ -992,7 +992,7 @@ function afficheEcranObservations(un_observation_ici, la_index) {
 		document.getElementById("ligne_bouton_save_observation").style.display = "";
 	}
 	
-			
+	document.getElementById("ligne_bouton_save_observation").style.display = "";		
 			
 
 

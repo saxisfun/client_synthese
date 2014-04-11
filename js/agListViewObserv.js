@@ -203,14 +203,14 @@ ClasseListViewObservations.prototype.saveObservArrayToLocalStorage = function() 
 	
 	//alert(this.myListViewObservName);
 	localStorage.setItem("lsListViewObservArray", JSON.stringify(this.myListViewObservArray));
-	localStorage.setItem("lsListViewObservName", this.myListViewObservName);
+	//localStorage.setItem("lsListViewObservName", this.myListViewObservName);
 		
 	//var myName = document.getElementById("name");
     //var age = document.getElementById("age");
     
     try {
        	localStorage.setItem("lsListViewObservArray", JSON.stringify(this.myListViewObservArray));
-		localStorage.setItem("lsListViewObservName", this.myListViewObservName);
+		//localStorage.setItem("lsListViewObservName", this.myListViewObservName);
      
     }
     catch (e) {
@@ -229,41 +229,20 @@ ClasseListViewObservations.prototype.saveObservArrayToLocalStorage = function() 
 
 ClasseListViewObservations.prototype.fillMyListViewObservArrayFromLocalStorage = function() {
 	
-	//alert("fillMyListViewObservArrayFromLocalStorage");
 	//alert(this.myListViewObservArray.length);
 		//storageFilesObservations
-	var objMyName = localStorage.getItem("lsListViewObservName");
-	var objMyArr = localStorage.getItem("lsListViewObservArray");
+	//var objMyName = localStorage.getItem("lsListViewObservName");
+	//var objMyArr = localStorage.getItem("lsListViewObservArray");
 	// Vérifier si Comm existe et n'est pas trop vieux  
-	if ((typeof objMyName === "undefined" ) || (typeof objMyArr === "undefined" )){
-		//alert("Non");
-		//Si Comm n'existe pas sur ordi ou il est trop vieux alors on le download et on le mets dans le canvas pour pouvoir le sauvegarder sur le disque
-		//this.myListViewObservArray = [];
 	
-	}else{
-		//alert("Oui");
-		//alert(this.myListViewObservName);
-		//alert("lsListViewObservArray: "+localStorage.lsListViewObservArray);
+	if (localStorage.lsListViewObservArray && localStorage.lsListViewObservArray != "undefined" && localStorage.lsListViewObservArray != "null") {
 		
 		
-		if (localStorage.lsListViewObservName && localStorage.lsListViewObservName != "undefined" && localStorage.lsListViewObservName != "null") {
-			this.myListViewObservName = localStorage.lsListViewObservName;
-		}
+		this.myListViewObservArray = JSON.parse(localStorage.lsListViewObservArray); 
 
-		if (localStorage.lsListViewObservArray && localStorage.lsListViewObservArray != "undefined" && localStorage.lsListViewObservArray != "null") {
-			
-			
-			this.myListViewObservArray = JSON.parse(localStorage.lsListViewObservArray); 
-			
-			
-			
-		}else{
-			this.myListViewObservArray = [];
-		}
-	
-		//alert('there are ' + localStorage.length + ' items in the storage array.');
+	}else{
 		
-		
+		this.myListViewObservArray = [];
 	}
 	
 	
